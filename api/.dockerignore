@@ -132,3 +132,22 @@ dist
 .flaskenv*
 !.env.project
 !.env.vault
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Conda environments stored locally in the project
+.conda/
+conda-env/
+
+# Python build/cache artifacts
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.Python

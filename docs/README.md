@@ -1,3 +1,5 @@
-# Docs Folder README
+# Project Documentation
 
-In this folder, put any additional project documentation that isn't included in the main respository README. 
+| Document                  | Description                                                                               |
+|---------------------------|-------------------------------------------------------------------------------------------|
+| [Prerequisites](PreReq.md) | Python environment setup (Anaconda/Miniconda and venv), required tools, and IDE configuration |
