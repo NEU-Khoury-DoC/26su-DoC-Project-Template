@@ -35,15 +35,7 @@ See [docs/RepoSetup.md](docs/RepoSetup.md) for full instructions on forking and 
 
 ## Important Tips
 
-1. In general, any changes you make to the api code base (REST API) or the Streamlit app code should be *hot reloaded* when the files are saved.  This means that the changes should be immediately available.  
-   1. Don't forget to click the **Always Rerun** button in the browser tab of the Streamlit app for it to reload with changes.
-   1. Sometimes, a bug in the code will shut the containers down.  If this is the case, try and fix the bug in the code.  Then you can restart the `app` container in Docker Desktop or restart all the containers with `docker compose restart` (no *-d* flag).
-1. The MySQL Container is different. 
-   1. When the MySQL container is ***created*** the first time, it will execute any `.sql` files in the `./database-files` folder. **Important:** it will execute them in alphabetical order.  
-   1. The MySQL Container's log files are your friend! Remember, you can access them in Docker Desktop by going to the MySQL Container, and clicking on the `Logs` tab.  If there are errors in your .sql files as it is trying to run them, there will be a message in the logs. You can search 🔍 for `Error` to find them more quickly. 
-   1. If you need to update anything in any of your SQL files, you **MUST** recreate the MySQL container (rather than just stopping and restarting it).  You can recreate the MySQL container by using the following command: `docker compose down db -v && docker compose up db -d`. 
-      1. `docker compose down db -v` stops and deletes the MySQL container and the volume attached to it. 
-      1. `docker compose up db -d` will create a new db container and re-run the files in the `database-files` folder. 
+See [docs/ImportantTips.md](docs/ImportantTips.md) for tips on hot reloading, recovering from container crashes, and working with the MySQL container (including how to update your SQL files and recreate the database).
 
 ## Handling User Role Access and Control
 
