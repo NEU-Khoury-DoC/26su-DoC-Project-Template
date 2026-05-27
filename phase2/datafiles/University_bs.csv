@@ -1,0 +1,1001 @@
+BAS.INSTNAME,BAS.INSTNAMEENGL,GEO.SUBCOUNTRY,GEO.CITY,EXP.CURRPERSON.EURO,EXP.CURRNONPERSON.EURO,EXP.CURRTOTAL.EURO,REV.COREBUDGETPUBLIC.EURO,REV.CORETOTAL.EURO,REV.THIRDPARTYPUBLIC.EURO,REV.THIRDPARTYPRIVATE.EURO,REV.TUITFEES,REV.STUDFEES.EURO,PERS.ACAHCMEN,PERS.ACAHCWOMEN,PERS.ACAHCSENIORTOTAL,PERS.TOTALFTE,STUD.HIGHDEG,IND.RES.PHDINTENSITY
+UniversitÃ¤t Wien,University of Vienna,a,Vienna,520378006.53000003,236841071.58999997,757219078.12,618382333.16,618382333.16,,,1,17131218.28,2517,2133,557,6378.5469,3,0.052991840144220335
+UniversitÃ¤t Graz,University of Graz,a,Graz,212660260.34000003,90597029.80000001,303257290.14000005,255172805.74,255172805.74,,,1,3628120.01,1085,1013,244,2738.7869,3,0.05846206511696926
+UniversitÃ¤t Innsbruck,University of Innsbruck,a,Innsbruck,269145061,113138287.35000001,382283348.35,306037392.09,306037392.09,,,1,3890197.44,1272,870,307,3122.686,3,0.06086301190176816
+UniversitÃ¤t Salzburg,University of Salzburg,a,Salzburg,140793001.98,52784047.830000006,193577049.81,171657274.94,171657274.94,,,1,2669432.9,626,563,161,1730.8032,3,0.061555851082229066
+Technische UniversitÃ¤t Wien,Vienna University of Technology,a,Vienna,292484330.41999996,170719627.69,463203958.10999995,348491228.32,348491228.32,,,1,7284097.67,1315,497,230,3929.7488,3,0.10225208863058481
+Technische UniversitÃ¤t Graz,Graz University of Technology,a,Graz,201431473.7,102307513.69,303738987.39,202361258.58,202361258.58,,,1,3193395.39,794,235,154,2637.8773,3,0.1297334748480102
+MontanuniversitÃ¤t Leoben,University of Leoben,a,Leoben,69097018.89999999,32689421.65,101786440.54999998,69015777.18,69015777.18,,,1,797398.87,329,90,55,932.2882,3,0.12944664031620554
+UniversitÃ¤t fÃ¼r Bodenkultur Wien,University of Natural Resources and Life Sciences,,,,,,,,,,,,,,,,,
+VeterinÃ¤rmedizinische UniversitÃ¤t Wien,University of Veterinary Medicine Vienna,a,Vienna,90071085.91,60508972.120000005,150580058.03,128411205.87,128411205.87,,,1,214874.11,198,315,42,1155.4197,3,0.19452811244979917
+WirtschaftsuniversitÃ¤t Wien,Vienna University of Economics and Business,a,Vienna,129364331.58999999,100620009.73,229984341.32,154590656.13,154590656.13,,,1,3392025.05,705,505,126,1515.9303,3,0.028430682617874736
+UniversitÃ¤t Linz,University of Linz,a,Linz,168748829,69328191.22,238077020.22,187895053.12,187895053.12,,,1,4090152.98,1106,638,176,2130.8351,3,0.06027330595734659
+UniversitÃ¤t Klagenfurt,University of Klagenfurt,a,Klagenfurt,70249220.93,15874466.6,86123687.53,81781678.57,81781678.57,,,1,1384511.44,436,368,74,884.1888,3,0.03600392851515226
+UniversitÃ¤t fÃ¼r Weiterbildung Krems,University for Continuing Education Krems,a,Krems an der Donau,50145689.790000014,12967589.940000001,63113279.73000002,25891013,25891013,,,1,20135148.24,625,412,30,608.898,3,s
+Medizinische UniversitÃ¤t Wien,Medical University of Vienna,a,Vienna,558931798.0300001,146541905.98,705473704.0100001,562856349.07,562856349.07,,,1,1022496.65,1267,1024,134,4841.86,3,0.17539893617021277
+Medizinische UniversitÃ¤t Graz,Medical University of Graz,a,Graz,197976796.54999998,154349910.07000002,352326706.62,272673761.87,272673761.87,,,1,440571.78,442,398,94,2074.5977,3,0.15190090169295858
+Medizinische UniversitÃ¤t Innsbruck,Medical University of Innsbruck,a,Innsbruck,166903659.44,109019598.64999999,275923258.09,217314616.52,217314616.52,,,1,436366.56,333,251,97,1720.2657,3,0.1318181818181818
+Akademie der bildenden KÃ¼nste Wien,Academy of Fine Arts Vienna,a,Vienna,26604767.62,15879641.95,42484409.57,37777841.06,37777841.06,,,1,460341.62,105,185,40,344.3375,3,0.12186379928315412
+UniversitÃ¤t fÃ¼r angewandte Kunst Wien,University of Applied Arts Vienna,a,Vienna,42246651.559999995,20983282.680000003,63229934.239999995,58301178.24,58301178.24,,,1,362953.53,242,279,48,523.7976,3,0.04933586337760911
+UniversitÃ¤t fÃ¼r Musik und darstellende Kunst Wien,University of Music and Performing Arts in Vienna,a,Vienna,91449371.05999999,30945851.26,122395222.32,118878513.02,118878513.02,,,1,745822.89,560,433,187,989.8833,3,s
+UniversitÃ¤t Mozarteum Salzburg,University Mozarteum Salzburg,a,Salzburg,49289379.84000001,18636684.569999997,67926064.41000001,65142830.2,65142830.2,,,1,425187.94,294,245,114,518.7885,3,s
+UniversitÃ¤t fÃ¼r Musik und darstellende Kunst Graz,University of Music and Performing Arts Graz,a,Graz,48914237.81,15757244.92,64671482.730000004,63977546.18,63977546.18,,,1,390183.86,291,184,123,509.4106,3,0.03057530396390662
+UniversitÃ¤t fÃ¼r kÃ¼nstlerische und industrielle Gestaltung Linz,University of Art and Design Linz,a,Linz,20730639.000000004,10672292.739999998,31402931.740000002,28942909,28942909,,,1,371372.27,182,208,44,266.6445,3,0.0626835631160797
+Katholische PrivatuniversitÃ¤t Linz,Catholic Private University Linz,a,Linz,,,,,,,,,,35,43,0,63.95,3,s
+UMIT TIROL - PrivatuniversitÃ¤t fÃ¼r Gesundheitswissenschaften und -technologie,Private University for Health Sciences,,,,,,,,,,,,,,,,,
+Paracelsus Medizinische PrivatuniversitÃ¤t,Paracelsus Medical University,a,Salzburg,,,,,,,,,,802,786,0,244.08,3,0.07459207459207459
+Anton Bruckner PrivatuniversitÃ¤t,Anton Bruckner Private University,a,Linz,,,,,,,,,,131,80,0,165.52,3,s
+Sigmund Freud PrivatuniversitÃ¤t Wien,Sigmund Freud Private University Vienna,a,Vienna,,,,,,,,,,968,832,0,458.54,3,0.018997574777687955
+MODUL University Vienna PrivatuniversitÃ¤t,MODUL University Vienna Private University,a,Vienna,,,,,,,,,,37,22,0,107.23,3,s
+PrivatuniversitÃ¤t Schloss Seeburg,Private University Schloss Seeburg,a,Seekirchen am Wallersee,,,,,,,,,,49,38,0,47.27,3,s
+Danube Private University,Danube Private University,a,Krems an der Donau,,,,,,,,,,172,92,0,170.73,3,s
+Central European University Private University,Central European University Private University,a,Vienna,,,,,,,,,,163,118,0,398.88,3,0.08426966292134831
+Charlotte Fresenius PrivatuniversitÃ¤t,University of Sustainability - Charlotte Fresenius PrivatuniversitÃ¤t,a,Vienna,,,,,,,,,,4,1,0,8,3,a
+UniversitÃ© de Namur,University of Namur,French Community,Namur,,,,,,,,,,,,,,3,
+UniversitÃ© catholique de Louvain,UCLouvain,French Community,Louvain-La-Neuve,,,,,,,,,,,,,,3,
+UniversitÃ© de LiÃ¨ge,University of LiÃ¨ge,French Community,LiÃ¨ge,,,,,,,,,,,,,,3,
+UniversitÃ© de Mons,University of Mons,French Community,Mons,,,,,,,,,,,,,,3,
+UniversitÃ© libre de Bruxelles,ULB,French Community,Brussels,,,,,,,,,,,,,,3,
+Katholieke Universiteit Leuven,KU Leuven,Flemish Community,Leuven,859088277.7699999,375808857.2699999,1268048126.9099996,706901309.4400003,830883843.4200003,158053054.24,266694089.23999995,2,63873623.300000004,2971,1795,552,12350.11,3,0.06433742524394083
+Transnationale Universiteit Limburg,Transnational University Limburg,Flemish Community,Diepenbeek,,,,,,,,2,,,,,,3,0.05938242280285035
+Universiteit Hasselt,Hasselt University,Flemish Community,Diepenbeek,102725083.16000001,36722396.07000001,134929290.35000002,101944380.49999999,119637900.14999999,17880605.099999998,6744500.970000001,2,5495348.44,397,228,65,1494.45,3,0.059743954480796585
+Universiteit Antwerpen,University of Antwerp,Flemish Community,Antwerp,290930964,94402440,385732602,254630969,277692467,48962157,24245437,2,24504447,1078,684,155,4018.7,3,0.07030772366007744
+Universiteit Gent,Ghent University,Flemish Community,Gent,609316750,259577714,857986241,540212359,621380913,128722684,64175841,2,45547751,2207,1392,298,8937.74,3,0.06364219301058031
+Vrije Universiteit Brussel,The Vrije Universiteit Brussel,Flemish Community,Ixelles,251309997.82,111628017.92000002,352794907.26,200347353.86000004,229035243.20000005,49096551.12,14815763.71,2,18861306.88,1108,670,84,3617.53,3,0.06359753203607024
+"ÐÐ°Ñ†Ð¸Ð¾Ð½Ð°Ð»Ð½Ð° ÐÐºÐ°Ð´ÐµÐ¼Ð¸Ñ Ð·Ð° Ð¢ÐµÐ°Ñ‚Ñ€Ð°Ð»Ð½Ð¾ Ð¸ Ð¤Ð¸Ð»Ð¼Ð¾Ð²Ð¾ Ð˜Ð·ÐºÑƒÑÑ‚Ð²Ð¾ ""ÐšÑ€ÑŠÑÑ‚ÑŒÐ¾ Ð¡Ð°Ñ€Ð°Ñ„Ð¾Ð²""",Krastyo Sarafov National Academy for Theatre and Film Arts,a,Sofia,,,,,,,,,,128,206,107,,3,0.05232558139534884
+ÐÐ°Ñ†Ð¸Ð¾Ð½Ð°Ð»Ð½Ð° Ñ…ÑƒÐ´Ð¾Ð¶ÐµÑÑ‚Ð²ÐµÐ½Ð° Ð°ÐºÐ°Ð´ÐµÐ¼Ð¸Ñ,National Academy of Art,a,Sofia,,,,,,,,,,174,148,68,,3,0.03793103448275862
+"ÐÐ°Ñ†Ð¸Ð¾Ð½Ð°Ð»Ð½Ð° Ð¼ÑƒÐ·Ð¸ÐºÐ°Ð»Ð½Ð° Ð°ÐºÐ°Ð´ÐµÐ¼Ð¸Ñ ""ÐŸÑ€Ð¾Ñ„. ÐŸ. Ð’Ð»Ð°Ð´Ð¸Ð³ÐµÑ€Ð¾Ð²""","""National Academy of Music """"Prof. Pantcho Vladigerov""""""",a,Sofia,,,,,,,,,,92,105,58,,3,0.1099476439790576
+ÐÐ¾Ð² Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸ Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚,New Bulgarian University,a,Sofia,,,,,,,,,,575,601,170,,3,s
+Ð’Ð¸ÑÑˆÐµ ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÐµÐ»Ð½Ð¾ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ â€œÐ›ÑŽÐ±ÐµÐ½ ÐšÐ°Ñ€Ð°Ð²ÐµÐ»Ð¾Ð²â€,Higher School of Civil Engineering â€œLyuben Karavelovâ€œ,a,Sofia,,,,,,,,,,46,21,9,,3,s
+"Ð’Ð¸ÑÑˆÐµ Ñ‚Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ð½Ð¾ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ ""Ð¢Ð¾Ð´Ð¾Ñ€ ÐšÐ°Ð±Ð»ÐµÑˆÐºÐ¾Ð²""",Todor Kableshkov Higher School of Transport,a,Sofia,,,,,,,,,,80,50,33,,3,s
+ÐÐºÐ°Ð´ÐµÐ¼Ð¸Ñ Ð½Ð° ÐœÐ¸Ð½Ð¸ÑÑ‚ÐµÑ€ÑÑ‚Ð²Ð¾ Ð½Ð° Ð²ÑŠÑ‚Ñ€ÐµÑˆÐ½Ð¸Ñ‚Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ð¸,Academy of Ministry of Interior,a,Sofia,,,,,,,,,,93,41,15,,3,0.01702127659574468
+"Ð’Ð¾ÐµÐ½Ð½Ð° Ð°ÐºÐ°Ð´ÐµÐ¼Ð¸Ñ ""Ð“ÐµÐ¾Ñ€Ð³Ð¸ Ð¡Ñ‚Ð¾Ð¹ÐºÐ¾Ð² Ð Ð°ÐºÐ¾Ð²ÑÐºÐ¸""","""""""G. S. Rakovski"""" National Defence College â€“ Sofia""",a,Sofia,,,,,,,,,,88,49,11,,3,0.03503184713375796
+Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ Ð¿Ð¾ Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ¾Ð·Ð½Ð°Ð½Ð¸Ðµ Ð¸ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¾Ð½Ð½Ð¸ Ñ‚ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ð¸Ð¸,State University of Library Studies and Information Technologies,a,Sofia,,,,,,,,,,71,94,42,,3,0.12044817927170869
+Ð’Ð¸ÑÑˆÐµ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ Ð¿Ð¾ Ñ‚ÐµÐ»ÐµÐºÐ¾Ð¼ÑƒÐ½Ð¸ÐºÐ°Ñ†Ð¸Ð¸ Ð¸ Ð¿Ð¾Ñ‰Ð¸,University of Telecommunications and Post,a,Sofia,,,,,,,,,,36,16,9,,3,s
+Ð’Ð¸ÑÑˆÐµ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ Ð¿Ð¾ Ð·Ð°ÑÑ‚Ñ€Ð°Ñ…Ð¾Ð²Ð°Ð½Ðµ Ð¸ Ñ„Ð¸Ð½Ð°Ð½ÑÐ¸,University of finance,,,,,,,,,,,,,,,,,
+ÐœÐµÐ¶Ð´ÑƒÐ½Ð°Ñ€Ð¾Ð´Ð½Ð¾ Ð²Ð¸ÑÑˆÐµ Ð±Ð¸Ð·Ð½ÐµÑ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ,International Business School,a,Botevgrad,,,,,,,,,,10,17,12,,3,s
+Ð¢Ñ€Ð°ÐºÐ¸Ð¹ÑÐºÐ¸ Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚,Trakia University,a,Stara Zagora,,,,,,,,,,326,453,147,,3,0.019444444444444445
+Ð¨ÑƒÐ¼ÐµÐ½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ â€œÐ•Ð¿Ð¸ÑÐºÐ¾Ð¿ ÐšÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ð¸Ð½ ÐŸÑ€ÐµÑÐ»Ð°Ð²ÑÐºÐ¸â€,Konstantin Preslavsky University of Shumen,a,Shumen,,,,,,,,,,176,246,88,,3,0.012993762993762994
+Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ° Ð°ÐºÐ°Ð´ÐµÐ¼Ð¸Ñ Ð½Ð° Ð½Ð°ÑƒÐºÐ¸Ñ‚Ðµ,Bulgarian Academy of Sciences,a,Sofia,,,,,,,,,,0,0,0,,3,a
+Ð’Ð¸ÑÑˆÐµ Ð²Ð¾ÐµÐ½Ð½Ð¾Ð²ÑŠÐ·Ð´ÑƒÑˆÐ½Ð¾ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ â€žÐ“ÐµÐ¾Ñ€Ð³Ð¸ Ð‘ÐµÐ½ÐºÐ¾Ð²ÑÐºÐ¸â€œ â€“ Ð”Ð¾Ð»Ð½Ð° ÐœÐ¸Ñ‚Ñ€Ð¾Ð¿Ð¾Ð»Ð¸Ñ,"""Bulgarian Air Force Academy """"Georgi Benkovski"""" - Dolna Mitropolia""",a,Dolna Mitropolia,,,,,,,,,,53,12,6,,3,s
+Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î®Î¼Î¹Î¿ ÎšÏÏ€ÏÎ¿Ï…,University of Cyprus,a,Nicosia,91090982,39590713,130681695,,110843710,0,340267,,20256228,736,477,137,1231,3,0.054785020804438284
+Î‘Î½Î¿Î¹ÎºÏ„ÏŒ Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î®Î¼Î¹Î¿ ÎšÏÏ€ÏÎ¿Ï…,Open University of Cyprus,a,Latsia,10978794,2934810,13913604,,10000000,1354431,0,,3645569,205,105,9,89,3,0.015267175572519083
+Î¤ÎµÏ‡Î½Î¿Î»Î¿Î³Î¹ÎºÏŒ Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î®Î¼Î¹Î¿ ÎšÏÏ€ÏÎ¿Ï…,Cyprus University of Technology,a,Limassol,36613990,12898375,49512365,,50931070,6057113,3179903,,8545604,265,205,50,569,3,0.024096385542168676
+Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î®Î¼Î¹Î¿ Î›ÎµÏ…ÎºÏ‰ÏƒÎ¯Î±Ï‚,University of Nicosia,a,Nicosia,,,,,,,,,,384,277,67,628,3,0.005915568701263781
+Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î®Î¼Î¹Î¿ Frederick,Frederick University,a,Nicosia,12146342,6708801,18855143,,,,,,,173,135,37,307,3,s
+Î•Ï…ÏÏ‰Ï€Î±ÏŠÎºÏŒ Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î®Î¼Î¹Î¿ ÎšÏÏ€ÏÎ¿Ï…,European University - Cyprus,a,Nicosia,26451207,19163169,45614376,,,,,,,137,133,41,557,3,0.006590772917914919
+Î Î±Î½ÎµÏ€Î¹ÏƒÏ„Î·Î¼Î¹Î¿ ÎÎµÎ±Ï€Î¿Î»Î·Ï‚,Neapolis University,a,Paphos,3972250,4363775,8336025,,,,,,,138,104,14,140,3,0.007587253414264037
+The Cyprus Institute,The Cyprus Institute,a,Nicosia,11547263,3692910,15240173,,,,,,,34,9,19,55,3,s
+Cyprus School of Molecular Medicine-The Cyprus Institute of Neurology and Genetics,Cyprus School of Molecular Medicine-The Cyprus Institute of Neurology and Genetics,a,Nicosia,,,,,,,,,,22,22,6,41,3,s
+University of Central Lancashire - Cyprus,University of Central Lancashire - Cyprus,a,Larnaca,4484163,5630615,10114778,,,,,,,66,75,0,147,3,s
+Akademie mÃºzickÃ½ch umÄ›nÃ­ v Praze,Academy of Performing Arts in Prague,a,Prague,18601.483086152308,13492.292951174804,32093.776037327112,25229.545075820693,32948.71688051991,,,1,,271,149,,489.54299999999995,3,0.05649717514124294
+Akademie vÃ½tvarnÃ½ch umÄ›nÃ­ v Praze,Academy of Fine Arts in Prague,a,Prague,4326.320613231128,3852.857857023829,8179.178470254957,7178.886852191301,8297.533744375936,,,1,,51,44,,141.577,3,s
+ÄŒeskÃ¡ zemÄ›dÄ›lskÃ¡ univerzita v Praze,Czech University of Life Sciences,,,,,,,,,,,,,,,,,
+ÄŒeskÃ© vysokÃ© uÄenÃ­ technickÃ© v Praze,Czech Technical University in Prague,a,Prague,176227.54540909847,138440.8431928012,314668.3886018997,195013.83102816195,323747.41709715046,,,1,,2680,659,,4177.79,3,0.04351373402230079
+JanÃ¡Äkova akademie mÃºzickÃ½ch umÄ›nÃ­ v BrnÄ›,JanÃ¡Äek Academy of Music and Performing Arts in Brno,a,Brno,9655.974004332611,4847.525412431261,14503.499416763872,12297.242126312281,14685.385769038492,,,1,,153,101,,330.80199999999996,3,0.06179775280898876
+JihoÄeskÃ¡ univerzita v ÄŒeskÃ½ch BudÄ›jovicÃ­ch,University of South Bohemia in ÄŒeskÃ© BudÄ›jovice,a,ÄŒeskÃ© BudÄ›jovice,51284.11931344776,33141.893017830356,84426.01233127812,65568.57190468255,84938.46858856856,,,1,,649,452,,1532.0439999999999,3,0.03888888888888889
+Masarykova univerzita,Masaryk University,a,Brno,210842.10964839192,158404.05765705716,369246.1673054491,245812.9478420263,372765.45575737377,,,1,,2097,1605,,5067.704,3,0.042559309849029475
+Mendelova univerzita v BrnÄ›,Mendel University in Brno,a,Brno,49889.976670554905,48438.30194967505,98328.27862022996,60033.369438426926,100217.172137977,,,1,,579,383,,1648.746,3,0.0669772859638905
+OstravskÃ¡ univerzita,University of Ostrava,a,Ostrava,36686.05232461256,25667.1388101983,62353.19113481086,49574.1543076154,68187.76037327111,,,1,,613,452,,1104.667,3,0.02422327540810953
+SlezskÃ¡ univerzita v OpavÄ›,Silesian University in Opava,a,Opava,17927.51208131978,8744.79253457757,26672.30461589735,20228.128645225795,27266.372271288117,,,1,,178,135,,626.1809999999999,3,0.01310483870967742
+TechnickÃ¡ univerzita v Liberci,Technical University of Liberec,a,Liberec,35228.37860356607,28217.29711714714,63445.67572071321,38127.103816030656,63445.67572071321,,,1,,482,301,,1084.589,3,0.0223463687150838
+Univerzita Hradec KrÃ¡lovÃ©,University of Hradec KrÃ¡lovÃ©,a,Hradec KrÃ¡lovÃ©,23825.32077987002,23153.05782369605,46978.37860356607,29722.962839526743,47774.28761873021,,,1,,270,223,,689.142,3,0.01594896331738437
+Univerzita J. E. PurkynÄ› v ÃšstÃ­ nad Labem,University of J. E. PurkynÄ› in ÃšstÃ­ nad Labem,a,ÃšstÃ­ nad Labem,27723.046158973502,19365.43909348442,47088.48525245792,34105.9406765539,47616.23062822862,,,1,,399,243,,913.0829999999999,3,0.020984081041968163
+Univerzita Karlova,Charles University,a,Prague,352652.22462922847,253111.02316280617,605763.2477920346,394253.87435427424,610920.0133311114,,,1,,4963,3668,,9348.805,3,0.0827298392046152
+Univerzita PalackÃ©ho v Olomouci,PalackÃ½ University,,,,,,,,,,,,,,,,,
+Univerzita Pardubice,University of Pardubice,a,Pardubice,34212.797867022164,30172.30461589735,64385.10248291951,45005.58240293284,66172.09631728045,,,1,,417,271,,1165.554,3,0.023099850968703428
+Univerzita TomÃ¡Å¡e Bati ve ZlÃ­nÄ›,Tomas Bata University in ZlÃ­n,a,ZlÃ­n,34173.59606732211,31258.915180803197,65432.51124812531,46111.314780869856,66914.0976503916,,,1,,343,250,,1000.22,3,0.026680896478121666
+VeterinÃ¡rnÃ­ a farmaceutickÃ¡ univerzita Brno,University of Veterinary and Pharmaceutical Sciences,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola bÃ¡ÅˆskÃ¡ - TechnickÃ¡ univerzita Ostrava,VÅ B â€“ Technical University of Ostrava,a,Ostrava,77547.61706382269,77763.24779203466,155310.86485585736,96189.92667888684,159121.56307282118,,,1,,971,401,,2096.791,3,0.046028880866425995
+VysokÃ¡ Å¡kola ekonomickÃ¡ v Praze,University of Economics,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola chemicko-technologickÃ¡ v Praze,University of Chemistry and Technology,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola umÄ›lecko-prÅ¯myslovÃ¡ v Praze,Academy of Arts,,,,,,,,,,,,,,,,,
+VysokÃ© uÄenÃ­ technickÃ© v BrnÄ›,Brno University of Technology,a,Brno,125206.0073321113,86904.14097650391,212110.14830861523,155200.88318613564,222210.8815197467,,,1,,1746,474,,3080.57,3,0.031781226903178125
+ZÃ¡padoÄeskÃ¡ univerzita v Plzni,University of West Bohemia in Pilsen,a,PlzeÅˆ,64227.420429928345,48711.71471421429,112939.13514414264,77726.54557573737,114323.82102982835,,,1,,980,399,,1964.713,3,0.024423963133640553
+MetropolitnÃ­ univerzita v Praze,,,,,,,,,,,,,,,,,,
+PolicejnÃ­ akademie ÄŒeskÃ© republiky v Praze,Police Academy of the Czech Republic in Prague,a,Prague,,,,,,,,0,0,,,,,3,s
+Univerzita obrany v BrnÄ›,University of Defence,a,Brno,,,,,,,,0,0,,,,,3,0.05862068965517241
+PanevropskÃ¡ univerzita,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola finanÄnÃ­ a sprÃ¡vnÃ­,,,,,,,,,,,,,,,,,,
+Albert-Ludwigs-UniversitÃ¤t Freiburg,University of Freiburg,a,Freiburg im Breisgau,272223469,99250751,371474220,,267453514,79153498,5722272,,3805051,3660,1816,336,4080,3,0.16755793226381463
+Ruprecht-Karls-UniversitÃ¤t Heidelberg,Heidelberg University,a,Heidelberg,289319316,152218059,441537375,,337935349,78749747,7079935,,4980816,4347,2609,358,4417,3,0.2786144578313253
+UniversitÃ¤t Hohenheim,University of Hohenheim,a,Stuttgart,123905486,37560934,161466420,,145126843,25110133,3147247,,2523644,673,740,129,1737,3,0.08112676056338028
+Karlsruher Institut fÃ¼r Technologie (KIT) - Bereich Hochschule,Karlsruhe Institute of Technology,a,Karlsruhe,363888522,133347534,497236056,,349063134,119780857,17226032,,3988020,2965,1218,342,4854,3,0.1135633169059353
+UniversitÃ¤t Konstanz,University of Konstanz,a,Konstanz,160822399,57070456,217892855,,168611457,44307931,5757749,,2540529,1172,1078,231,2157,3,0.08035714285714286
+UniversitÃ¤t Mannheim,University of Mannheim,a,Mannheim,106407231,26857628,133264859,,109708163,16161973,1152883,,3066713,887,725,188,1445,3,0.042190669371196754
+UniversitÃ¤t Stuttgart,University of Stuttgart,a,Stuttgart,393666442,147758357,541424799,,316075134,157181047,34305178,,9951796,3635,1392,314,5366,3,0.09498540726983284
+Eberhard Karls UniversitÃ¤t TÃ¼bingen,TÃ¼bingen University,a,TÃ¼bingen,290641499,113966902,404608401,,285588501,105264286,7822921,,9960685,2997,2232,416,4100,3,0.15470573628010925
+UniversitÃ¤t Ulm,Ulm University,a,Ulm,115205783,56113310,171319093,,140409355,36605012,6323360,,2984095,944,529,123,1599,3,0.2899813316739266
+Zeppelin UniversitÃ¤t Friedrichshafen (Priv. H),Zeppelin University Friedrichshafen (Priv. H),a,Friedrichshafen,15263565,7029926,22293491,,0,1919041,1159640,,4840521,69,48,36,198,3,0.11538461538461539
+Hochschule fÃ¼r jÃ¼dische Studien Heidelberg,Hochschule fÃ¼r jÃ¼dische Studien Heidelberg,a,Heidelberg,3367000,525552,3892552,,0,583943,228938,,1070,19,13,11,38,3,s
+UniversitÃ¤t Augsburg,University of Augsburg,a,Augsburg,146610515,49891639,196502154,,235480847,19587236,1386667,,263996,1212,811,257,2041,3,0.04260174971472042
+Otto-Friedrich-UniversitÃ¤t Bamberg,University of Bamberg,a,Bamberg,88232409,20988657,109221066,,96396144,9403913,1373193,,801873,562,563,168,1213,3,0.037754595131644315
+UniversitÃ¤t Bayreuth,University of Bayreuth,a,Bayreuth,169773778,57188264,226962042,,216091844,40362357,3891515,,337173,1306,698,281,2274,3,0.08977325312355391
+Katholische UniversitÃ¤t EichstÃ¤tt-Ingolstadt (KU),Catholic University of EichstÃ¤tt-Ingolstadt,a,EichstÃ¤tt,57056964,14873263,71930227,,0,8117189,898844,,338441,371,342,119,723,3,0.04540162980209546
+Friedrich-Alexander-UniversitÃ¤t Erlangen-NÃ¼rnberg,University of Erlangen-NÃ¼rnberg,a,Erlangen,404651299,158496615,563147914,,417431997,119607266,35396777,,58401,3076,1866,504,5400,3,0.1289900147323621
+Ludwig-Maximilians-UniversitÃ¤t MÃ¼nchen,Ludwig Maximilian University of Munich,a,Munich,605453591,180778068,786231659,,629304022,110440583,19452114,,472208,2989,2793,671,6529,3,0.19921931473182014
+Technische UniversitÃ¤t MÃ¼nchen,Technical University of Munich,a,Munich,684819059,329082126,1013901185,,708718991,251792113,101599848,,6628107,4595,2342,565,8786,3,0.12749397062047796
+UniversitÃ¤t der Bundeswehr MÃ¼nchen,Bundeswehr University Munich,a,Neubiberg,124423931,75714547,200138478,,249654231,3860320,3029133,,3034683,865,364,205,1688,3,0.05716523101018011
+UniversitÃ¤t Passau,University of Passau,a,Passau,81405253,23717428,105122681,,91720792,8235102,3388140,,21347,568,478,140,1116,3,0.052008238928939236
+UniversitÃ¤t Regensburg,University of Regensburg,a,Regensburg,198678619,102783883,301462502,,247784356,43076928,9439900,,0,1773,1208,301,2877,3,0.12351688469729237
+Julius-Maximilians-UniversitÃ¤t WÃ¼rzburg,University of WÃ¼rzburg,a,WÃ¼rzburg,276496857,123916234,400413091,,326642093,72732484,2770206,,1132628,2472,1658,378,3923,3,0.13922651933701657
+Freie UniversitÃ¤t Berlin,Free University of Berlin,a,Berlin,369882610,145808256,515690866,,342194330,108631744,4950785,,5569160,2184,1961,530,4994,3,0.09989888776541962
+Technische UniversitÃ¤t Berlin,Technical University of Berlin,a,Berlin,363921824,190337420,554259244,,353430167,127842857,26457082,,8932134,3037,1394,388,4887,3,0.09136345461815273
+CharitÃ© - UniversitÃ¤tsmedizin Berlin,CharitÃ© - UniversitÃ¤tsmedizin Berlin,a,Berlin,,,,,,,,,,,,,,3,0.5062146892655367
+Humboldt-UniversitÃ¤t zu Berlin,Humboldt University of Berlin,a,Berlin,307675453,133427318,441102771,,278785701,111013494,2508455,,3849191,1991,1605,515,4123,3,0.05675272029016428
+ESCP-EAP EuropÃ¤ische Wirtschaftshochschule Berlin,ESCP-EAP European School of Management,a,Berlin,9599875,7864682,17464557,,0,428046,0,,6801443,48,20,25,122,3,s
+European School of Management and Technology,,,,,,,,,,,,,,,,,,
+Hertie School of Governance Berlin (Priv. wiss. H),Hertie School of Governance,a,Berlin,19399785,9308619,28708404,,0,2815411,1522044,,7322905,81,67,34,232,3,0.025157232704402517
+Steinbeis-Hochschule (Priv. H),Steinbeis University,a,Magdeburg,15761614,6544231,22305845,,0,681037,275000,,20322719,275,67,69,238,3,s
+Europa-UniversitÃ¤t Viadrina Frankfurt (Oder),Viadrina European University,a,Frankfurt (Oder),40255534,11162054,51417588,,43930770,2699670,473554,,1045437,239,288,78,516,3,0.039603960396039604
+UniversitÃ¤t Potsdam,University of Potsdam,a,Potsdam,186158569,61088481,247247050,,195947465,40637332,5406056,,2222720,1530,1586,275,2694,3,0.09099966788442378
+UniversitÃ¤t Bremen,University of Bremen,a,Bremen,265087715,93482789,358570504,,167967813,85529068,9998522,,2869911,1432,1079,311,3004,3,0.08726003490401396
+Constructor University Bremen gGmbH (Priv. U),Constructor University Bremen gGmbH (Priv. U),a,Bremen,27125026,27693556,54818582,,0,6979685,2572623,,30568016,149,95,55,396,3,s
+UniversitÃ¤t Hamburg,University of Hamburg,a,Hamburg,384134744,205323897,589458641,,408121982,133408404,9471036,,6279222,2824,2444,534,5364,3,0.1459137144861452
+Technische UniversitÃ¤t Hamburg-Harburg,Hamburg University of Technology,a,Hamburg,126950660,40588303,167538963,,96445266,35598395,16405911,,824091,1220,405,101,1615,3,0.09605662285136501
+Hafencity UniversitÃ¤t Hamburg,HafenCity University Hamburg,a,Hamburg,26205281,11166898,37372179,,29833954,6088796,1297004,,268193,163,142,36,318,3,0.036585365853658534
+Helmut-Schmidt-UniversitÃ¤t Hamburg,Helmut Schmidt University of the Federal Armed Forces Hamburg,a,Hamburg,66974505,110722326,177696831,,185609503,4477517,3678783,,417786,667,309,116,1140,3,s
+Bucerius Law School Hamburg (Priv. H),Bucerius Law School,a,Hamburg,13806741,8321573,22128314,,0,289619,0,,6718661,67,55,22,139,3,0.05338078291814947
+Technische UniversitÃ¤t Darmstadt,Technical University of Darmstadt,a,Darmstadt,351278771,118934438,470213209,,378256869,134105601,24384826,,2811385,2524,962,336,4498,3,0.10858783607413208
+Johann Wolfgang Goethe-UniversitÃ¤t Frankfurt am Main,Frankfurt University,a,Frankfurt am Main,371831422,163948557,535779979,,353466905,115147967,26799631,,5640624,2015,1448,600,4155,3,0.11592202863550112
+Justus-Liebig-UniversitÃ¤t GieÃŸen,Justus Liebig University Giessen,a,GieÃŸen,310044750,135881502,445926252,,336402078,68117962,10792643,,3167041,1468,1480,363,3909,3,0.10526315789473684
+UniversitÃ¤t Kassel,University of Kassel,a,Kassel,213668782,73273344,286942126,,216834819,50659494,10535609,,2469693,1530,1124,347,2784,3,0.047417698580489276
+Philipps-UniversitÃ¤t Marburg,Philipps University of Marburg,a,Marburg,271084383,96961483,368045866,,294265547,44954775,17857389,,5179763,1228,1106,332,3224,3,0.16142270861833105
+Frankfurt School of Finance & Management-HfB (Priv. H),Frankfurt School of Finance & Management-HfB (Priv. H),a,Frankfurt am Main,52358199,57581310,109939509,,0,5117284,1238688,,56731563,266,80,81,257,3,0.009900990099009901
+EBS UniversitÃ¤t fÃ¼r Wirtschaft und Recht (Priv.),EBS University of Business and Law,a,Oestrich-Winkel,16838238,12067487,28905725,,0,1257670,0,,18988418,133,84,41,207,3,0.04684684684684685
+UniversitÃ¤t Greifswald,University of Greifswald,a,Greifswald,87811081,40286341,128097422,,85551195,20188905,1681731,,560100,587,688,165,1204,3,0.17652027027027026
+UniversitÃ¤t Rostock,University of Rostock,a,Rostock,133598658,41385495,174984153,,162088300,33380165,2612570,,299686,1022,618,233,1850,3,0.15730337078651685
+Technische UniversitÃ¤t Carolo-Wilhelmina zu Braunschweig,Brunswick University of Technology,a,Braunschweig,254659006,99656780,354315786,,244527177,98557932,14526271,,749527,1772,944,243,3334,3,0.09035326086956522
+Technische UniversitÃ¤t Clausthal,Clausthal University of Technology,a,Clausthal,75422425,31278347,106700772,,79247299,24386897,5765257,,140390,478,152,81,1010,3,0.12448132780082988
+Georg-August-UniversitÃ¤t GÃ¶ttingen,Georg August GÃ¶ttingen University,a,GÃ¶ttingen,316943241,135867689,452810930,,293828748,82528626,12927919,,4339665,1689,1244,404,4107,3,0.16223841993886667
+Gottfried Wilhelm Leibniz UniversitÃ¤t Hannover,University of Hannover,a,Hannover,333146228,151703566,484849794,,370283516,121755040,25715507,,1971049,2589,1283,334,4191,3,0.07200647249190939
+Medizinische Hochschule Hannover,Hannover Medical School,a,Hannover,,,,,,,,,,264,333,52,2196,3,0.7401129943502824
+TierÃ¤rztliche Hochschule Hannover,University of Veterinary Medicine Hannover,a,Hannover,76648681,37119020,113767701,,71673710,11518176,2056554,,349344,191,469,45,1085,3,0.592
+Stiftung UniversitÃ¤t Hildesheim,University of Hildesheim,a,Hildesheim,61613045,13208700,74821745,,59747311,9662301,3346404,,1568815,445,543,101,839,3,0.029709655638082377
+Leuphana UniversitÃ¤t LÃ¼neburg,Leuphana University of LÃ¼neburg,a,LÃ¼neburg,73544993,26912223,100457216,,73716706,12765387,644153,,1542497,642,557,166,1049,3,0.026151222285389426
+Carl von Ossietzky UniversitÃ¤t Oldenburg,Carl von Ossietzky the University of Oldenburg,a,Oldenburg,182204837,71027164,253232001,,215165661,44138278,1435236,,752421,1171,998,229,2413,3,0.0514410798978475
+UniversitÃ¤t OsnabrÃ¼ck,OsnabrÃ¼ck University,a,OsnabrÃ¼ck,119139126,51513727,170652853,,137042153,21944258,3983884,,477963,760,605,230,1541,3,0.05499340079190497
+UniversitÃ¤t Vechta,University of Vechta,a,Vechta,35777384,12242750,48020134,,45710789,2585292,2206286,,137410,166,252,70,456,3,0.022779043280182234
+RWTH Aachen,Aachen University,a,Aachen,616743718,325577321,942321039,,589857308,284929952,74576645,,1955171,4073,1649,385,8404,3,0.1282845977631047
+UniversitÃ¤t Bielefeld,Bielefeld University,a,Bielefeld,227378521,94847426,322225947,,267573243,43601624,2886842,,1101094,1667,1667,340,3379,3,0.05846895720313442
+Ruhr-UniversitÃ¤t Bochum,Ruhr-University Bochum,a,Bochum,390006327,257111233,647117560,,456769627,111711589,15055960,,424709,2943,2231,468,5362,3,0.09773123909249563
+Rheinische Friedrich-Wilhelms-UniversitÃ¤t Bonn,University of Bonn,a,Bonn,359046877,195965648,555012525,,377202258,100573860,4718280,,0,2687,1961,481,4581,3,0.12392065344224037
+Technische UniversitÃ¤t Dortmund,TU Dortmund University,a,Dortmund,277284435,111064570,388349005,,325067511,68427856,5362948,,123353,2300,1544,326,3816,3,0.06248486316299346
+Heinrich-Heine-UniversitÃ¤t DÃ¼sseldorf,Heinrich Heine University DÃ¼sseldorf,a,DÃ¼sseldorf,183729668,128787323,312516991,,258422692,36382299,6028098,,0,1286,1162,219,2378,3,0.14338235294117646
+UniversitÃ¤t Duisburg-Essen,University of Duisburg-Essen,a,Essen,310371487,293354535,603726022,,529989132,74836831,16580693,,844613,2130,1709,377,4053,3,0.10367957071674971
+FernuniversitÃ¤t in Hagen,University of Hagen,a,Hagen,98019726,33430999,131450725,,126578677,4809610,69140,,16874556,670,550,99,1321,3,0.013248847926267281
+UniversitÃ¤t zu KÃ¶ln,University of Cologne,a,Cologne,371285012,148432707,519717719,,605091652,91653617,2714984,,747348,2627,2617,485,4894,3,0.10754391016412324
+Deutsche Sporthochschule KÃ¶ln,German Sport University Cologne,a,Cologne,43287180,30372740,73659920,,58988818,5749599,4619170,,221159,340,283,32,584,3,0.04195804195804196
+WestfÃ¤lische Wilhelms-UniversitÃ¤t MÃ¼nster,University of MÃ¼nster,a,MÃ¼nster,363176572,192210113,555386685,,442017271,87448109,5332541,,2862051,2359,1726,525,4825,3,0.10750828649661334
+UniversitÃ¤t Paderborn,University of Paderborn,a,Paderborn,191677604,70249715,261927319,,234082974,45533572,4497696,,81967,1458,1269,268,2475,3,0.03762251027505533
+UniversitÃ¤t Siegen,University of Siegen,a,Siegen,156221770,62515370,218737140,,188454614,36404485,2588499,,202107,1240,856,234,1977,3,0.05010511562718991
+Bergische UniversitÃ¤t Wuppertal,University of Wuppertal,a,Wuppertal,171303947,69773150,241077097,,198704675,36703113,5154855,,119172,1492,1151,269,2310,3,0.04934687953555878
+UniversitÃ¤t Witten/Herdecke,University Witten/Herdecke,a,Witten-Herdecke,22796807,14077213,36874020,,0,2460000,1144000,,6785989,588,508,75,659,3,0.4197183098591549
+Deutsche Hochschule der Polizei,,,,,,,,,,,,,,,,,,
+Technische UniversitÃ¤t Kaiserslautern,University of Kaiserslautern,a,Kaiserslautern,206504336,70780549,277284885,,209965386,60835870,6913769,,4444992,1991,1330,293,2943,3,0.027696464760189148
+UniversitÃ¤t Koblenz,University of Koblenz,a,Koblenz,43319225,9966436,53285661,,41138949,8085693,609235,,3401105,422,419,97,649,3,0.014468558708959377
+Johannes Gutenberg-UniversitÃ¤t Mainz,Johannes Gutenberg University Mainz,a,Mainz,282042845,91416063,373458908,,275660091,88560554,2847850,,1242500,2181,1796,451,3887,3,0.11857464673356544
+Deutsche UniversitÃ¤t fÃ¼r Verwaltungswissenschaften Speyer,German University of Administrative Sciences Speyer,a,Speyer,8139145,2415663,10554808,,8645547,1043847,2500,,53790,97,53,17,120,3,0.12280701754385964
+UniversitÃ¤t Trier,University of Trier,a,Trier,86196026,21672706,107868732,,88388933,11391081,889092,,926741,643,517,180,1202,3,0.005398110661268556
+WHU â€“ Otto Beisheim School of Management,WHU â€“ Otto Beisheim School of Management,a,Vallendar,33762272,23680677,57442949,,0,313025,1881585,,24867293,159,84,61,372,3,0.06315789473684211
+UniversitÃ¤t des Saarlandes SaarbrÃ¼cken,Saarland University,a,SaarbrÃ¼cken,218696229,137632804,356329033,,298796986,35922645,17459078,,2995729,1113,860,236,2274,3,0.040256709451575265
+Technische UniversitÃ¤t Chemnitz,Chemnitz University of Technology,a,Chemnitz,152938523,35782876,188721399,,144314461,53829844,3272665,,392629,1602,886,174,2091,3,0.056393076493579004
+Technische UniversitÃ¤t Dresden,Technische UniversitÃ¤t Dresden,a,Dresden,446751209,158129882,604881091,,390558985,214418791,28353977,,1579320,3631,2031,466,6286,3,0.1548289302728454
+Technische UniversitÃ¤t Bergakademie Freiberg,Technische UniversitÃ¤t Bergakademie Freiberg,a,Freiberg,101505637,38872795,140378432,,117680455,40366509,6627445,,322340,963,419,94,1405,3,0.12305295950155763
+UniversitÃ¤t Leipzig,Leipzig University,a,Leipzig,270270505,97801284,368071789,,237362584,87801988,4096211,,484442,2107,2078,393,3704,3,0.11540041067761807
+HHL Leipzig Graduate School of Management,HHL Leipzig Graduate School of Management,a,Leipzig,7988252,3847131,11835383,,0,2831558,711293,,5676156,42,23,16,111,3,0.1511627906976744
+Martin-Luther-UniversitÃ¤t Halle-Wittenberg,Martin Luther University,a,Halle (Saale),177901874,56623742,234525616,,183276224,36735742,2591211,,635741,1392,1172,304,2517,3,0.08992372541148133
+Otto-von-Guericke-UniversitÃ¤t Magdeburg,Otto von Guericke University of Magdeburg,a,Magdeburg,121195661,54941737,176137398,,145010296,36817301,5980589,,199688,1032,536,156,1719,3,0.11147540983606558
+Europa-UniversitÃ¤t Flensburg,University of Flensburg,a,Flensburg,42760806,9073575,51834381,,45465559,4796595,297662,,200960,270,421,91,587,3,0.010169491525423728
+Christian-Albrechts-UniversitÃ¤t zu Kiel,University of Kiel,a,Kiel,240812463,78298103,319110566,,270143716,56612630,15395392,,481343,1959,1627,475,3474,3,0.11046511627906977
+UniversitÃ¤t LÃ¼beck,University of LÃ¼beck,a,LÃ¼beck,60344828,19728175,80073003,,78543986,14164904,1161417,,207445,359,179,61,716,3,s
+UniversitÃ¤t Erfurt,University of Erfurt,a,Erfurt,50295931,17347728,67643659,,51758848,7615974,700303,,234913,400,555,103,747,3,0.022179974651457542
+Technische UniversitÃ¤t Ilmenau,Ilmenau University of Technology,a,Ilmenau,93607786,27294267,120902053,,83582899,24856362,4308314,,541046,768,295,102,1301,3,0.083223249669749
+Friedrich-Schiller-UniversitÃ¤t Jena,Friedrich-Schiller-University of Jena,a,Jena,238532832,83586673,322119505,,244380334,65310717,6820946,,833820,1924,1525,329,3329,3,0.1917494270435447
+Bauhaus-UniversitÃ¤t Weimar,Bauhaus-UniversitÃ¤t Weimar,a,Weimar,61916019,25583726,87499745,,67743705,11999018,1041380,,347763,474,330,85,876,3,0.06205923836389281
+PÃ¤dagogische Hochschule Freiburg i.Br.,University of Education Freiburg,a,Freiburg im Breisgau,32597163,8341714,40938877,,36270021,3630234,160582,,923250,197,323,79,433,3,s
+PÃ¤dagogische Hochschule Heidelberg,University of Education Heidelberg,a,Heidelberg,27302096,5275407,32577503,,29887513,4961737,0,,726420,211,304,71,397,3,s
+PÃ¤dagogische Hochschule Karlsruhe,University of Education Karlsruhe,a,Karlsruhe,22489624,6572058,29061682,,24586487,2217848,225371,,719207,161,286,52,330,3,s
+PÃ¤dagogische Hochschule Ludwigsburg,University of Education Ludwigsburg,a,Ludwigsburg,31735340,6431491,38166831,,38094186,2496570,173013,,1000844,251,282,83,410,3,0.0065986802639472104
+PÃ¤dagogische Hochschule SchwÃ¤bisch GmÃ¼nd,University of Education SchwÃ¤bisch GmÃ¼nd,a,SchwÃ¤bisch GmÃ¼nd,21083718,4932664,26016382,,23292754,1434400,532681,,533167,105,161,56,268,3,s
+PÃ¤dagogische Hochschule Weingarten,University of Education Weingarten,a,Weingarten,18541820,5202852,23744672,,20400428,1723535,1618,,563020,159,206,44,269,3,s
+Hochschule fÃ¼r Philosophie MÃ¼nchen (rk),Munich School of Philosophy,a,Munich,3233809,1280459,4514268,,0,506083,980699,,205978,32,14,10,38,3,0.13846153846153847
+Augustana-Hochschule Neuendettelsau (ev),Augustana-Hochschule Neuendettelsau (ev),a,Neuendettelsau,3235561,851214,4086775,,0,991781,24649,,4550,11,8,8,42,3,s
+Philosophisch-Theologische Hochschule Frankfurt a.M. (rk),Philosophisch-Theologische Hochschule Frankfurt a.M. (rk),a,Frankfurt am Main,3413325,1703736,5117061,,0,206944,745148,,102119,39,18,17,41,3,s
+Theologische FakultÃ¤t Fulda (rk),Fulda Faculty of Theology,a,Fulda,1743061,261491,2004552,,0,0,0,,281,11,1,10,22,3,s
+Theologische FakultÃ¤t Paderborn (rk),Faculty of Theology in Paderborn,a,Paderborn,2534788,542513,3077301,,0,0,0,,0,22,5,13,35,3,s
+KÃ¶lner Hochschule fÃ¼r Katholische Theologie,Cologne University of Catholic Theology,a,Cologne,1737631,962806,2700437,,0,65084,0,,34793,25,6,5,19,3,s
+Kirchliche Hochschule Wuppertal / Bethel (ev),Kirchliche Hochschule Wuppertal / Bethel (ev),a,Wuppertal,2326902,1547410,3874312,,0,196776,242165,,0,14,19,7,29,3,s
+Theologische FakultÃ¤t Trier,Faculty of Theology Trier,a,Trier,3051204,372482,3423686,,0,89977,0,,100,21,9,12,26,3,s
+Theologische Hochschule Vallendar,College of Philosophy and Theology,,,,,,,,,,,,,,,,,
+Staatliche Hochschule fÃ¼r Musik Freiburg i.Br.,University of Music Freiburg,a,Freiburg im Breisgau,12737036,2476523,15213559,,14777490,328490,10000,,129496,192,98,64,166,3,s
+Staatliche Akademie der Bildenden KÃ¼nste Karlsruhe,State Academy of Fine Arts Karlsruhe,a,Karlsruhe,4658016,1798631,6456647,,6432069,29955,0,,138083,28,21,23,61,3,s
+Staatliche Hochschule fÃ¼r Gestaltung Karlsruhe,Karlsruhe College of Arts and Design,a,Karlsruhe,6095794,2074681,8170475,,7681856,63674,276708,,264775,19,26,16,56,3,s
+Staatliche Hochschule fÃ¼r Musik Karlsruhe,University of Music Karlsruhe,a,Karlsruhe,10468818,2825787,13294605,,12295013,223592,259498,,485831,148,96,53,142,3,s
+Staatliche Hochschule fÃ¼r Musik und Darstellende Kunst Mannheim,Mannheim University of Music and Performing Arts,a,Mannheim,10995344,3063030,14058374,,13627311,9866,0,,236805,120,87,63,133,3,
+Staatliche Akademie der Bildenden KÃ¼nste Stuttgart,Stuttgart State Academy of Art and Design,a,Stuttgart,12675657,5071594,17747251,,17315032,300980,227362,,0,120,125,55,162,3,s
+Staatliche Hochschule fÃ¼r Musik und Darstellende Kunst Stuttgart,State University of Music and the Performing Arts Stuttgart,a,Stuttgart,14271351,7644865,21916216,,21318902,91768,4825,,710006,269,230,82,232,3,s
+Staatliche Hochschule fÃ¼r Musik Trossingen,Trossingen School of Music,a,Trossingen,8654687,4984088,13638775,,12517444,359390,0,,188916,97,61,44,101,3,s
+Hochschule fÃ¼r Musik und Theater MÃ¼nchen,University of Music and Performing Arts Munich,a,Munich,25179327,5904993,31084320,,28482467,738464,2500,,262483,302,210,97,292,3,s
+Hochschule fÃ¼r Musik WÃ¼rzburg,University of Music WÃ¼rzburg,a,WÃ¼rzburg,11923455,2815711,14739166,,15047357,139971,0,,109599,163,91,54,149,3,s
+UniversitÃ¤t der KÃ¼nste Berlin,Berlin University of the Arts,a,Berlin,58597695,15474262,74071957,,69653104,1934000,943000,,729828,775,808,243,909,3,0.010650887573964497
+FilmuniversitÃ¤t Babelsberg Konrad Wolf,Film University Babelsberg Konrad Wolf,a,Potsdam,19140670,7858144,26998814,,25162641,2812641,218775,,127892,91,92,56,247,3,s
+Hochschule fÃ¼r Bildende KÃ¼nste Hamburg,University of Fine Arts of Hamburg,a,Hamburg,9000409,5424378,14424787,,13434132,0,0,,84548,44,40,40,103,3,s
+Hochschule fÃ¼r Musik und Theater Hamburg,Hamburg University of Music and Theater,a,Hamburg,18208995,5215499,23424494,,20512476,1008209,688478,,681521,277,194,53,262,3,s
+Hochschule fÃ¼r Musik und Darstellende Kunst Frankfurt a.M.,Frankfurt University of Music and Performing Arts,a,Frankfurt am Main,16574080,8090399,24664479,,20300374,565590,81,,187727,226,164,72,227,3,
+Hochschule fÃ¼r Gestaltung Offenbach,Offenbach Academy of Art and Design,a,Offenbach am Main,9871693,5713990,15585683,,14374041,436356,309885,,89539,67,59,27,129,3,s
+Hochschule fÃ¼r Musik und Theater,,,,,,,,,,,,,,,,,,
+Hochschule fÃ¼r Bildende KÃ¼nste Braunschweig,Braunschweig University of Art,a,Braunschweig,12516640,4401800,16918440,,16938753,414690,0,,65917,58,84,52,160,3,0.05714285714285714
+Hochschule fÃ¼r Musik,,,,,,,,,,,,,,,,,,
+Hochschule fÃ¼r Musik Detmold,Detmold Music School,a,Detmold,11469902,7560097,19029999,,16328496,0,0,,96300,135,111,57,185,3,s
+Kunstakademie DÃ¼sseldorf,Kunstakademie DÃ¼sseldorf,a,DÃ¼sseldorf,10507628,5556173,16063801,,15683635,269639,117300,,0,52,50,33,110,3,s
+Robert-Schumann-Hochschule DÃ¼sseldorf,Robert Schumann School of Music and Media,a,DÃ¼sseldorf,13518889,9103450,22622339,,13261510,266906,780051,,0,211,93,45,163,3,s
+Folkwang UniversitÃ¤t der KÃ¼nste,Folkwang University of the Arts,a,Essen,25966109,18212628,44178737,,41552520,201494,0,,1088691,270,181,90,333,3,s
+Kunsthochschule fÃ¼r Medien KÃ¶ln,Academy of Media Arts,a,Cologne,11246221,7990667,19236888,,19339228,146993,0,,0,36,26,31,125,3,s
+Hochschule fÃ¼r Musik und Tanz KÃ¶ln,Cologne University of Music and Dance,a,Cologne,24966120,12129173,37095293,,36831771,92133,35250,,177828,274,188,115,299,3,s
+Kunstakademie MÃ¼nster,Academy of Fine Arts MÃ¼nster,a,MÃ¼nster,5646433,3024933,8671366,,8886086,7350,0,,3982,36,31,21,67,3,s
+Hochschule fÃ¼r Musik,,,,,,,,,,,,,,,,,,
+Hochschule fÃ¼r Bildende KÃ¼nste Dresden,Dresden Academy of Fine Arts,a,Dresden,8842006,4127211,12969217,,12144062,286903,110667,,68064,67,85,33,122,3,s
+Hochschule fÃ¼r Musik Carla Maria von Weber Dresden,University of Music Carl Maria von Weber Dresden,a,Dresden,12213296,3700992,15914288,,15357874,235270,25703,,446097,250,173,67,175,3,s
+Hochschule fÃ¼r Musik und Theater Leipzig,University of Music & Theatre Leipzig,a,Leipzig,15007007,6108102,21115109,,21689926,391415,27402,,43120,285,189,77,248,3,s
+Burg Giebichenstein Kunsthochschule Halle,Burg Giebichenstein University of Art and Design Halle,a,Halle (Saale),15765643,5359986,21125629,,20405995,189801,40160,,132903,106,148,50,235,3,s
+Muthesius Kunsthochschule Kiel,Muthesius Academy of Fine Arts and Design,a,Kiel,7301087,3453943,10755030,,10209601,150577,261634,,1940,60,62,26,100,3,s
+Musikhochschule LÃ¼beck,University of Music LÃ¼beck,a,LÃ¼beck,8587336,3850404,12437740,,11325817,635831,204135,,207700,117,61,38,115,3,s
+Hochschule fÃ¼r Musik Franz Liszt Weimar,University of Music Franz Liszt Weimar,a,Weimar,15705682,6648619,22354301,,19762213,67131,137830,,161832,357,181,65,271,3,s
+Technische Hochschule Brandenburg,Brandenburg University of Applied Sciences,a,Brandenburg,18425430,7916138,26341568,,21555219,2015712,1986209,,437445,165,92,61,261,3,s
+Hochschule fÃ¼r Angewandte Wissenschaften Hamburg,Hamburg University of Applied Sciences,a,Hamburg,107763796,33769770,141533566,,116178600,15482059,1842888,,1873134,1025,660,396,1437,3,s
+Hochschule Fulda,Fulda University of Applied Sciences,a,Fulda,60227520,17467178,77694698,,48228901,7124164,127937,,1952166,364,427,168,788,3,s
+Hochschule RheinMain,RheinMain University of Applied Sciences,a,Wiesbaden,75613162,29151155,104764317,,110911347,5343682,324770,,1721365,624,316,268,1006,3,s
+Fachhochschule Aachen,Aachen University of Applied Sciences,a,Aachen,76517578,55914734,132432312,,148468953,8999640,2198916,,1957733,785,330,233,1000,3,s
+Fachhochschule Bielefeld,Bielefeld University of Applied Sciences,a,Bielefeld,66195924,41840977,108036901,,91964643,12437663,1240893,,963663,568,416,230,869,3,s
+Hochschule Bochum,Bochum University of Applied Sciences,a,Bochum,40188090,24560545,64748635,,61168291,4305535,1923185,,130585,420,221,151,563,3,s
+Hochschule Bonn-Rhein-Sieg,University of Applied Sciences Bonn-Rhein-Sieg,a,Sankt Augustin,56597932,20809684,77407616,,67694687,8036745,685558,,179290,553,335,145,739,3,s
+Fachhochschule Dortmund,Dortmund University of Applied Sciences and Arts,a,Dortmund,67715226,31645234,99360460,,93962372,6228625,1152265,,14400,649,352,215,893,3,s
+Hochschule DÃ¼sseldorf,DÃ¼sseldorf University of Applied Sciences,a,DÃ¼sseldorf,61142017,40761402,101903419,,108970764,5410034,1603908,,0,540,356,186,790,3,s
+WestfÃ¤lische Hochschule Gelsenkirchen Bocholt Recklinghausen,WestfÃ¤lische Hochschule Gelsenkirchen Bocholt Recklinghausen,a,Gelsenkirchen,53761612,22892644,76654256,,68898023,6773290,814256,,0,489,196,177,686,3,s
+Technische Hochschule KÃ¶ln,Cologne University of Applied Sciences,a,Cologne,131312990,64081668,195394658,,167431380,20485612,4312791,,589827,1218,818,389,1819,3,s
+Hochschule Ostewestfalen-Lippe,Ostwestfalen-Lippe University of Applied Sciences,a,Lemgo,53174338,25331346,78505684,,63643369,7482377,1343751,,6045,503,228,159,704,3,s
+Hochschule Niederrhein,Niederrhein University of Applied Sciences,a,MÃ¶nchengladbach,69336492,43514152,112850644,,111768929,12046718,2490687,,485662,641,639,245,1022,3,s
+Fachhochschule SÃ¼dwestfalen,South Westphalia University of Applied Sciences,a,Hagen,66603825,33249964,99853789,,91762246,9211183,1273994,,16714,541,292,176,874,3,s
+Technische FH (TFH) Georg Agricola zu Bochum (Priv. FH),Georg Agricola University of Applied Sciences,a,Bochum,13525786,7107720,20633506,,0,1308223,558659,,0,167,43,40,221,3,s
+Evangelische Hochschule Rheinland-Westfalen-Lippe,Rheinland-Westfalen-Lippe Protestant University of Applied Sciences,a,Bochum,11018133,1165649,12183782,,0,363778,0,,26059,108,120,61,175,3,s
+Hochschule fÃ¼r Technik und Wirtschaft Dresden,Dresden University of Applied Sciences,a,Dresden,45997366,12274606,58271972,,64986652,6494615,582333,,82621,330,146,161,615,3,s
+Hochschule fÃ¼r Technik,,,,,,,,,,,,,,,,,,
+Hochschule Zittau/GÃ¶rlitz (FH),Zittau/GÃ¶rlitz University of Applied Sciences,a,Zittau,32196759,7700818,39897577,,33060960,6252514,1199184,,111314,234,133,106,449,3,s
+Evangelische Hochschule fÃ¼r Soziale Arbeit,,,,,,,,,,,,,,,,,,
+Hochschule Anhalt (FH),Anhalt University of Applied Sciences,a,KÃ¶then,49076233,15406824,64483057,,54968892,7644965,678901,,4161649,499,249,145,689,3,s
+Hochschule Harz (FH),Harz University of Applied Sciences,a,Wernigerode,19791260,8113023,27904283,,24453847,3660841,397054,,345673,145,65,69,268,3,s
+Hochschule Magdeburg-Stendal (FH),Magdeburg-Stendal University of Applied Sciences,a,Magdeburg,37540625,13531424,51072049,,41768605,9682580,961362,,731073,392,327,131,561,3,s
+Hochschule Merseburg (FH),Merseburg University of Applied Sciences,a,Merseburg,22817720,9096475,31914195,,28255785,2995960,1732848,,20115,237,147,70,343,3,s
+Ernst-Ebbe-Hochschule Jena,University of Applied Sciences Jena,a,Jena,35833624,13325886,49159510,,31143365,8609459,440451,,321666,301,165,124,481,3,s
+KLU KÃ¼hne Logistics University (Priv.),KÃ¼hne Logistics University,a,Hamburg,13751680,10597574,24349254,,0,1025384,928947,,3207703,63,42,44,177,3,s
+Hochschule Rhein-Waal,Rhine-Waal University of Applied Sciences,a,Kleve,39857384,33120739,72978123,,67207449,4960138,2384797,,97140,263,182,121,526,3,s
+Hochschule Ruhr West (HRW),Ruhr West University of Applied Sciences,a,MÃ¼lheim an der Ruhr,37141128,25036609,62177737,,59923773,1734587,1929246,,0,261,135,110,521,3,s
+Hochschule fÃ¼r Gesundheit,,,,,,,,,,,,,,,,,,
+Brandenburgische Technische UniversitÃ¤t Cottbus-Senftenberg,Brandenburg University of Technology (BTU) Cottbus â€“ Senftenberg,a,Cottbus,114912308,34947610,149859918,,108402089,59837275,1737698,,740545,1048,614,174,1682,3,0.08574380165289257
+Hochschule Geisenheim University (FH),Hochschule Geisenheim University (FH),a,Geisenheim,33941765,9859787,43801552,,46671648,4961484,0,,210243,167,136,40,481,3,s
+Medizinische Hochschule Brandenburg in Neuruppin (Priv. U),Brandenburg Medical School Theodor Fontane,a,Brandenburg,6659001,6347088,13006089,,0,2725644,76384,,1751760,23,31,5,99,3,s
+KÃ¸benhavns Universitet,University of Copenhagen,a,Copenhagen,838279260.3578092,555431925.4049846,1421726582.292072,756208227.8650901,774806724.422553,138368508.50232857,297847801.60785943,1,14134664.402958032,,,,10387.88,3,0.06215594034631168
+Aarhus Universitet,Aarhus University,a,Aarhus,676309285.5896603,322171618.86483514,1022213992.9404502,593393823.9675744,609308089.8951805,132544215.32969172,147798376.57195777,1,9261382.383336242,,,,8490.47,3,0.04576167076167076
+Syddansk Universitet,University of Southern Denmark,a,Odense,328126937.6853803,149819216.4704935,487382866.49934906,307431048.5981559,316113758.06949496,48868190.41994927,44708558.697607,1,13114388.865774605,,,,4068.5,3,0.030161639726712215
+Roskilde Universitet,Roskilde University,a,Roskilde,77943872.55230913,36543370.59952489,115560267.88710089,89215531.00967668,91478210.6859574,8257928.572387229,5683474.479593069,1,3735119.2473392477,,,,940.6,3,0.01713756368689208
+Aalborg Universitet,Aalborg University,a,Aalborg,284082047.5378813,129806585.78158343,427106531.0230979,302062350.5885195,303613073.3200016,41701250.72138936,31560119.046021286,1,10722086.32514193,,,,3451.37,3,0.02663070959042643
+Danmarks Tekniske Universitet,Technical University of Denmark,a,Lyngby,483040240.37364614,244304333.4362292,809826593.163242,388180456.052289,415273896.71046454,104766736.9042666,108280504.77123569,1,12757505.267819995,,,,6085,3,0.08918705603788477
+HandelshÃ¸jskolen i Kobenhavn,Copenhagen Business School,a,Frederiksberg,141883132.91011825,63225762.927968435,209440081.1982445,159393881.94714734,160291829.7118469,7431044.840220645,10003632.715510879,1,22677378.57171617,,,,1642.15,3,0.008117510630073444
+IT-Universitetet i KÃ¸benhavn,IT University of Copenhagen,a,Copenhagen,37578413.34603874,17777986.551960167,55631668.657477625,42543048.49078635,42771074.63527896,4959535.089720705,2655652.337301534,1,1016387.2820733066,,,,457.01,3,0.015247776365946633
+Arkitektskolen Aarhus,Aarhus School of Architecture,a,Aarhus,9770631.735763464,5677166.516796629,15595431.424391685,13783569.770094888,13783569.770094888,0,0,0,0,,,,,3,s
+Det Kongelige Danske Kunstakademis Skoler for Arkitektur,,,,,,,,,,,,,,,,,,
+Ilisimatusarfik,University of Greenland,a,Nuussuaq,,,,,,,,,,,,,,3,
+FrÃ³Ã°skaparsetur FÃ¸roya,University of the Faroe Islands,a,TÃ³rshavn,,,,,,,,,,,,,,3,
+Det Kgl. Danske Musikkonservatorium,The Royal Danish Academy of Music,a,Frederiksberg,7418714.51770927,7169362.090485713,15315398.139822036,13125931.095572347,13125931.095572347,0,0,0,0,,,,,3,0.13768115942028986
+Rytmisk Musikkonservatorium,Rhythmic Music Conservatory,a,Copenhagen,3342871.33098015,2557650.7536002365,6026131.071414191,5167161.014105679,5167161.014105679,0,0,0,0,,,,,3,s
+Det Jyske Musikkonservatorium,The Royal Academy of Music,a,Aarhus,7185105.155081936,6069427.854353165,13300312.713900335,12199868.472265096,12199868.472265096,0,0,0,0,,,,,3,0.16666666666666666
+Syddansk Musikkonservatorium,Danish National Academy of Music,a,Odense,4389832.100820036,2345313.988914091,6813525.882779262,6616650.337543116,6616650.337543116,0,0,0,0,,,,,3,0.125
+Tartu Ãœlikool,University of Tartu,a,Tartu,150900252.1,97794068.76999998,248694320.86999997,111278051.5,131573480.3,85082414.01,0,1,10118413.87,1205,1325,260,3540,3,0.041916167664670656
+Tallinna TehnikaÃ¼likool,Tallinn University of Technology,a,Tallinn,80318932.42000002,42801676.460000016,123120608.88000003,73256021.86,85230552.6,19689123.53,0,1,5633719.030000001,690,425,160,1720,3,0.04963235294117647
+Tallinna Ãœlikool,Tallinn University,a,Tallinn,35451678.09,17646643.57,53098321.660000004,36793217.97,38948317.44,6891876.449999999,0,1,5413597.199999999,230,365,45,845,3,0.011049723756906077
+Eesti MaaÃ¼likool,Estonian University of Life Sciences,a,Tartu,29707370.549999997,15205391.069999998,44912761.62,22023584,30032700.13,5975434.640000001,0,1,2316152.05,265,270,60,835,3,0.043233082706766915
+Estonian Business School,Estonian Business School,a,Tallinn,,,,,,,,2,,25,30,5,80,3,s
+Eesti Kunstiakadeemia,Estonian Academy of Arts,a,Tallinn,9108575.890000002,6926296.899999999,16034872.790000003,10791833.5,11102886.48,1691768.8699999999,0,1,1077167.59,50,75,20,230,3,s
+Eesti Muusika- ja Teatriakadeemia,Estonian Academy of Music and Theatre,a,Tallinn,7958449.169999999,3256949.1599999997,11215398.329999998,9787693,10076766.73,1339661.5699999998,0,1,467332.9,90,95,35,220,3,s
+Universidad de AlmerÃ­a,University of Almeria,a,AlmerÃ­a,,,,,,,,,,593,482,181,1621.59333333333,3,0.04016994978756277
+Universidad de CÃ¡diz,University of CÃ¡diz,a,CÃ¡diz,,,,,,,,,,1092,819,220,2743.77866666667,3,0.03143006809848088
+Universidad de CÃ³rdoba,University of Cordoba,a,CÃ³rdoba,,,,,,,,,,1029,691,266,2749.836,3,0.06724862592951826
+Universidad de Granada,University of Granada,a,Granada,,,,,,,,,,2352,1716,779,7107.43733333334,3,0.045940667720636104
+Universidad de Huelva,University of Huelva,a,Huelva,,,,,,,,,,560,437,120,1446.28533333333,3,0.03123399897593446
+Universidad de JaÃ©n,University of JaÃ©n,a,JaÃ©n,,,,,,,,,,636,480,177,1814.43333333333,3,0.04162330905306972
+Universidad de MÃ¡laga,University of MÃ¡laga,a,MÃ¡laga,,,,,,,,,,1665,1249,361,4477.543084577118,3,0.032716506291635826
+Universidad Pablo de Olavide,Pablo de Olavide University,a,Seville,,,,,,,,,,671,530,114,1338.97333333333,3,0.03731343283582089
+Universidad de Sevilla,University of Seville,a,Seville,,,,,,,,,,2974,2102,709,7965.23466666667,3,0.03571428571428571
+Universidad de Zaragoza,University of Zaragoza,a,Zaragoza,,,,,,,,,,2050,1991,402,5282.81597989951,3,0.059883321894303364
+Universidad de Oviedo,University of Oviedo,a,Oviedo,,,,,,,,,,1337,1008,386,3376.55733333333,3,0.062430011198208284
+Universitat de les Illes Balears,University of the Balearic Islands,a,Palma,,,,,,,,,,1134,848,157,2039.59866666667,3,0.048436308161708616
+Universidad de La Laguna,University of La Laguna,a,San CristÃ³bal de La Laguna,,,,,,,,,,1031,769,180,2389.424,3,0.045454545454545456
+Universidad de Las Palmas de Gran Canaria,University of Las Palmas de Gran Canaria,a,Las Palmas de Gran Canaria,,,,,,,,,,972,669,153,2110.2,3,0.017844646606018196
+Universidad de Cantabria,University of Cantabria,a,Santander,,,,,,,,,,794,554,165,1785.56266666667,3,0.04720782959124928
+Universitat AutÃ²noma de Barcelona,Autonomous University of Barcelona,a,Barcelona,,,,,,,,,,2616,2200,282,5452.684,3,0.07302932322443974
+Universitat de Barcelona,University of Barcelona,a,Barcelona,,,,,,,,,,3478,3387,444,7011.89066666666,3,0.06272310045894952
+Universitat de Girona,University of Girona,a,Girona,,,,,,,,,,1021,907,87,1868.48533333333,3,0.041395826205952786
+Universitat de Lleida,University of Lleida,a,Lleida,,,,,,,,,,814,798,84,1491.81866666667,3,0.056010928961748634
+Universitat PolitÃ¨cnica de Catalunya Â· BarcelonaTech,Universitat PolitÃ¨cnica de Catalunya Â· BarcelonaTech,a,Barcelona,,,,,,,,,,2514,949,209,4559.17466666666,3,0.04962779156327544
+Universitat Pompeu Fabra,Pompeu Fabra University,a,Barcelona,,,,,,,,,,1059,759,80,2371.55733333333,3,0.037575327897908545
+Universitat Rovira i Virgili,Rovira i Virgili University,a,Tarragona,,,,,,,,,,1178,1233,100,2059.544,3,0.058315334773218146
+Universidad de Castilla-La Mancha,University of Castilla-La Mancha,a,Ciudad Real,,,,,,,,,,1602,1246,384,3814.42666666667,3,0.04720109225668032
+Universidad de Alicante,University of Alicante,a,Alicante,,,,,,,,,,1540,1076,314,3675.14933333334,3,0.05254201233780047
+Universidad Jaume I de CastellÃ³n,Jaume I University,a,CastellÃ³ de la Plana,,,,,,,,,,823,762,345,1883.55333333333,3,0.04244928625093914
+Universidad Miguel HernÃ¡ndez de Elche,Miguel HernÃ¡ndez University of Elche,a,Alicante,,,,,,,,,,784,598,152,1862.248,3,0.021263289555972485
+Universidad PolitÃ©cnica de Valencia,Technical University of Valencia,a,ValÃ¨ncia,,,,,,,,,,2090,1033,523,4655.012,3,0.06437768240343347
+Universitat de ValÃ¨ncia (Estudi General),University of Valencia,a,ValÃ¨ncia,,,,,,,,,,2781,2460,712,7070.68266666669,3,0.05536575562700965
+Universidad de Burgos,University of Burgos,a,Burgos,,,,,,,,,,487,490,75,1136.37866666667,3,0.035546613011401745
+Universidad de LeÃ³n,University of LeÃ³n,a,LeÃ³n,,,,,,,,,,569,502,149,1527.30666666667,3,0.03733602421796166
+Universidad de Salamanca,University of Salamanca,a,Salamanca,,,,,,,,,,1434,1324,262,3703.90666666667,3,0.07081942899517983
+Universidad de Valladolid,University of Valladolid,a,Valladolid,,,,,,,,,,1416,1345,272,3468.41333333333,3,0.03576788394197099
+Universidad de Extremadura,University of Extremadura,a,Badajoz,,,,,,,,,,1187,845,246,2844.05866666666,3,0.035695942475603495
+Universidad de A CoruÃ±a,University of A CoruÃ±a,a,A CoruÃ±a,,,,,,,,,,921,680,186,2435.599384615386,3,0.04329524954900782
+Universidad de Santiago de Compostela,University of Santiago de Compostela,a,Santiago de Compostela,,,,,,,,,,1400,1207,394,4216.44133333333,3,0.0638433709299851
+Universidad de Vigo,University of Vigo,a,Vigo,,,,,,,,,,1076,842,261,2915.10666666667,3,0.043072702331961595
+Universidad de AlcalÃ¡,University of AlcalÃ¡,a,AlcalÃ¡ de Henares,,,,,,,,,,1113,885,201,2421.21333333333,3,0.05638122198631753
+Universidad AutÃ³noma de Madrid,Autonomous University of Madrid,a,Madrid,,,,,,,,,,1668,1486,380,4299.92933333333,3,0.0946073793755913
+Universidad Carlos III de Madrid,Carlos III University of Madrid,a,Getafe,,,,,,,,,,1298,605,237,2470.42,3,0.037909654561558905
+Universidad Complutense de Madrid,Complutense University of Madrid,a,Madrid,,,,,,,,,,3762,3688,764,10087.216,3,0.056573589296102386
+Universidad PolitÃ©cnica de Madrid,Technical University of Madrid,a,Madrid,,,,,,,,,,2057,788,355,5467.432,3,0.05015009712166696
+Universidad Rey Juan Carlos,Rey Juan Carlos University,a,Madrid,,,,,,,,,,1649,1394,191,3486.572,3,0.02481606185309889
+Universidad de Murcia,University of Murcia,a,Murcia,,,,,,,,,,1689,1327,357,3631.844,3,0.05095854497787973
+Universidad PolitÃ©cnica de Cartagena,Technical University of Cartagena,a,Cartagena,,,,,,,,,,494,164,105,1004.27333333333,3,0.06082036775106082
+Universidad PÃºblica de Navarra,Public University of Navarra,a,Pamplona,,,,,,,,,,731,581,125,1559.44933333333,3,0.043795620437956206
+Universidad del PaÃ­s Vasco / Euskal Herriko Unibertsitatea,University of the Basque Country,a,Lejoa,,,,,,,,,,2448,2437,314,6262.26000000001,3,0.06578160507116373
+Universidad de La Rioja,University of La Rioja,a,LogroÃ±o,,,,,,,,,,272,262,77,788.94,3,0.038974358974358976
+IE Universidad,IE University,a,Segovia,,,,,,,,,,691,353,0,752.194666666667,3,0.002676977989292088
+Universidad a Distancia de Madrid (UDIMA),Open University of Madrid (UDIMA),a,Madrid,,,,,,,,,,110,112,0,237.773333333333,3,0.009306654257794323
+Universidad Alfonso X El Sabio,Alfonso X El Sabio University,a,Villanueva de la CaÃ±ada,,,,,,,,,,779,797,0,699.652,3,0.002254791431792559
+Universidad Antonio de Nebrija,Nebrija University,a,Madrid,,,,,,,,,,627,574,0,881.749333333334,3,0.002390584773813902
+Universidad Camilo JosÃ© Cela,Camilo JosÃ© Cela University,a,Villanueva de la CaÃ±ada,,,,,,,,,,288,344,0,495.641333333333,3,0.002461033634126333
+Universidad Cardenal Herrera-CEU,Cardenal Herrera-CEU University,a,Alfara del Patriarca,,,,,,,,,,570,578,0,1235.70533333334,3,0.00646830530401035
+Universidad CatÃ³lica Santa Teresa de JesÃºs de Ãvila,Catholic University of Avila,a,Ãvila,,,,,,,,,,107,123,0,288.712,3,s
+Universidad CatÃ³lica de Valencia,Catholic University of Valencia,a,ValÃ¨ncia,,,,,,,,,,587,472,0,1020.10666666667,3,0.009126466753585397
+Universidad CatÃ³lica San Antonio de Murcia,San Antonio Catholic University of Murcia,a,Guadalupe,,,,,,,,,,478,426,27,981.172,3,0.016722408026755852
+Universidad de Deusto,University of Deusto,a,Bilbao,,,,,,,,,,465,470,0,1266.988,3,0.023552894211576848
+Universidad de Navarra,University of Navarra,a,Pamplona,,,,,,,,,,793,560,0,3571.95733333333,3,0.04978165938864629
+Universidad Europea de Madrid,European University of Madrid,a,Madrid,,,,,,,,,,957,841,0,1952.152,3,0.006515175591927539
+Universidad Europea Miguel de Cervantes,European University Miguel de Cervantes,a,Valladolid,,,,,,,,,,167,134,2,262.477333333333,3,s
+Universidad Francisco de Vitoria,Francisco de Vitoria University,a,Madrid,,,,,,,,,,655,582,0,1326.43866666667,3,0.0031136481577581734
+Universidad Internacional de AndalucÃ­a,International University of AndalucÃ­a,a,Seville,,,,,,,,,,0,0,0,134,3,s
+Universidad Internacional Isabel I de Castilla,International University Isabel I de Castilla,a,Burgos,,,,,,,,,,360,389,0,426.293333333333,3,s
+Universidad Internacional de la Rioja,International University of La Rioja,a,LogroÃ±o,,,,,,,,,,948,1087,0,2162.19466666667,3,0.0002483623606842383
+Universidad Internacional MenÃ©ndez Pelayo,MenÃ©ndez Pelayo International University,a,Madrid,,,,,,,,,,0,0,0,113,3,0.03696498054474708
+Universidad MondragÃ³n Unibertsitatea,Mondragon University,a,Arrasate,,,,,,,,,,407,287,0,870.424,3,0.022689540675152185
+Universidad Nacional de EducaciÃ³n a Distancia,National University of Distance Education,a,Madrid,,,,,,,,,,704,652,199,2496.58666666667,3,0.018782301777385605
+Universidad Pontificia Comillas,Comillas Pontifical University,a,Madrid,,,,,,,,,,1184,724,0,1238.29733333333,3,0.01566265060240964
+Universidad Pontificia de Salamanca,Pontifical University of Salamanca,a,Salamanca,,,,,,,,,,155,169,0,360.254666666667,3,0.015184381778741865
+Universidad San Jorge,San Jorge University,a,Zaragoza,,,,,,,,,,229,236,12,434.556,3,s
+Universidad San Pablo-CEU,San Pablo-CEU University,a,Madrid,,,,,,,,,,585,575,0,1139.55466666667,3,0.01834407535944472
+Universitat Abat Oliba CEU,Abat Oliba-CEU University,a,Barcelona,,,,,,,,,,86,66,0,132.952,3,0.012089810017271158
+Universitat de Vic - Universitat Central de Catalunya,University of Vic - Central University of Catalonia,a,Vic,,,,,,,,,,687,790,0,1309.54933333333,3,0.017317939609236235
+Universitat Internacional de Catalunya,International University of Catalonia,a,Barcelona,,,,,,,,,,279,282,0,731.784,3,0.010770505385252692
+Universitat Internacional Valenciana (VIU),Valencian International University,a,ValÃ¨ncia,,,,,,,,,,407,484,0,872.336000000001,3,s
+Universitat Oberta de Catalunya,Open University of Catalonia,a,Barcelona,,,,,,,,,,225,235,0,1433.86133333333,3,0.0031316294575209616
+Universitat RamÃ³n Llull,Ramon Llull University,a,Barcelona,,,,,,,,,,995,662,0,1988.36933333333,3,0.013830024537140308
+Universidad Europea de Canarias,European University of Canarias,a,Orotava (La),,,,,,,,,,98,85,0,147.106666666667,3,s
+Universidad Europea Valencia,European University of Valencia,a,ValÃ¨ncia,,,,,,,,,,216,303,0,455,3,s
+Universidad Loyola Andalucia,Loyola University Andalusia,a,Seville,,,,,,,,,,214,133,0,503.678666666667,3,0.022354694485842028
+Universidad Europea del AtlÃ¡ntico,European University of the Atlantic,a,Santander,,,,,,,,,,112,75,0,178.501333333333,3,s
+Universidad Fernando Pessoa-Canarias,Fernando Pessoa Canarias University,a,Santa MarÃ­a de GuÃ­a de Gran Canaria,,,,,,,,,,77,79,0,133.92,3,s
+Universidad del AtlÃ¡ntico Medio,Mid Atlantic University,a,Las Palmas de Gran Canaria,,,,,,,,,,76,82,0,129.585333333333,3,s
+Universidad Internacional Villanueva,Villanueva International University,a,Madrid,,,,,,,,,,77,92,0,199.770666666667,3,s
+Universidad Euneiz,Euneiz University,a,Vitoria-Gasteiz,,,,,,,,,,7,4,0,17.2773333333333,3,s
+Universidad Intercontinental de la Empresa,Universidad Intercontinental de la Empresa,a,Santiago,,,,,,,,,,4,5,0,35,3,a
+ESIC Universidad,ESIC University,a,Madrid,,,,,,,,,,142,62,0,179.225333333333,3,s
+Colegio Universitario de Estudios Financieros,CUNEF University,a,Madrid,,,,,,,,,,128,59,0,216.442666666667,3,s
+Universidad Internacional de la Empresa,International Business University,a,Madrid,,,,,,,,,,78,49,0,153.133333333333,3,s
+Universidad de DiseÃ±o,,,,,,,,,,,,,,,,,,
+Universidad de las HespÃ©rides,University of the Hesperides,a,Las Palmas de Gran Canaria,,,,,,,,,,32,5,0,42.5493333333333,3,a
+Helsingin yliopisto,University of Helsinki,a,Helsinki,,,786156926,432945000,507532230,,,1,,2027.4844999999973,2300.591499999998,561.2982000000003,7510.318399999992,3,0.08570366239077895
+Turun yliopisto,University of Turku,a,Turku,,,323360677,179809000,204066233,,,1,,975.2563000000001,1057.2026000000003,293.1167,3349.8460000000005,3,0.058182860418458014
+Ã…bo Akademi,Ã…bo Akademi University,a,Turku,,,121619129,59031563,63889328,,,1,,295.7886000000001,351.1056000000002,81.6276,1113.4764000000005,3,0.03442485306465155
+Oulun yliopisto,University of Oulu,a,Oulu,,,296242056,164149000,188017409,,,1,,1084.1818000000003,862.7585999999998,208.84520000000003,3083.0915,3,0.06885125184094257
+JyvÃ¤skylÃ¤n yliopisto,University of JyvÃ¤skylÃ¤,a,JyvÃ¤skylÃ¤,,,243742155,152150667,167865454,,,1,,788.1425,933.1596,173.05390000000003,2678.1469999999963,3,0.052359627971064415
+Svenska handelshÃ¶gskolan,Hanken School of Economics,a,Helsinki,,,30000543,20823400,21594739,,,1,,86.7701,78.7892,30.4084,298.88410000000005,3,0.02491103202846975
+Vaasan yliopisto,University of Vaasa,a,Vaasa,,,56074372,38625000,42832900,,,1,,193.92260000000005,153.1572,48.4264,593.8463000000004,3,0.02539981185324553
+Lappeenrannan-Lahden teknillinen yliopisto LUT,Lappeenranta-Lahti University of Technology (LUT University),a,Lappeenranta,,,117910813,60755000,85758996,,,1,,472.2201000000001,253.181,77.4417,1239.8360000000002,3,0.0405982905982906
+Lapin yliopisto,University of Lapland,a,Rovaniemi,,,63350412,40562000,49319543,,,1,,111.09969999999998,192.88609999999994,53.716499999999996,628.5043999999996,3,0.020512820512820513
+Maanpuolustuskorkeakoulu,Finnish National Defence University,a,Helsinki,,,,,,,,1,,,,,,3,s
+Aalto-yliopisto,Aalto University,a,Espoo,,,427262040,239220000,273201542,,,1,,1845.1089000000045,903.5019000000013,271.69670000000025,4477.888200000003,3,0.06158357771260997
+ItÃ¤-Suomen yliopisto,University of Eastern Finland,a,Kuopio,,,275620399,165794662,193718014,,,1,,793.0039000000004,955.8308999999997,265.19340000000005,2668.5692999999987,3,0.04902897166507482
+Taideyliopisto,University of the Arts Helsinki,a,Helsinki,,,82887537,73153000,74667963,,,1,,195.17489999999995,227.61689999999993,56.7769,767.3204999999999,3,0.025540275049115914
+Tampereen yliopisto,Tampere University,a,Tampere,,,364745717,204260000,233436989,,,1,,1251.5227000000014,1077.705100000001,264.27830000000006,3595.1384000000035,3,0.05102527420123987
+UniversitÃ© de technologie de Troyes,University of Technology of Troyes,a,Troyes,33407198,9461038,42868236,33324105,36139738,1540830,,1,1274310,154,74,36,,3,
+Ã‰cole centrale de Marseille,,a,Marseille,15650116,5141432,20791548,15450765,17899160,427704,,1,1579161,69,23,26,,3,
+Aix-Marseille universitÃ©,Aix-Marseille University,a,Marseille,580685139,150385764,731070903,547172385,568312070,85869368,,1,13890624,2422,1953,976,,3,
+UniversitÃ© de Caen Basse-Normandie,University of Caen Lower Normandy,a,Caen,208509541,41078737,249588278,199873778,215727321,5991908,,1,4500379,864,644,313,,3,
+UniversitÃ© de La Rochelle,University of La Rochelle,a,La Rochelle,70821481,15145541,85967022,60165862,71203004,6639990,,1,1404152,288,207,70,,3,
+UniversitÃ© de Bourgogne,University of Burgundy,a,Dijon,215003627,43962791,258966418,,,3996143,,1,5170719,870,611,344,,3,
+Institut national supÃ©rieur des sciences agronomiques,,,,,,,,,,,,,,,,,,
+UniversitÃ© de Franche-ComtÃ©,University of Franche-ComtÃ©,a,BesanÃ§on,184010669,36443867,220454536,188261524,205120770,2936323,,1,3088347,760,561,287,,3,
+Ã‰cole nationale d'ingÃ©nieurs de Brest,,a,Brest,1459468,2796928,4256396,2284282,3838826,34776,,1,242700,53,17,9,,3,
+UniversitÃ© de Bretagne Occidentale,University of Western Brittany,a,Brest,173440602,32986616,206427218,174005714,185092507,5262398,,1,3130229,686,607,216,,3,
+UniversitÃ© de NÃ®mes,University of NÃ®mes,a,NÃ®mes,20682089,6172726,26854815,25403382,27629675,429218,,1,634072,73,68,18,,3,
+Institut national des sciences appliquÃ©es de Toulouse,,a,Toulouse,50531311,14122498,64653809,37030509,42899333,6136199,,1,2029494,188,106,68,,3,
+Institut national polytechnique de Toulouse,National Polytechnic Institute of Toulouse,a,Toulouse,73084616,28814888,101899504,66590628,79739544,6097469,,1,6095006,302,179,107,,3,
+UniversitÃ© Toulouse - Jean JaurÃ¨s,University of Toulouse II - Jean JaurÃ¨s,a,Toulouse,164670800,31745206,196416006,181837425,188860237,966697,,1,3821658,519,698,221,,3,
+UniversitÃ© de Toulouse 3 - Paul Sabatier,Paul Sabatier University,a,Toulouse,321740962,70381553,392122515,346315134,363831642,11716528,,1,5433957,1469,939,545,,3,
+UniversitÃ© Bordeaux Montaigne,Bordeaux Montaigne University,a,Pessac,84397317,15490618,99887935,90869550,97248868,563294,,1,1904308,287,393,113,,3,
+Ã‰cole nationale supÃ©rieure de chimie de Montpellier,,a,Montpellier,8782401,3026134,11808535,9010163,9729272,1134575,,1,133444,38,28,12,,3,
+UniversitÃ© Montpellier 3 - Paul-ValÃ©ry,Paul ValÃ©ry University,,,,,,,,,,,,,,,,,
+Ã‰cole nationale supÃ©rieure de chimie de Rennes,,a,Rennes,7418802,2320983,9739785,7790027,8424413,535760,,1,237591,34,10,12,,3,
+Webster Vienna Private University,Webster University Vienna - Private University,a,Vienna,,,,,,,,,,52,37,0,49.8,2,s
+New Design University PrivatuniversitÃ¤t St. PÃ¶lten,New Design University St. PÃ¶lten (NDU),a,St. PÃ¶lten,,,,,,,,,,183,125,0,42.34,2,s
+Musik und Kunst PrivatuniversitÃ¤t der Stadt Wien,Music and Arts University of the City of Vienna,a,Vienna,,,,,,,,,,180,142,0,214.55,2,s
+Private PÃ¤dagogische Hochschule Stiftung Burgenland,University College of Teacher Education Burgenland,a,Eisenstadt,,,,,,,,,,217,330,15,,2,s
+PÃ¤dagogische Hochschule KÃ¤rnten,University College of Teacher Education Carinthia,a,Klagenfurt,,,,,,,,,,51,101,17,,2,s
+PÃ¤dagogische Hochschule NiederÃ¶sterreich,University College of Teacher Education Lower Austria,a,Baden bei Wien,,,,,,,,,,500,851,13,,2,s
+PÃ¤dagogische Hochschule OberÃ¶sterreich,University College of Teacher Education Upper Austria,a,Linz,,,,,,,,,,597,810,32,,2,s
+Private PÃ¤dagogische Hochschule der DiÃ¶zese Linz,Private University College of Teacher Education of the Diocese of Linz,a,Linz,,,,,,,,,,116,226,23,,2,s
+PÃ¤dagogische Hochschule Salzburg Stefan Zweig,University College of Teacher Education Salzburg Stefan Zweig,a,Salzburg,,,,,,,,,,158,283,19,,2,s
+PÃ¤dagogische Hochschule Steiermark,University College of Teacher Education Styria,a,Graz,,,,,,,,,,253,382,33,,2,s
+Private PÃ¤dagogische Hochschule Augustinum,Private University College of Teacher Education Augustinum,a,Graz,,,,,,,,,,65,195,10,,2,s
+PÃ¤dagogische Hochschule Tirol,University College of Teacher Education Tyrol,a,Innsbruck,,,,,,,,,,191,286,22,,2,s
+Kirchliche PÃ¤dagogische Hochschule Edith Stein,University College of Teacher Education Edith Stein,a,Innsbruck,,,,,,,,,,78,155,11,,2,s
+PÃ¤dagogische Hochschule Vorarlberg,University College of Teacher Education Vorarlberg,a,Feldkirch,,,,,,,,,,176,254,23,,2,s
+PÃ¤dagogische Hochschule Wien,University College of Teacher Education in Vienna,a,Vienna,,,,,,,,,,396,910,33,,2,s
+Kirchliche PÃ¤dagogische Hochschule Wien/Krems,Christian University College of Teacher Education Vienna/Krems,a,Vienna,,,,,,,,,,160,323,28,,2,s
+Hochschule fÃ¼r Agrar- und UmweltpÃ¤dagogik Wien,University College of Teacher Education for Agricultural and Environmental Education Vienna,a,Vienna,,,,,,,,,,16,26,0,,2,s
+Hochschule fÃ¼r Angewandte Wissenschaften Burgenland,University of Applied Sciences Burgenland,a,Eisenstadt,,,,,,,,,,391,229,0,273.42,2,s
+Fachhochschule Salzburg,Salzburg University of Applied Sciences,a,Puch bei Hallein,,,,,,,,,,629,391,0,448.4707,2,s
+Fachhochschule St. PÃ¶lten,St. PÃ¶lten University of Applied Sciences,a,St. PÃ¶lten,,,,,,,,,,618,339,0,475.48,2,s
+Fachhochschule CAMPUS 02,CAMPUS 02 University of Applied Sciences,a,Graz,,,,,,,,,,239,87,0,158.3854,2,s
+Fachhochschule des BFI Wien,University of Applied Sciences BFI Vienna,a,Vienna,,,,,,,,,,344,182,0,226.53,2,s
+MCI Management Center Innsbruck,Management Center Innsbruck,a,Innsbruck,,,,,,,,,,619,282,0,408.9125,2,s
+Bundesministerium fÃ¼r Landesverteidigung und Sport,,,,,,,,,,,,,,,,,,
+Fachhochschule Kufstein Tirol,University of Applied Sciences Kufstein Tirol,a,Kufstein,,,,,,,,,,49,28,0,148.6588,2,s
+FH OÃ– Studienbetriebs GmbH,University of Applied Sciences Upper Austria,a,Wels,,,,,,,,,,1299,530,0,898.0201,2,s
+Hochschule fÃ¼r Angewandte Wissenschaften Campus Wien,University of Applied Sciences Campus Vienna,a,Vienna,,,,,,,,,,926,959,0,898.4506,2,s
+Lauder Business School,Lauder Business School,a,Vienna,,,,,,,,,,35,20,0,8.8597,2,s
+fh Gesundheit,Health University of Applied Sciences Tyrol,a,Innsbruck,,,,,,,,,,354,507,0,217.1639,2,s
+Ferdinand Porsche FERNFH,Ferdinand Porsche FERNFH,a,Wiener Neustadt,,,,,,,,,,77,54,0,72.7061,2,s
+Fachhochschule Wien der WKW,FHWien der WKW,a,Vienna,,,,,,,,,,320,210,0,224.9896,2,s
+Fachhochschule Vorarlberg,Vorarlberg University of Applied Sciences,a,Dornbirn,,,,,,,,,,318,179,0,343.6352,2,s
+Fachhochschule Technikum Wien,University of Applied Sciences Technikum Vienna,a,Vienna,,,,,,,,,,630,185,0,497.5684,2,s
+IMC Hochschule fÃ¼r Angewandte Wissenschaften Krems,IMC University of Applied Sciences Krems,a,Krems an der Donau,,,,,,,,,,340,286,0,352.4389,2,s
+Fachhochschule Wiener Neustadt,University of Applied Sciences Wiener Neustadt,a,Wiener Neustadt,,,,,,,,,,734,464,0,518.9137,2,s
+Fachhochschule KÃ¤rnten,Carinthia University of Applied Sciences,a,Spittal an der Drau,,,,,,,,,,483,308,0,436.1257,2,s
+Fachhochschule JOANNEUM,FH JOANNEUM University of Applied Sciences,a,Graz,,,,,,,,,,789,527,0,748.3026,2,s
+FH Gesundheitsberufe OÃ–,University of Applied Sciences for Health Professions Upper Austria,a,Linz,,,,,,,,,,283,446,0,194.2876,2,s
+Karl Landsteiner PrivatuniversitÃ¤t fÃ¼r Gesundheitswissenschaften,Karl Landsteiner University of Health Sciences,a,Krems an der Donau,,,,,,,,,,512,500,0,208.82,2,s
+JAM MUSIC LAB PrivatuniversitÃ¤t fÃ¼r Jazz und Popularmusik,JAM MUSIC LAB Private University for Jazz and Popular Music,a,Vienna,,,,,,,,,,39,13,0,19.5,2,s
+Stella Vorarlberg Privathochschule fÃ¼r Musik,Stella Vorarlberg Private University College of Music,,,,,,,,,,,,59,47,0,93.77,2,s
+Joseph Haydn Privathochschule,Joseph Haydn Private University College Burgenland (JHP),a,Eisenstadt,,,,,,,,,,37,24,0,47.99,2,s
+Gustav Mahler PrivatuniversitÃ¤t fÃ¼r Musik,Gustav Mahler Private University of Music,a,Klagenfurt,,,,,,,,,,67,40,0,103.54,2,s
+Bertha von Suttner PrivatuniversitÃ¤t,Bertha von Suttner St. PÃ¶lten Private University,a,St. PÃ¶lten,,,,,,,,,,47,59,0,36.71,2,s
+Haute Ecole ICHEC - ECAM - ISFSC,Haute Ecole ICHEC - ECAM - ISFSC,French Community,Brussels,,,,,,,,,,,,,,2,s
+Haute Ecole Albert Jacquard,Haute Ecole Albert Jacquard,French Community,Namur,,,,,,,,,,,,,,2,s
+Haute Ecole Charlemagne,,French Community,LiÃ¨ge,,,,,,,,,,,,,,2,s
+Haute Ecole en Hainaut,,French Community,Mons,,,,,,,,,,,,,,2,s
+Haute Ecole Robert Schuman,,French Community,Libramont,,,,,,,,,,,,,,2,s
+Haute Ecole de la Province de LiÃ¨ge,,French Community,Jemeppe-sur-Sambre,,,,,,,,,,,,,,2,s
+Haute Ecole Ephec,EPHEC University College,French Community,Woluwe-Saint-Lambert,,,,,,,,,,,,,,2,s
+Haute Ecole Francisco Ferrer,,French Community,Brussels,,,,,,,,,,,,,,2,s
+Haute Ecole GalilÃ©e,,French Community,Brussels,,,,,,,,,,,,,,2,s
+Haute Ecole LÃ©onard de Vinci,,French Community,Woluwe-Saint-Lambert,,,,,,,,,,,,,,2,s
+Haute Ecole Libre de Bruxelles Ilya Prigogine,,French Community,Brussels,,,,,,,,,,,,,,2,s
+Haute Ecole Libre Mosane,HELMo University College,French Community,LiÃ¨ge,,,,,,,,,,,,,,2,s
+Haute Ecole Louvain en Hainaut,,French Community,Mons,,,,,,,,,,,,,,2,s
+Haute Ecole Lucia de BrouckÃ¨re,,French Community,Anderlecht,,,,,,,,,,,,,,2,s
+Haute Ecole Provinciale du Hainaut - Condorcet,HEPH-Condorcet,French Community,Mons,,,,,,,,,,,,,,2,s
+AcadÃ©mie des Beaux-Arts de la ville de Tournai,,French Community,Tournai,,,,,,,,,,,,,,2,s
+AcadÃ©mie royale des Beaux-Arts de la Ville de Bruxelles - Ã‰cole supÃ©rieure des Arts,Royal Academy of fine-Arts of Brussels,French Community,Brussels,,,,,,,,,,,,,,2,s
+Ecole supÃ©rieure des Arts de la Ville de LiÃ¨ge,,French Community,LiÃ¨ge,,,,,,,,,,,,,,2,s
+Conservatoire royal de musique de Bruxelles,Royal Conservatoire of Brussels,French Community,Brussels,,,,,,,,,,,,,,2,s
+Conservatoire royal de musique de LiÃ¨ge,Conservatoire royal de LiÃ¨ge,French Community,LiÃ¨ge,,,,,,,,,,,,,,2,s
+Ecole supÃ©rieure des Arts - Ã‰cole de Recherche graphique,,French Community,Brussels,,,,,,,,,,,,,,2,s
+Ecole nationale supÃ©rieure des Arts visuels de La Cambre,La Cambre,French Community,Brussels,,,,,,,,,,,,,,2,s
+Ecole supÃ©rieure des Arts Saint-Luc de LiÃ¨ge,ESA Saint-Luc LiÃ¨ge,French Community,LiÃ¨ge,,,,,,,,,,,,,,2,s
+Institut des Arts de Diffusion,,French Community,Louvain-La-Neuve,,,,,,,,,,,,,,2,s
+Institut national supÃ©rieur des Arts du Spectacle et des Techniques de Diffusion,,French Community,Brussels,,,,,,,,,,,,,,2,s
+Institut supÃ©rieur de Musique et de PÃ©dagogie,,French Community,Namur,,,,,,,,,,,,,,2,s
+Erasmushogeschool Brussel,Erasmus University College Brussels,Flemish Community,Anderlecht,52276625.48,10654981.43,62280621.76,59288270.67,61617351.550000004,2835099.54,100436.72999999998,2,4519376.88,459,367,,572.16,2,s
+Hogere Zeevaartschool,Antwerp maritime academy,Flemish Community,Antwerp,6258120.98,2985344.69,10121766.82,7340319.39,7898144.529999999,1317358.55,1219226.33,2,485595.67,29,14,,47.15,2,s
+Hogeschool Gent,University College Ghent,Flemish Community,Gent,120918070.35,26275076.509999998,147784283.98999998,121574129.64,125907159.37,11129846.24,1255053.6,2,13124494.48,606,658,,1158.66,2,s
+LUCA School of Arts,LUCA School of Arts,Flemish Community,Schaarbeek,40341271.39,12052288.809999982,53292525.00999998,46079178.24000004,47835828.45000004,3914490.769999999,345346.35000000015,2,2754763.6099999985,310,204,,450.85,2,s
+Karel de Grote-Hogeschool - Katholieke Hogeschool Antwerpen,Karel de Grote University College,Flemish Community,Antwerp,88422014.5600003,17041586.47999998,108382763.65000029,93336990.09,96953755.37,6228860.279999999,372708.7799999998,2,10056384.959999518,281,454,,839.73,2,s
+Haute Ecole de Namur-LiÃ¨ge-Luxembourg,University College of Namur - LiÃ¨ge - Luxembourg,French Community,Namur,,,,,,,,,,,,,,2,s
+ArtsÂ²,ArtsÂ² Academy of Arts,French Community,Mons,,,,,,,,,,,,,,2,s
+AP Hogeschool Antwerpen,AP University College Antwerpen,Flemish Community,Antwerp,97279719.06999998,20307760.39000004,119024646.99000002,109599159.84989348,115711046.71989349,6331725.729999999,460186.4199999999,2,9837697.019999914,458,575,,1046.5,2,s
+Hogeschool PXL,PXL University College,Flemish Community,Hasselt,72582424.08,18303836.990000002,91348039.82,69913984,75508665.73,5317686.44,1612026.6899999997,2,7066920.779999999,431,535,,678.65,2,s
+Ecole supÃ©rieure des Arts - Saint-Luc de Bruxelles,ESA Saint-Luc Bruxelles,French Community,Brussels,,,,,,,,,,,,,,2,s
+Haute Ecole Bruxelles-Brabant,,French Community,Brussels,,,,,,,,,,,,,,2,s
+Haute Ecole de la Province de Namur,University College of the Province of Namur,French Community,Namur,,,,,,,,,,,,,,1,s
+Haute Ecole de la Ville de LiÃ¨ge,,French Community,LiÃ¨ge,,,,,,,,,,,,,,1,s
+Ecole supÃ©rieure des Arts du Cirque,Superior School of Circus Arts,French Community,Anderlecht,,,,,,,,,,,,,,1,s
+Ecole supÃ©rieure des Arts de l'Image LE 75,,French Community,Brussels,,,,,,,,,,,,,,1,s
+Ecole supÃ©rieure des Arts Institut Saint-Luc Tournai,,French Community,Tournai,,,,,,,,,,,,,,1,s
+Arteveldehogeschool,University college Arteveldehogeschool,Flemish Community,Gent,94626742.77,21118206.080000002,120436825.42999999,96717828.16000001,101776161.25000001,8422619.280000001,1247894.56,2,12023040.44,285,680,,915.02,1,s
+Hogeschool West-Vlaanderen,Howest,,,,,,,,,,,,,,,,,
+Thomas More Kempen,Thomas More Kempen,Flemish Community,Geel,64941915.58,15995275.89,80596368.37,66835502.63000001,70477546.29,5815598.119999999,1385810.8199999998,2,6612935.449999999,230,357,,575.48,1,s
+UC Leuven,UC Leuven,Flemish Community,Leuven,65149723.91,16577306.280000001,82592426.25,66277636.881402895,68994813.9214029,5457871.029999999,908304.0599999999,2,8687235.360000001,176,403,,601.14,1,s
+UC Limburg,UC Limburg,Flemish Community,Diepenbeek,39367020,10609843,50259049,39903451.04680776,41442068.25680776,4941590.67,1166121.84,2,4580458.47,111,223,,358.96,1,s
+Katholieke Hogeschool Vives Zuid,Catholic University College Vives Zuid,Flemish Community,Kortrijk,70374259.28,22682073.490000002,93710107.63000001,72472754.19,79870273.46,5566377.039999999,223960.98999999976,2,10113420.639999999,301,459,,715.2,1,s
+ODISEE,ODISEE,Flemish Community,Brussels,80604321.23,19385670.19,102261317.88,86853919.44,88741852.78999999,2471002.33,4609110.460000001,2,11124210.19,254,390,,759.61,1,s
+Thomas More Mechelen-Antwerpen,Thomas More Mechelen-Antwerpen,Flemish Community,Mechelen,67080843,16640201,83863658,67727323.66002494,70294621.66002494,8450472,972724,2,9028823,254,386,,580.38,1,s
+Institut Roger Guilbert,,French Community,Anderlecht,,,,,,,,,,,,,,,
+Institut Paul Hankar des technologies de la Communication,,,,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 8,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Institut des carriÃ¨res commerciales,,French Community,Brussels,,,,,,,,,,,,,,,
+Cours industriels,,French Community,Brussels,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 9,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Institut Jean-Pierre Lallemand,,French Community,Brussels,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 1,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 2,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 7,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 3,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Enseignement de Promotion et de Formation continue EPFC 5,,French Community,Saint-Josse-ten-Noode,,,,,,,,,,,,,,,
+Institut supÃ©rieur de formation continue d'Etterbeek,,French Community,Etterbeek,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Evere,,French Community,Evere,,,,,,,,,,,,,,,
+Institut supÃ©rieur de Promotion Sociale Libre de Bruxelles Ilya Prigogine,,French Community,Anderlecht,,,,,,,,,,,,,,,
+Institut Machtens - Enseignement communal de promotion sociale,,French Community,Molenbeek-Saint-Jean,,,,,,,,,,,,,,,
+Centre d'Etudes supÃ©rieures d'OptomÃ©trie appliquÃ©e,,French Community,Namur,,,,,,,,,,,,,,,
+Ateliers Saint-Luc,,French Community,Saint-Gilles,,,,,,,,,,,,,,,
+Centre de formation culturelle et sociale,,French Community,Brussels,,,,,,,,,,,,,,,
+Cours de promotion sociale d'Uccle,,French Community,Uccle,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Uccle,,French Community,Uccle,,,,,,,,,,,,,,,
+Centre de formation pour les secteurs infirmier et de la santÃ© de l'A.C.N.,,French Community,Woluwe-Saint-Lambert,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Braine l'Alleud,,French Community,Braine-l'Alleud,,,,,,,,,,,,,,,
+Institut provincial d'enseignement de promotion sociale et de formation continuÃ©e,,French Community,Nivelles,,,,,,,,,,,,,,,
+Institut de formation supÃ©rieure de Wavre,,French Community,Wavre,,,,,,,,,,,,,,,
+Institut supÃ©rieur industriel de la province de Hainaut,,French Community,Charleroi,,,,,,,,,,,,,,,
+"CollÃ¨ge technique ""AumÃ´niers du travail""",,French Community,Charleroi,,,,,,,,,,,,,,,
+UniversitÃ© du Travail - Institut d'enseignement technique commercial,,French Community,Charleroi,,,,,,,,,,,,,,,
+Ecole des Femmes prÃ©voyantes socialistes de Charleroi,,French Community,Charleroi,,,,,,,,,,,,,,,
+Institut Provincial d' Enseignement supÃ©rieur de Promotion sociale Lise THIRY,,French Community,Charleroi,,,,,,,,,,,,,,,
+Centre d'enseignement supÃ©rieur pour adultes,,French Community,Charleroi,,,,,,,,,,,,,,,
+Ã‰tablissement Communal d'Enseignement de Promotion sociale - Couillet,,French Community,Charleroi,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue des Hauts-Pays,,French Community,Dour,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Frameries,,French Community,Frameries,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Jean Meunier,,French Community,Mons,,,,,,,,,,,,,,,
+Institut Reine Astrid - I.R.A.M.,,French Community,Mons,,,,,,,,,,,,,,,
+Institut Provincial d'Enseignement SupÃ©rieur de Promotion sociale Henri La Fontaine,,French Community,Mons,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Colfontaine - Jurbise,,French Community,Colfontaine,,,,,,,,,,,,,,,
+CollÃ¨ge Technique Saint-Henri,,French Community,Mouscron,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Mouscron Wallonie picarde,,French Community,Mouscron,,,,,,,,,,,,,,,
+Enseignement de Promotion sociale d'Enghien,,French Community,Enghien,,,,,,,,,,,,,,,
+Institut provincial des Arts et MÃ©tiers du Centre,,French Community,La LouviÃ¨re,,,,,,,,,,,,,,,
+Institut technique et agricole de la Province du Hainaut,,French Community,Soignies,,,,,,,,,,,,,,,
+Ecole Industrielle et Commerciale d'Ecaussinnes,,French Community,Ecaussinnes,,,,,,,,,,,,,,,
+Institut supÃ©rieur Plus Oultre,,French Community,Binche,,,,,,,,,,,,,,,
+Ecole des Arts et mÃ©tiers promotion sociale,,French Community,Erquelinnes,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Thuin-Erquelinnes,,French Community,Thuin,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Morlanwelz,,French Community,Morlanwelz,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Rance,,French Community,Sivry-Rance,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) PÃ©ruwelz,,French Community,PÃ©ruwelz,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Tournai EuromÃ©tropole,,French Community,Tournai,,,,,,,,,,,,,,,
+Institut provincial d'enseignement de promotion sociale de Wallonie picarde,,French Community,Tournai,,,,,,,,,,,,,,,
+Institut de Travaux publics - Enseignement de promotion sociale,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Cours de promotion sociale Saint-Luc,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Institut Saint-Laurent - Promotion sociale,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Institut de technologie - Enseignement de promotion sociale,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Institut provincial d'enseignement de promotion sociale de LiÃ¨ge,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Ecole de commerce et d'informatique - Enseignement de promotion sociale,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Institut des Langues modernes - Enseignement de promotion sociale,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Institut de formation continuÃ©e,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Cours pour Ã©ducateurs en fonction,,French Community,LiÃ¨ge,,,,,,,,,,,,,,,
+Institut provincial d'enseignement supÃ©rieur de promotion sociale de Seraing,,French Community,Seraing,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue FlÃ©ron Charlemagne,,French Community,FlÃ©ron,,,,,,,,,,,,,,,
+Etablissement dâ€™Enseignement pour Adultes et de Formation continue Ardenne bleue,,French Community,Dison,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Hesbaye-Condroz,,French Community,Waremme,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Sud-Luxembourg,,French Community,Arlon,,,,,,,,,,,,,,,
+Ecole industrielle et commerciale d'Arlon,,French Community,Arlon,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Famenne Ardenne,,French Community,Marche-en-Famenne,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Centre Ardenne,,French Community,Libramont-Chevigny,,,,,,,,,,,,,,,
+Institut libre luxembourgeois d'enseignement de promotion sociale - Arts et MÃ©tiers Pierrard,,French Community,Vielsalm,,,,,,,,,,,,,,,
+Ecole supÃ©rieure des Affaires,,French Community,Namur,,,,,,,,,,,,,,,
+Institut technique de promotion sociale,,French Community,Namur,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue (EAFC) Namur - Cadets,,French Community,Namur,,,,,,,,,,,,,,,
+Ecole industrielle et commerciale de la Ville de Namur,,French Community,Namur,,,,,,,,,,,,,,,
+Institut provincial de Formation sociale,,French Community,Namur,,,,,,,,,,,,,,,
+Institut technique supÃ©rieur Cardinal Mercier - Enseignement de promotion sociale,,French Community,Schaerbeek,,,,,,,,,,,,,,,
+Institut libre de formation permanente,,French Community,Namur,,,,,,,,,,,,,,,
+Centre d'enseignement supÃ©rieur de promotion et de formation continuÃ©e en brabant wallon,,French Community,Ottignies-Louvain-la-Neuve,,,,,,,,,,,,,,,
+Institut Roger Lambion,,French Community,Anderlecht,,,,,,,,,,,,,,,
+Etablissement d'Enseignement pour Adultes et de Formation Continue Ath,,French Community,Ath,,,,,,,,,,,,,,,
+EPHEC Enseignement supÃ©rieur de promotion sociale,,French Community,Woluwe-Saint-Lambert,,,,,,,,,,,,,,,
+"Ð®Ð³Ð¾Ð·Ð°Ð¿Ð°Ð´ÐµÐ½ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""ÐÐµÐ¾Ñ„Ð¸Ñ‚ Ð Ð¸Ð»ÑÐºÐ¸""","""South-West University """"Neofit Rilski""""""",a,Blagoevgrad,,,,,,,,,,238,368,72,,3,0.03019260801665799
+Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ â€œÐŸÑ€Ð¾Ñ„. Ð´-Ñ€ ÐÑÐµÐ½ Ð—Ð»Ð°Ñ‚Ð°Ñ€Ð¾Ð²â€,Burgas Professor Assen Zlatarov University,a,Burgas,,,,,,,,,,231,276,76,,3,s
+Ð‘ÑƒÑ€Ð³Ð°ÑÐºÐ¸ ÑÐ²Ð¾Ð±Ð¾Ð´ÐµÐ½ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚,Burgas Free University,a,Burgas,,,,,,,,,,54,97,33,,3,s
+Ð˜ÐºÐ¾Ð½Ð¾Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - Ð’Ð°Ñ€Ð½Ð°,University of Economics - Varna,a,Varna,,,,,,,,,,119,174,18,,3,0.007692307692307693
+Ð¢ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - Ð’Ð°Ñ€Ð½Ð°,Technical University of Varna,a,Varna,,,,,,,,,,181,135,24,,3,s
+"ÐœÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""Ð¿Ñ€Ð¾Ñ„. Ð´-Ñ€ ÐŸÐ°Ñ€Ð°ÑÐºÐµÐ² Ð¡Ñ‚Ð¾ÑÐ½Ð¾Ð²""","""Varna Medical University """"prof. dr. Paraskev Stoyanov""""""",a,Varna,,,,,,,,,,361,705,101,,3,0.04699537750385208
+"Ð’Ð°Ñ€Ð½ÐµÐ½ÑÐºÐ¸ ÑÐ²Ð¾Ð±Ð¾Ð´ÐµÐ½ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""Ð§ÐµÑ€Ð½Ð¾Ñ€Ð¸Ð·ÐµÑ† Ð¥Ñ€Ð°Ð±ÑŠÑ€""","""Varna Free University """"Chernorizets Hrabar""""""",a,Varna,,,,,,,,,,60,80,27,,3,0.03419689119170984
+"Ð’Ð¸ÑÑˆÐµ Ð²Ð¾ÐµÐ½Ð½Ð¾Ð¼Ð¾Ñ€ÑÐºÐ¾ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ ""Ð. Ð™. Ð’Ð°Ð¿Ñ†Ð°Ñ€Ð¾Ð²""",Nikola Vaptsarov Naval Academyâ€™,a,Varna,,,,,,,,,,151,79,26,,3,0.011532125205930808
+"Ð’ÐµÐ»Ð¸ÐºÐ¾Ñ‚ÑŠÑ€Ð½Ð¾Ð²ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""Ð¡Ð². ÑÐ². ÐšÐ¸Ñ€Ð¸Ð» Ð¸ ÐœÐµÑ‚Ð¾Ð´Ð¸Ð¹""",St. Cyril and St. Methodius University of Veliko Tarnovo,a,Veliko Tarnovo,,,,,,,,,,389,516,139,,3,0.02702702702702703
+ÐÐ°Ñ†Ð¸Ð¾Ð½Ð°Ð»eÐ½ Ð²Ð¾ÐµÐ½ÐµÐ½ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ â€œÐ’Ð°ÑÐ¸Ð» Ð›ÐµÐ²ÑÐºÐ¸,Vasil Levski National Military University,a,Veliko Tarnovo,,,,,,,,,,163,65,21,,3,s
+"Ð¡Ñ‚Ð¾Ð¿Ð°Ð½ÑÐºÐ° Ð°ÐºÐ°Ð´ÐµÐ¼Ð¸Ñ ""Ð”. Ð. Ð¦ÐµÐ½Ð¾Ð²"" - Ð¡Ð²Ð¸Ñ‰Ð¾Ð²",D.A.Tsenov Academy of Economics,a,Svishtov,,,,,,,,,,89,90,19,,3,0.012057272042200452
+Ð¢ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - Ð“Ð°Ð±Ñ€Ð¾Ð²Ð¾,Technical University of Gabrovo,a,Gabrovo,,,,,,,,,,121,60,18,,3,s
+ÐœÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - ÐŸÐ»ÐµÐ²ÐµÐ½,Medical University - Pleven,a,Pleven,,,,,,,,,,174,296,41,,3,0.026402640264026403
+"ÐŸÐ»Ð¾Ð²Ð´Ð¸Ð²ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""ÐŸÐ°Ð¸ÑÐ¸Ð¹ Ð¥Ð¸Ð»ÐµÐ½Ð´Ð°Ñ€ÑÐºÐ¸""",Paisii Hilendarski University of Plovdiv,a,Plovdiv,,,,,,,,,,512,680,187,,3,0.011600378787878788
+Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ÑŠÑ‚ Ð¿Ð¾ Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÐµÐ»Ð½Ð¸ Ñ‚ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ð¸Ð¸,University of Food Technologies â€“ Plovdiv,a,Plovdiv,,,,,,,,,,88,111,27,,3,0.018907563025210083
+ÐÐ³Ñ€Ð°Ñ€ÐµÐ½ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ â€“ ÐŸÐ»Ð¾Ð²Ð´Ð¸Ð²,Agricultural University â€“ Plovdiv,a,Plovdiv,,,,,,,,,,105,113,40,,3,0.01337295690936107
+ÐœÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - ÐŸÐ»Ð¾Ð²Ð´Ð¸Ð²,Medical University of Plovdiv,a,Plovdiv,,,,,,,,,,378,509,82,,3,0.02702702702702703
+ÐÐºÐ°Ð´ÐµÐ¼Ð¸Ñ Ð·Ð° Ð¼ÑƒÐ·Ð¸ÐºÐ°Ð»Ð½Ð¾,,,,,,,,,,,,,,,,,,
+Ð’Ð¸ÑÑˆÐµ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ Ð¿Ð¾ Ð°Ð³Ñ€Ð¾Ð±Ð¸Ð·Ð½ÐµÑ Ð¸ Ñ€Ð°Ð·Ð²Ð¸Ñ‚Ð¸Ðµ Ð½Ð° Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¸Ñ‚Ðµ,University of Agribusiness and Rural Development,a,Plovdiv,,,,,,,,,,33,29,11,,3,s
+Ð’Ð¸ÑÑˆÐµ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ Ð¿Ð¾ ÑÐ¸Ð³ÑƒÑ€Ð½Ð¾ÑÑ‚ Ð¸ Ð¸ÐºÐ¾Ð½Ð¾Ð¼Ð¸ÐºÐ°,University of Security and Economics,a,Plovdiv,,,,,,,,,,46,25,24,,3,0.020172910662824207
+"Ð ÑƒÑÐµÐ½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""ÐÐ½Ð³ÐµÐ» ÐšÑŠÐ½Ñ‡ÐµÐ²""",Angel Kanchev University of Ruse,a,Ruse,,,,,,,,,,288,263,67,,3,0.020423048869438368
+"Ð¡Ð¾Ñ„Ð¸Ð¹ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""Ð¡Ð². ÐšÐ»Ð¸Ð¼ÐµÐ½Ñ‚ ÐžÑ…Ñ€Ð¸Ð´ÑÐºÐ¸""",Sofia University St. Kliment Ohridski,a,Sofia,,,,,,,,,,1331,1568,504,,3,0.03669166835597
+Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ Ð·Ð° Ð½Ð°Ñ†Ð¸Ð¾Ð½Ð°Ð»Ð½Ð¾ Ð¸ ÑÐ²ÐµÑ‚Ð¾Ð²Ð½Ð¾ ÑÑ‚Ð¾Ð¿Ð°Ð½ÑÑ‚Ð²Ð¾,University of National and World Economy,a,Sofia,,,,,,,,,,342,352,118,,3,0.014780835881753314
+Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ Ð¿Ð¾ Ð°Ñ€Ñ…Ð¸Ñ‚ÐµÐºÑ‚ÑƒÑ€Ð°,,,,,,,,,,,,,,,,,,
+Ð¢ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸ Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - Ð¡Ð¾Ñ„Ð¸Ñ,Technical University of Sofia,a,Sofia,,,,,,,,,,852,455,136,,3,0.013279678068410463
+Ð¥Ð¸Ð¼Ð¸ÐºÐ¾Ñ‚ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ð¸Ñ‡ÐµÐ½ Ð¸ Ð¼ÐµÑ‚Ð°Ð»ÑƒÑ€Ð³Ð¸Ñ‡ÐµÐ½ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚,University of Chemical Technology and Metallurgy,a,Sofia,,,,,,,,,,83,101,25,,3,0.028469750889679714
+"ÐœÐ¸Ð½Ð½Ð¾-Ð³ÐµÐ¾Ð»Ð¾Ð¶ÐºÐ¸ÑÑ‚ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ""Ð¡Ð². Ð˜Ð²Ð°Ð½ Ð Ð¸Ð»ÑÐºÐ¸""",St. Ivan Rilski University of Mining and Geology,a,Sofia,,,,,,,,,,126,87,25,,3,s
+Ð›ÐµÑÐ¾Ñ‚ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚,University of Forestry,a,Sofia,,,,,,,,,,117,114,27,,3,0.02534562211981567
+ÐœÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - Ð¡Ð¾Ñ„Ð¸Ñ,Medical University - Sofia,a,Sofia,,,,,,,,,,607,900,247,,3,0.03955135773317592
+"ÐÐ°Ñ†Ð¸Ð¾Ð½Ð°Ð»Ð½Ð° ÑÐ¿Ð¾Ñ€Ñ‚Ð½Ð° Ð°ÐºÐ°Ð´ÐµÐ¼Ð¸Ñ â€œÐ’Ð°ÑÐ¸Ð» Ð›ÐµÐ²ÑÐºÐ¸""",National Sports Academy Vasil Levski,a,Sofia,,,,,,,,,,305,233,63,,3,0.016191709844559584
+ÐÐ¼ÐµÑ€Ð¸ÐºÐ°Ð½ÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ Ð² Ð‘ÑŠÐ»Ð³Ð°Ñ€Ð¸Ñ,American University in Bulgaria,a,Blagoevgrad,,,,,,,,,,64,27,13,,2,s
+Ð’Ð¸ÑÑˆÐµ ÑƒÑ‡Ð¸Ð»Ð¸Ñ‰Ðµ Ð¿Ð¾ Ð¼ÐµÐ½Ð¸Ð´Ð¶Ð¼ÑŠÐ½Ñ‚,Varna University of Management,a,Varna,,,,,,,,,,35,34,10,,2,s
+Ð•Ð²Ñ€Ð¾Ð¿ÐµÐ¹ÑÐºÐ¸ Ð¿Ð¾Ð»Ð¸Ñ‚ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ - ÐŸÐµÑ€Ð½Ð¸Ðº,European Polytechnical University - Pernik,a,Pernik,,,,,,,,,,24,13,18,,2,s
+Alexander College,Alexander College,a,Larnaca,1032255,1161853,2194108,,,,,,,20,18,0,26,2,s
+American College,American College,a,Nicosia,,,,,,,,,,34,22,0,40,2,s
+C.D.A. College,C.D.A. College,a,Nicosia,,,,,,,,,,56,85,0,95,2,s
+College of Tourism and Hotel Management,College of Tourism and Hotel Management,a,Nicosia,,,,,,,,,,11,9,0,19,2,s
+University of Limassol,,a,Nicosia,1528782,1599332,3128114,,,,,,,35,14,0,55,2,s
+Global College,Global College,a,Nicosia,982236,791841,1774077,,,,,,,29,31,0,49,2,s
+Internapa College,Internapa College,a,Famagusta,,,,,,,,,,12,6,0,18,2,s
+The CTL Eurocollege,The CTL Eurocollege,a,Limassol,,,,,,,,,,18,12,0,20,2,s
+The Cyprus Institute of Marketing,The Cyprus Institute of Marketing,a,Nicosia,352376,1262567,1614943,,,,,,,52,30,0,39,2,s
+The Philips College,The Philips College,a,Nicosia,,,,,,,,,,8,11,0,25,2,a
+Ledra College,Ledra College,a,Nicosia,,,,,,,,,,17,7,0,19,2,s
+City Unity College Nicosia,City Unity College Nicosia,a,Nicosia,635489,810065,1445554,,,,,,,14,16,0,31,2,s
+American University of Cyprus,American University of Cyprus,a,Larnaka,411346,1624735,2036081,,,,,,,31,15,0,30,2,s
+Philips University,Philips University,a,Strovolos,493778,1530614,2024392,,,,,,,14,5,0,22,2,a
+American University of Beirut Mediterraneo,American University of Beirut Mediterraneo,a,Paphos,30750,765579,796329,,,,,,,13,7,0,23,2,a
+VysokÃ¡ Å¡kola polytechnickÃ¡ Jihlava,College of Polytechnics,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola technickÃ¡ a ekonomickÃ¡ v ÄŒeskÃ½ch BudÄ›jovicÃ­ch,Institute of Technology and Business in ÄŒeskÃ© BudÄ›jovice,a,ÄŒeskÃ© BudÄ›jovice,7900.09998333611,5250.874854190968,13150.974837527077,10254.624229295117,13151.391434760872,,,1,,110,62,,270.184,2,s
+University College Prague â€“ VysokÃ¡ Å¡kola mezinÃ¡rodnÃ­ch vztahÅ¯ a VysokÃ¡ Å¡kola hotelovÃ¡ a ekonomickÃ¡ s.r.o.,University College Prague,a,Prague,,,,,,,,2,,28,16,,76,2,s
+Å KODA AUTO VYSOKÃ Å KOLA o.p.s.,Å koda Auto University,a,MladÃ¡ Bolesav,,,,,,,,2,,42,20,,88.29700000000001,2,s
+VysokÃ¡ Å¡kola Sting,,,,,,,,,,,,,,,,,,
+Anglo-americkÃ¡ vysokÃ¡ Å¡kola,,,,,,,,,,,,,,,,,,
+PraÅ¾skÃ¡ vysokÃ¡ Å¡kola psychosociÃ¡lnÃ­ch studiÃ­,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola ekonomie a managementu,,,,,,,,,,,,,,,,,,
+University of New York in Prague,,,,,,,,,,,,,,,,,,
+FilmovÃ¡ akademi Miroslava OndÅ™Ã­Äka v PÃ­sku,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola tÄ›lesnÃ© vÃ½chovy a sportu Palestra,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola NEWTON,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola logistiky,,,,,,,,,,,,,,,,,,
+MoravskÃ¡ vysokÃ¡ Å¡kola Olomouc,,,,,,,,,,,,,,,,,,
+CEVRO Institut,,,,,,,,,,,,,,,,,,
+Unicorn VysokÃ¡ Å¡kola,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola PRIGO,PRIGO College,a,HavÃ­Å™ov,,,,,,,,2,,23,10,,34,2,s
+ARCHIP,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola kreativnÃ­ komunikace,,,,,,,,,,,,,,,,,,
+Ambis VysokÃ¡ Å¡kola,Ambis College,a,Prague,,,,,,,,2,,123,85,,196.91500000000002,2,s
+Prague City VysokÃ¡ Å¡kola s. r. o.,Prague City University,a,Prague,,,,,,,,2,,5,9,,11.63,2,s
+Allensbach Hochschule,Allensbach University,a,Konstanz,1325325,503615,1828940,,0,0,0,,2035771,14,2,15,21,2,s
+Freie Hochschule Stuttgart,,,,,,,,,,,,,,,,,,
+Hochschule fÃ¼r Politik MÃ¼nchen,Bavarian School of Public Policy,a,Munich,3611623,3196328,6807951,,6985336,0,34798,,0,11,14,0,44,2,s
+DIU-Dresden Intern. University GmbH Dresden (Priv. H),Dresden International University GmbH,a,Dresden,2391101,5230629,7621730,,0,158219,40550,,4086545,8,9,0,40,2,s
+Theologische  Hochschule Friedensau,Friedensau Adventist University,a,MÃ¶ckern,3986343,2541797,6528140,,0,0,0,,716289,30,9,8,58,2,s
+Akademie der Bildenden KÃ¼nste MÃ¼nchen,Academy of Fine Arts in Munich,a,Munich,9445879,2375841,11821720,,11601158,28697,0,,3797,78,73,37,126,2,s
+Hochschule fÃ¼r Fernsehen und Film MÃ¼nchen,University of Television and Film Munich,a,Munich,8645535,3398643,12044178,,11591420,51100,0,,34451,39,25,22,104,2,s
+Akademie der Bildenden KÃ¼nste NÃ¼rnberg,Academy of Fine Arts in Nuremberg,a,Nuremberg,4734381,1054885,5789266,,6597924,6700,0,,1605,37,47,18,58,2,s
+Hochschule fÃ¼r Musik NÃ¼rnberg,Nuremberg School of Music,a,Nuremberg,9473994,1951778,11425772,,11378849,0,0,,47448,119,96,43,119,2,s
+WeiÃŸensee Kunsthochschule Berlin,WeiÃŸensee Academy of Art Berlin,a,Berlin,10583852,3630925,14214777,,11689347,988388,216849,,143439,91,121,45,145,2,s
+Hochschule fÃ¼r Musik Hanns Eisler Berlin,Academy of Music Hanns Eisler Berlin,a,Berlin,12483810,3580048,16063858,,14757494,0,26500,,246700,209,130,67,180,2,s
+"Hochschule fÃ¼r Schauspielkunst ""Ernst Busch"" Berlin",Ernst Busch Academy of Dramatic Art,a,Berlin,8147906,2664339,10812245,,10195515,124009,18057,,51271,63,80,34,111,2,s
+Hochschule fÃ¼r KÃ¼nste Bremen,University of the Arts Bremen,a,Bremen,12791821,7308679,20100500,,19637279,671322,277264,,166331,141,103,59,174,2,s
+Alanus Hochschule Alfter (Priv. H),,a,Alfter,7919737,5868221,13787958,,0,0,868424,,6655660,68,41,80,156,2,s
+Hochschule der Bildenden KÃ¼nste SaarbrÃ¼cken,Hochschule der Bildenden KÃ¼nste SaarbrÃ¼cken,a,SaarbrÃ¼cken,4440504,1455977,5896481,,5808514,19000,0,,73392,57,18,16,62,2,s
+Palucca Hochschule fÃ¼r Tanz Dresden,Palucca University of Dance Dresden,a,Dresden,4445628,1822397,6268025,,6098184,0,19499,,119268,28,25,12,67,2,s
+Hochschule fÃ¼r Graphik und Buchkunst Leipzig,Academy of Visual Arts Leipzig,a,Leipzig,7169580,1986485,9156065,,9268248,94302,0,,57506,55,75,33,100,2,s
+Hochschule Aalen - Technik und Wirtschaft,Aalen University,a,Aalen,45171631,11217277,56388908,,51922070,13085553,2548777,,1292976,519,178,147,640,2,s
+Hochschule Albstadt-Sigmaringen (FH),Albstadt-Sigmaringen University,a,Albstadt,20348515,5890978,26239493,,24075235,1658686,546326,,1257048,315,117,77,289,2,s
+Fachhochschule Biberach a. d. Riss,Biberach University of Applied Sciences,a,Biberach an der Riss,20284565,6209292,26493857,,21884049,4124047,608811,,691822,350,132,86,298,2,s
+Hochschule Esslingen (FH),University of Applied Sciences Esslingen,a,Esslingen am Neckar,48020073,11820195,59840268,,86637941,3065653,3275688,,1252878,560,242,220,669,2,s
+Hochuschule Furtwangen (FH),Furtwangen University,a,Furtwangen im Schwarzwald,48786885,16696672,65483557,,53943246,7507547,1701610,,2008247,592,304,178,684,2,s
+Hochschule Heilbronn,Heilbronn University of Applied Sciences,a,Heilbronn,49777791,14732264,64510055,,50221277,4067667,1809635,,1499649,579,222,213,729,2,s
+Hochschule Karsruhe - Technik und Wirtschaft,Karlsruhe University of Applied Sciences,a,Karlsruhe,52415965,19933046,72349011,,49013603,8663703,1039649,,1636954,699,255,185,715,2,s
+Hochschule Konstanz - Technik,,,,,,,,,,,,,,,,,,
+Hochschule der Bundesagentur fÃ¼r Arbeit,University of Applied Labour Studies of the Federal Employment Agency,a,Mannheim,14106266,8263762,22370028,,0,201731,0,,0,78,60,53,166,2,s
+Hochschule Mannheim (FH),University of Applied Sciences Mannheim,a,Mannheim,39234491,10686619,49921110,,41628900,10272555,0,,1024450,406,175,161,538,2,s
+Hochschule fÃ¼r Wirtschaft und Umwelt NÃ¼rtingen-Geislingen,Nuertingen-Geislingen University,a,Geislingen an der Steige,30344533,9000872,39345405,,33139754,2494933,583806,,925093,427,254,121,469,2,s
+Hochschule Offenburg,Offenburg University,a,Offenburg,34704823,7683137,42387960,,33164754,5946032,1116096,,1169977,428,153,131,476,2,s
+Hochschule Pforzheim - Gestaltung,,,,,,,,,,,,,,,,,,
+Duale Hochschule Baden WÃ¼rttemberg,,,,,,,,,,,,,,,,,,
+Hochschule Ravensburg-Weingarten,University of Applied Sciences Ravensburg-Weingarten,a,Weingarten,22665152,5920773,28585925,,25711435,1721280,195064,,910523,285,128,94,311,2,s
+Hochschule Reutlingen,Reutlingen University,a,Reutlingen,45837240,16157458,61994698,,60523811,5079670,1408244,,1465505,489,231,156,638,2,s
+Hochschule fÃ¼r Forstwirtschaft Rottenburg (FH),University of Applied Forest Sciences Rottenburg,a,Rottenburg am Neckar,8664351,2025934,10690285,,9187419,1820022,106455,,203080,59,33,30,96,2,s
+Hochschule fÃ¼r Gestaltung SchwÃ¤bisch GmÃ¼nd,University of Design SchwÃ¤bisch-GmÃ¼nd,a,SchwÃ¤bisch GmÃ¼nd,5731589,2623262,8354851,,7675870,270557,9824,,133429,102,40,23,86,2,s
+Fachhochschule Stuttgart,,,,,,,,,,,,,,,,,,
+Hochschule fÃ¼r Technik Stuttgart,Stuttgart University of Applied Sciences,a,Stuttgart,28891983,10046656,38938639,,34028476,3420882,302980,,990370,422,175,121,423,2,s
+Hochschule Ulm,University of Applied Sciences Ulm,a,Ulm,26421199,3651092,30072291,,29163492,2398479,678496,,396270,243,81,116,338,2,s
+SRH Hochschule Heidelberg (Priv. FH),,a,Heidelberg,15724499,14157640,29882139,,0,456947,606188,,24290254,167,150,84,274,2,s
+Karlshochschule International University,,,,,,,,,,,,,,,,,,
+SRH Fernhochschule Riedlingen,SRH Fernhochschule Riedlingen,a,Riedlingen,13013558,8847086,21860644,,0,101462,0,,27609460,142,119,58,251,2,s
+AKAD,,,,,,,,,,,,,,,,,,
+Merz Akademie Hochschule fÃ¼r Gestaltung,,,,,,,,,,,,,,,,,,
+Evang. Hochschule Freiburg (FH),,a,Freiburg im Breisgau,5214665,1190714,6405379,,0,0,0,,727427,46,58,24,69,2,s
+Evangelische Hochschule Ludwigsburg,Evangelische Hochschule Ludwigsburg,a,Ludwigsburg,8846514,2712111,11558625,,0,464505,318457,,270657,17,52,38,75,2,s
+Katholische Hochschule Freiburg i.Br.,Catholic University of Applied Sciences Freiburg,a,Freiburg im Breisgau,9441052,4086995,13528047,,0,1441096,127765,,1260656,91,140,40,139,2,s
+Ostbayerische Technische Hochschule Amberg-Weiden,Ostbayerische Technische Hochschule Amberg-Weiden,a,Amberg,30424507,11225736,41650243,,41329347,4725374,1496057,,586073,271,113,110,413,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Ansbach,Ansbach University of Applied Sciences,a,Ansbach,21877499,5556014,27433513,,26501181,1258295,136832,,364520,252,147,90,335,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Aschaffenburg,Aschaffenburg University of Applied Sciences,a,Aschaffenburg,25698294,8954828,34653122,,35630952,3849212,1003697,,426396,224,108,112,365,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Augsburg,Augsburg University of Applied Sciences,a,Augsburg,44692433,15946501,60638934,,56965403,4708811,2360,,508107,571,254,178,634,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Coburg,Coburg University of Applied Sciences,a,Coburg,34772693,11891102,46663795,,45666009,4202157,930312,,1116128,292,143,134,494,2,s
+Technische Hochschule Deggendorf,Deggendorf Institute of Technology,a,Deggendorf,66839850,18986822,85826672,,75942445,9836160,1647603,,2199416,774,307,190,1071,2,s
+Hochschule fÃ¼r Angewandte Wissenschaften Hof,Hof University of Applied Sciences,a,Hof,30377988,11423205,41801193,,33212077,5104344,1046986,,3690949,256,121,111,428,2,s
+Technische Hochschule Ingolstadt,Technische Hochschule Ingolstadt,a,Ingolstadt,53053686,11850284,64903970,,49611660,9887909,8572757,,1614229,629,183,199,782,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Kempten,Kempten University of Applied Sciences,a,Kempten,42967602,14292101,57259703,,48493886,99083,2345798,,1057272,374,174,159,577,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Landshut,University of Applied Sciences Landshut,a,Landshut,29601473,8551376,38152849,,40001781,2081085,251549,,100,240,145,133,393,2,s
+Hochschule fÃ¼r angewandte Wissenschaften MÃ¼nchen,Munich University of Applied Sciences,a,Munich,107316761,32632327,139949088,,124262111,8190198,1707350,,162703,1167,531,510,1454,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Neu-Ulm,Neu-Ulm University of Applied Sciences,a,Neu-Ulm,21237912,7896346,29134258,,25463231,1513899,130736,,12835,207,139,87,294,2,s
+Technische Hochschule NÃ¼rnberg Georg Simon Ohm,Technische Hochschule NÃ¼rnberg Georg Simon Ohm,a,Nuremberg,85107842,26830644,111938486,,101550722,11123747,2884893,,1245807,1098,473,336,1243,2,s
+Ostbayerische Technische Hochschule Regensburg,Ostbayerische Technische Hochschule Regensburg,a,Regensburg,61698794,20471355,82170149,,82064106,8862489,3478875,,1141093,778,382,241,928,2,s
+Hochschule fÃ¼r angewandte Wissenschaften Rosenheim,Rosenheim University of Applied Sciences,a,Rosenheim,44083597,15033116,59116713,,63299261,2722297,1733617,,1186278,433,240,188,610,2,s
+Hochschule fÃ¼r angewandte Wissenschafte Weihenstephan-Triesdorf,Weihenstephan-Triesdorf University of Applied Sciences,a,Freising,49539962,18876805,68416767,,58044762,7320385,2049708,,358456,461,262,151,745,2,s
+Hochschule fÃ¼r angewandte Wissenschafte WÃ¼rzburg-Schweinfurt,University of Applied Sciences WÃ¼rzburg-Schweinfurt,a,Schweinfurt,57412600,17715292,75127892,,70104406,7073481,377680,,101008,583,286,256,803,2,s
+Hochschule fÃ¼r angewandtes Management-Fachhochschule,University of Applied Management,a,Erding,6524075,7785482,14309557,,0,73320,74459,,14705289,179,94,59,127,2,s
+Hochschule fÃ¼r angewandte Sprachen,,,,,,,,,,,,,,,,,,
+Hochschule Macromedia,Macromedia University of Applied Sciences,a,Munich,19820389,25230163,45050552,,0,111259,92727,,46147278,597,364,126,437,2,s
+Munich Business School MÃ¼nchen (Priv. FH),Munich Business School MÃ¼nchen (Priv. FH),a,Munich,4290026,2884093,7174119,,0,0,0,,6711203,37,20,10,53,2,s
+Evangelische Hochschule NÃ¼rnberg (FH),Evangelische Hochschule NÃ¼rnberg (FH),a,Nuremberg,7456995,2055926,9512921,,0,7345811,0,,330319,80,118,42,122,2,s
+Katholische Stiftungsfachhochschule MÃ¼nchen,Katholische Stiftungsfachhochschule MÃ¼nchen,a,Munich,15160412,4652772,19813184,,0,929866,380175,,544552,195,306,63,226,2,s
+Alice Salomon Hochschule Berlin,Alice Salomon Hochschule Berlin,a,Berlin,21427257,6897951,28325208,,29418010,1738965,0,,437318,174,392,76,342,2,s
+Beuth Hochschule fÃ¼r Technik Berlin,Beuth University of Applied Sciences,a,Berlin,65178818,23576136,88754954,,84408825,2204307,427909,,1313519,704,287,302,879,2,s
+Hochschule fÃ¼r Technik und Wirtschaft Berlin,Berlin University of Applied Sciences,a,Berlin,78038235,22732885,100771120,,87804927,8170682,202988,,4698778,879,494,295,1041,2,s
+Hochschule fÃ¼r Wirtschaft und Recht (HWR) Berlin,Berlin School of Economics and Law,a,Berlin,55243055,17227775,72470830,,61790804,2899864,112232,,3942677,766,388,228,777,2,s
+bbw Hochschule Berlin (Priv. FH),bbw University of Applied Sciences,a,Berlin,4027463,2238817,6266280,,0,846441,0,,5124591,61,29,25,63,2,s
+Hochschule fÃ¼r Gesundheit und Sport Berlin (Priv. FH),Hochschule fÃ¼r Gesundheit und Sport Berlin (Priv. FH),a,Berlin,2798716,5098030,7896746,,0,69123,41134,,8301249,122,95,23,82,2,s
+IB-Hochschule Berlin (Priv. FH),IB-Hochschule Berlin (Priv. FH),a,Berlin,3320218,1593555,4913773,,0,40065,0,,3555074,40,92,15,65,2,s
+Mediadesign Hochschule Berlin (Priv. FH),Mediadesign University of Applied Sciences,a,Berlin,4545017,4909300,9454317,,0,0,0,,7952140,35,11,36,77,2,s
+SRH Hochschule Berlin (Priv. FH),SRH University Berlin,a,Berlin,13770717,12190830,25961547,,0,595522,327439,,23834936,244,124,87,249,2,s
+Evangelische Hochschule Berlin (FH),Protestant Fachhochschule Berlin,a,Berlin,12185354,1759273,13944627,,0,1062644,8634,,156630,81,144,48,139,2,s
+Katholische Hochschule fÃ¼r Sozialwesen Berlin (FH),Catholic University for Applied Sciences Berlin,a,Berlin,8650019,2676874,11326893,,0,1317065,150898,,647887,47,94,37,116,2,s
+Hochschule fÃ¼r nachhaltige Entwicklung Eberswalde (FH),University of Applied Sciences in Eberswalde,a,Eberswalde,24354217,9751212,34105429,,15482326,13716448,1828986,,228669,218,268,59,378,2,s
+Fachhochschule Potsdam,Potsdam University of Applied Sciences,a,Potsdam,25256130,7323508,32579638,,27523204,3122666,213683,,544881,238,188,102,362,2,s
+Technische Hochschule Wildau (FH),Technical University of Applied Sciences Wildau,a,Wildau,30466761,7807578,38274339,,26851507,8601909,742252,,1677444,309,123,85,403,2,s
+Hochschule Bremen,City University of Applied Sciences Bremen,a,Bremen,54226452,18987115,73213567,,62402038,4237918,812470,,828554,472,290,185,674,2,s
+Hochschule Bremerhaven,University of Applied Sciences Bremerhaven,a,Bremerhaven,19425793,10614687,30040480,,27693336,3356952,82316,,272884,260,105,77,284,2,s
+APOLLON Hochschule der Gesundheitswirtschaft Bremen (Priv. FH),University of Applied Sciences Apollon,a,Bremen,4149546,5316683,9466229,,0,0,0,,10328219,110,209,16,119,2,s
+EuropÃ¤ische Fernhochschule Hamburg GmbH Hamburg (Priv. FH),EuropÃ¤ische FernHochschule Hamburg GmbH Hamburg (Priv. FH),a,Hamburg,8901735,16663432,25565167,,0,123512,0,,26729200,274,287,34,228,2,s
+HFH Hamburger Fern-Hochschule (Priv. FH),HFH Hamburger Fern-Hochschule (Priv. FH),a,Hamburg,19459488,14238655,33698143,,0,39678,0,,31633088,787,705,18,548,2,s
+HSBA Hamburg School of Business Administration (Priv. FH),HSBA Hamburg School of Business Administration (Priv. FH),a,Hamburg,4821875,5197779,10019654,,0,0,1227337,,6725670,106,39,27,64,2,s
+Evangelische Hochschule fÃ¼r Soziale Arbeit und Diakonie,,,,,,,,,,,,,,,,,,
+h_da - Hochschule Darmstadt (FH),Darmstadt University of Applied Sciences,a,Darmstadt,90994203,31315614,122309817,,115622062,5887728,949316,,1690257,890,405,356,1253,2,s
+Frankfurt University of Applied Sciences,Frankfurt University of Applied Sciences,a,Frankfurt am Main,76377518,29039262,105416780,,99767710,7703906,682067,,1827433,882,508,290,1075,2,s
+Technische Hochschule Mittelhessen,Technische Hochschule Mittelhessen,a,GieÃŸen,88437087,30132385,118569472,,100726185,6088006,1176199,,1605497,608,217,245,1119,2,s
+Hochschule der Deutschen Gesetzl. Unfallversicherung,,,,,,,,,,,,,,,,,,
+accadis Hochschule Bad Homburg (Priv. FH),accadis Hochschule Bad Homburg (Priv. FH),a,Bad Homburg,2863559,1154093,4017652,,0,0,35200,,4062433,19,13,14,35,2,s
+Wilhelm BÃ¼chner Hochschule Darmstadt (Priv. Fern-FH),Wilhelm BÃ¼chner Hochschule Darmstadt (Priv. Fern-FH),a,Pfungstadt,5430355,12368109,17798464,,0,0,0,,16224959,352,82,23,153,2,s
+Provadis School of International Management and Technology,,,,,,,,,,,,,,,,,,
+Hochschule Fresenius Idstein (Priv. FH),Fresenius University Applied Sciences,a,Idstein,42107398,47650643,89758041,,0,940057,381336,,89001119,1036,736,260,1048,2,s
+DIPLOMA Hochschule,DIPLOMA Hochschule,a,BÃ¼ckeburg,7961868,8341441,16303309,,0,0,0,,16502321,105,53,39,201,2,s
+Evangelische Hochschule Darmstadt (EHD),,,,,,,,,,,,,,,,,,
+Hochschule Neubrandenburg,Neubrandenburg University of Applied Sciences,a,Neubrandenburg,19713384,6154436,25867820,,24217367,2962078,217892,,224768,146,173,80,282,2,s
+Hochschule Stralsund,Stralsund University of Applied Sciences,a,Stralsund,18169700,6166737,24336437,,25331946,1541956,74583,,5122,141,75,78,253,2,s
+Hochschule Wismar,Wismar University of Applied Sciences Technology,,,,,,,,,,,,,,,,,
+Ostfalia Hochschule fÃ¼r angewandte Wissenschaften,Ostfalia University of Applied Sciences,a,WolfenbÃ¼ttel,69746153,33391839,103137992,,103484402,5784319,1107439,,1304855,534,347,234,896,2,s
+Hochschule Hannover (FH),Hannover University of Applied Sciences and Arts,a,Hannover,61307052,21395766,82702818,,74976567,6449191,1172936,,248000,534,352,279,864,2,s
+HAWK Hochschule fÃ¼r Angewandte Wissenschaften und Kunst Hildesheim/Holzminden/GÃ¶ttingen,University of Applied Sciences and Arts Hildesheim/Holzminden/GÃ¶ttingen,a,Hildesheim,52656894,19683906,72340800,,66983537,4832744,2428172,,539267,576,553,186,773,2,s
+Hochschule OsnabrÃ¼ck (FH),OsnabrÃ¼ck University of Applied Sciences,a,OsnabrÃ¼ck,92692745,33738094,126430839,,124669648,12543220,2051750,,2679136,1328,821,286,1360,2,s
+Hochschule 21,,,,,,,,,,,,,,,,,,
+PFH - Private Hochschule GÃ¶ttingen,PFH â€“ Private University of Applied Sciences,a,GÃ¶ttingen,8024801,9052170,17076971,,0,758641,0,,16004702,32,23,18,116,2,s
+Private Fachhochschule der Wirtschaft Hannover,University of Applied Sciences in Hannover,a,Hannover,2683208,1416992,4100200,,0,16364,0,,3813119,26,3,17,22,2,s
+Hochschule fÃ¼r KÃ¼nste im Sozialen,HKS - University of applied sciences and arts in Ottersberg,a,Ottersberg,1494061,669855,2163916,,0,535837,0,,1308770,38,45,7,34,2,s
+Private Hochschule fÃ¼r Wirtschaft und Technik Vechta/Diepholz/Oldenburg,Private Hochschule fÃ¼r Wirtschaft und Technik Vechta/Diepholz/Oldenburg,a,Vechta,4655817,1216226,5872043,,0,156352,504694,,2377357,63,14,24,66,2,s
+Fachhochschule MÃ¼nster,MÃ¼nster University of Applied Sciences,a,MÃ¼nster,90788453,45648786,136437239,,122035499,10084467,6447805,,0,979,745,291,1245,2,s
+IU Internationale Hochschule,IU International University of Applied Sciences,a,Bad Honnef,83926872,342827033,426753905,,0,684505,216581,,443425244,2063,1495,697,1291,2,s
+Fachhochschule des Mittelstandes Bielefeld (Priv. FH),,a,Bielefeld,16522823,12383615,28906438,,0,0,0,,27663758,89,92,71,216,2,s
+EBZ Business School Bochum (Priv. FH),EBZ Business School - University of Applied Sciences,a,Bochum,3670159,2153822,5823981,,0,0,0,,3900068,60,17,16,56,2,s
+Hochschule der Sparkassen-Finanzgruppe Bonn (Priv. FH),University of Applied Sciences - Bonn,a,Bonn,5687123,3597127,9284250,,0,0,85500,,2874509,69,11,15,75,2,s
+EuropÃ¤ische FH (EUFH) Rhein/Erft (Priv.),European University of Applied Sciences,a,BrÃ¼hl,6804029,10307449,17111478,,0,47552,56609,,14526319,97,74,34,132,2,s
+Private Fachhochschule International School of Management,,,,,,,,,,,,,,,,,,
+Private Fachhochschule fÃ¼r Ã–konomie und Management Essen,FOM University of Applied Sciences,a,Essen,82418460,82466921,164885381,,0,1016086,0,,161823693,1481,509,477,1390,2,s
+SRH Hochschule fÃ¼r Logistik und Wirtschaft Hamm (Priv. FH),SRH Hochschule fÃ¼r Logistik und Wirtschaft Hamm (Priv. FH),a,Hamm,3532569,2970059,6502628,,0,0,232359,,5536212,89,55,20,71,2,s
+University of Europe for Applied Sciences,University of Europe for Applied Sciences,a,Iserlohn,10842840,27867774,38710614,,0,0,44988,,36537265,221,121,65,180,2,s
+Private Rheinische Fachhochschule KÃ¶ln,Rheinische Fachhochschule Cologne,a,Cologne,9824977,2311139,12136116,,0,10445431,0,,0,287,102,98,275,2,s
+Private Fachhochschule der Wirtschaft Paderborn,Private Fachhochschule der Wirtschaft Paderborn,a,Paderborn,7580069,7431955,15012024,,0,367214,10195,,13715199,129,29,39,86,2,s
+Fachhochschule der Diakonie Bielefeld-Bethel,Fachhochschule der Diakonie Bielefeld-Bethel,a,Bielefeld,2265231,1486169,3751400,,0,233544,0,,2441114,34,28,11,30,2,s
+Katholische Hochschule Nordrhein-Westfalen,Nordrhein-Westfalen Catholic University of Applied Sciences,a,MÃ¼nster,23061036,12575911,35636947,,0,10040102,0,,989788,234,419,128,477,2,s
+Technische Hochschule Bingen,TH Bingen University of Applied Sciences,a,Bingen am Rhein,16321826,4291248,20613074,,15679728,1162734,309895,,571224,195,80,73,232,2,s
+Hochschule Kaiserslautern,Kaiserslautern University of Applied Sciences,a,Kaiserslautern,36763322,12229367,48992689,,45145024,4887017,996492,,8422,316,176,154,506,2,s
+Hochschule Koblenz,Koblenz University of Applied Sciences,a,Koblenz,44173672,9790160,53963832,,48705173,4274300,1777190,,114998,374,260,165,580,2,s
+Hochschule Ludwigshafen am Rhein (FH),University of Applied Sciences Ludwigshafen am Rhein,a,Ludwigshafen am Rhein,21904008,7605812,29509820,,25169299,1660020,658873,,85357,237,172,89,318,2,s
+Hochschule Mainz,Mainz University of Applied Sciences,a,Mainz,33590916,8695830,42286746,,36706284,5289026,423326,,80709,426,236,178,514,2,s
+Hochschule Trier,Trier University of Applied Sciences,a,Trier,50917164,9423364,60340528,,44916603,6887301,2086326,,145687,395,188,179,676,2,s
+Hochschule Worms,Worms University of Applied Sciences,a,Worms,17314202,9250409,26564611,,24260150,1029203,235368,,97239,174,61,69,240,2,s
+Katholische Hochschule Mainz,Mainz Catholic University of Applied Sciences,a,Mainz,7163917,3831448,10995365,,0,1445863,150000,,346092,75,133,32,109,2,s
+Hochschule fÃ¼r Technik und Wirtschaft des Saarlandes SaarbrÃ¼cken,University of Applied Sciences SaarbrÃ¼cken,a,SaarbrÃ¼cken,43851703,12962429,56814132,,46831693,5690151,344510,,1312025,461,272,125,608,2,s
+Deutsche Hochschule fÃ¼r PrÃ¤vention und Gesundheitsmanagement,,,,,,,,,,,,,,,,,,
+Hochschule Mittweida (University of Applied Sciences),University of Applied Sciences Mittweida,a,Mittweida,38893403,10979452,49872855,,36661940,9755374,1584922,,1591837,313,147,112,539,2,s
+WestsÃ¤chsische Hochschule Zwickau,University of Applied Sciences Zwickau,a,Zwickau,40886674,12299213,53185887,,69655792,7281782,674855,,211478,295,152,139,543,2,s
+Hochschule Flensburg,Flensburg University of Applied Sciences,a,Flensburg,22486096,8870793,31356889,,30335319,2408880,456589,,118553,168,93,83,298,2,s
+Fachhochschule WestkÃ¼ste,,,,,,,,,,,,,,,,,,
+Fachhochschule Kiel,Kiel University of Applied Sciences,a,Kiel,37800339,10218652,48018991,,53337570,1613220,1131868,,501125,312,198,155,514,2,s
+Technische Hochschule LÃ¼beck,Technical University LÃ¼beck,a,LÃ¼beck,35182931,9654001,44836932,,44063776,3394967,158818,,713095,238,85,119,467,2,s
+NORDAKADEMIE Hochschule der Wirtschaft,NORDAKADEMIE University of Applied Sciences,a,Elmshorn,8217971,5769715,13987686,,0,60030,0,,11403545,36,18,24,80,2,s
+Private Fachhochschule Wedel,University of Applied Sciences,,,,,,,,,,,,,,,,,
+Fachhochschule Erfurt,Erfurt University of Applied Sciences,a,Erfurt,31907865,12506356,44414221,,32523491,5016981,5100,,158691,286,200,123,461,2,s
+Hochschule Nordhausen,Nordhausen University of Applied Sciences,a,Nordhausen,17957519,4077516,22035035,,19016900,4323977,45320,,203974,141,153,44,240,2,s
+Hochschule Schmmalkalden,University of Applied Sciences Schmalkalden,a,Schmalkalden,16820949,9443079,26264028,,14445218,3689027,102305,,157267,118,54,65,224,2,s
+SRH Hochschule fÃ¼r Gesundheit Gera (Priv. FH),SRH University of Applied Sciences Gera,a,Gera,4551349,2819461,7370810,,0,218152,0,,7421021,32,35,44,70,2,s
+Hochschule fÃ¼r Ã¶ffentliche Verwaltung Kehl,University of Public Administration Kehl,a,Kehl,9639777,4477214,14116991,,11142176,210481,501605,,112748,180,90,47,139,2,s
+Hochschule Ludwigsburg fÃ¼r Ã¶ffentliche Verwaltung und Finanzen,University of Applied Sciences - Public Administration and Finance Ludwigsburg,a,Ludwigsburg,13761406,3920483,17681889,,17668496,71640,24000,,381538,289,159,75,219,2,s
+FH der Polizei Brandenburg (VerwFH) in Oranienburg,FH der Polizei Brandenburg (VerwFH) in Oranienburg,a,Oranienburg,44222293,10031847,54254140,,54961923,0,0,,0,127,49,11,458,2,s
+Hessische Hochschule fÃ¼r Polizei und Verwaltung,Hessische Hochschule fÃ¼r Polizei und Verwaltung,a,Wiesbaden,35278229,15318815,50597044,,51568401,254960,0,,1220956,402,144,43,312,2,s
+Kommunale Hochschule fÃ¼r Verwaltung in Niedersachsen,Kommunale Hochschule fÃ¼r Verwaltung in Niedersachsen,a,Hannover,4265084,1620111,5885195,,6346762,0,0,,0,17,6,9,42,2,s
+Fachhochschule fÃ¼r Rechtspflege NW,,,,,,,,,,,,,,,,,,
+Fachhochschule fÃ¼r Ã¶ffentliche Verwaltung Nordrhein-Westfalen,University of Applied Sciences for Public Administration and Management of North Rhine-Westphalia,a,Gelsenkirchen,52772502,31345462,84117964,,83265758,246574,0,,706236,829,325,178,813,2,s
+Hochschule des Bundes fÃ¼r Ã¶ffentliche Verwaltung,Federal University of Applied Administrative Sciences,a,BrÃ¼hl,66673443,36244220,102917663,,101076149,0,0,,4,444,212,176,903,2,s
+Hochschule fÃ¼r Ã¶ffentliche Verwaltung und Rechtspflege MeiÃŸen (FH),Hochschule fÃ¼r Ã¶ffentliche Verwaltung und Rechtspflege MeiÃŸen (FH),a,MeiÃŸen,13056199,4161872,17218071,,14996605,176439,0,,0,114,51,15,166,2,s
+Hochschule der SÃ¤chsischen Polizei,,,,,,,,,,,,,,,,,,
+ThÃ¼ringer Fachhochschule fÃ¼r Ã¶ffentliche Verwaltung Gotha,ThÃ¼ringer Fachhochschule fÃ¼r Ã¶ffentliche Verwaltung Gotha,a,Gotha,6610619,277708,6888327,,6437791,0,0,,479965,45,14,0,87,2,s
+Hochschule fÃ¼r Medien,,,,,,,,,,,,,,,,,,
+Hochschule fÃ¼r Wirtschaft,,,,,,,,,,,,,,,,,,
+International Psychoanalytic University Berlin,International Psychoanalytic University Berlin,a,Berlin,6938789,4341277,11280066,,0,309016,388479,,6056101,37,53,23,92,2,s
+Hochschule Emden/Leer,Hochschule Emden/Leer,a,Emden,36050777,19175574,55226351,,52290224,1612881,1845442,,88462,291,169,113,449,2,s
+Brand Academy - Hochschule fÃ¼r Design und Kommunikation,,a,Hamburg,1773508,2347877,4121385,,0,0,0,,3321876,28,11,8,26,2,s
+MSH Medical School Hamburg,MSH Medical School Hamburg,a,Hamburg,29945119,13866888,43812007,,0,1272207,286047,,45867988,,,,,2,s
+Hochschule Hamm-Lippstadt,Hamm-Lippstadt University of Applied Sciences,a,Hamm,30267327,28826977,59094304,,63619146,3097849,190065,,900,244,152,107,406,2,s
+Cologne Business School (CBS) - European University of Applied Sciences (Priv. FH),Cologne Business School (CBS) - European University of Applied Sciences (Priv. FH),a,Cologne,13992077,13144178,27136255,,0,109740,13642,,19373178,88,72,70,253,2,s
+Hochschule der Wirtschaft fÃ¼r Management (HdWM) Mannheim (Priv. FH),University of Applied Management Studies,a,Mannheim,2366244,1597685,3963929,,0,91896,0,,2227859,77,48,19,55,2,s
+Psychologische Hochschule Berlin (Priv. U),,a,Berlin,4093711,4045951,8139662,,0,698070,0,,3545975,18,37,14,65,2,s
+Bard College Berlin,Bard College Berlin,a,Berlin,4704189,7918793,12622982,,0,106233,1819550,,8680082,26,35,14,76,2,s
+Internationale Hochschule Liebenzell,,a,Bad Liebenzell,2006998,842667,2849665,,0,0,0,,1079415,29,12,9,32,2,s
+Akkon HS Berlin (Priv. FH),Akkon University for Applied Sciences,a,Berlin,4016166,1387744,5403910,,0,238087,27000,,5617604,74,60,23,65,2,s
+Fachhochschule fÃ¼r Sport und Management Potsdam (Priv.),,a,Potsdam,1481719,528519,2010238,,0,21174,480,,2557814,22,10,9,23,2,s
+BSP Business and Law School â€“ Hochschule fÃ¼r Management und Recht,,a,Berlin,7838278,2798407,10636685,,0,583434,0,,10636645,67,48,52,108,2,s
+CVJM-Hochschule Kassel (Priv. FH),YMCA University of Applied Sciences,a,Kassel,2720186,2489616,5209802,,0,0,0,,2710532,24,30,11,31,2,s
+Hochschule Weserbergland (HSW),,,,,,,,,,,,,,,,,,
+Leibniz - Fachhochschule Hannover (Priv. FH),Leibniz - Fachhochschule Hannover (Priv. FH),a,Hannover,2471168,1566818,4037986,,0,0,0,,3582198,11,5,14,29,2,s
+Fliedner Fachhochschule DÃ¼sseldorf (Priv. ),Fliedner Fachhochschule DÃ¼sseldorf (Priv. ),a,DÃ¼sseldorf,7133435,3137317,10270752,,0,330900,210614,,9696695,86,103,52,107,2,s
+Fachhochschule Dresden (Priv. FH),Fachhochschule Dresden (Priv. FH),a,Dresden,2387240,982244,3369484,,0,231332,72253,,2902265,38,32,17,44,2,s
+Jade Hochschule,Jade University of Applied Sciences,a,Wilhelmshaven,50619135,17791450,68410585,,60211829,4528940,216436,,63000,511,235,175,640,2,s
+SRH Wilhelm LÃ¶he Hochschule,,a,FÃ¼rth,1837118,1042713,2879831,,0,116904,0,,1818067,16,14,11,25,2,s
+Medical School Berlin,,,,,,,,,,,,,,,,,,
+IST-Hochschule fÃ¼r Management DÃ¼sseldorf (Priv. FH),,a,DÃ¼sseldorf,4347874,5470766,9818640,,0,24630,0,,14820749,115,38,25,78,2,s
+HDBW Hochschule der Bayerischen Wirtschaft fÃ¼r angewandte Wissenschaften (Priv. FH),,a,Munich,3034797,1095343,4130140,,0,0,0,,2731576,38,12,12,28,2,s
+Berlin International University of Applied Sciences,Berlin International University of Applied Sciences,a,Berlin,2592276,2127622,4719898,,0,0,5002490,,3421514,53,44,18,51,2,s
+NBS Northern Business School Hamburg (Priv. FH),NBS Northern Business School,a,Hamburg,2869144,1092332,3961476,,0,155160,0,,2996130,62,18,24,56,2,s
+HSD Hochschule DÃ¶pfer KÃ¶ln (Priv. FH),,a,Cologne,4945942,1868718,6814660,,0,95926,16540,,5370538,38,61,28,75,2,s
+Hochschule Fresenius Heidelberg (Priv. FH),,a,Heidelberg,2515744,2004724,4520468,,0,0,0,,5923119,41,26,18,38,2,s
+German International University,,a,Berlin,870715,336821,1207536,,0,0,0,,1439597,39,22,6,23,2,s
+Berufliche Hochschule Hamburg,,a,Hamburg,4008635,681984,4690619,,4184290,535249,0,,27715,21,14,10,43,2,
+Charlotte Fresenius Hochschule,,a,Idstein,2250655,1991502,4242157,,0,0,0,,3270932,18,34,4,34,2,
+Hochschule fÃ¼r angewandte PÃ¤dagogik,University of Applied Education,a,Berlin,1400146,267102,1667248,,0,0,253141,,1359919,8,12,14,18,2,s
+Digital Business University of Applied Sciences,,a,Berlin,1582338,1168454,2750792,,0,48019,120000,,1789310,23,8,11,22,2,s
+CODE University of Applied Sciences,CODE University of Applied Sciences,a,Berlin,5133584,2875043,8008627,,0,1095703,508406,,2886356,27,13,10,55,2,s
+Hochschule der bildenden KÃ¼nste (HBK) Essen,Essen University of Fine Arts,a,Essen,2692740,887997,3580737,,0,7200,0,,2923827,32,16,17,39,2,s
+GISMA Business School,,a,Hannover,2051580,4886189,6937769,,0,0,0,,6530392,24,7,11,38,2,s
+Duale Hochschule Schleswig-Holstein,,a,Flensburg,1792501,792184,2584685,,0,0,0,,0,47,14,18,32,2,s
+Evangelische Hochschule Tabor,Evangelical University of Tabor,a,Marburg,996076,289300,1285376,,0,11850,0,,579856,18,10,12,18,2,s
+HMU Health and Medical University,HMU Health and Medical University,a,Erfurt,,,,,,,,,,,,,,2,s
+Hochschule fÃ¼r Katholische Kirchenmusik und MusikpÃ¤dagogik,University of Catholic Church Music and Music Education Regensburg,a,Regensburg,2712966,1371150,4084116,,0,2217440,0,,91777,55,43,8,39,2,s
+Designskolen Kolding,Design School Kolding,a,Kolding,7991920.43914158,2985679.582332336,11308700.962299857,7059013.005140319,8030439.275792186,278221.4229153525,964178.8240346804,1,423438.77920788096,,,,,2,s
+Eesti EttevÃµtluskÃµrgkool Mainor,Estonian Entrepreneurship University of Applied Sciences,a,Tallinn,2363853,2706209,5070062,0,255984,0,0,1,4108878,,,,,2,s
+Tallinna Tervishoiu KÃµrgkool,Tallinn Health Care College,a,Tallinn,6489240.6,2563492.2299999995,9052732.829999998,8842409,9846136.07,0,0,0,0,,,,,2,s
+Tartu Tervishoiu KÃµrgkool,Tartu Health Care College,a,Tartu,4369131.0200000005,1673420.85,6042551.870000001,5677397.17,6623289.24,0,0,0,0,,,,,2,s
+Sisekaitseakadeemia,Estonian Academy of Security Sciences,a,Tallinn,,,,,,,,2,,,,,,2,s
+KaitsevÃ¤e Akadeemia,Estonian Military Academy,a,Tartu,,,,,,,,2,,,,,,2,s
+EELK Usuteaduse Instituut,Institute of Theology of the Estonian Evangelical Lutheran Church,a,Tallinn,,,,,,,,2,,,,,,2,s
+EEKBKL KÃµrgem Usuteaduslik Seminar,Theological Seminary,a,Tartu,,,,,,,,2,,,,,,2,a
+Lapin ammattikorkeakoulu,Lapland University of Applied Sciences,a,Rovaniemi,,,47157605,36340000,39390333,,,1,,143.19109999999998,206.89149999999995,17.695800000000002,392.4076999999999,2,s
+HÃ¶gskolan pÃ¥ Ã…land,Ã…land University of Applied Sciences,a,Maarianhamina - Mariehamn,,,,,,,,1,,,,,,2,s
+HAAGA-HELIA ammattikorkeakoulu,HAAGA-HELIA University of Applied Sciences,a,Helsinki,,,73969768,56513056,63488858,,,1,,157.52139999999997,270.70130000000006,42.776300000000006,689.7374,2,s
+Metropolia ammattikorkeakoulu,Metropolia University of Applied Sciences,a,Helsinki,,,120457084,94101000,106884826,,,1,,263.965,378.26940000000013,60.668499999999995,1016.2601000000006,2,s
+YrkeshÃ¶gskolan Novia,Novia University of Applied Sciences,a,Vaasa,,,33480658,24051000,27034539,,,1,,91.91999999999999,107.91340000000007,7.2391000000000005,320.4959000000001,2,s
+Tampereen ammattikorkeakoulu,Tampere University of Applied Sciences,a,Tampere,,,80288474,62301173,77927194,,,1,,192.91850000000002,248.58959999999993,38.7549,711.8369000000002,2,s
+HÃ¤meen ammattikorkeakoulu,HÃ¤me University of Applied Sciences,a,HÃ¤meenlinna,,,64658256,46222997,57951653,,,1,,142.20049999999998,205.59290000000016,18.5922,671.9221999999997,2,s
+Karelia-ammattikorkeakoulu,Karelia University of Applied Sciences,a,Joensuu,,,31524396,25260970,27395643,,,1,,93.4662,119.64599999999999,12.2521,302.23890000000006,2,s
+Oulun ammattikorkeakoulu,Oulu University of Applied Sciences,a,Oulu,,,60169739,52421337,54557226,,,1,,165.58149999999998,227.39830000000018,52.1892,443.84650000000016,2,s
+SeinÃ¤joen ammattikorkeakoulu,SeinÃ¤joki University of Applied Sciences,a,SeinÃ¤joki,,,37902845,28320911,32804141,,,1,,101.78269999999999,160.1894,20.7701,379.4716999999998,2,s
+Kajaanin ammattikorkeakoulu,Kajaani University of Applied Sciences,a,Kajaani,,,26559266,15921000,19955797,,,1,,91.937,118.2449,12.8574,270.0999999999999,2,s
+JyvÃ¤skylÃ¤n ammattikorkeakoulu,JAMK University of Applied Sciences,a,JyvÃ¤skylÃ¤,,,79711164,50796000,62838436,,,1,,205.70889999999957,297.29819999999927,23.086900000000007,807.5476999999984,2,s
+Satakunnan ammattikorkeakoulu,Satakunta University of Applied Sciences,a,Pori,,,42641827,34299104,38775927,,,1,,112.94999999999997,188.59999999999994,11.39,419.3799999999997,2,s
+Turun ammattikorkeakoulu,Turku University of Applied Sciences,a,Turku,,,83991446,63656000,70599870,,,1,,205.19699999999997,298.44010000000003,50.073100000000004,741.4863000000003,2,s
+YrkeshÃ¶gskolan Arcada,Arcada University of Applied Sciences,a,Helsinki,,,20603975,14984763,16807430,,,1,,47.4165,49.809900000000006,19.645,176.7406,2,s
+Centria ammattikorkeakoulu,Centria University of Applied Sciences,a,Kokkola,,,32679533,18132000,25648596,,,1,,127.66669999999999,130.89069999999998,17.0728,339.38349999999997,2,s
+Savonia ammattikorkeakoulu,Savonia University of Applied Sciences,a,Kuopio,,,58962277,47297778,51712027,,,1,,187.60999999999996,247.18000000000023,18.439999999999998,556.8500000000001,2,s
+Poliisiammattikorkeakoulu,Police University college,a,Tampere,,,,,,,,1,,,,,,2,s
+Diakonia-ammattikorkeakoulu,Diaconia University of Applied Sciences,a,Helsinki,,,25458431,20107000,20681485,,,1,,27.424599999999998,151.15259999999998,6.9008,253.7931,2,s
+Vaasan ammattikorkeakoulu,Vaasa University of Applied Sciences,a,Vaasa,,,21141213,14591000,17578116,,,1,,60.37609999999999,59.29149999999999,12.814000000000002,178.65649999999997,2,s
+Laurea ammattikorkeakoulu,Laurea University of Applied Sciences,a,Vantaa,,,65256459,48869633,53030517,,,1,,96.01700000000002,328.3009,35.6149,657.7924999999993,2,s
+Humanistinen ammattikorkeakoulu,Humak University of Applied Sciences,a,Helsinki,,,16590719,13303904,13817567,,,1,,24.278299999999998,74.38490000000002,7.487500000000001,151.9337000000001,2,s
+Kaakkois-Suomen ammattikorkeakoulu,South-Eastern Finland University of Applied Sciences,a,Mikkeli,,,95436810,70794000,80426048,,,1,,256.4504,366.9123000000001,31.7108,895.949599999997,2,s
+LAB-ammattikorkeakoulu,LAB University of Applied Sciences,a,Lahti,,,72919475,57380000,64880416,,,1,,177.6947,314.2279999999999,25.7683,558.5339999999999,2,s
+Ã‰cole de l'air,,a,Salon-de-Provence,,,,,,,,1,,,,,,2,
+Ã‰cole supÃ©rieure d'art et de design Marseille-MediterranÃ©e,,a,Marseille,,,,,,,,,,,,,,2,
+Ã‰cole supÃ©rieure d'arts et mÃ©dias de Caen - Cherbourg,Ã‰cole supÃ©rieure d'arts et mÃ©dias de Caen - Cherbourg,a,Caen,,,,,,,,,,,,,,2,
+Ã‰cole nationale supÃ©rieure d'ingÃ©nieurs de Caen,,a,Caen,13502863,5704640,19207503,11356927,13971360,446764,,1,244729,66,25,20,,2,
+Ã‰cole supÃ©rieure d'ingÃ©nieurs des travaux de la construction de Caen,,a,Ã‰pron,,,,,,,,1,,,,,,2,
+Ã‰cole d'ingÃ©nieurs en gÃ©nie des systÃ¨mes industriels,Ã‰cole d'ingÃ©nieurs en gÃ©nie des systÃ¨mes industriels,a,La Rochelle,,,,,,,,1,,,,,,2,
+Ã‰cole nationale des greffes,,a,Dijon,,,,,,,,,,,,,,,
+Ã‰cole nationale supÃ©rieure de mÃ©canique et des microtechniques,,a,BesanÃ§on,11611869,5506019,17117888,,,,,1,225210,51,16,19,,2,
+Ã‰cole Navale,,a,LanvÃ©oc,,,,,,,,1,,,,,,2,
+Ã‰cole nationale supÃ©rieure de techniques avancÃ©es Bretagne,,a,Brest,,,,,,,,1,,,,,,2,
+Institut supÃ©rieur de l'Ã©lectronique et du numÃ©rique Brest,,a,Brest,,,,,,,,1,,,,,,2,
+Ã‰cole des mines d'AlÃ¨s,,a,AlÃ¨s,,,,,,,,1,,,,,,2,
+Institut supÃ©rieur des Arts de Toulouse,,a,Toulouse,,,,,,,,,,,,,,2,
+Ã‰cole d'ingÃ©nieurs de Purpan,,a,Toulouse,,,,,,,,1,,,,,,2,
+Institut catholique de Toulouse,Catholic University of Toulouse,a,Toulouse,,,,,,,,,,,,,,2,
+Ã‰cole nationale de l'aviation civile,French Civil Aviation University,a,Toulouse,,,,,,,,1,,,,,,2,
+Institut supÃ©rieur de l'aÃ©ronautique et de l'espace,,a,Toulouse,,,,,,,,1,,,,,,2,
+Ã‰cole nationale supÃ©rieure d'architecture et de paysage de Bordeaux,,a,Talence,,,,,,,,,,,,,,2,
+Ã‰cole nationale supÃ©rieure des sciences agronomiques de Bordeaux Aquitaine,,a,Gradignan,,,,,,,,1,,,,,,2,
+Ã‰cole des beaux-arts de Bordeaux,,a,Bordeaux,,,,,,,,,,,,,,2,
+Ã‰cole nationale de la magistrature,French national school for the judiciary,a,Bordeaux,,,,,,,,,,,,,,2,
+Institut polytechnique de Bordeaux,,a,Talence,7344201,8492873,15837074,9897095,12949323,821130,,1,1058239,181,85,69,,2,
+Institut national d'Ã©tudes supÃ©rieures agronomiques de Montpellier,,a,Montpellier,,,,,,,,1,,,,,,2,
+Katholieke Hogeschool Vives Noord,Catholic University College Vives Noord,Flemish Community,Brugge,26475218.51,10336523.25,37843340.870000005,29020108.91,32707469.47,1190334.82,40916.310000000056,2,4046487.8600000003,126,187,,264.14,1,s
+ÐšÐ¾Ð»ÐµÐ¶ Ð¿Ð¾ Ñ‚ÑƒÑ€Ð¸Ð·ÑŠÐ¼ - Ð‘Ð»Ð°Ð³Ð¾ÐµÐ²Ð³Ñ€Ð°Ð´,Blagoevgrad College of Tourism,a,Blagoevgrad,,,,,,,,,,20,18,7,,1,s
+ÐšÐ¾Ð»ÐµÐ¶ Ð¿Ð¾ Ð¼ÐµÐ½Ð¸Ð´Ð¶Ð¼ÑŠÐ½Ñ‚,,,,,,,,,,,,,,,,,,
+"Ð¢ÐµÐ°Ñ‚Ñ€Ð°Ð»ÐµÐ½ ÐºÐ¾Ð»ÐµÐ¶ ""Ð›ÑŽÐ±ÐµÐ½ Ð“Ñ€Ð¾Ð¹Ñ""",Luben Groys Theatre College,a,Sofia,,,,,,,,,,14,11,1,,1,s
+Casa College,Casa College,a,Nicosia,361995,527109,889104,,,,,,,5,9,0,19,1,s
+Cyprus College,Cyprus College,a,Nicosia,,,,,,,,,,59,49,0,43,1,s
+Intercollege,Intercollege,a,Nicosia,,,,,,,,,,33,19,0,39,1,s
+KES College,KES College,a,Nicosia,997381,514973,1512354,,,,,,,37,38,0,38,1,s
+VysokÃ¡ Å¡kola evropskÃ½ch a regionÃ¡lnÃ­ch studiÃ­,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola zdravotnickÃ¡,,,,,,,,,,,,,,,,,,
+VysokÃ¡ Å¡kola aplikovanÃ© psychologie,,,,,,,,,,,,,,,,,,
+ART & DESIGN INSTITUT,,,,,,,,,,,,,,,,,,
+Î‘ÏƒÏ„Ï…Î½Î¿Î¼Î¹ÎºÎ® Î‘ÎºÎ±Î´Î·Î¼Î¯Î± ÎšÏÏ€ÏÎ¿Ï…,The Cyprus Police Academy,a,Nicosia,1574480,455431,2029911,0,0,0,0,0,0,29,19,0,54,0,s
+Post-Secondary Institutes of Vocational Education and Training,Post-Secondary Institutes of Vocational Education and Training,a,Nicosia,,,,,,,,,,123,38,0,99,0,s
+Ã‰cole des hautes Ã©tudes en santÃ© publique,,a,Rennes,48587794,12927228,61515022,54824485,57197294,600824,,,108603,4,10,6,,,
+Institut national des sciences appliquÃ©es de Rennes,,a,Rennes,34249013,9131577,43380590,31119289,36678685,2176849,,1,915987,155,53,45,,3,
+UniversitÃ© Rennes 2,University of Rennes 2 â€“ Upper Brittany,a,Rennes,110259303,19001833,129261136,106129353,111807345,3100634,,1,1657723,395,449,133,,3,
+UniversitÃ© de Tours,University of Tours,a,Tours,183237019,37202613,220439632,185672582,199103808,6377060,,1,4413375,783,616,312,,3,
+Grenoble INP,Grenoble institute of technology,a,Grenoble,90259693,34365018,124624711,96263117,106833648,8100064,,1,534311,496,245,175,,3,
+UniversitÃ© Jean Monnet,Jean Monnet University,a,Saint-Ã‰tienne,122402007,25945221,148347228,120890244,135900587,1778410,,1,2387407,537,350,183,,3,
+ECAM Rennes Louis de Broglie,,a,Bruz,,,,,,,,1,,,,,,2,
+Institut catholique de Rennes,Catholic University of Rennes,a,Bruz,,,,,,,,,,,,,,2,
+Ã‰cole des mÃ©tiers de l'environnement,Ã‰cole des mÃ©tiers de l'environnement,a,Bruz,,,,,,,,1,,,,,,2,
+Ã‰cole des Avocats du Grand Ouest,,a,Bruz,,,,,,,,,,,,,,2,
+Ã‰cole nationale de la statistique et de l'analyse de l'information,,a,Bruz,,,,,,,,1,,,,,,2,
+Institut supÃ©rieur des sciences agronomiques,,,,,,,,,,,,,,,,,,
+Ã‰cole supÃ©rieure d'art de Grenoble,,a,Grenoble,,,,,,,,,,,,,,2,
+Ã‰cole supÃ©rieure d'art et design Saint-Ã‰tienne,,a,Saint-Ã‰tienne,,,,,,,,,,,,,,,
+Telecom Saint-Ã‰tienne,,a,Saint-Ã‰tienne,,,,,,,,1,,,,,,2,
+Fachhochschule fÃ¼r Rechtspflege Schwetzingen,Schwetzingen Technical Institute & Graduate Court Registrars' College,a,Schwetzingen,2418025,525552,2943577,,2345895,0,0,,0,40,58,0,60,1,s
+Hochschule der Polizei Baden-WÃ¼rttemberg,Hochschule der Polizei Baden-WÃ¼rttemberg,a,Villingen-Schwenningen,20023664,19038698,39062362,,39809007,96050,0,,0,81,31,44,282,1,s
+Hochschule fÃ¼r den Ã¶ffentlichen Dienst in Bayern,Hochschule fÃ¼r den Ã¶ffentlichen Dienst in Bayern,a,FÃ¼rstenfeldbruck,29177011,18415795,47592806,,53430402,1857168,0,,0,399,200,1,481,1,s
+Fachhochschule fÃ¼r Finanzen Brandenburg in KÃ¶nigs Wusterhausen,Fachhochschule fÃ¼r Finanzen Brandenburg in KÃ¶nigs Wusterhausen,a,KÃ¶nigs Wusterhausen,3984046,4446672,8430718,,2563610,0,0,,0,15,15,0,53,1,s
+Hochschule fÃ¼r Ã¶ffentliche Verwaltung Bremen,Hochschule fÃ¼r Ã¶ffentliche Verwaltung Bremen,a,Bremen,2743200,441745,3184945,,2686597,240516,0,,57895,103,46,10,52,1,s
+Norddeutsche Akademie fÃ¼r Finanzen und Steuerrecht Hamburg,Norddeutsche Akademie fÃ¼r Finanzen und Steuerrecht Hamburg,a,Hamburg,2502823,742002,3244825,,3244825,0,0,,0,31,25,0,33,1,s
+Hessische Hochschule fÃ¼r Finanzen und Rechtspflege,Hessische Hochschule fÃ¼r Finanzen und Rechtspflege,a,Rotenburg an der Fulda,9976366,13248580,23224946,,22900734,0,0,,656550,28,11,1,107,1,s
+Verwaltungs-Fachhochschule GÃ¼strow,University of Applied Sciences of Public Administration,,,,,,,,,,,,,,,,,
+Norddeutsche Hochschule fÃ¼r Rechtspflege,,,,,,,,,,,,,,,,,,
+Fachhochschule fÃ¼r Finanzen NRW,Fachhochschule fÃ¼r Finanzen NRW,a,Nordkirchen,11249429,25665615,36915044,,39318570,0,0,,1793589,91,82,18,290,1,s
+Hochschule fÃ¼r Finanzen Rheinland-Pfalz,Hochschule fÃ¼r Finanzen Rheinland-Pfalz,a,Edenkoben,4555758,849197,5404955,,4352349,0,0,,0,28,17,0,58,1,s
+Hochschule der Deutschen Bundesbank Hachenburg,University of Applied Sciences in Hachenburg,a,Hachenburg,5188416,5062153,10250569,,9816905,0,0,,0,106,35,18,96,1,s
+Hochschule fÃ¼r Ã¶ffentliche Verwaltung Rheinland-Pfalz,Hochschule fÃ¼r Ã¶ffentliche Verwaltung Rheinland-Pfalz,a,Mayen,4441492,822706,5264198,,1516934,0,0,,220652,67,21,0,87,1,s
+Fachhochschule fÃ¼r Verwaltung SaarbrÃ¼cken,Fachhochschule fÃ¼r Verwaltung SaarbrÃ¼cken,a,Quierschied,650413,1649309,2299722,,770637,1529085,0,,0,98,33,0,101,1,s
+Fachhochschule Polizei Sachsen-Anhalt,,,,,,,,,,,,,,,,,,
+Fachhochschule fÃ¼r Verwaltung und Dienstleistung Altenholz,Fachhochschule fÃ¼r Verwaltung und Dienstleistung Altenholz,a,Altenholz,13650665,1295457,14946122,,84120,154049,0,,9063940,168,79,8,132,1,s
+VWA-Hochschule fÃ¼r berufsbegleitendes Studium Stuttgart (Priv.FH),,a,Freiburg im Breisgau,590239,165785,756024,,0,0,0,,417909,1,1,2,4,1,s
+Hochschule fÃ¼r Kommunikation und Gestaltung (Priv. FH),,a,Stuttgart,680274,1005441,1685715,,0,0,0,,585510,5,2,5,4,1,s
+Hochschule der Polizei Rheinland-Pfalz in BÃ¼chenbeuren,,a,BÃ¼chenbeuren,54202805,4704948,58907753,,57075652,0,0,,0,67,22,0,445,1,s
+Akademie der Polizei Hamburg,Akademie der Polizei Hamburg,a,Hamburg,3879864,1138918,5018782,,4305477,28250,52396,,0,46,22,20,48,1,s
+Fachhochschule Clara Hoffbauer Potsdam (Priv. FH),,a,Potsdam,1022004,848063,1870067,,0,0,0,,1028192,13,15,7,15,1,s
+Duale Hochschule Gera-Eisenach (FH),,a,Gera,8671551,4331836,13003387,,12853410,216063,600,,3603,114,41,47,129,1,s
+ProfessionshÃ¸jskolen University College Nordjylland,University College of Northern Denmark,a,HjÃ¸rring,74169966.04437049,24404165.93968514,100801111.27514797,83850541.54531668,87443261.88782564,647841.200391899,1253539.8408245984,1,7154303.506958891,,,,,1,s
+University College Syddanmark,University College South Denmark,a,Esbjerg,48576682.011569075,14866123.555543626,66593029.03005006,55771785.95874324,57638808.734515294,433773.1012360923,612275.0271779249,1,4512609.214994162,,,,,1,s
+University College LillebÃ¦lt,University College Lillebaelt,a,Odense,81872015.1927955,27590826.20891436,112589986.84722652,100098642.71430297,101307317.90790375,1044373.1629736006,1378378.585137366,1,8819098.63237998,,,,,1,s
+ProfessionshÃ¸jskolen Absalon,University College Absalon,a,SorÃ¸,65684621.32091425,22303740.89036224,90667528.8891275,71778716.12825297,76105717.56432109,1867952.1936947214,1743052.248721631,1,6499724.999664471,,,,,1,s
+VIA University College,VIA University College,a,Risskov,170209907.52794966,57431988.081976674,233952408.43388048,193689487.17604586,200844193.3189279,205210.10884591125,5804802.104443759,1,14223113.986229852,,,,,1,s
+KÃ¸benhavns Erhvervsakademie (KEA),The Copenhagen School of Design and Technology,a,Copenhagen,38225924.38497363,20763059.49616825,61236921.57994337,55869020.25258694,55869020.25258694,223160.4235729912,0,1,6847742.017742823,,,,,1,s
+Erhvervsakademi SjÃ¦lland,Zealand Institute of Business and Technology,a,KÃ¸ge,25100017.3133447,9140386.933122173,35140394.98584064,32805680.387604184,33441548.403548565,0,0,1,2641976.137110953,,,,,1,s
+Erhvervsakademi Dania,Dania Academy,a,Randers,15556404.461206028,7445296.004509523,23409838.67720678,18544671.65040465,18748076.742406957,24681.71630272853,23719.684870284127,1,4490669.449328269,,,,,1,s
+IBA Erhvervsakademi Kolding,IBA International Business Academy,a,Kolding,12192621.025647908,7064113.060167228,19788347.716383256,11088056.476398824,11476868.566213477,0,0,1,5054825.591539278,,,,,1,s
+Erhvervsakademiet Copenhagen Business,Copenhagen Business Academy,a,Copenhagen,36638792.75657974,20283697.09296863,57674733.22149002,45480696.91849307,45850764.14392892,121286.97741212472,0,1,9581815.324323235,,,,,1,s
+Erhvervsakademi SydVest,EA Business Academy SouthWest,a,Esbjerg,11202736.045309963,4004849.2128467704,15461690.131393524,12426434.793112243,12770702.599685945,39599.24304446443,0,1,2842775.1009945106,,,,,1,s
+Erhvervsakademi Midtvest,Business Academy of higher education MidWest (in Danish),a,Herning,6271225.757962125,1771780.456052289,8312150.881101612,5947383.940195144,6192347.6358560715,37819.458052047405,0,1,1411027.1242400247,,,,,1,s
+Erhvervsakademi Aarhus,Business Academy Aarhus,a,Viby,31706371.042424407,16467003.986095639,49019581.52706385,40021742.339851566,40396730.596303806,40934.65218966836,0,1,6651277.026936343,,,,,1,s
+Danmarks Medie og JournalisthÃ¸jskole,Danish School of Media and Journalism,a,Aarhus,14527444.201371647,11614704.532338375,26530509.871290717,18806815.955119517,19689930.746621214,398475.3519709029,202596.06222067133,1,2574653.934424029,,,,,1,s
+SIMAC,Svendborg International Maritime Academy (SIMAC),a,Svendborg,7671231.260653076,3232600.6254278007,11342246.842663303,10546695.298554538,10644125.407668872,1945.2683568427976,0,1,16905.74293038425,,,,,1,s
+Den Frie LÃ¦rerskole,The Independent Academy for Free School Teaching,a,Vester Skerninge,2237984.672992524,1217302.6077386625,3560912.1045779707,2640620.5961695905,2640620.5961695905,0,0,1,473231.42170744477,,,,,1,s
+KÃ¸benhavns ProfessionshÃ¸jskole,University College Copenhagen,a,Copenhagen,150047338.5765478,50691166.03363352,206570125.3539841,170277539.8945094,176816355.60804737,2173786.3882215573,4818677.743628287,1,17945653.008361407,,,,,1,s
+Aarhus Maskinmesterskole,Aarhus School of Marine and Technical Engineering,a,Aarhus,9234484.290488398,4445172.932129005,14357601.632017609,13740117.032841671,13760248.829000523,0,33377.712759532405,1,1989495.094552336,,,,,1,s
+Maskinmesterskolen KÃ¸benhavn,Copenhagen School of Marine Engineering and Technology Management,a,Lyngby,6340874.927861064,2577580.158101706,9445167.697862003,10408808.466091344,10408808.466091344,42514.729764189564,0,0,0,,,,,1,s
+Fredericia Maskinmesterskole,Fredericia School of Marine Engineering,a,Fredericia,6170127.09873975,2193694.7214430473,8574668.831953187,7694372.491913728,7751278.369056087,0,0,1,76635.03737803487,,,,,1,s
+Martec - Frederikshavns Maritime uddannelsescenter,MARTEC - Maritime and Polytechnic College,a,Frederikshavn,8595623.615939014,3850246.0105490615,13061178.381135166,11471170.462628676,12148918.654122321,0,2142.6941711739523,1,324643.4658900267,,,,,1,s
+Tallinna TehnikakÃµrgkool,TTK University of Applied Sciences,a,Tallinn,8500480.44,4421016.12,12921496.559999999,11936850.52,14156364.69,0,0,0,0,,,,,1,s
+Eesti Lennuakadeemia,Estonian Aviation Academy,a,Reola,3062738.6200000006,2193986.9199999995,5256725.54,4742823.34,5454150.81,0,0,0,0,,,,,1,s
+KÃµrgem Kunstikool Pallas,Pallas University of Applied Sciences,a,Tartu,2123670.55,1020577.1499999999,3144247.6999999997,2897847.67,3232765.42,0,0,0,0,,,,,1,s
+Eesti Metodisti Kiriku Teoloogiline Seminar,Baltic Methodist Theological Seminar,a,Tallinn,,,,,,,,2,,,,,,1,s
+Kriminalforsorgens Uddannelsescenter,Probation Learning Center,a,BirkerÃ¸d,,,,,,,,,,,,,,0,s
+Politiskolen,Police Academy,a,BrÃ¸ndby,,,,,,,,,,,,,,0,s
