@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Comments (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (post_id) REFERENCES Posts(post_id)
 );
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Reactions (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (post_id) REFERENCES Posts(post_id)
 );
 
@@ -66,14 +66,23 @@ CREATE TABLE IF NOT EXISTS Farms (
 CREATE TABLE IF NOT EXISTS FarmsData (
     farm_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
-    longitite FLOAT,
+    longitude FLOAT,
     latitude FLOAT,
     country VARCHAR(50),
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (farm_id) REFERENCES Farms(farm)id
+    FOREIGN KEY (farm_id) REFERENCES Farms(farm_id)
+);
+
+CREATE TABLE IF NOT EXISTS Crops (
+    crop_id INT AUTO_INCREMENT PRIMARY KEY,
+    crop_name VARCHAR(50),
+    created_by VARCHAR(100) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_by VARCHAR(100) DEFAULT NULL,
+    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS crop_list (
@@ -81,16 +90,7 @@ CREATE TABLE IF NOT EXISTS crop_list (
     crop_id INT NOT NULL,
     PRIMARY KEY (farm_data_id, crop_id),
     FOREIGN KEY (farm_data_id) REFERENCES FarmsData(farm_data_id),
-    FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
-);
-
-CREATE TABLE IF NOT EXISTS FarmsData (
-    crop_id INT AUTO_INCREMENT PRIMARY KEY,
-    crop_name VARCHAR(50),
-    created_by VARCHAR(100) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_by VARCHAR(100) DEFAULT NULL,
-    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (crop_id) REFERENCES Crops(crop_id)
 );
 
 CREATE TABLE IF NOT EXISTS IdealCropData (
