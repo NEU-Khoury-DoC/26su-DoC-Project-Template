@@ -7,12 +7,51 @@ CREATE TABLE country (
     country_name VARCHAR(30) NOT NULL
 );
 
+INSERT INTO country (country_id, country_name) VALUES
+(1, 'Belgium'),
+(2, 'Bulgaria'),
+(3, 'Czechia'),
+(4, 'Denmark'),
+(5, 'Germany'),
+(6, 'Estonia'),
+(7, 'Ireland'),
+(8, 'Greece'),
+(9, 'Spain'),
+(10, 'France')
+(11, 'Croatia'),
+(12, 'Italy'),
+(13, 'Cyprus'),
+(14, 'Latvia'),
+(15, 'Lithuania'),
+(16, 'Luxembourg'),
+(17, 'Hungary'),
+(18, 'Netherlands'),
+(19, 'Austria'),
+(20, 'Poland'),
+(21, 'Portugal'),
+(22, 'Romania'),
+(23, 'Slovenia'),
+(24, 'Slovakia'),
+(25, 'Finland'),
+(26, 'Sweden'),
+(27, 'Iceland'),
+(28, 'Norway'),
+(29, 'Switzerland')
+(30, 'United Kingdom'),
+(31, 'Montenegro'),
+(32, 'North Macedonia'),
+(33, 'Albania'),
+(34, 'Serbia'),
+(35, 'Turkiye')
+(36, 'Konsovo');
+
+
 CREATE TABLE social_indicator_types (
     sit_id INTEGER PRIMARY KEY
     name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE social_indicator_types (
+CREATE TABLE social_indicator_stats (
     stats_id INTEGER PRIMARY KEY
     country_id INTEGER NOT NULL
     sit_id INTEGER NOT NULL
@@ -44,6 +83,18 @@ CREATE TABLE university (
     CONSTRAINT fk_uni_country FOREIGN KEY (country_id) REFERENCES country (country_id)
 )
 
+INSERT INTO university (university_id, country_id, university_name, city_name, address) VALUES
+(1, 1, 'KU Leuven', 'Leuven', 'Oude Markt 13, 3000 Leuven, Belgium'),
+(2, 1, 'Ghent University', 'Ghent', 'Sint-Pietersnieuwstraat 25, 9000 Ghent, Belgium'),
+(3, 1, 'Université catholique de Louvain', 'Louvain-la-Neuve', 'Place de lUniversité 1, 1348 Louvain-la-Neuve, Belgium'),
+(4, 2, 'Sofia University', 'Sofia', '15 Tsar Osvoboditel Blvd, Sofia 1504, Bulgaria'),
+(5, 2, 'Plovdiv University', 'Plovdiv', '24 Tsar Asen St, Plovdiv 4000, Bulgaria'),
+(6, 3, 'Charles University', 'Prague', 'Ovocný trh 5, 116 36 Praha 1, Czechia'),
+(7, 3, 'Czech Technical University in Prague', 'Prague', 'Zikova 4, 166 36 Praha 6, Czechia'),
+(8, 4, 'University of Copenhagen', 'Copenhagen', 'Nørregade 10, 1165 København K, Denmark'),
+(9, 4, 'Aarhus University', 'Aarhus', 'Nordre Ringgade 1, 8000 Aarhus C, Denmark'),
+(10, 5, 'Technical University of Munich', 'Munich', 'Arcisstraße 21, 80333 München, Germany');
+
 CREATE TABLE user (
     user_id INTEGER PRIMARY KEY
     university_id INTEGER
@@ -73,6 +124,18 @@ CREATE TABLE listing (
     CONSTRAINT fk_listing_user FOREIGN KEY (user_id) REFERENCES user (user_id)
 )
 
+INSERT INTO listing (listing_id, country_id, associated_university_id, user_id, price, property_type, city_name) VALUES
+(1, 1, 1, 1, 500.00, 'Apartment', 'Leuven'),
+(2, 1, 2, 2, 450.00, 'Studio', 'Ghent'),
+(3, 1, 3, 3, 550.00, 'Apartment', 'Louvain-la-Neuve'),
+(4, 2, 4, 4, 400.00, 'Apartment', 'Sofia'),
+(5, 2, 5, 5, 350.00, 'Studio', 'Plovdiv'),
+(6, 3, 6, 6, 600.00, 'Apartment', 'Prague'),
+(7, 3, 7, 7, 650.00, 'Apartment', 'Prague'),
+(8, 4, 8, 8, 700.00, 'Apartment', 'Copenhagen'),
+(9, 4, 9, 9, 750.00, 'Apartment', 'Aarhus'),
+(10, 5, 10, 10, 800.00,'Apartment', 'Munich');
+
 CREATE TABLE reviews (
     review_id INTEGER PRIMARY KEY
     listing_id INTEGER NOT NULL
@@ -81,6 +144,13 @@ CREATE TABLE reviews (
 
     CONSTRAINT fk_reviews_listing FOREIGN KEY (listing_id) REFERENCES listing (listing_id)
 )
+
+INSERT INTO reviews (review_id, listing_id, rating, comment) VALUES
+(1, 1, 5, 'Great location and very affordable!'),
+(2, 1, 4, 'Close to the university but a bit noisy at night.'),
+(3, 2, 3, 'Decent place but the price is a bit high for the area.'),
+(4, 3, 4, 'Spacious apartment with good amenities.'),
+(5, 4, 2, 'Not well-maintained and had some issues with plumbing.');
 
 CREATE TABLE funding (
     funding_id INTEGER PRIMARY KEY
@@ -92,3 +162,10 @@ CREATE TABLE funding (
 
     CONSTRAINT fk_funding_country FOREIGN KEY (country_id) REFERENCES country (country_id)
 )
+
+INSERT INTO funding (funding_id, country_id, year, amount, program, agency) VALUES
+(1, 1, 2023, 500000.00, 'Affordable Housing Initiative', 'Belgian Housing Agency'),
+(2, 2, 2023, 300000.00, 'Student Housing Support', 'Bulgarian Ministry of Education'),
+(3, 3, 2023, 400000.00, 'University Housing Grant', 'Czech Ministry of Education'),
+(4, 4, 2023, 600000.00, 'Housing for Students Program', 'Danish Ministry of Higher Education'),
+(5, 5, 2023, 700000.00, 'Affordable Housing Fund', 'German Federal Ministry of Housing');
