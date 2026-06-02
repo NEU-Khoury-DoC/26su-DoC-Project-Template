@@ -12,7 +12,7 @@ CREATE TABLE social_indicator_types (
     name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE social_indicator_types (
+CREATE TABLE social_indicator_stats (
     stats_id INTEGER PRIMARY KEY
     country_id INTEGER NOT NULL
     sit_id INTEGER NOT NULL
@@ -25,12 +25,12 @@ CREATE TABLE social_indicator_types (
 );
 
 INSERT INTO social_indicator_types (sit_id, name) VALUES
-(1, 'Pollution')
-(2, 'Crime')
-(3, 'Poverty')
-(4, 'Overcrowding')
-(5, 'Noise')
-(6, 'House Price Index')
+(1, 'Pollution'),
+(2, 'Crime, Violence, and Vandalism'),
+(3, 'Poverty'),
+(4, 'Overcrowding'),
+(5, 'Noise'),
+(6, 'House Price Index'),
 (7, 'Under-occupied');
 
 
@@ -57,6 +57,20 @@ CREATE TABLE user (
     CONSTRAINT fk_user_country FOREIGN KEY (country_id) REFERENCES country (country_id)
     CONSTRAINT fk_user_uni FOREIGN KEY (university_id) REFERENCES university (university_id)
 )
+
+
+INSERT INTO user (user_id, university_id, country_id, name, role, email, max_budget, max_distance_km) VALUES
+(1, 1, 7, 'Seamus Coyne', 'Student', 'coyne.s@gmail.com', 1000, 10),
+(2, 2, 10, 'Nicole Stekol', 'Student', 'stekol.n@gmail.com', 750, 8),
+(3, 3, 22, 'Lauryn Gong', 'Student', 'gong.l@gmail.com', 500, 15);
+
+INSERT INTO user (user_id, country_id, name, role, email) VALUES
+(4, 25, 'Stevoon Sparkle', 'Real Estate Agent', 'sparkles@realestate.com'),
+(5, 31, 'Petar Pintar', 'Real Estate Agent', 'pintarp@realestate.com'),
+(6, 29, 'Elise Wisemann', 'Real Estate Agent', 'wisemanne@realestate.com'),
+(7, 12, 'Beth Lepore', 'Government Agency', 'leporeb@org.gov'),
+(8, 21, 'Susan Thatch', 'Government Agency', 'thatchs@org.gov'),
+(9, 13, 'George Igoe', 'Government Agency', 'igoeg@org.gov');
 
 
 CREATE TABLE listing (
