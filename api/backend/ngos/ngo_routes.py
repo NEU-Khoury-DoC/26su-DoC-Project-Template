@@ -11,7 +11,7 @@ ngo_bp = Blueprint("ngos", __name__)
 # Get all NGOs with optional filtering by country, focus area, and founding year
 # Example: /ngo/ngos?country=United%20States&focus_area=Environmental%20Conservation
 @ngo_bp.route("/ngos", methods=["GET"])
-def get_all_ngos():
+def get_all_ngos() -> Any:
     current_app.logger.info('GET /ngo/ngos')
     try:
         # Query parameters are added after the main part of the URL.
@@ -48,6 +48,7 @@ def get_all_ngos():
 # Get detailed information about a specific NGO including its projects and donors
 # Example: /ngo/ngos/1
 @ngo_bp.route("/ngos/<int:ngo_id>", methods=["GET"])
+#ngo_id in the route needs to be the same as ngo_id attribute in the function
 def get_ngo(ngo_id):
     current_app.logger.info(f'GET /ngo/ngos/{ngo_id}')
     try:
