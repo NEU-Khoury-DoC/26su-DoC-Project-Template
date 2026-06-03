@@ -12,10 +12,10 @@ SideBarLinks()
 st.title(f"Welcome Political Strategist, {st.session_state['first_name']}.")
 st.write('### What would you like to do today?')
 
-if st.button('View World Bank Data Visualization',
+if st.button('View Shaping EU Policies',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/01_World_Bank_Viz.py')
+    st.switch_page('pages/01_Shaping_EU.py')
 
 if st.button('View World Map Demo',
              type='primary',
