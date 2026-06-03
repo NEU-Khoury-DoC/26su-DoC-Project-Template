@@ -19,88 +19,88 @@ def about_page_nav():
 
 def farmer_home():
     st.sidebar.page_link(
-        "pages/01_Farmer_Home.py", label="Farmer Home", icon="👤"
+        "pages/01_Farmer_Home.py", label="Farmer Home", icon="👨‍🌾"
     )
     
 def farmer_info():
     st.sidebar.page_link(
-        "pages/02_Farm_Info.py", label="Farm Information", icon="👤"
+        "pages/02_Farm_Info.py", label="Farm Information", icon="🏡"
     )
     
 def all_farms():
     st.sidebar.page_link(
-        "pages/03_All_Farms.py", label="All Farms", icon="👤"
+        "pages/03_All_Farms.py", label="All Farms", icon="🚜"
     )
     
 def crop_prediction():
     st.sidebar.page_link(
-        "pages/04_Crop_Predictions.py", label="Crop Success Predictions", icon="👤"
+        "pages/04_Crop_Predictions.py", label="Crop Success Predictions", icon="🌾"
     )
     
 def farmer_blog():
     st.sidebar.page_link(
-        "pages/05_Farmer_Blog.py", label="Farmer Blogs", icon="👤"
+        "pages/05_Farmer_Blog.py", label="Discussion Board", icon="💭"
     )
 
 # ---- Role: usaid_worker -----------------------------------------------------
 
 def policy_home():
     st.sidebar.page_link(
-        "pages/11_Policy_Home.py", label="Policy Maker Home", icon="🏠"
+        "pages/11_Policy_Home.py", label="Policy Maker Home", icon="🧑‍💼"
     )
     
 def policy_map():
     st.sidebar.page_link(
-        "pages/12_Policy_Map.py", label="Policy Maker Map", icon="🏠"
+        "pages/12_Policy_Map.py", label="Crop Map", icon="🗺️"
     )
     
 def policy_compare():
     st.sidebar.page_link(
-        "pages/13_Policy_Compare.py", label="Policy Maker Compare", icon="🏠"
+        "pages/13_Policy_Compare.py", label="Compare Farms", icon="🚜"
     )
     
 def policy_report():
     st.sidebar.page_link(
-        "pages/14_Policy_Report.py", label="Policy Maker Predicitons", icon="🏠"
+        "pages/14_Policy_Report.py", label="Report Maker", icon="📝"
     )
     
 def policy_predictions():
     st.sidebar.page_link(
-        "pages/15_Policy_Predictions.py", label="Policy Maker Predicitons", icon="🏠"
+        "pages/15_Policy_Predictions.py", label="Crop Price Predicitons", icon="🌾"
     )
     
 def policy_analysis():
     st.sidebar.page_link(
-        "pages/16_Policy_Analysis.py", label="Policy Maker Analysis", icon="🏠"
+        "pages/16_Policy_Analysis.py", label="Policy Maker Analysis", icon="🖥️"
     )
     
 def policy_blog():
     st.sidebar.page_link(
-        "pages/17_Policy_Blog.py", label="Policy Maker Blog", icon="🏠"
+        "pages/17_Policy_Blog.py", label="Discussion Board", icon="💭"
     )
 
 # ---- Role: administrator ----------------------------------------------------
 
 def researcher_home():
-    st.sidebar.page_link("pages/21_Researcher_Home.py", label="Researcher Home", icon="🖥️")
+    st.sidebar.page_link("pages/21_Researcher_Home.py", label="Home", icon="👨‍🔬")
 
 def researcher_add_data():
-    st.sidebar.page_link("pages/22_Researcher_Add_Data.py", label="Researcher Add Data", icon="🖥️")
+    st.sidebar.page_link("pages/22_Researcher_Add_Data.py", label="Add Soil Data", icon="🪏")
 
 def researcher_visualize_data():
-    st.sidebar.page_link("pages/23_Researcher_Visualize_Data.py", label="Researcher Add Data", icon="🖥️")
+    st.sidebar.page_link("pages/23_Researcher_Visualize_Data.py", label="Visualize Data", icon="🗺️")
 
 def researcher_data_prediction():
-    st.sidebar.page_link("pages/24_Researcher_Data_Prediction.py", label="Researcher Data Prediction", icon="🖥️")
+    st.sidebar.page_link("pages/24_Researcher_Data_Prediction.py", label="Soil Health Prediction", icon="🌱")
     
 def researcher_data_export():
-    st.sidebar.page_link("pages/25_Researcher_Data_Export.py", label="Researcher Data Export", icon="🖥️")
+    st.sidebar.page_link("pages/25_Researcher_Data_Export.py", label="Data Export", icon="🖥️")
 
 def researcher_report():
-    st.sidebar.page_link("pages/26_Researcher_Report.py", label="Researcher Report", icon="🖥️")
+    st.sidebar.page_link("pages/26_Researcher_Report.py", label="Generate Reports", icon="📝")
 
 def researcher_blog():
-    st.sidebar.page_link("pages/27_Researcher_Blog.py", label="Researcher Blog", icon="🖥️")
+    st.sidebar.page_link("pages/27_Researcher_Blog.py", label="Discussion Board", icon="💭")
 
 # ---- Sidebar assembly -------------------------------------------------------
 
