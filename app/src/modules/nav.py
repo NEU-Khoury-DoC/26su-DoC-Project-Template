@@ -85,6 +85,11 @@ def household_owner_nav():
         label="Dashboard",
         icon="📊",
     )
+    st.sidebar.page_link(
+        "pages/41_Household_Persona_Info.py",
+        label="Persona Info",
+        icon="👤",
+    )
 
 
 # ---- Role: administrator ----------------------------------------------------
