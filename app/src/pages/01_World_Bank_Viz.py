@@ -19,10 +19,9 @@ st.header('World Bank Data')
 # You can access the session state to make a more customized/personalized app experience
 st.write(f"### Hi, {st.session_state['first_name']}.")
 
-# get the countries from the world bank data
+# get a list of all countries
 with st.echo(code_location='above'):
     countries:pd.DataFrame = wb.get_countries()
-   
     st.dataframe(countries)
 
 # the with statment shows the code for this block above it 
