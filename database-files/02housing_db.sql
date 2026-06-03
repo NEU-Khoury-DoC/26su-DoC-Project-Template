@@ -1,5 +1,6 @@
 USE housing_db;
 
+-- Insert all countries which EuroStat data convers
 INSERT INTO country (country_id, country_name, country_code) VALUES
 (1, 'Belgium', 'BE'),
 (2, 'Bulgaria', 'BG'),
@@ -38,6 +39,7 @@ INSERT INTO country (country_id, country_name, country_code) VALUES
 (35, 'Turkiye', 'TR'),
 (36, 'Kosovo', 'XK');
 
+-- The 7 datatypes covered with our EuroStat data
 INSERT INTO social_indicator_types (sit_id, name) VALUES
 (1, 'Pollution'),
 (2, 'Crime, Violence, and Vandalism'),
@@ -49,56 +51,56 @@ INSERT INTO social_indicator_types (sit_id, name) VALUES
 
 
 -- 50 Universities 
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (1,19,'Bowie State University','Vienna','8538 Becker Place');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (2,1,'Seattle Pacific University','Brussels','4546 Graceland Way');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (3,35,'Xinjiang University of Finance and Economics','Ankara','2 Main Center');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (4,22,'Omsk State Technical University','Bucharest','17733 Crowley Place');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (5,5,'Fasa Faculty of Medical Sciences','Berlin','3287 Gulseth Crossing');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (6,2,'Lahti Polytechnic','Sofia','7714 Fremont Plaza');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (7,14,'New York Chiropractic College','Riga','40976 Moland Center');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (8,33,'Ecole Nationale Supérieure de Chimie de Rennes','Tirana','2055 Sullivan Alley');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (9,15,'University Of Medical Sciences & Technology (UMST)','Vilnius','50846 Anthes Plaza');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (10,1,'Haigazian University','Brussels','93564 Emmet Pass');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (11,11,'Universiti Malaya','Zagreb','0101 Melby Way');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (12,19,'Moore College of Art and Design','Vienna','28446 Pennsylvania Hill');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (13,27,'Felician College','Reykjavik','059 Judy Road');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (14,18,'City University of New York, Medgar Evers College','Amsterdam','90 John Wall Terrace');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (15,6,'Universidad Politecnica de Nicaragua','Tallinn','0632 Graceland Avenue');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (16,1,'Babes-Bolyai University of Cluj-Napoca','Liege','80227 Debs Junction');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (17,2,'Bashkir State Medical University','Plovdiv','46 Tomscot Place');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (18,8,'University of St. Cyril and Methodius in Trnava','Athens','884 Lindbergh Hill');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (19,13,'Philosophisch-Theologische Hochschule der Salesianer Don Boscos','Nicosia','925 Holmberg Court');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (20,9,'Institute of Teachers Education, Darul Aman','Barcelona','1344 Bonner Way');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (21,14,'Université d''Antananarivo','Riga','4 Summit Circle');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (22,23,'Yüzüncü Yil (Centennial) University','Ljubljana','79 Brown Trail');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (23,2,'University of Fribourg','Sofia','62174 Thierer Way');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (24,3,'Mugla University','Prague','8882 Rusk Terrace');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (25,12,'Banasthali University','Rome','31 Arizona Alley');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (26,16,'North Dakota State University','Luxembourg City','27 Victoria Terrace');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (27,16,'MacMurray College','Luxembourg City','0 Ramsey Place');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (28,27,'East China Normal University','Reykjavik','11095 Esch Terrace');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (29,29,'Faculdade Italo Brasileira','Zurich','437 Sheridan Pass');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (30,12,'Athlone Institute of Technology','Milan','9034 Miller Street');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (31,18,'Trakia University Stara Zagora','Amsterdam','896 Fairfield Crossing');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (32,24,'University of Strathclyde','Bratislava','0 Lake View Court');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (33,8,'Nagoya University','Thessaloniki','2 Springs Road');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (34,6,'Katholische Universität Eichstätt','Tallinn','7 Trailsway Road');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (35,7,'Ecole Nationale Supérieure en Electrotechnique, Electronique, Informatique et Hydraulique de Toulouse','Dublin','536 Park Meadow Terrace');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (36,22,'Universitas Padjadjaran','Cluj-Napoca','5 Dahle Street');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (37,25,'Carroll College Waukesha','Helsinki','32068 Sauthoff Park');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (38,36,'Jingdezhen China Institute','Pristina','4630 Beilfuss Place');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (39,13,'Katholieke Hogeschool Kempen','Nicosia','584 Menomonie Crossing');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (40,14,'Virginia College','Jurmala','79 Cherokee Court');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (41,17,'Gujarat Technological University Ahmedabad','Budapest','83 Amoth Court');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (42,35,'Harvey Mudd College','Istanbul','92856 Schmedeman Pass');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (43,25,'The Federal Polytechnic Offa','Tampere','02003 Huxley Way');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (44,32,'The World Islamic Sciences & Education University','Skopje','512 Springview Trail');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (45,6,'Luzhou Medical College','Tartu','0045 Buhler Hill');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (46,19,'Fachhochschulstudiengänge Hagenberg','Linz','37988 Beilfuss Point');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (47,19,'Ecole Supérieure d''Electronique de l''Ouest','Graz','4782 Lotheville Point');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (48,4,'University of Peloponnese','Copenhagen','0 Corben Avenue');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (49,13,'Fundación Universitaria Manuela Beltrán','Limassol','85 Jana Drive');
-INSERT INTO university(id,country_id,university_name,city_name,address) VALUES (50,30,'University of Rousse','London','556 Weeping Birch Point');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (1,19,'Bowie State University','Vienna','8538 Becker Place');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (2,1,'Seattle Pacific University','Brussels','4546 Graceland Way');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (3,35,'Xinjiang University of Finance and Economics','Ankara','2 Main Center');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (4,22,'Omsk State Technical University','Bucharest','17733 Crowley Place');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (5,5,'Fasa Faculty of Medical Sciences','Berlin','3287 Gulseth Crossing');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (6,2,'Lahti Polytechnic','Sofia','7714 Fremont Plaza');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (7,14,'New York Chiropractic College','Riga','40976 Moland Center');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (8,33,'Ecole Nationale Supérieure de Chimie de Rennes','Tirana','2055 Sullivan Alley');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (9,15,'University Of Medical Sciences & Technology (UMST)','Vilnius','50846 Anthes Plaza');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (10,1,'Haigazian University','Brussels','93564 Emmet Pass');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (11,11,'Universiti Malaya','Zagreb','0101 Melby Way');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (12,19,'Moore College of Art and Design','Vienna','28446 Pennsylvania Hill');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (13,27,'Felician College','Reykjavik','059 Judy Road');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (14,18,'City University of New York, Medgar Evers College','Amsterdam','90 John Wall Terrace');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (15,6,'Universidad Politecnica de Nicaragua','Tallinn','0632 Graceland Avenue');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (16,1,'Babes-Bolyai University of Cluj-Napoca','Liege','80227 Debs Junction');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (17,2,'Bashkir State Medical University','Plovdiv','46 Tomscot Place');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (18,8,'University of St. Cyril and Methodius in Trnava','Athens','884 Lindbergh Hill');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (19,13,'Philosophisch-Theologische Hochschule der Salesianer Don Boscos','Nicosia','925 Holmberg Court');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (20,9,'Institute of Teachers Education, Darul Aman','Barcelona','1344 Bonner Way');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (21,14,'Université d''Antananarivo','Riga','4 Summit Circle');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (22,23,'Yüzüncü Yil (Centennial) University','Ljubljana','79 Brown Trail');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (23,2,'University of Fribourg','Sofia','62174 Thierer Way');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (24,3,'Mugla University','Prague','8882 Rusk Terrace');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (25,12,'Banasthali University','Rome','31 Arizona Alley');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (26,16,'North Dakota State University','Luxembourg City','27 Victoria Terrace');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (27,16,'MacMurray College','Luxembourg City','0 Ramsey Place');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (28,27,'East China Normal University','Reykjavik','11095 Esch Terrace');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (29,29,'Faculdade Italo Brasileira','Zurich','437 Sheridan Pass');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (30,12,'Athlone Institute of Technology','Milan','9034 Miller Street');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (31,18,'Trakia University Stara Zagora','Amsterdam','896 Fairfield Crossing');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (32,24,'University of Strathclyde','Bratislava','0 Lake View Court');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (33,8,'Nagoya University','Thessaloniki','2 Springs Road');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (34,6,'Katholische Universität Eichstätt','Tallinn','7 Trailsway Road');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (35,7,'Ecole Nationale Supérieure en Electrotechnique, Electronique, Informatique et Hydraulique de Toulouse','Dublin','536 Park Meadow Terrace');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (36,22,'Universitas Padjadjaran','Cluj-Napoca','5 Dahle Street');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (37,25,'Carroll College Waukesha','Helsinki','32068 Sauthoff Park');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (38,36,'Jingdezhen China Institute','Pristina','4630 Beilfuss Place');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (39,13,'Katholieke Hogeschool Kempen','Nicosia','584 Menomonie Crossing');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (40,14,'Virginia College','Jurmala','79 Cherokee Court');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (41,17,'Gujarat Technological University Ahmedabad','Budapest','83 Amoth Court');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (42,35,'Harvey Mudd College','Istanbul','92856 Schmedeman Pass');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (43,25,'The Federal Polytechnic Offa','Tampere','02003 Huxley Way');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (44,32,'The World Islamic Sciences & Education University','Skopje','512 Springview Trail');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (45,6,'Luzhou Medical College','Tartu','0045 Buhler Hill');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (46,19,'Fachhochschulstudiengänge Hagenberg','Linz','37988 Beilfuss Point');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (47,19,'Ecole Supérieure d''Electronique de l''Ouest','Graz','4782 Lotheville Point');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (48,4,'University of Peloponnese','Copenhagen','0 Corben Avenue');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (49,13,'Fundación Universitaria Manuela Beltrán','Limassol','85 Jana Drive');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (50,30,'University of Rousse','London','556 Weeping Birch Point');
 
 
 -- Real estate agents
@@ -136,11 +138,11 @@ INSERT INTO user(user_id,country_id,name,role,email) VALUES (25,1,'Udell McNea',
 INSERT INTO user(user_id,country_id,name,role,email) VALUES (28,4,'Ingeberg Ounsworth','Government Agency','iounsworthr@gmpg.org');
 INSERT INTO user(user_id,country_id,name,role,email) VALUES (32,16,'Elle Ivanonko','Government Agency','eivanonkov@wired.com');
 INSERT INTO user(user_id,country_id,name,role,email) VALUES (36,13,'Trace Whaymand','Government Agency','twhaymandz@cmu.edu');
-INSERT INTO user(user_id,country_id,name,role,email) VALUES (40,39,32,'Yolane Feechan','Government Agency','yfeechan13@histats.com');
-INSERT INTO user(user_id,country_id,name,role,email) VALUES (41,25,36,'Aili Soutter','Government Agency','asoutter14@flavors.me');
-INSERT INTO user(user_id,country_id,name,role,email) VALUES (42,31,15,'Rubi Seger','Government Agency','rseger15@walmart.com');
-INSERT INTO user(user_id,country_id,name,role,email) VALUES (44,20,3,'Abbye Horstead','Government Agency','ahorstead17@irs.gov');
-INSERT INTO user(user_id,country_id,name,role,email) VALUES (49,1,35,'Eldin Gillimgham','Government Agency','egillimgham1c@joomla.org');
+INSERT INTO user(user_id,country_id,name,role,email) VALUES (40,32,'Yolane Feechan','Government Agency','yfeechan13@histats.com');
+INSERT INTO user(user_id,country_id,name,role,email) VALUES (41,36,'Aili Soutter','Government Agency','asoutter14@flavors.me');
+INSERT INTO user(user_id,country_id,name,role,email) VALUES (42,15,'Rubi Seger','Government Agency','rseger15@walmart.com');
+INSERT INTO user(user_id,country_id,name,role,email) VALUES (44,3,'Abbye Horstead','Government Agency','ahorstead17@irs.gov');
+INSERT INTO user(user_id,country_id,name,role,email) VALUES (49,35,'Eldin Gillimgham','Government Agency','egillimgham1c@joomla.org');
 
 
 -- Students
@@ -160,7 +162,6 @@ INSERT INTO user(user_id,university_id,country_id,name,role,email,max_budget) VA
 INSERT INTO user(user_id,university_id,country_id,name,role,email,max_budget) VALUES (38,35,7,'Tasha Lyddiard','Student','tlyddiard11@i2i.jp',500);
 
 -- housing listings, some related to universities and others not.
-INSERT INTO listing (listing_id, country_id, associated_university_id, user_id, price, property_type, city_name) VALUES
 INSERT INTO listing(listing_id,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (1,10,NULL,9,2600,'House','Paris');
 INSERT INTO listing(listing_id,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (2,13,NULL,45,1000,'Studio Apartment','Nicosia');
 INSERT INTO listing(listing_id,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (3,16,26,17,1000,'Townhouse','Luxembourg City');
@@ -213,81 +214,80 @@ INSERT INTO listing(listing_id,country_id,associated_university_id,user_id,price
 INSERT INTO listing(listing_id,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (50,20,NULL,34,2750,'Studio Apartment','Warsaw');
 
 
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('1','3','3','Breathtaking view from every window');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('1','3','5','Breathtaking view from every window');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('2','7','2','Decent place but overpriced for this neighbourhood');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('3','12','NULL','Stunning view of the surroundings');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('4','18','1','Very spacious and well laid out');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('5','24','3','Prime location, very convenient');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('6','31','1','Lovely view from the balcony');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('7','2','2','Spacious apartment with solid amenities');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('8','9','3','Neighbours are quite loud at all hours');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('9','15','3','Wonderful view of the city');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('10','22','NULL','Near the university but noisy after dark');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('11','28','NULL','Gorgeous view, very peaceful');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('3','12','5','Stunning view of the surroundings');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('4','18','4','Very spacious and well laid out');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('5','24','5','Prime location, very convenient');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('6','31','4','Lovely view from the balcony');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('7','2','3','Spacious apartment with solid amenities');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('8','9','1','Neighbours are quite loud at all hours');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('9','15','4','Wonderful view of the city');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('10','22','2','Near the university but noisy after dark');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('11','28','5','Gorgeous view, very peaceful');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('12','35','2','Fair price but a little steep for the area');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('13','41','NULL','Excellent location near everything');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('14','47','NULL','Slightly overpriced for what you get');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('15','4','3','Reasonable place but pricey for the street');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('16','10','2','Nice view, especially in the morning');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('17','16','3','Desperately needs some renovation work');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('18','21','NULL','Amazing view, worth every penny');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('19','27','NULL','Open floor plan, plenty of room');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('20','33','2','Fantastic spot, great access to transport');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('21','39','3','Close to campus but loud late at night');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('22','44','4','Renovation needed but has real potential');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('23','50','2','The neighbours make too much noise');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('24','5','5','Walking distance to uni, though noisy nights');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('25','11','2','Charming view, cosy atmosphere');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('26','17','5','Just minutes from uni, some nighttime noise');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('27','23','NULL','University nearby but evenings get noisy');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('28','29','5','A bit pricey but overall a decent place');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('13','41','5','Excellent location near everything');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('14','47','2','Slightly overpriced for what you get');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('15','4','2','Reasonable place but pricey for the street');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('16','10','4','Nice view, especially in the morning');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('17','16','1','Desperately needs some renovation work');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('18','21','5','Amazing view, worth every penny');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('19','27','4','Open floor plan, plenty of room');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('20','33','5','Fantastic spot, great access to transport');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('21','39',NULL,'Close to campus but loud late at night');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('22','44',NULL,'Renovation needed but has real potential');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('23','50','1','The neighbours make too much noise');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('24','5','3','Walking distance to uni, though noisy nights');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('25','11','4','Charming view, cosy atmosphere');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('26','17','3','Just minutes from uni, some nighttime noise');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('27','23','2','University nearby but evenings get noisy');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('28','29','3','A bit pricey but overall a decent place');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('29','36','5','Generous space and smart layout');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('30','42','3','Could use some updating and repairs');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('31','48','1','Pleasant view, nice natural light');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('32','1','1','Roomy interior with a good layout');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('30','42','2','Could use some updating and repairs');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('31','48','4','Pleasant view, nice natural light');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('32','1',NULL,'Roomy interior with a good layout');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('33','6','5','Incredible view, absolutely loved it');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('34','13','NULL','Lots of space and a smart floor plan');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('34','13','4','Lots of space and a smart floor plan');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('35','19','4','Lovely view, very relaxing setting');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('36','25','1','Slightly overpriced given the location');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('37','30','NULL','Neighbours are a constant nuisance');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('38','37','NULL','Comfortable apartment with decent facilities');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('39','43','4','Long overdue for a full renovation');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('40','49','NULL','Noise from neighbours is a real issue');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('36','25','2','Slightly overpriced given the location');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('37','30','1','Neighbours are a constant nuisance');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('38','37','3','Comfortable apartment with decent facilities');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('39','43','1','Long overdue for a full renovation');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('40','49','1','Noise from neighbours is a real issue');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('41','8','1','Near uni but very noisy in the evenings');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('42','14','NULL','Impressive space and open layout');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('43','20','2','Renovation is overdue in several areas');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('44','26','NULL','A touch overpriced for this part of town');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('45','32','2','Scenic view, very enjoyable');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('46','38','NULL','Close to campus but noisy at night');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('47','45','3','Neighbours are quite disruptive');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('48','3','4','A bit pricey but a solid enough place');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('42','14','4','Impressive space and open layout');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('43','20','1','Renovation is overdue in several areas');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('44','26','2','A touch overpriced for this part of town');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('45','32','4','Scenic view, very enjoyable');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('46','38','2','Close to campus but noisy at night');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('47','45','1','Neighbours are quite disruptive');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('48','3','3','A bit pricey but a solid enough place');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('49','34','2','Priced a little high for what is offered');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('50','40','5','Spectacular view, truly stunning');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('51','46','NULL','Well-appointed apartment, good facilities');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('52','2','NULL','Disruptive noise from nearby neighbours');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('53','7','NULL','Ideal location, close to everything');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('51','46','4','Well-appointed apartment, good facilities');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('52','2','1','Disruptive noise from nearby neighbours');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('53','7','5','Ideal location, close to everything');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('54','13','1','Overpriced for the quality on offer');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('55','19','5','Renovation needed but great bones');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('55','19','2','Renovation needed but great bones');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('56','25','5','Well-equipped apartment, great amenities');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('57','31','5','Serious renovation required throughout');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('57','31','1','Serious renovation required throughout');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('58','37','5','Superb location, easy to get around');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('59','43','2','Renovation is badly needed here');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('60','49','5','Major renovation required, much potential');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('61','1','NULL','Picturesque view from the main rooms');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('59','43','1','Renovation is badly needed here');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('60','49','2','Major renovation required, much potential');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('61','1',NULL,'Picturesque view from the main rooms');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('62','6','5','Unbeatable location, very well situated');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('63','11','2','Far too much noise from the neighbours');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('64','16','NULL','Renovation is clearly long overdue');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('65','21','NULL','Spacious apartment, well worth it');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('66','26','2','Good apartment but amenities are average');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('67','31','3','Neighbours are noisy and inconsiderate');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('68','36','NULL','Pricey for the area, not great value');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('69','41','NULL','Neighbour noise is a persistent problem');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('70','46','2','Renovation work is urgently needed');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('71','2','NULL','A bit steep given what is on offer');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('63','11','1','Far too much noise from the neighbours');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('64','16','1','Renovation is clearly long overdue');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('65','21','4','Spacious apartment, well worth it');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('66','26','3','Good apartment but amenities are average');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('67','31','1','Neighbours are noisy and inconsiderate');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('68','36','2','Pricey for the area, not great value');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('69','41','1','Neighbour noise is a persistent problem');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('70','46','1','Renovation work is urgently needed');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('71','2','2','A bit steep given what is on offer');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('72','7','1','High price for the quality provided');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('73','12','NULL','Good space with a sensible layout');
-INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('74','17','1','Far too expensive for this location')
-
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('73','12',NULL,'Good space with a sensible layout');
+INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('74','17','1','Far too expensive for this location');
 
 -- government funding
 INSERT INTO funding(funding_id,country_id,year,amount,program,agency) VALUES (1,13,2016,48000,'Urban Green Spaces Initiative','Environmental Protection Agency');
