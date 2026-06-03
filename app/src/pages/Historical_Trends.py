@@ -64,6 +64,23 @@ trimmed = all_data[mask]
 st.write(f"### {indicator} — {selected_country}")
 st.line_chart(trimmed[[indicator]])
 
+# Comments under the graph
+st.write("##### Comments")
+new_comment = st.text_area(
+    "Add a comment",
+    placeholder="Add an observation about this trend...",
+    key="trend_comment_input",
+)
+if st.button("Add comment") and new_comment.strip():
+    st.session_state.setdefault("trend_comments", []).append(new_comment.strip())
+
+comments = st.session_state.get("trend_comments", [])
+if comments:
+    for comment in comments:
+        st.markdown(f"- {comment}")
+else:
+    st.caption("No comments yet.")
+
 st.divider()
 
 # Cross-page navigation
@@ -72,5 +89,5 @@ with nav_left:
     if st.button("← Back to Country Snapshot", use_container_width=True):
         st.switch_page('pages/Country_Snapshot.py')
 with nav_right:
-    if st.button("Open Article Analysis →", type='primary', use_container_width=True):
-        st.switch_page('pages/Article_Analysis.py')
+    if st.button("Compare Countries →", type='primary', use_container_width=True):
+        st.switch_page('pages/Country_Comparison.py')
