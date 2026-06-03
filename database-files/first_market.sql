@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS crop_list (
     FOREIGN KEY (crop_id) REFERENCES Crops(crop_id)
 );
 
-CREATE TABLE IF NOT EXISTS IdealCropData (
+CREATE TABLE IF NOT EXISTS (
     ideal_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
     temperature FLOAT,
