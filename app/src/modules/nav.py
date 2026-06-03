@@ -65,6 +65,17 @@ def classification_nav():
     )
 
 
+# ---- Role: household_owner --------------------------------------------------
+
+def household_owner_nav():
+    st.sidebar.markdown("**Household owner**")
+    st.sidebar.page_link(
+        "pages/40_Household_Owner_Dashboard.py",
+        label="Dashboard",
+        icon="📊",
+    )
+
+
 # ---- Role: administrator ----------------------------------------------------
 
 def admin_home_nav():
@@ -101,6 +112,9 @@ def SideBarLinks(show_home=False):
         home_nav()
 
     if st.session_state["authenticated"]:
+
+        if st.session_state["role"] == "household_owner":
+            household_owner_nav()
 
         if st.session_state["role"] == "pol_strat_advisor":
             pol_strat_home_nav()
