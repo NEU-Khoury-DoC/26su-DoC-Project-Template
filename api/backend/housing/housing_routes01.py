@@ -169,6 +169,7 @@ def get_listing():
         params = []
 
         country = request.args.get("country")
+        title = request.args.get("title")
         city_name = request.args.get("city_name")
         university = request.args.get("university")
         price = request.args.get("price")
@@ -177,6 +178,9 @@ def get_listing():
         if country:
             query += " AND country.country_name = %s"
             params.append(country)
+        if title:
+            query += " AND title = %s"
+            params.append(title)
         if city_name:
             query += " AND city_name = %s"
             params.append(city_name)
@@ -238,18 +242,19 @@ def create_listing():
     try:
         data = request.get_json()
 
-        required_fields = ["country_id", "user_id", "price", "property_type", "city_name"]
+        required_fields = ["country_id", "title", "user_id", "price", "property_type", "city_name"]
         for field in required_fields:
             if field not in data:
                 return error_response(f"Missing required field: {field}", 400)
 
         query = """
-            INSERT INTO Listings (country_id, user_id, price, property_type, city_name)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO Listings (country_id, title, user_id, price, property_type, city_name)
+            VALUES (%s, %s, %s, %s, %s, %s)
         """
         with get_db().cursor(dictionary=True) as cursor:
             cursor.execute(query, (
                 data["country_id"],
+                data["title"],
                 data["user_id"],
                 data["price"],
                 data["property_type"],
@@ -275,7 +280,7 @@ def update_listing(listing_id):
         data = request.get_json()
 
         # Build update query dynamically based on provided fields
-        allowed_fields = ["price", "property_type", "city_name"]
+        allowed_fields = ["title", "price", "property_type", "city_name"]
         update_fields = [f"{f} = %s" for f in allowed_fields if f in data]
         params = [data[f] for f in allowed_fields if f in data]
 
