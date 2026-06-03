@@ -1,67 +1,42 @@
-DROP DATABASE IF EXISTS housing_db;
-CREATE DATABASE IF NOT EXISTS housing_db;
 USE housing_db;
 
-CREATE TABLE country (
-    country_id INTEGER PRIMARY KEY,
-    country_name VARCHAR(30) NOT NULL
-);
-
-INSERT INTO country (country_id, country_name) VALUES
-(1, 'Belgium'),
-(2, 'Bulgaria'),
-(3, 'Czechia'),
-(4, 'Denmark'),
-(5, 'Germany'),
-(6, 'Estonia'),
-(7, 'Ireland'),
-(8, 'Greece'),
-(9, 'Spain'),
-(10, 'France'),
-(11, 'Croatia'),
-(12, 'Italy'),
-(13, 'Cyprus'),
-(14, 'Latvia'),
-(15, 'Lithuania'),
-(16, 'Luxembourg'),
-(17, 'Hungary'),
-(18, 'Netherlands'),
-(19, 'Austria'),
-(20, 'Poland'),
-(21, 'Portugal'),
-(22, 'Romania'),
-(23, 'Slovenia'),
-(24, 'Slovakia'),
-(25, 'Finland'),
-(26, 'Sweden'),
-(27, 'Iceland'),
-(28, 'Norway'),
-(29, 'Switzerland'),
-(30, 'United Kingdom'),
-(31, 'Montenegro'),
-(32, 'North Macedonia'),
-(33, 'Albania'),
-(34, 'Serbia'),
-(35, 'Turkiye'),
-(36, 'Konsovo');
-
-
-CREATE TABLE social_indicator_types (
-    sit_id INTEGER PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE social_indicator_stats (
-    stats_id INTEGER PRIMARY KEY,
-    country_id INTEGER NOT NULL,
-    sit_id INTEGER NOT NULL,
-    year YEAR,
-    value DECIMAL,
-    unit VARCHAR(50),
-
-    CONSTRAINT fk_sis_country FOREIGN KEY (country_id) REFERENCES country (country_id),
-    CONSTRAINT fk_sis_sit FOREIGN KEY (sit_id) REFERENCES social_indicator_types (sit_id)
-);
+INSERT INTO country (country_id, country_name, country_code) VALUES
+(1, 'Belgium', 'BE'),
+(2, 'Bulgaria', 'BG'),
+(3, 'Czechia', 'CZ'),
+(4, 'Denmark', 'DK'),
+(5, 'Germany', 'DE'),
+(6, 'Estonia', 'EE'),
+(7, 'Ireland', 'IE'),
+(8, 'Greece', 'EL'),
+(9, 'Spain', 'ES'),
+(10, 'France', 'FR'),
+(11, 'Croatia', 'HR'),
+(12, 'Italy', 'IT'),
+(13, 'Cyprus', 'CY'),
+(14, 'Latvia', 'LV'),
+(15, 'Lithuania', 'LT'),
+(16, 'Luxembourg', 'LU'),
+(17, 'Hungary', 'HU'),
+(18, 'Netherlands', 'NL'),
+(19, 'Austria', 'AT'),
+(20, 'Poland', 'PL'),
+(21, 'Portugal', 'PT'),
+(22, 'Romania', 'RO'),
+(23, 'Slovenia', 'SI'),
+(24, 'Slovakia', 'SK'),
+(25, 'Finland', 'FI'),
+(26, 'Sweden', 'SE'),
+(27, 'Iceland', 'IS'),
+(28, 'Norway', 'NO'),
+(29, 'Switzerland', 'CH'),
+(30, 'United Kingdom', 'UK'),
+(31, 'Montenegro', 'ME'),
+(32, 'North Macedonia', 'MK'),
+(33, 'Albania', 'AL'),
+(34, 'Serbia', 'RS'),
+(35, 'Turkiye', 'TR'),
+(36, 'Kosovo', 'XK');
 
 INSERT INTO social_indicator_types (sit_id, name) VALUES
 (1, 'Pollution'),
@@ -73,15 +48,7 @@ INSERT INTO social_indicator_types (sit_id, name) VALUES
 (7, 'Under-occupied');
 
 
-CREATE TABLE university (
-    university_id INTEGER PRIMARY KEY,
-    country_id INTEGER NOT NULL,
-    university_name VARCHAR(75) NOT NULL,
-    city_name VARCHAR(30),
-    address VARCHAR(250),
 
-    CONSTRAINT fk_uni_country FOREIGN KEY (country_id) REFERENCES country (country_id)
-);
 
 INSERT INTO university (university_id, country_id, university_name, city_name, address) VALUES
 (1, 1, 'KU Leuven', 'Leuven', 'Oude Markt 13, 3000 Leuven, Belgium'),
@@ -94,20 +61,6 @@ INSERT INTO university (university_id, country_id, university_name, city_name, a
 (8, 4, 'University of Copenhagen', 'Copenhagen', 'Nørregade 10, 1165 København K, Denmark'),
 (9, 4, 'Aarhus University', 'Aarhus', 'Nordre Ringgade 1, 8000 Aarhus C, Denmark'),
 (10, 5, 'Technical University of Munich', 'Munich', 'Arcisstraße 21, 80333 München, Germany');
-
-CREATE TABLE user (
-    user_id INTEGER PRIMARY KEY,
-    university_id INTEGER,
-    country_id INTEGER,
-    name VARCHAR(100),
-    role VARCHAR(50),
-    email VARCHAR(100) UNIQUE,
-    max_budget DECIMAL,
-    max_distance_km DECIMAL,
-
-    CONSTRAINT fk_user_country FOREIGN KEY (country_id) REFERENCES country (country_id),
-    CONSTRAINT fk_user_uni FOREIGN KEY (university_id) REFERENCES university (university_id)
-);
 
 
 INSERT INTO user (user_id, university_id, country_id, name, role, email, max_budget, max_distance_km) VALUES
@@ -124,20 +77,6 @@ INSERT INTO user (user_id, country_id, name, role, email) VALUES
 (9, 13, 'George Igoe', 'Government Agency', 'igoeg@org.gov');
 
 
-CREATE TABLE listing (
-    listing_id INTEGER PRIMARY KEY,
-    country_id INTEGER,
-    associated_university_id INTEGER,
-    user_id INTEGER,
-    price DECIMAL,
-    property_type VARCHAR(50),
-    city_name VARCHAR(50),
-
-    CONSTRAINT fk_listing_country FOREIGN KEY (country_id) REFERENCES country (country_id),
-    CONSTRAINT fk_listing_uni FOREIGN KEY (associated_university_id) REFERENCES university (university_id),
-    CONSTRAINT fk_listing_user FOREIGN KEY (user_id) REFERENCES user (user_id)
-);
-
 INSERT INTO listing (listing_id, country_id, associated_university_id, user_id, price, property_type, city_name) VALUES
 (1, 1, 1, 1, 500.00, 'Apartment', 'Leuven'),
 (2, 1, 2, 2, 450.00, 'Studio', 'Ghent'),
@@ -149,14 +88,6 @@ INSERT INTO listing (listing_id, country_id, associated_university_id, user_id, 
 (8, 4, 8, 8, 700.00, 'Apartment', 'Copenhagen'),
 (9, 4, 9, 9, 750.00, 'Apartment', 'Aarhus');
 
-CREATE TABLE reviews (
-    review_id INTEGER PRIMARY KEY,
-    listing_id INTEGER NOT NULL,
-    rating INTEGER,
-    comment VARCHAR(2000),
-
-    CONSTRAINT fk_reviews_listing FOREIGN KEY (listing_id) REFERENCES listing (listing_id)
-);
 
 INSERT INTO reviews (review_id, listing_id, rating, comment) VALUES
 (1, 1, 5, 'Great location and very affordable!'),
@@ -164,17 +95,6 @@ INSERT INTO reviews (review_id, listing_id, rating, comment) VALUES
 (3, 2, 3, 'Decent place but the price is a bit high for the area.'),
 (4, 3, 4, 'Spacious apartment with good amenities.'),
 (5, 4, 2, 'Not well-maintained and had some issues with plumbing.');
-
-CREATE TABLE funding (
-    funding_id INTEGER PRIMARY KEY,
-    country_id INTEGER NOT NULL,
-    year YEAR,
-    amount DECIMAL,
-    program VARCHAR(100),
-    agency VARCHAR(100),
-
-    CONSTRAINT fk_funding_country FOREIGN KEY (country_id) REFERENCES country (country_id)
-);
 
 INSERT INTO funding (funding_id, country_id, year, amount, program, agency) VALUES
 (1, 1, 2023, 500000.00, 'Affordable Housing Initiative', 'Belgian Housing Agency'),
