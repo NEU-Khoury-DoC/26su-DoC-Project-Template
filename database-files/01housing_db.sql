@@ -14,7 +14,7 @@ CREATE TABLE social_indicator_types (
 );
 
 CREATE TABLE social_indicator_stats (
-    stats_id INTEGER PRIMARY KEY,
+    stats_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     country_id INTEGER NOT NULL,
     sit_id INTEGER NOT NULL,
     year YEAR,
