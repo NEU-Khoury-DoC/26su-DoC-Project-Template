@@ -5,7 +5,7 @@ import logging
 
 from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
-from backend.ngos.ngo_routes import ngo_bp
+from backend.housing.housing_routes import housing_bp
 
 
 def create_app():
@@ -38,6 +38,6 @@ def create_app():
     # simple_routes has no prefix intentionally — it serves root-level demo routes (/, /playlist, etc.)
     app.logger.info("create_app(): registering blueprints")
     app.register_blueprint(simple_routes)
-    app.register_blueprint(ngo_bp, url_prefix="/ngo")
+    app.register_blueprint(housing_bp, url_prefix="/housing")
 
     return app
