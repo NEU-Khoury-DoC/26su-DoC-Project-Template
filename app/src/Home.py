@@ -15,8 +15,9 @@ from modules.nav import SideBarLinks
 
 st.set_page_config(layout="wide")
 
-# User is on the login page — not authenticated yet
+# Returning to Home ends the active persona session and resets the sidebar
 st.session_state["authenticated"] = False
+st.session_state.pop("role", None)
 
 SideBarLinks(show_home=True)
 
@@ -33,16 +34,18 @@ PERSONAS = {
     "analyst_dropdown": ("analyst", "Analyst", "Option 1"),
 }
 
-# Provide a direct access button for journalists below the persona selectors
-col_access = st.columns([1, 1, 1, 2])
-with col_access[3]:
-    if st.button('Login as Journalist',
-                 type='primary',
-                 use_container_width=True):
-        st.session_state['authenticated'] = True
-        st.session_state['role'] = 'journalist'
-        st.session_state['first_name'] = 'Marco'
-        st.switch_page('pages/Country_Snapshot.py')
+LOGIN_PAGES = {
+    "household_owner": "pages/40_Household_Owner_Dashboard.py",
+    "journalist": "pages/Country_Snapshot.py",
+}
+
+
+def _persona_option_selected(persona_id: str) -> bool:
+    """True only when the persona's dropdown has a real option, not the placeholder."""
+    for key, (pid, _, option) in PERSONAS.items():
+        if pid == persona_id:
+            return st.session_state.get(key) == option
+    return False
 
 
 def _on_persona_change(changed_key: str) -> None:
@@ -68,6 +71,14 @@ if "active_persona" not in st.session_state:
 for key in PERSONAS:
     if key not in st.session_state:
         st.session_state[key] = PLACEHOLDER
+
+# Keep active_persona in sync so login never uses a stale persona with placeholders
+active = None
+for key, (persona_id, _, option) in PERSONAS.items():
+    if st.session_state.get(key) == option:
+        active = persona_id
+        break
+st.session_state["active_persona"] = active
 
 col_household, col_journalist, col_analyst, col_login = st.columns([2, 2, 2, 1])
 
@@ -111,9 +122,11 @@ with col_login:
     st.markdown("&nbsp;", unsafe_allow_html=True)
     if st.button("Log in", type="primary", use_container_width=True):
         persona = st.session_state.get("active_persona")
-        if persona == "household_owner":
-            st.session_state["authenticated"] = True
-            st.session_state["role"] = "household_owner"
-            st.switch_page("pages/40_Household_Owner_Dashboard.py")
+        if not persona or not _persona_option_selected(persona):
+            st.warning("Select a persona and choose an option before logging in.")
+        elif persona not in LOGIN_PAGES:
+            st.warning("Login for this persona is not available yet.")
         else:
-            st.warning("Select Household Owner and choose an option before logging in.")
+            st.session_state["authenticated"] = True
+            st.session_state["role"] = persona
+            st.switch_page(LOGIN_PAGES[persona])
