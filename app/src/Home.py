@@ -36,37 +36,98 @@ logger.info("Loading the Home page of the app")
 st.title('Summer 2026 Belgium DoC Project Template')
 st.write('#### Hi! As which user would you like to log in?')
 
+##THESE ARE ALL PLACEHOLDERS UNTIL API IS MADE
+
+farmer_names = [
+    'PLACEHOLDER 5',
+    'PLACEHOLDER 6',
+]
+
+policy_maker_names = [
+    'PLACEHOLDER 1',
+    'PLACEHOLDER 2',
+]
+
+researcher_names = [
+    'PLACEHOLDER 3',
+    'PLACEHOLDER 4',
+]
+
 # For each of the user personas for which we are implementing
 # functionality, we put a button on the screen that the user
 # can click to MIMIC logging in as that mock user.
 
-if st.button("Act as Joe Hudson, a Local Farmer",
-             type='primary',
-             use_container_width=True):
-    # when user clicks the button, they are now considered authenticated
-    st.session_state['authenticated'] = True
-    # we set the role of the current user
-    st.session_state['role'] = 'farmer'
-    # we add the first name of the user (so it can be displayed on
-    # subsequent pages).
-    st.session_state['first_name'] = 'Joe'
-    # finally, we ask streamlit to switch to another page, in this case, the
-    # landing page for this particular user type
-    logger.info("Logging in as Farmer Persona")
-    st.switch_page('pages/01_Farmer_Home.py')
 
-if st.button('Act as Sarah Baker, a Policy Maker',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'policy_maker'
-    st.session_state['first_name'] = 'Sarah'
-    st.switch_page('pages/11_Policy_Home.py')
+farmer_variable_col, farmer_col = st.columns([3, 2])
 
-if st.button('Act as Carrie Miller, a soil researcher',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'researcher'
-    st.session_state['first_name'] = 'Carrie'
-    st.switch_page('pages/21_Researcher_Home.py')
+with farmer_variable_col:
+    st.selectbox(
+        'Choose a Farmer',
+        farmer_names,
+        key='selected_farmer_name',
+        label_visibility='collapsed',
+    )
+
+with farmer_col:
+    if st.button("Act as Joe Hudson, a Local Farmer",
+                type='primary',
+                use_container_width=True):
+        # when user clicks the button, they are now considered authenticated
+        st.session_state['authenticated'] = True
+        # we set the role of the current user
+        st.session_state['role'] = 'farmer'
+        # we add the first name of the user (so it can be displayed on
+        # subsequent pages).
+        st.session_state['first_name'] = 'Joe'
+        st.session_state['selected_policy_variable'] = st.session_state.get(
+            'selected_farmer_name', farmer_names[0]
+        )
+        # finally, we ask streamlit to switch to another page, in this case, the
+        # landing page for this particular user type
+        logger.info("Logging in as Farmer Persona")
+        st.switch_page('pages/01_Farmer_Home.py')
+
+policy_variable_col, policy_col = st.columns([3, 2])
+
+with policy_variable_col:
+    st.selectbox(
+        'Choose a Policy Maker',
+        policy_maker_names,
+        key='selected_policy_maker_name',
+        label_visibility='collapsed',
+    )
+
+with policy_col:
+    if st.button('Act as Sarah Baker, a Policy Maker',
+                 type='primary',
+                 use_container_width=True):
+        st.session_state['authenticated'] = True
+        st.session_state['role'] = 'policy_maker'
+        st.session_state['first_name'] = 'Sarah'
+        st.session_state['selected_policy_variable'] = st.session_state.get(
+            'selected_policy_maker_name', policy_maker_names[0]
+        )
+        st.switch_page('pages/11_Policy_Home.py')
+
+
+reseacher_variable_col, researcher_col = st.columns([3, 2])
+
+with reseacher_variable_col:
+    st.selectbox(
+        'Choose a Researcher',
+        researcher_names,
+        key='selected_researcher_name',
+        label_visibility='collapsed',
+    )
+
+with researcher_col:
+    if st.button('Act as Carrie Miller, a soil researcher',
+                type='primary',
+                use_container_width=True):
+        st.session_state['authenticated'] = True
+        st.session_state['role'] = 'researcher'
+        st.session_state['first_name'] = 'Carrie'
+        st.session_state['selected_policy_variable'] = st.session_state.get(
+                'selected_researcher_name', researcher_names[0]
+            )
+        st.switch_page('pages/21_Researcher_Home.py')
