@@ -33,6 +33,17 @@ PERSONAS = {
     "analyst_dropdown": ("analyst", "Analyst", "Option 1"),
 }
 
+# Provide a direct access button for journalists below the persona selectors
+col_access = st.columns([1, 1, 1, 2])
+with col_access[3]:
+    if st.button('Login as Journalist',
+                 type='primary',
+                 use_container_width=True):
+        st.session_state['authenticated'] = True
+        st.session_state['role'] = 'journalist'
+        st.session_state['first_name'] = 'Marco'
+        st.switch_page('pages/Country_Snapshot.py')
+
 
 def _on_persona_change(changed_key: str) -> None:
     """Keep a single active persona across the three dropdowns."""
