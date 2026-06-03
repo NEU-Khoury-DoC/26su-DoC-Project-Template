@@ -9,9 +9,9 @@ import requests
 housing_bp = Blueprint("housing", __name__)
 
 
-@housing_bp.route("/country", methods=["READ"])
+@housing_bp.route("/country", methods=["GET"])
 def get_all_countries():
-    current_app.logger.info('READ /housing/country')
+    current_app.logger.info('GET /housing/country')
     try:
         query = "SELECT * FROM country WHERE 1=1 "
         params = []
@@ -75,6 +75,29 @@ def get_all_listings():
         current_app.logger.error(f'Database error in get_all_listings: {e}')
         return error_response(str(e))
 
+
+@housing_bp.route("/social-indicator-types", methods=["GET"])
+def get_all_social_indicator_types():
+    current_app.logger.info('GET /housing/social-indicator-types')
+    try:
+        query = "SELECT * FROM social_indicator_types WHERE 1=1"
+        params = []
+
+        name = request.args.get("name")
+        if name:
+            query += " AND name = %s"
+            params.append(name)
+
+        with get_db().cursor(dictionary=True) as cursor:
+            cursor.execute(query, params)
+            social_indicator_types_list = cursor.fetchall()
+
+        current_app.logger.info(f'Retrieved {len(social_indicator_types_list)} social indicator types')
+        return jsonify(social_indicator_types_list), 200
+    except Error as e:
+        current_app.logger.error(f'Database error in get_all_social_indicator_types: {e}')
+        return error_response(str(e))
+
 @housing_bp.route("/social-indicator-stats", methods=["POST"])
 def get_crime():
     current_app.logger.info('POST /housing/social-indicator-stats')
@@ -100,7 +123,7 @@ def get_crime():
                 INSERT INTO social_indicator_stats (country_id, sit_id, year, value)
                 SELECT c.country_id, 2, %s, %s
                 FROM country c
-                WHERE c.country_name = %s
+                WHERE c.country_code = %s
             """, [(year, value, country_code) for country_code, year, value in rows])
             get_db().commit()
 
