@@ -69,3 +69,5 @@ CREATE TABLE model1_params (
 
 INSERT INTO model1_params (sequence_number, beta_vals) VALUES
 (1, '[0.25, 0.45, 0.67]');
+
+--add table to store csv data in db

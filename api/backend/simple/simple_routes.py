@@ -52,14 +52,14 @@ def get_data():
     return jsonify(data), 200
 
 
-@simple_routes.route("/prediction/<var_01>/<var_02>", methods=["GET"])
+@simple_routes.route("/prediction/<var_01>/<var_02>", methods=["GET"]) #/prediction/<var_01>/<var_02> - resource
 def get_prediction(var_01, var_02):
     current_app.logger.info("GET /prediction handler")
 
     try:
         prediction = model01.predict(var_01, var_02)
         current_app.logger.info(f"prediction value returned is {prediction}")
-        return jsonify({
+        return jsonify({ #intermediary btwn streamlit and model !!!!!
             "prediction": prediction,
             "input_variables": {"var01": var_01, "var02": var_02},
         }), 200
@@ -67,3 +67,5 @@ def get_prediction(var_01, var_02):
     except Exception as e:
         current_app.logger.error(f"Prediction error: {e}")
         return jsonify({"error": "Error processing prediction request"}), 500
+
+# add routes for modelt to generate new prediction

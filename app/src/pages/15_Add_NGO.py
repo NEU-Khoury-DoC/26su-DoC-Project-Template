@@ -50,10 +50,10 @@ if st.session_state.reset_form:
 API_URL = "http://web-api:4000/ngo/ngos"
 
 # Create a form for NGO details with dynamic key to force reset
-with st.form(f"add_ngo_form_{st.session_state.form_key_counter}"):
+with st.form(f"add_ngo_form_{st.session_state.form_key_counter}"): #add form for user input
     st.subheader("NGO Information")
 
-    # Required fields
+    # Required fields (user inputs)
     name = st.text_input("Organization Name *")
     country = st.text_input("Country *")
     current_year = datetime.date.today().year
@@ -82,7 +82,7 @@ with st.form(f"add_ngo_form_{st.session_state.form_key_counter}"):
 
             try:
                 # Send POST request to API
-                response = requests.post(API_URL, json=ngo_data)
+                response = requests.post(API_URL, json=ngo_data) #attach ngo data to post-send to server thru json
 
                 if response.status_code == 201:
                     # Store NGO name and show modal
