@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS farmers_market_db;
 
 USE farmers_market_db;
 
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(255) NOT NULL,
     user_type ENUM('farmer', 'politician', 'researcher') NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS Users (
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS Posts (
+CREATE TABLE IF NOT EXISTS posts (
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     text VARCHAR(255),
@@ -23,10 +23,10 @@ CREATE TABLE IF NOT EXISTS Posts (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE IF NOT EXISTS Comments (
+CREATE TABLE IF NOT EXISTS comments (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
     texts VARCHAR(255),
     post_id INT,
@@ -35,11 +35,11 @@ CREATE TABLE IF NOT EXISTS Comments (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (post_id) REFERENCES Posts(post_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (post_id) REFERENCES posts(post_id)
 );
 
-CREATE TABLE IF NOT EXISTS Reactions (
+CREATE TABLE IF NOT EXISTS reactions (
     reaction_id INT AUTO_INCREMENT PRIMARY KEY,
     pos_neg BOOLEAN,
     post_id INT,
@@ -48,11 +48,11 @@ CREATE TABLE IF NOT EXISTS Reactions (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (post_id) REFERENCES Posts(post_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (post_id) REFERENCES posts(post_id)
 );
 
-CREATE TABLE IF NOT EXISTS Farms (
+CREATE TABLE IF NOT EXISTS farms (
     farm_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     user_id INT,
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS Farms (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE IF NOT EXISTS FarmsData (
+CREATE TABLE IF NOT EXISTS farms_data (
     farm_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
     longitude FLOAT,
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS FarmsData (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (farm_id) REFERENCES Farms(farm_id)
+    FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
 );
 
-CREATE TABLE IF NOT EXISTS Crops (
+CREATE TABLE IF NOT EXISTS crops (
     crop_id INT AUTO_INCREMENT PRIMARY KEY,
     crop_name VARCHAR(50),
     created_by VARCHAR(100) NOT NULL,
@@ -89,11 +89,11 @@ CREATE TABLE IF NOT EXISTS crop_list (
     farm_data_id INT NOT NULL,
     crop_id INT NOT NULL,
     PRIMARY KEY (farm_data_id, crop_id),
-    FOREIGN KEY (farm_data_id) REFERENCES FarmsData(farm_data_id),
-    FOREIGN KEY (crop_id) REFERENCES Crops(crop_id)
+    FOREIGN KEY (farm_data_id) REFERENCES farms_data(farm_data_id),
+    FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
 );
 
-CREATE TABLE IF NOT EXISTS IdealCropData (
+CREATE TABLE IF NOT EXISTS ideal_data (
     ideal_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
     temperature FLOAT,
@@ -104,20 +104,20 @@ CREATE TABLE IF NOT EXISTS IdealCropData (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (farm_id) REFERENCES Farms(farm_id)
+    FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
 );
 
-CREATE TABLE IF NOT EXISTS cropPriceModelCoefficients (
+CREATE TABLE IF NOT EXISTS crop_price_model_coefficients (
     crops_price_coe_id INT AUTO_INCREMENT PRIMARY KEY,
     crop_id INT,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (crop_id) REFERENCES Crops(crop_id)
+    FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
 );
 
-CREATE TABLE IF NOT EXISTS cropHealthModelCoefficients (
+CREATE TABLE IF NOT EXISTS crop_health_model_coefficients (
     crops_health_coe_id INT AUTO_INCREMENT PRIMARY KEY,
     temperature FLOAT,
     humidity FLOAT,
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS cropHealthModelCoefficients (
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS savedData (
+CREATE TABLE IF NOT EXISTS saved_data (
     saved_data_id INT AUTO_INCREMENT PRIMARY KEY,
     saved_data TEXT,
     created_by VARCHAR(100) NOT NULL,
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS savedData (
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS savedGraphs (
+CREATE TABLE IF NOT EXISTS saved_graphs (
     saved_graph_id INT AUTO_INCREMENT PRIMARY KEY,
     saved_data_id INT,
     graph CHAR(64),
@@ -146,10 +146,10 @@ CREATE TABLE IF NOT EXISTS savedGraphs (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (saved_data_id) REFERENCES savedData(saved_data_id)
+    FOREIGN KEY (saved_data_id) REFERENCES saved_data(saved_data_id)
 );
 
-CREATE TABLE IF NOT EXISTS savedReports (
+CREATE TABLE IF NOT EXISTS saved_reports (
     saved_report_id INT AUTO_INCREMENT PRIMARY KEY,
     saved_data_id INT,
     title VARCHAR(255),
@@ -159,5 +159,5 @@ CREATE TABLE IF NOT EXISTS savedReports (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (saved_data_id) REFERENCES savedData(saved_data_id)
+    FOREIGN KEY (saved_data_id) REFERENCES saved_data(saved_data_id)
 );
