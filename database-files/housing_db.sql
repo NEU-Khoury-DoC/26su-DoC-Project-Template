@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS housin_db;
+DROP DATABASE IF EXISTS housing_db;
 CREATE DATABASE IF NOT EXISTS housing_db;
 USE housing_db;
 
