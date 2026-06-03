@@ -74,5 +74,5 @@ with nav_left:
     if st.button("View Historical Trends →", type='primary', use_container_width=True):
         st.switch_page('pages/Historical_Trends.py')
 with nav_right:
-    if st.button("Open Article Analysis →", type='primary', use_container_width=True):
-        st.switch_page('pages/Article_Analysis.py')
+    if st.button("Compare Countries →", type='primary', use_container_width=True):
+        st.switch_page('pages/Country_Comparison.py')
