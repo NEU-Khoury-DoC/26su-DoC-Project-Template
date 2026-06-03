@@ -9,12 +9,11 @@ st.write("# About this App")
 
 st.markdown(
     """
-    This is a demo app for Data and Software in International Government and Politics Dialogue 2025 Project Course.  
-
-    The goal of this demo is to provide information on the tech stack 
-    being used as well as demo some of the features of the various platforms. 
-
-    Stay tuned for more information and features to come!
+    Understanding who influences EU policy, and how much they spend doing it, is really hard to figure out. Lobbying data is technically available to the public, but it's scattered, confusing, and pretty inaccessible for most people. We are building a web application to address the lack of lobbying transparency by letting users search any policy area and immediately see which organizations are lobbying on it, how much money they are spending, where they’re from, and what industry they represent.
+    
+    To make the analysis more meaningful, we're combining lobbying data from LobbyFacts.eu with World Bank API data including GDP, population, and government transparency scores, to add economic and political context to the lobbying patterns we're uncovering.
+   
+    Our app is designed for three types of users: investigative journalists following the money, political science researchers looking for patterns, and everyday citizens who just want to understand who is shaping the policies that affect them.
     """
 )
 

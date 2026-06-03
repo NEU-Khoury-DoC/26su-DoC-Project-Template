@@ -19,13 +19,13 @@ def about_page_nav():
 
 def pol_strat_home_nav():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Citizen_Home.py", label="Citizen Home", icon="🏠"
     )
 
 
 def world_bank_viz_nav():
     st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
+        "pages/01_Shaping_EU.py", label="Shaping EU Policies", icon="🇪🇺"
     )
 
 
