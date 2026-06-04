@@ -83,3 +83,32 @@ CREATE TABLE funding (
 
     CONSTRAINT fk_funding_country FOREIGN KEY (country_id) REFERENCES country (country_id)
 );
+
+CREATE TABLE ml_model (
+    country_id INTEGER PRIMARY KEY,
+    year YEAR,
+    noise_rate_scaled DECIMAL,
+    pollution_rate_scaled DECIMAL,
+    crime_rate_scaled DECIMAL,
+    hpi_weight_scaled DECIMAL,
+    safety_score DECIMAL,
+    safety_index DECIMAL,
+    affordability_index DECIMAL,
+    combined_score DECIMAL,
+
+CONSTRAINT fk_ml_country FOREIGN KEY (country_id) REFERENCES country (country_id)
+);
+
+CREATE TABLE funding_draft (
+    draft_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    country_id INT,
+    program VARCHAR(255),
+    amount DECIMAL(10,2),
+    indicators_targeted VARCHAR(255),
+    demographics_targeted VARCHAR(255),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (country_id) REFERENCES country(country_id)
+);
