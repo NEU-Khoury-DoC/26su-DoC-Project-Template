@@ -2,6 +2,7 @@
 model01.py demonstrates how to store model parameters in the database
 and retrieve them at prediction time via a REST route.
 """
+import json
 import numpy as np
 from flask import current_app
 from backend.db_connection import get_db
@@ -128,11 +129,15 @@ def predict(lobbying_cost, ep_passes, members_fte, country, interest):
 
     # Get country dataset using route
     country_data = _get_country_data(country)
+    if country_data is None:
+        raise ValueError(f"No country data found for '{country}'")
 
     lobbying_to_gdp_ratio = float(lobbying_cost) / country_data['gdp_usd']
     members = float(members_fte)
     members_squared = members ** 2
     interest_encoded = interest_to_encoding.get(interest)
+    if interest_encoded is None:
+        raise ValueError(f"Interest '{interest}' not found in mapping")
 
     params = _get_params()
     means, stds = _get_scaler_params()
@@ -146,6 +151,6 @@ def predict(lobbying_cost, ep_passes, members_fte, country, interest):
     input_vec = np.array([1.0, x_scaled[0], x_scaled[1]])
     prediction = float(params.T @ input_vec)
     current_app.logger.info(
-        f'model02.predict({x1}, {x2}) -> {prediction:.2f}'
+        f"lobby_model.predict({lobbying_cost}, {ep_passes}, {members_fte}, {country}, {interest}) -> {prediction:.2f}"
     )
     return prediction
