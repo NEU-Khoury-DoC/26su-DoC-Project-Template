@@ -24,4 +24,4 @@ conda-env/
 *.egg-info/
 dist/
 build/
-.Python
+.Python.claude/
