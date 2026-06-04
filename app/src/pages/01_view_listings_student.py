@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
 from modules.nav import SideBarLinks
+import requests
 
 st.set_page_config(layout='wide')
 
@@ -14,28 +15,25 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 # set the header of the page
-st.header('World Bank Data')
+st.header('Available listings')
 
-# You can access the session state to make a more customized/personalized app experience
-st.write(f"### Hi, {st.session_state['first_name']}.")
+# # You can access the session state to make a more customized/personalized app experience
+# # get a list of all countries
+# listings = requests.get('http://web-api:4000/housing/listing').json()
 
-# get a list of all countries
-with st.echo(code_location='above'):
-    countries:pd.DataFrame = wb.get_countries()
-    st.dataframe(countries)
+# for listing in listings:
+#     with st.container(border=True):
+#         col1, col2 = st.columns([3, 1])
 
-# the with statment shows the code for this block above it 
-with st.echo(code_location='above'):
-    arr = np.random.normal(1, 1, size=100)
-    test_plot, ax = plt.subplots()
-    ax.hist(arr, bins=20)
+#         with col1:
+#             st.subheader(listing['title'])
+#             st.write(f"📍 {listing['city_name']}, {listing['country_id']}")
+#             st.write(f"🏠 {listing['property_type']}")
 
-    st.pyplot(test_plot)
+#         with col2:
+#             st.metric(label="Price", value=f"€{listing['price']:,}")
+#             if st.button("View Details", key=f"listing_{listing['listing_id']}"):
+#                 st.session_state['listing_id'] = listing['listing_id']
+#                 st.switch_page('pages/listing_details.py')
 
-
-with st.echo(code_location='above'):
-    slim_countries = countries[countries['incomeLevel'] != 'Aggregates']
-    data_crosstab = pd.crosstab(slim_countries['region'], 
-                                slim_countries['incomeLevel'],  
-                                margins = False) 
-    st.table(data_crosstab)
+#     st.write("")
