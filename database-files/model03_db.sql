@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS knn_db;
 
 USE knn_db;
 
---dataset used to fit model 03 (knn for crop)
+-- dataset used to fit model 03 (knn for crop)
 CREATE TABLE IF NOT EXISTS crop_stats (
     id INT AUTO_INCREMENT PRIMARY KEY,
     TYPE_OF_CROP VARCHAR(255) NOT NULL,
