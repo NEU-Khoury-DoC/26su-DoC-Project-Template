@@ -80,11 +80,6 @@ def journalist_nav():
         icon="⚖️",
     )
     st.sidebar.page_link(
-        "pages/Price_Forecast.py",
-        label="Price Forecast",
-        icon="🔮",
-    )
-    st.sidebar.page_link(
         "pages/Gas_Storage_Risk.py",
         label="Gas Storage Risk",
         icon="⚠️",
