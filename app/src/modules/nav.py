@@ -74,6 +74,21 @@ def journalist_nav():
         label="Country Snapshot",
         icon="🌍",
     )
+    st.sidebar.page_link(
+        "pages/Country_Comparison.py",
+        label="Country Comparison",
+        icon="⚖️",
+    )
+    st.sidebar.page_link(
+        "pages/Price_Forecast.py",
+        label="Price Forecast",
+        icon="🔮",
+    )
+    st.sidebar.page_link(
+        "pages/Gas_Storage_Risk.py",
+        label="Gas Storage Risk",
+        icon="⚠️",
+    )
 
 
 # ---- Role: household_owner --------------------------------------------------
