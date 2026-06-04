@@ -172,25 +172,45 @@ def sync_eurostat(url, sit_id):
     data = response.json()
 
     values = data["value"]
-    countries = data["dimension"]["geo"]["category"]["index"]
-    years = data["dimension"]["time"]["category"]["index"]
+    dim_ids = data["id"]
+    dimensions = data["dimension"]
+    dim_sizes = [len(dimensions[d]["category"]["index"]) for d in dim_ids]
+
+    countries = dimensions["geo"]["category"]["index"]
+    years = dimensions["time"]["category"]["index"]
+    geo_pos = dim_ids.index("geo")
+    time_pos = dim_ids.index("time")
 
     rows = []
     for country_code, country_idx in countries.items():
         for year, year_idx in years.items():
-            key = str(country_idx * len(years) + year_idx)
-            value = values.get(key)
+            indices = [0] * len(dim_ids)
+            indices[geo_pos] = country_idx
+            indices[time_pos] = year_idx
+
+            key = 0
+            multiplier = 1
+            for i in range(len(dim_ids) - 1, -1, -1):
+                key += indices[i] * multiplier
+                multiplier *= dim_sizes[i]
+
+            value = values.get(str(key))
             if value is not None:
                 rows.append((sit_id, year, value, country_code))
 
-    with get_db().cursor() as cursor:
+    db = get_db()
+    with db.cursor() as cursor:
+        cursor.execute("DELETE FROM social_indicator_stats WHERE sit_id = %s", (sit_id,))
+    db.commit()
+
+    with db.cursor() as cursor:
         cursor.executemany("""
             INSERT INTO social_indicator_stats (country_id, sit_id, year, value)
             SELECT c.country_id, %s, %s, %s
             FROM country c
             WHERE c.country_code = %s
         """, rows)
-        get_db().commit()
+    db.commit()
 
     return len(rows)
 
@@ -344,20 +364,18 @@ def get_noise_stats():
         return error_response(str(e))
 
 # --- House Price Index (sit_id = 6) -------------------------------
-
 @housing_bp.route("/social-indicator-stats/hpi", methods=["POST"])
 def sync_hpi():
     current_app.logger.info('POST /housing/social-indicator-stats/hpi')
     try:
         count = sync_eurostat(
-            "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_inw",
+            "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_a?purchase=TOTAL&unit=I15_A_AVG",
             sit_id=6
         )
         return jsonify({"message": f"Synced {count} HPI records"}), 201
     except Exception as e:
         current_app.logger.error(f'Error syncing HPI data: {e}')
         return error_response(str(e))
-
 
 @housing_bp.route("/social-indicator-stats/hpi", methods=["GET"])
 def get_hpi_stats():
@@ -367,3 +385,6 @@ def get_hpi_stats():
     except Error as e:
         current_app.logger.error(f'Database error in get_hpi_stats: {e}')
         return error_response(str(e))
+    
+
+
