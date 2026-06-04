@@ -3,11 +3,12 @@ from backend.db_connection import get_db
 
 users_bp = Blueprint("users_bp", __name__)
 
-@users_bp.route("/", methods=["GET"])
-def list_users():
+@users_bp.route("/<role>", methods=["GET"])
+def list_users(role):
+    current_app.logger.info(f"GET /user/{role}")
     conn = get_db()
     cur = conn.cursor(dictionary=True)
-    cur.execute("SELECT user_id, user_name, user_type FROM users")
+    cur.execute("SELECT user_id, user_name FROM users WHERE user_type = %s;", (role,))
     rows = cur.fetchall()
     cur.close()
     return jsonify(rows), 200

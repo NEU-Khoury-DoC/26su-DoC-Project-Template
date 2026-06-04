@@ -6,7 +6,8 @@ import logging
 from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
 from backend.ngos.ngo_routes import ngo_bp
-from backend.users.users_routes import users_bp
+from backend.users.user_routes import users_bp
+from backend.posts.posts_routes import posts_bp
 
 
 
@@ -42,5 +43,6 @@ def create_app():
     app.register_blueprint(simple_routes)
     app.register_blueprint(ngo_bp, url_prefix="/ngo")
     app.register_blueprint(users_bp, url_prefix="/users")
+    app.register_blueprint(posts_bp, url_prefix="/posts")
 
     return app

@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS posts (
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
-    text VARCHAR(255),
+    post_text VARCHAR(255),
     img CHAR(64),
     user_id INT,
     created_by VARCHAR(100) NOT NULL,
