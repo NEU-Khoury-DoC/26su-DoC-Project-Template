@@ -90,6 +90,11 @@ def household_owner_nav():
         label="Persona Info",
         icon="👤",
     )
+    st.sidebar.page_link(
+        "pages/42_Household_Energy_News.py",
+        label="Energy News",
+        icon="📰",
+    )
 
 
 # ---- Role: administrator ----------------------------------------------------
