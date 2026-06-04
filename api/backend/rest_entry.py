@@ -4,11 +4,11 @@ import os
 import logging
 from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
-from backend.housing.housing_routes01 import housing_bp
-from backend.housing.housing_routes02_listing import housing_bp
-from backend.housing.housing_routes03_reviews import housing_bp
-from backend.housing.housing_routes04_funding import housing_bp
-from backend.housing.housing_routes10_stats import housing_bp
+from backend.housing.housing_routes01 import housing_bp  # defines housing_bp
+import backend.housing.housing_routes02_listing
+import backend.housing.housing_routes03_reviews
+import backend.housing.housing_routes04_funding
+import backend.housing.housing_routes10_stats
 
 def create_app():
     app = Flask(__name__)
