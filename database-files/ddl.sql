@@ -162,3 +162,12 @@ CREATE TABLE IF NOT EXISTS saved_query_export (
     updated_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES app_user(user_id)
 );
+
+-- Insertions
+INSERT INTO lobby_model_weights (model_id, beta_vals) VALUES
+(123, '[-0.00470672  0.61737005  0.06048751  1.0781912  -1.06305793  0.1429552]');
+
+INSERT INTO lobby_model_scaler (sequence_number, feature_means, feature_stds) VALUES
+(1, '[  8.30994891   1.15619662 359.0225555    2.59393102 484.52407528
+   1.68052178]', '[5.07376641e+00 1.50773957e+00 2.34243942e+03 2.18585360e+01
+ 3.12590236e+04 5.41726502e-01]');
