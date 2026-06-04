@@ -9,3 +9,5 @@ pydeck
 requests
 plotly
 scikit-learn
+folium
+streamlit-folium
