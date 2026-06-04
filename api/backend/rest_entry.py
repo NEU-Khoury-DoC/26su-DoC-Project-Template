@@ -9,6 +9,7 @@ from backend.ngos.ngo_routes import ngo_bp
 from backend.users.user_routes import users_bp
 from backend.posts.posts_routes import posts_bp
 from backend.comments.comments_routes import comments_bp
+from backend.reactions.reactions_routes import reactions_bp
 
 
 
@@ -46,5 +47,6 @@ def create_app():
     app.register_blueprint(users_bp, url_prefix="/users")
     app.register_blueprint(posts_bp, url_prefix="/posts")
     app.register_blueprint(comments_bp, url_prefix="/comments")
+    app.register_blueprint(reactions_bp, url_prefix="/reactions")
 
     return app
