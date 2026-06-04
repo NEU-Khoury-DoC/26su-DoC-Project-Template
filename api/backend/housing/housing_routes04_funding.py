@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, request, current_app
+from flask import jsonify, request, current_app
+from backend.housing.housing_routes01 import housing_bp
 from backend.db_connection import get_db
 from backend.utils import error_response
 from mysql.connector import Error
@@ -6,7 +7,6 @@ import requests
 
 # Variable name includes the domain (ngo_bp) so it stays readable when
 # imported alongside other blueprints (e.g. `from ... import ngo_bp, donor_bp`).
-housing_bp = Blueprint("housing", __name__)
 
 
 # Funding routes

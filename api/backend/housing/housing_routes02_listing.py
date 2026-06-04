@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, request, current_app
+from flask import jsonify, request, current_app
+from backend.housing.housing_routes01 import housing_bp
 from backend.db_connection import get_db
 from backend.utils import error_response
 from mysql.connector import Error
@@ -6,7 +7,6 @@ import requests
 
 # Variable name includes the domain (ngo_bp) so it stays readable when
 # imported alongside other blueprints (e.g. `from ... import ngo_bp, donor_bp`).
-housing_bp = Blueprint("housing", __name__)
 
 # --- listing -------------------------------
 @housing_bp.route("/listing", methods=["GET"])
@@ -15,7 +15,7 @@ def get_listing():
     try:
         query = "SELECT * FROM listing " \
         "JOIN country ON listing.country_id = country.country_id " \
-        "JOIN university ON listing.associated_university_id = university.university_id " \
+        "LEFT JOIN university ON listing.associated_university_id = university.university_id " \
         "WHERE 1=1"
         params = []
 
@@ -30,19 +30,19 @@ def get_listing():
             query += " AND country.country_name = %s"
             params.append(country)
         if title:
-            query += " AND title = %s"
+            query += " AND listing.title = %s"
             params.append(title)
         if city_name:
-            query += " AND city_name = %s"
+            query += " AND listing.city_name = %s"
             params.append(city_name)
         if university:
             query += " AND university.university_name = %s"
             params.append(university)
         if price:
-            query += " AND price <= %s"
+            query += " AND listing.price <= %s"
             params.append(price)
         if property_type:
-            query += " AND property_type = %s"
+            query += " AND listing.property_type = %s"
             params.append(property_type)
 
 

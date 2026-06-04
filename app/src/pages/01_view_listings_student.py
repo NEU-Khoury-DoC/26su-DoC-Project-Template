@@ -22,6 +22,7 @@ st.header('Available listings')
 listings = requests.get('http://web-api:4000/housing/listing').json()
 
 for listing in listings:
+    listing['price'] = int(listing['price'])
     with st.container(border=True):
         col1, col2 = st.columns([3, 1])
 
@@ -37,3 +38,7 @@ for listing in listings:
                 st.switch_page('pages/listing_details.py')
 
     st.write("")
+
+response = requests.get('http://web-api:4000/housing/listing')
+st.write(response.status_code)
+st.write(response.text)
