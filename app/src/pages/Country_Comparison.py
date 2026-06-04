@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules import entsoe_data
 
 st.set_page_config(layout='wide')
 
