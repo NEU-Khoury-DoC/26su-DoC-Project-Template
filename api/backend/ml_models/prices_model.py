@@ -18,33 +18,144 @@ def train():
 def test():
     return 'Testing the model'
 
-
-def predict(country, crop):
+# ------------------------------------------------------------
+# Internal helpers — fetch the latest beta vector from the DB.
+# Also fetch the scaler parameters that are stored in the DB.
+# Kept private (leading underscore) so routes import the public
+# functions below rather than the raw DB call.
+# ------------------------------------------------------------
+def _get_params():
     """
-    Retrieves model parameters from the database and uses them for
-    real-time prediction. Parameters are stored as a comma-separated
-    string and parsed into a numpy array here.
+    Fetches the most recent parameter vector from price_params.
 
-    Raises ValueError if inputs cannot be converted to float, or if
-    no model parameters exist in the database yet.
+    Returns:
+        np.ndarray: 1-D array of [intercept, coef1, coef2, ...]
+
+    Raises:
+        ValueError: if no parameters exist in the database yet.
     """
-    # Input validation belongs here at the boundary between the route and the model.
-    # If conversion fails, ValueError propagates up to the route handler.
-    x1 = str(country)
-    x2 = str(crop)
-
     with get_db().cursor(dictionary=True) as cursor:
-        query = 'SELECT beta_vals FROM model1_params ORDER BY sequence_number DESC LIMIT 1'
-        cursor.execute(query)
+        cursor.execute(
+            'SELECT beta_vals FROM price_params ORDER BY sequence_number DESC LIMIT 1'
+        )
         row = cursor.fetchone()
 
     if row is None:
-        raise ValueError("No model parameters found in the database")
+        raise ValueError("No crop price model parameters found in the database.")
 
-    # Parse the stored parameter string (e.g. "[1.2,3.4,5.6]") into a numpy array
-    params_array = np.array(list(map(float, row['beta_vals'][1:-1].split(',')))) #turn into numerical array
-    current_app.logger.info(f'params_array = {params_array}')
+    params = np.array(json.loads(row['beta_vals']))
+    current_app.logger.info(f'crop_price_model params loaded: {params}')
+    return params
 
-    # Prepend 1.0 as the intercept term, then dot with the parameter vector
-    input_array = np.array([1.0, x1, x2])
-    return float(params_array.T @ input_array)
+
+def _get_scaler_params():
+    """
+    Fetches the scaler means and stds from price_scaler.
+    Order: [temperature, precipitation, precip_squared, price_lag1, price_lag2]
+    """
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            'SELECT feature_means, feature_stds FROM price_scaler '
+            'ORDER BY sequence_number DESC LIMIT 1'
+        )
+        row = cursor.fetchone()
+
+    if row is None:
+        raise ValueError("No crop price scaler parameters found in the database.")
+
+    means = np.array(json.loads(row['feature_means']))
+    stds = np.array(json.loads(row['feature_stds']))
+    return means, stds
+
+def _get_weather(country):
+    """
+    Fetches average temperature and precipitation for a given country.
+    """
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            'SELECT AVG(temperature_2m_mean) as temp, AVG(precipitation_sum) as precip '
+            'FROM WeatherData WHERE country = %s',
+            (country,)
+        )
+        row = cursor.fetchone()
+
+    if row is None or row['temp'] is None:
+        raise ValueError(f"No weather data found for country: {country}")
+
+    return float(row['temp']), float(row['precip'])
+
+
+def _get_lag_prices(country, crop):
+    """
+    Fetches the two most recent selling prices for a crop/country combo.
+    """
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            'SELECT selling_price FROM CropPrices '
+            'WHERE country = %s AND crop = %s '
+            'ORDER BY year DESC LIMIT 2',
+            (country, crop)
+        )
+        rows = cursor.fetchall()
+
+    if len(rows) < 2:
+        raise ValueError(f"Not enough price history for {crop} in {country}")
+
+    return float(rows[0]['selling_price']), float(rows[1]['selling_price'])
+
+
+def _build_feature_vector(crop, country, scaled_numerics):
+    """
+    Builds the full feature vector matching the training column order:
+    [1.0, temp, precip, lag1, lag2, precip_sq, crop dummies..., country dummies...]
+
+    These lists must match exactly what get_dummies produced during training
+    (drop_first=True drops the first category alphabetically).
+    """
+    all_crops = ['Durum wheat', 'Feed barley', 'Rye', 'Soft wheat']  # minus first alphabetically
+    all_countries = ['Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia',
+                     'Denmark', 'Estonia', 'Finland', 'Germany', 'Greece',
+                     'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania',
+                     'Luxembourg', 'Netherlands', 'Poland', 'Portugal',
+                     'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden']
+
+    crop_onehot = [1.0 if crop == c else 0.0 for c in all_crops]
+    country_onehot = [1.0 if country == c else 0.0 for c in all_countries]
+
+    return np.array([1.0] + list(scaled_numerics) + crop_onehot + country_onehot)
+
+
+def predict(crop, country):
+    """
+    Returns a predicted selling price for a given crop and country.
+
+    Args:
+        crop    (str): crop type e.g. 'Soft wheat'
+        country (str): country name e.g. 'Austria'
+
+    Returns:
+        float: predicted selling price in EUR/100kg
+
+    Raises:
+        ValueError: if crop/country not found in DB, or no params in DB.
+    """
+    params = _get_params()
+    means, stds = _get_scaler_params()
+
+    temperature, precipitation = _get_weather(country)
+    price_lag1, price_lag2 = _get_lag_prices(country, crop)
+
+    # compute derived feature
+    precip_squared = precipitation ** 2
+
+    # scale numeric features in same order as training
+    raw = np.array([temperature, precipitation, price_lag1, price_lag2, precip_squared])
+    scaled = (raw - means) / stds
+
+    feature_vec = _build_feature_vector(crop, country, scaled)
+    prediction = float(params.T @ feature_vec)
+
+    current_app.logger.info(
+        f'crop_price_model.predict({crop}, {country}) -> {prediction:.2f}'
+    )
+    return prediction
