@@ -13,10 +13,12 @@ import requests
 def get_listing():
     current_app.logger.info('GET /housing/listing')
     try:
-        query = "SELECT * FROM listing " \
-        "JOIN country ON listing.country_id = country.country_id " \
-        "LEFT JOIN university ON listing.associated_university_id = university.university_id " \
-        "WHERE 1=1"
+        query = """SELECT listing.*, country.country_name, university.university_name, university.city_name AS university_city
+                FROM listing 
+                JOIN country ON listing.country_id = country.country_id
+                LEFT JOIN university ON listing.associated_university_id = university.university_id
+                WHERE 1=1"""
+        
         params = []
 
         country = request.args.get("country")
