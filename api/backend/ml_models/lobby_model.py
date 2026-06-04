@@ -36,12 +36,6 @@ country_to_iso2 = {
     'Sweden': 	'SWE'
 }
 
-interest_to_encoding = {
-    'Does not represent commercial interests': 1,
-    'Advances interests of their clients': 0,
-    'Promotes their own interests or the collective interests of their members': 2
-}
-
 def _get_country_data(country):
     """
     Retrieves country-specific data from the database for use in predictions.
@@ -57,7 +51,7 @@ def _get_country_data(country):
         raise ValueError(f"Country '{country}' not found in mapping")
     
     with get_db().cursor(dictionary=True) as cursor:
-        query = 'SELECT gdp_usd, population, inflation FROM world_bank_data WHERE country_code = %s'
+        query = 'SELECT gdp_usd, population, inflation FROM country_indicator WHERE country_code = %s'
         cursor.execute(query, (iso2,))
         row = cursor.fetchone()
 
@@ -71,7 +65,7 @@ def _get_country_data(country):
 # ------------------------------------------------------------
 def _get_params():
     """
-    Fetches the most recent parameter vector from model2_params.
+    Fetches the most recent parameter vector from lobby_model_weights.
 
     Returns:
         np.ndarray: 1-D array [intercept, b_Fossil_Fuels, b_CO2_Upop]
@@ -81,7 +75,7 @@ def _get_params():
     """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
-            'SELECT beta_vals FROM model2_params ORDER BY model_id DESC LIMIT 1'
+            'SELECT beta_vals FROM lobby_model_weights ORDER BY model_id DESC LIMIT 1'
         )
         row = cursor.fetchone()
 
@@ -96,7 +90,7 @@ def _get_params():
 def _get_scaler_params():
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
-            'SELECT feature_means, feature_stds FROM model2_scaler '
+            'SELECT feature_means, feature_stds FROM lobby_model_scaler '
             'ORDER BY sequence_number DESC LIMIT 1'
         )
         row = cursor.fetchone()
@@ -132,23 +126,26 @@ def predict(lobbying_cost, ep_passes, members_fte, country, interest):
     if country_data is None:
         raise ValueError(f"No country data found for '{country}'")
 
-    lobbying_to_gdp_ratio = float(lobbying_cost) / country_data['gdp_usd']
+    # lobbying_to_gdp_ratio = float(lobbying_cost) / country_data['gdp_usd']
     members = float(members_fte)
     members_squared = members ** 2
-    interest_encoded = interest_to_encoding.get(interest)
-    if interest_encoded is None:
-        raise ValueError(f"Interest '{interest}' not found in mapping")
+
+    interest_0 = 0
+    interest_1 = 0
+    if (interest == 'Does not represent commercial interests'):
+        interest_0 = 1
+    elif (interest == 'Promotes their own interests or the collective interests of their members'):
+        interest_1 = 1
 
     params = _get_params()
     means, stds = _get_scaler_params()
 
     # apply the same standardization used at training time
-    x_scaled = (np.array([log_lobbying_cost, log_ep_passes, 
-                          lobbying_to_gdp_ratio, members, members_squared, 
-                          interest_encoded]) - means) / stds
+    x_scaled = (np.array([log_lobbying_cost, log_ep_passes, members, members_squared, 
+                          interest_0, interest_1]) - means) / stds
     
     # [1, x1, x2] . [intercept, b1, b2]
-    input_vec = np.array([1.0, x_scaled[0], x_scaled[1]])
+    input_vec = np.array([x_scaled[0], x_scaled[1], x_scaled[2], x_scaled[3], x_scaled[4], x_scaled[5]])
     prediction = float(params.T @ input_vec)
     current_app.logger.info(
         f"lobby_model.predict({lobbying_cost}, {ep_passes}, {members_fte}, {country}, {interest}) -> {prediction:.2f}"

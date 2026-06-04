@@ -1,4 +1,4 @@
-country,country_code,gdp_usd,population,inflation,gdp_per_capita
+country,iso2,gdp_usd,population,inflation_rate,gdp_per_capita
 Austria,AUT,473221298968.216,9041851,8.54686993188457,52336.77252237578
 Belgium,BEL,591085783326.267,11680210,9.597511728725,50605.749667708624
 Bulgaria,BGR,90506153293.6733,6465097,15.3252589264367,13999.194953095568
