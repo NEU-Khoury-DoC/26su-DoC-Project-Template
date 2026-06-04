@@ -147,9 +147,9 @@ def get_university():
         return error_response(str(e))
 
 #get cities
-@housing_bp.route("/cities", methods=["GET"])
+@housing_bp.route("/listing/cities", methods=["GET"])
 def get_cities():
-    current_app.logger.info('GET /housing/cities')
+    current_app.logger.info('GET /housing/listing/cities')
     try:
         query = """
             SELECT DISTINCT listing.city_name

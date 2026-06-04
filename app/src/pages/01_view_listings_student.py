@@ -36,7 +36,7 @@ with col4:
                                 in requests.get('http://web-api:4000/housing/university').json()])
 with col5:
     city_filter = st.selectbox("City", options=["All"] + [c['city_name'] for c
-                                in requests.get('http://web-api:4000/housing/cities').json()])
+                                in requests.get('http://web-api:4000/housing/listing/cities').json()])
 
 # build params based on filters
 params = {}
@@ -94,7 +94,7 @@ for listing in listings:
                 st.write(f"🏫 Associated with {listing['university_name']}")
 
             with col2:
-                st.subheader(f"${listing['price']} / month")
+                st.subheader(f"€{listing['price']} / month")
 
             with col3:
                 if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
@@ -111,7 +111,7 @@ for listing in listings:
                 st.write(f"🏠 {listing['property_type']}")
 
             with col2:
-                st.subheader(f"${listing['price']} / month")
+                st.subheader(f"€{listing['price']} / month")
             
             with col3:
                 if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
