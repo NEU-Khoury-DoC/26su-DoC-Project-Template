@@ -1,10 +1,9 @@
 import logging
 logger = logging.getLogger(__name__)
 
-import hashlib
-
-import altair as alt
+import joblib
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 from modules.nav import SideBarLinks
 
@@ -13,84 +12,116 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title("Country Comparison")
-st.write("#### Compare energy indicators side by side")
-st.caption("Placeholder data — indicators map to Eurostat / Ember / AGSI once wired in.")
+st.write("#### Which countries should you worry about this winter?")
 
-COUNTRIES = [
-    "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus",
-    "Czech Republic", "Denmark", "Estonia", "Finland", "France",
-    "Germany", "Greece", "Hungary", "Ireland", "Italy",
-    "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands",
-    "Poland", "Portugal", "Romania", "Slovakia", "Slovenia",
-    "Spain", "Sweden",
-]
+# ---- Load model + data (cached) ----
+@st.cache_resource
+def load_model():
+    return joblib.load("assets/gas_model.pkl")
 
-# Indicator -> (min, max) used only to generate stable placeholder values.
-INDICATORS = {
-    "Electricity Price (€/MWh)": (60, 160),
-    "Gas Storage (%)": (0, 100),
-    "Renewables Share (%)": (10, 90),
-    "Import Dependence (%)": (10, 95),
+@st.cache_data
+def load_data():
+    return pd.read_csv("assets/dataset.csv")
+
+model = load_model()
+data = load_data()
+
+CODE_TO_NAME = {
+    "AT": "Austria", "BE": "Belgium", "BG": "Bulgaria", "HR": "Croatia",
+    "CZ": "Czech Republic", "DK": "Denmark", "FR": "France", "DE": "Germany",
+    "HU": "Hungary", "IT": "Italy", "LV": "Latvia", "NL": "Netherlands",
+    "PL": "Poland", "PT": "Portugal", "RO": "Romania", "SK": "Slovakia",
+    "ES": "Spain",
 }
+FEATURES = ["storage_at_start", "storage_trend_30d", "storage_volatility"]
 
+# ---- Run the model on every country's most recent winter ----
+latest = (data.sort_values("winter")
+              .groupby("country")
+              .tail(1)
+              .reset_index(drop=True))
 
-def placeholder_value(country, indicator):
-    """Deterministic placeholder so each country shows a stable, distinct value."""
-    low, high = INDICATORS[indicator]
-    digest = hashlib.md5(f"{country}-{indicator}".encode()).hexdigest()
-    return low + int(digest, 16) % (high - low + 1)
+latest["risk_prob"] = model.predict_proba(latest[FEATURES])[:, 1]
+latest["Country"] = latest["country"].map(CODE_TO_NAME)
+latest["Verdict"] = (latest["risk_prob"] >= 0.5).map(
+    {True: "At risk", False: "Not at risk"})
 
+# ---- The answer, first ----
+at_risk_df = latest[latest["Verdict"] == "At risk"].sort_values(
+    "risk_prob", ascending=False)
+n_risk = len(at_risk_df)
+n_total = len(latest)
 
-# Filters
-filter_left, filter_right = st.columns([3, 2])
-
-with filter_left:
-    default_country = st.session_state.get("journalist_country", "Poland")
-    defaults = [c for c in [default_country, "Germany", "France"] if c in COUNTRIES]
-    selected_countries = st.multiselect(
-        "Countries to compare",
-        COUNTRIES,
-        default=list(dict.fromkeys(defaults)),
+if n_risk == 0:
+    st.success(
+        f"✅ **No countries flagged** — the model predicts all {n_total} "
+        f"covered countries keep gas storage above 30% this winter."
+    )
+else:
+    riskiest = at_risk_df.iloc[0]
+    st.error(
+        f"⚠️ **{n_risk} / {n_total} countries flagged**:  the model predicts "
+        f"{', '.join(at_risk_df['Country'])} could see gas storage fall below "
+        f"30% this winter. Highest risk: {riskiest['Country']} "
+        f"({riskiest['risk_prob']:.0%})."
     )
 
-with filter_right:
-    indicator = st.selectbox("Indicator", list(INDICATORS.keys()))
+st.caption(
+    "Based on each country's most recent pre-winter storage conditions, "
+    "using the same model as the Gas Storage Risk page."
+)
 
 st.divider()
 
-if not selected_countries:
-    st.info("Select at least one country to compare.")
-    st.stop()
+# ---- Risk leaderboard ----
+st.write("### All countries, ranked by risk")
 
-# Bar chart for the chosen indicator
-st.write(f"### {indicator}")
-chart_df = pd.DataFrame(
-    {
-        "Country": selected_countries,
-        "Value": [placeholder_value(c, indicator) for c in selected_countries],
-    }
+default_country = st.session_state.get("journalist_country", "Poland")
+all_countries = sorted(latest["Country"])
+defaults = [c for c in [default_country, "Germany", "France"] if c in all_countries]
+selected_countries = st.multiselect(
+    "Filter countries",
+    all_countries,
+    default=list(dict.fromkeys(defaults)),
 )
-comparison_chart = (
-    alt.Chart(chart_df)
-    .mark_bar()
-    .encode(
-        x=alt.X("Country:N", sort=None, title=None),
-        # Lock the value axis to start at 0 so it never shows negative numbers.
-        y=alt.Y("Value:Q", scale=alt.Scale(domainMin=0), title=indicator),
-        color=alt.Color("Country:N", legend=None),
+
+shown = latest if not selected_countries else (
+    latest[latest["Country"].isin(selected_countries)])
+shown = shown.sort_values("risk_prob", ascending=True)
+
+fig = px.bar(
+    shown, x="risk_prob", y="Country", orientation="h", color="Verdict",
+    color_discrete_map={"At risk": "red", "Not at risk": "steelblue"},
+    labels={"risk_prob": "Chance of storage falling below 30%"},
+)
+fig.update_xaxes(tickformat=".0%", range=[0, 1])
+fig.add_vline(x=0.5, line_dash="dash", line_color="gray")
+fig.update_layout(height=max(300, 35 * len(shown)), showlegend=False)
+
+st.plotly_chart(fig, use_container_width=True)
+st.caption(
+    "Longer bar = higher chance of a stressed winter and Red countries cross the line "
+    "the 50% line and are flagged as at-risk"
+)
+
+#  Details for the curious 
+with st.expander("View the data behind the rankings"):
+    table = (shown.sort_values("risk_prob", ascending=False)
+             [["Country", "winter", "risk_prob"] + FEATURES]
+             .rename(columns={
+                 "winter": "Winter",
+                 "risk_prob": "Risk probability",
+                 "storage_at_start": "Storage entering winter (%)",
+                 "storage_trend_30d": "Change over final month (points)",
+                 "storage_volatility": "Volatility (past 90 days)",
+             })
+             .set_index("Country")
+             .round(2))
+    st.dataframe(table, use_container_width=True)
+    st.caption(
+        "These three columns are the model's only inputs. Countries are "
+        "shown for their most recent complete winter in the data."
     )
-)
-st.altair_chart(comparison_chart, use_container_width=True)
-
-st.divider()
-
-# Full side-by-side table across all indicators
-st.write("### All indicators")
-table = pd.DataFrame(
-    {c: [placeholder_value(c, ind) for ind in INDICATORS] for c in selected_countries},
-    index=list(INDICATORS.keys()),
-)
-st.dataframe(table, use_container_width=True)
 
 st.divider()
 
@@ -100,5 +131,5 @@ with nav_left:
     if st.button("← Back to Country Snapshot", use_container_width=True):
         st.switch_page('pages/Country_Snapshot.py')
 with nav_right:
-    if st.button("Price Forecast →", type='primary', use_container_width=True):
-        st.switch_page('pages/Price_Forecast.py')
+    if st.button("Gas Storage Risk →", type='primary', use_container_width=True):
+        st.switch_page('pages/Gas_Storage_Risk.py')
