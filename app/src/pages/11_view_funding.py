@@ -20,6 +20,9 @@ if st.button("Sync Eurostat Data", type = "secondary"):
     st.success("All data synced!")
     st.rerun()
 
+
+
+# Funding Index Table
 st.subheader("Funding Index")
 st.caption("Existing housing and social funding programs across EU countries.")
 try:
@@ -56,7 +59,7 @@ except Exception as e:
 st.divider()
 
 
-# Social Indicator Index
+# Social Indicator Index Graph
 st.subheader("Social Indicator Index")
 st.caption("Explore Eurostat data on indicators by country and year.")
 
@@ -121,7 +124,7 @@ except Exception as e:
 st.divider()
 
 
-# Draft Funding Plan
+#Draft funding plan form
 st.subheader("Draft Funding Plan")
 
 with st.container(border=True):

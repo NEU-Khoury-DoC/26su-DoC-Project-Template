@@ -135,3 +135,56 @@ def delete_funding(funding_id):
     except Error as e:
         current_app.logger.error(f'Database error in delete_funding: {e}')
         return error_response(str(e))
+
+
+
+@housing_bp.route("/funding-draft", methods=["POST"])
+def create_funding_draft():
+    current_app.logger.info('POST /housing/funding-draft')
+    try:
+        data = request.get_json()
+
+        with get_db().cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO funding_draft (user_id, country_id, program, amount, indicators_targeted, demographics_targeted, description)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """, (
+                data.get("user_id"),
+                data.get("country_id"),
+                data.get("program"),
+                data.get("amount"),
+                data.get("indicators_targeted"),
+                data.get("demographics_targeted"),
+                data.get("description")
+            ))
+        get_db().commit()
+        return jsonify({"message": "Draft saved successfully"}), 201
+    except Error as e:
+        current_app.logger.error(f'Database error in create_funding_draft: {e}')
+        return error_response(str(e))
+
+
+@housing_bp.route("/funding-draft", methods=["GET"])
+def get_funding_drafts():
+    current_app.logger.info('GET /housing/funding-draft')
+    try:
+        user_id = request.args.get("user_id")
+        query = """
+            SELECT fd.*, c.country_name 
+            FROM funding_draft fd
+            JOIN country c ON fd.country_id = c.country_id
+            WHERE 1=1
+        """
+        params = []
+        if user_id:
+            query += " AND fd.user_id = %s"
+            params.append(user_id)
+
+        with get_db().cursor(dictionary=True) as cursor:
+            cursor.execute(query, params)
+            drafts = cursor.fetchall()
+
+        return jsonify(drafts), 200
+    except Error as e:
+        current_app.logger.error(f'Database error in get_funding_drafts: {e}')
+        return error_response(str(e))
