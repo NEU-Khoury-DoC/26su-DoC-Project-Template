@@ -6,6 +6,7 @@ from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
 from backend.housing.housing_routes01 import housing_bp
 
+
 def create_app():
     app = Flask(__name__)
 
