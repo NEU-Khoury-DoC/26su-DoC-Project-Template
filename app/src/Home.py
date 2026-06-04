@@ -59,7 +59,7 @@ if st.button("Login as a Student",
     st.session_state['name'] = student_options[selected_name_student]['name']
     st.session_state['user_id'] = student_options[selected_name_student]['user_id']
     logger.info("Logging in as Student Persona")
-    st.switch_page('pages/00_Pol_Strat_Home.py')
+    st.switch_page('pages/00_Student_home.py')
 
 #retrieve full list of real estate agents
 response_agents_re = requests.get('http://web-api:4000/housing/user', 
@@ -79,7 +79,7 @@ if st.button('Login as a Real Estate Agent',
     st.session_state['role'] = 'Real Estate Agent'
     st.session_state['name'] = agent_options_re[selected_name_agent_re]['name']
     st.session_state['user_id'] = agent_options_re[selected_name_agent_re]['user_id']
-    st.switch_page('pages/10_USAID_Worker_Home.py')
+    st.switch_page('pages/05_REA_agent_home.py')
 
 #retrieve full list of real estate agents
 response_ga = requests.get('http://web-api:4000/housing/user', params={'role': 'Government Agency'})
@@ -98,4 +98,4 @@ if st.button('Login as a government agency worker',
     st.session_state['role'] = 'Government Agency'
     st.session_state['name'] = agent_options_ga[selected_name_ga]['name']
     st.session_state['user_id'] = agent_options_ga[selected_name_ga]['user_id']
-    st.switch_page('pages/20_Admin_Home.py')
+    st.switch_page('pages/10_GA_home.py')
