@@ -14,7 +14,7 @@ CREATE TABLE social_indicator_types (
 );
 
 CREATE TABLE social_indicator_stats (
-    stats_id INTEGER PRIMARY KEY,
+    stats_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     country_id INTEGER NOT NULL,
     sit_id INTEGER NOT NULL,
     year YEAR,
@@ -26,9 +26,9 @@ CREATE TABLE social_indicator_stats (
 );
 
 CREATE TABLE university (
-    university_id INTEGER PRIMARY KEY,
+    university_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     country_id INTEGER NOT NULL,
-    university_name VARCHAR(75) NOT NULL,
+    university_name VARCHAR(150) NOT NULL,
     city_name VARCHAR(30),
     address VARCHAR(250),
 
@@ -36,7 +36,7 @@ CREATE TABLE university (
 );
 
 CREATE TABLE user (
-    user_id INTEGER PRIMARY KEY,
+    user_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     university_id INTEGER,
     country_id INTEGER,
     name VARCHAR(100),
@@ -50,7 +50,8 @@ CREATE TABLE user (
 );
 
 CREATE TABLE listing (
-    listing_id INTEGER PRIMARY KEY,
+    listing_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(200),
     country_id INTEGER,
     associated_university_id INTEGER,
     user_id INTEGER,
@@ -64,7 +65,7 @@ CREATE TABLE listing (
 );
 
 CREATE TABLE reviews (
-    review_id INTEGER PRIMARY KEY,
+    review_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     listing_id INTEGER NOT NULL,
     rating INTEGER,
     comment VARCHAR(2000),
@@ -73,7 +74,7 @@ CREATE TABLE reviews (
 );
 
 CREATE TABLE funding (
-    funding_id INTEGER PRIMARY KEY,
+    funding_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     country_id INTEGER NOT NULL,
     year YEAR,
     amount DECIMAL,
