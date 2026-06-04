@@ -5,6 +5,7 @@
 
 # Set up basic logging infrastructure
 import logging
+import requests
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -33,40 +34,68 @@ SideBarLinks(show_home=True)
 # ***************************************************
 
 logger.info("Loading the Home page of the app")
-st.title('Summer 2026 Belgium DoC Project Template')
+st.title('Housing Homies App')
 st.write('#### Hi! As which user would you like to log in?')
 
 # For each of the user personas for which we are implementing
 # functionality, we put a button on the screen that the user
 # can click to MIMIC logging in as that mock user.
 
-if st.button("Act as John, a Political Strategy Advisor",
+#retrieve full list of students
+response_students = requests.get('http://web-api:4000/housing/user', params={'role': 'Student'})
+students = response_students.json()
+
+#dropdown menu
+student_options = {f"{s['name']}": s for s in students}
+selected_name_student = st.selectbox('Select a user', options=list(student_options.keys()))
+
+if st.button("Login as a Student",
              type='primary',
              use_container_width=True):
-    # when user clicks the button, they are now considered authenticated
+    
     st.session_state['authenticated'] = True
-    # we set the role of the current user
-    st.session_state['role'] = 'pol_strat_advisor'
-    # we add the first name of the user (so it can be displayed on
-    # subsequent pages).
-    st.session_state['first_name'] = 'John'
-    # finally, we ask streamlit to switch to another page, in this case, the
-    # landing page for this particular user type
-    logger.info("Logging in as Political Strategy Advisor Persona")
+    st.session_state['role'] = 'Student'
+
+    st.session_state['name'] = student_options[selected_name_student]['name']
+    st.session_state['user_id'] = student_options[selected_name_student]['user_id']
+    logger.info("Logging in as Student Persona")
     st.switch_page('pages/00_Pol_Strat_Home.py')
 
-if st.button('Act as Mohammad, a USAID Worker',
+#retrieve full list of real estate agents
+response_agents_re = requests.get('http://web-api:4000/housing/user', 
+                                  params={'role': 'Real Estate Agent'})
+re_agents = response_agents_re.json()
+
+#dropdown menu
+agent_options_re = {f"{a['name']}": a for a in re_agents}
+selected_name_agent_re = st.selectbox('Select a user', options=list(agent_options_re.keys()))
+
+if st.button('Login as a Real Estate Agent',
              type='primary',
              use_container_width=True):
+
+    #first_name = response from dropdown menu
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'usaid_worker'
-    st.session_state['first_name'] = 'Mohammad'
+    st.session_state['role'] = 'Real Estate Agent'
+    st.session_state['name'] = agent_options_re[selected_name_agent_re]['name']
+    st.session_state['user_id'] = agent_options_re[selected_name_agent_re]['user_id']
     st.switch_page('pages/10_USAID_Worker_Home.py')
 
-if st.button('Act as System Administrator',
+#retrieve full list of real estate agents
+response_ga = requests.get('http://web-api:4000/housing/user', params={'role': 'Government Agency'})
+agents_ga = response_ga.json()
+
+#dropdown menu
+agent_options_ga = {f"{a['name']}": a for a in agents_ga}
+selected_name_ga = st.selectbox('Select a user', options=list(agent_options_ga.keys()))
+
+if st.button('Login as a government agency worker',
              type='primary',
              use_container_width=True):
+
+    #first_name = response from dropdown menu
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
+    st.session_state['role'] = 'Government Agency'
+    st.session_state['name'] = agent_options_ga[selected_name_ga]['name']
+    st.session_state['user_id'] = agent_options_ga[selected_name_ga]['user_id']
     st.switch_page('pages/20_Admin_Home.py')
