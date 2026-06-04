@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS reactions (
 
 CREATE TABLE IF NOT EXISTS farms (
     farm_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
+    farm_name VARCHAR(255),
     user_id INT,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS farms (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE IF NOT EXISTS farms_data (
+CREATE TABLE IF NOT EXISTS farms_location (
     farm_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
     longitude FLOAT,
@@ -85,16 +85,16 @@ CREATE TABLE IF NOT EXISTS crops (
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS crop_list (
-    farm_data_id INT NOT NULL,
+CREATE TABLE IF NOT EXISTS farm_crops (
+    farm_id INT NOT NULL,
     crop_id INT NOT NULL,
-    PRIMARY KEY (farm_data_id, crop_id),
-    FOREIGN KEY (farm_data_id) REFERENCES farms_data(farm_data_id),
+    PRIMARY KEY (farm_id, crop_id),
+    FOREIGN KEY (farm_id) REFERENCES farms(farm_id),
     FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
 );
 
-CREATE TABLE IF NOT EXISTS ideal_data (
-    ideal_data_id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS user_crop_data (
+    user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
     temperature FLOAT,
     humidity FLOAT,
@@ -107,6 +107,18 @@ CREATE TABLE IF NOT EXISTS ideal_data (
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
 );
 
+CREATE TABLE IF NOT EXISTS ml_crop_data (
+    user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
+    temperature FLOAT,
+    humidity FLOAT,
+    elevation FLOAT,
+    rainfall FLOAT,
+    created_by VARCHAR(100) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_by VARCHAR(100) DEFAULT NULL,
+    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS crop_price_model_coefficients (
     crops_price_coe_id INT AUTO_INCREMENT PRIMARY KEY,
     crop_id INT,
@@ -114,7 +126,7 @@ CREATE TABLE IF NOT EXISTS crop_price_model_coefficients (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (crop_id) REFERENCES Crops(crop_id)
+    FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
 );
 
 -- Model 2 parameters: GDP ~ Fossil_Fuels + CO2_Upop
@@ -162,7 +174,7 @@ CREATE TABLE IF NOT EXISTS WeatherData (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS cropHealthModelCoefficients (
+CREATE TABLE IF NOT EXISTS crop_health_model_coefficients (
     crops_health_coe_id INT AUTO_INCREMENT PRIMARY KEY,
     temperature FLOAT,
     humidity FLOAT,
