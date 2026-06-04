@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS posts (
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     post_text VARCHAR(255),
-    img CHAR(64),
+    img BLOB,
     user_id INT,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -76,30 +76,16 @@ CREATE TABLE IF NOT EXISTS farms_location (
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
 );
 
-CREATE TABLE IF NOT EXISTS crops (
-    crop_id INT AUTO_INCREMENT PRIMARY KEY,
-    crop_name VARCHAR(50),
-    created_by VARCHAR(100) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_by VARCHAR(100) DEFAULT NULL,
-    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS farm_crops (
-    farm_id INT NOT NULL,
-    crop_id INT NOT NULL,
-    PRIMARY KEY (farm_id, crop_id),
-    FOREIGN KEY (farm_id) REFERENCES farms(farm_id),
-    FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
-);
-
 CREATE TABLE IF NOT EXISTS user_crop_data (
     user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
-    temperature FLOAT,
-    humidity FLOAT,
-    elevation FLOAT,
-    rainfall FLOAT,
+    type_of_crop VARCHAR(255) NOT NULL,
+    season VARCHAR(100) NOT NULL,
+    sown DATETIME NOT NULL,
+    harvested DATETIME NOT NULL,
+    water_source VARCHAR(100) NOT NULL,
+    temp FLOAT NOT NULL,
+    relative_humidity FLOAT NOT NULL,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
@@ -107,26 +93,26 @@ CREATE TABLE IF NOT EXISTS user_crop_data (
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
 );
 
-CREATE TABLE IF NOT EXISTS ml_crop_data (
-    user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
-    temperature FLOAT,
-    humidity FLOAT,
-    elevation FLOAT,
-    rainfall FLOAT,
+
+-- not sure if we need this yet
+-- CREATE TABLE IF NOT EXISTS ml_crop_data (
+--     user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
+--     temperature FLOAT,
+--     humidity FLOAT,
+--     elevation FLOAT,
+--     rainfall FLOAT,
+--     created_by VARCHAR(100) NOT NULL,
+--     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+--     updated_by VARCHAR(100) DEFAULT NULL,
+--     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+-- );
+
+CREATE TABLE IF NOT EXISTS crop_price_model_coefficients (
+    crops_price_coe_id INT AUTO_INCREMENT PRIMARY KEY,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS crop_price_model_coefficients (
-    crops_price_coe_id INT AUTO_INCREMENT PRIMARY KEY,
-    crop_id INT,
-    created_by VARCHAR(100) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_by VARCHAR(100) DEFAULT NULL,
-    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (crop_id) REFERENCES crops(crop_id)
 );
 
 CREATE TABLE IF NOT EXISTS crop_health_model_coefficients (
@@ -166,7 +152,7 @@ CREATE TABLE IF NOT EXISTS saved_reports (
     saved_data_id INT,
     title VARCHAR(255),
     texts TEXT,
-    graph CHAR(64),
+    graph BLOB,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
