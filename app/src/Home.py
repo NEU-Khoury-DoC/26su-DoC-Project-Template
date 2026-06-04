@@ -1,72 +1,132 @@
 ##################################################
-# This is the main/entry-point file for the
-# sample application for your project
+# Main entry-point for the Zeus Streamlit app
 ##################################################
 
-# Set up basic logging infrastructure
 import logging
-logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
+
+logging.basicConfig(
+    format="%(filename)s:%(lineno)s:%(levelname)s -- %(message)s",
+    level=logging.INFO,
+)
 logger = logging.getLogger(__name__)
 
-# import the main streamlit library as well
-# as SideBarLinks function from src/modules folder
 import streamlit as st
 from modules.nav import SideBarLinks
 
-# streamlit supports regular and wide layout (how the controls
-# are organized/displayed on the screen).
-st.set_page_config(layout='wide')
+st.set_page_config(layout="wide")
 
-# If a user is at this page, we assume they are not
-# authenticated.  So we change the 'authenticated' value
-# in the streamlit session_state to false.
-st.session_state['authenticated'] = False
+# Returning to Home ends the active persona session and resets the sidebar
+st.session_state["authenticated"] = False
+st.session_state.pop("role", None)
 
-# Use the SideBarLinks function from src/modules/nav.py to control
-# the links displayed on the left-side panel.
-# IMPORTANT: ensure src/.streamlit/config.toml sets
-# showSidebarNavigation = false in the [client] section
 SideBarLinks(show_home=True)
 
-# ***************************************************
-#    The major content of this page
-# ***************************************************
-
 logger.info("Loading the Home page of the app")
-st.title('Summer 2026 Belgium DoC Project Template')
-st.write('#### Hi! As which user would you like to log in?')
 
-# For each of the user personas for which we are implementing
-# functionality, we put a button on the screen that the user
-# can click to MIMIC logging in as that mock user.
+st.title("Zeus Energy Security Index")
+st.write("Choose a persona, then log in.")
 
-if st.button("Act as John, a Political Strategy Advisor",
-             type='primary',
-             use_container_width=True):
-    # when user clicks the button, they are now considered authenticated
-    st.session_state['authenticated'] = True
-    # we set the role of the current user
-    st.session_state['role'] = 'pol_strat_advisor'
-    # we add the first name of the user (so it can be displayed on
-    # subsequent pages).
-    st.session_state['first_name'] = 'John'
-    # finally, we ask streamlit to switch to another page, in this case, the
-    # landing page for this particular user type
-    logger.info("Logging in as Political Strategy Advisor Persona")
-    st.switch_page('pages/00_Pol_Strat_Home.py')
+PLACEHOLDER = "Select an option"
 
-if st.button('Journalist',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'journalist'
-    st.session_state['first_name'] = 'Marco'
-    st.switch_page('pages/Country_Snapshot.py')
+PERSONAS = {
+    "household_owner_dropdown": ("household_owner", "Household Owner", "Option 1"),
+    "journalist_dropdown": ("journalist", "Journalist", "Option 1"),
+    "analyst_dropdown": ("analyst", "Analyst", "Option 1"),
+}
 
-if st.button('Act as System Administrator',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+LOGIN_PAGES = {
+    "household_owner": "pages/40_Household_Owner_Dashboard.py",
+    "journalist": "pages/Country_Snapshot.py",
+}
+
+
+def _persona_option_selected(persona_id: str) -> bool:
+    """True only when the persona's dropdown has a real option, not the placeholder."""
+    for key, (pid, _, option) in PERSONAS.items():
+        if pid == persona_id:
+            return st.session_state.get(key) == option
+    return False
+
+
+def _on_persona_change(changed_key: str) -> None:
+    """Keep a single active persona across the three dropdowns."""
+    persona_id, _, _ = PERSONAS[changed_key]
+    selected = st.session_state[changed_key]
+
+    if selected == PLACEHOLDER:
+        if st.session_state.get("active_persona") == persona_id:
+            st.session_state["active_persona"] = None
+        return
+
+    st.session_state["active_persona"] = persona_id
+    for key in PERSONAS:
+        if key == changed_key:
+            continue
+        st.session_state[key] = PLACEHOLDER
+
+
+if "active_persona" not in st.session_state:
+    st.session_state["active_persona"] = None
+
+for key in PERSONAS:
+    if key not in st.session_state:
+        st.session_state[key] = PLACEHOLDER
+
+# Keep active_persona in sync so login never uses a stale persona with placeholders
+active = None
+for key, (persona_id, _, option) in PERSONAS.items():
+    if st.session_state.get(key) == option:
+        active = persona_id
+        break
+st.session_state["active_persona"] = active
+
+col_household, col_journalist, col_analyst, col_login = st.columns([2, 2, 2, 1])
+
+with col_household:
+    _, label, option = PERSONAS["household_owner_dropdown"]
+    st.markdown(f"**{label}**")
+    st.selectbox(
+        f"{label} options",
+        options=[PLACEHOLDER, option],
+        key="household_owner_dropdown",
+        label_visibility="collapsed",
+        on_change=_on_persona_change,
+        args=("household_owner_dropdown",),
+    )
+
+with col_journalist:
+    _, label, option = PERSONAS["journalist_dropdown"]
+    st.markdown(f"**{label}**")
+    st.selectbox(
+        f"{label} options",
+        options=[PLACEHOLDER, option],
+        key="journalist_dropdown",
+        label_visibility="collapsed",
+        on_change=_on_persona_change,
+        args=("journalist_dropdown",),
+    )
+
+with col_analyst:
+    _, label, option = PERSONAS["analyst_dropdown"]
+    st.markdown(f"**{label}**")
+    st.selectbox(
+        f"{label} options",
+        options=[PLACEHOLDER, option],
+        key="analyst_dropdown",
+        label_visibility="collapsed",
+        on_change=_on_persona_change,
+        args=("analyst_dropdown",),
+    )
+
+with col_login:
+    st.markdown("&nbsp;", unsafe_allow_html=True)
+    if st.button("Log in", type="primary", use_container_width=True):
+        persona = st.session_state.get("active_persona")
+        if not persona or not _persona_option_selected(persona):
+            st.warning("Select a persona and choose an option before logging in.")
+        elif persona not in LOGIN_PAGES:
+            st.warning("Login for this persona is not available yet.")
+        else:
+            st.session_state["authenticated"] = True
+            st.session_state["role"] = persona
+            st.switch_page(LOGIN_PAGES[persona])

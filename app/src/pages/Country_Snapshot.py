@@ -71,8 +71,8 @@ st.divider()
 # Cross-page navigation
 nav_left, nav_right = st.columns(2)
 with nav_left:
-    if st.button("View Historical Trends →", type='primary', use_container_width=True):
-        st.switch_page('pages/Historical_Trends.py')
+    if st.button("Price Forecast →", type='primary', use_container_width=True):
+        st.switch_page('pages/Price_Forecast.py')
 with nav_right:
     if st.button("Compare Countries →", type='primary', use_container_width=True):
         st.switch_page('pages/Country_Comparison.py')
