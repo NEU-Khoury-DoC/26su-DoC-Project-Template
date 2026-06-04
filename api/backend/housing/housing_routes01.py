@@ -67,7 +67,7 @@ def get_user():
     except Error as e:
         current_app.logger.error(f'Database error in get_all_users: {e}')
         return error_response(str(e))
-  
+
 #Update user
 @housing_bp.route("/housing/user/<int:user_id>", methods=["PUT"])
 def update_user(user_id):
@@ -445,4 +445,90 @@ def get_hpi_stats():
         return error_response(str(e))
     
 
-
+# ML model routes for student
+# train model
+@student_bp.route("/student/train", methods=["POST"])
+def train_model():
+    current_app.logger.info('POST /student/train')
+    try:
+        results = train()
+        return jsonify({
+            "message": "Model trained successfully",
+            "mse": results["mse"],
+            "r2":  results["r2"]
+        }), 201
+    except Exception as e:
+        current_app.logger.error(f'Error training student model: {e}')
+        return error_response(str(e))
+ 
+ 
+# test model
+@student_bp.route("/student/test", methods=["GET"])
+def test_model():
+    current_app.logger.info('GET /student/test')
+    try:
+        results = test()
+        return jsonify({
+            "mse": results["mse"],
+            "r2":  results["r2"]
+        }), 200
+    except ValueError as e:
+        current_app.logger.error(f'No model parameters found: {e}')
+        return error_response(str(e), 404)
+    except Exception as e:
+        current_app.logger.error(f'Error testing student model: {e}')
+        return error_response(str(e))
+ 
+ 
+# predict
+@student_bp.route("/student/predict", methods=["POST"])
+def predict_satisfaction():
+    current_app.logger.info('POST /student/predict')
+    try:
+        data = request.get_json()
+ 
+        required = ["crime", "noise", "pollution", "hpi", "is_rural", "is_towns"]
+        missing = [f for f in required if f not in data]
+        if missing:
+            return error_response(f"Missing required fields: {missing}", 400)
+ 
+        score = predict(
+            crime      = float(data["crime"]),
+            noise      = float(data["noise"]),
+            pollution  = float(data["pollution"]),
+            hpi        = float(data["hpi"]),
+            is_rural   = bool(data["is_rural"]),
+            is_towns   = bool(data["is_towns"]),
+        )
+ 
+        return jsonify({"prediction": round(score, 2)}), 200
+ 
+    except ValueError as e:
+        current_app.logger.error(f'No model parameters found: {e}')
+        return error_response(str(e), 404)
+    except Exception as e:
+        current_app.logger.error(f'Error in predict_satisfaction: {e}')
+        return error_response(str(e))
+ 
+ 
+# stored model params
+@student_bp.route("/student/params", methods=["GET"])
+def get_model_params():
+    current_app.logger.info('GET /student/params')
+    try:
+        with get_db().cursor(dictionary=True) as cursor:
+            cursor.execute(
+                '''SELECT id, beta_vals, scaler_mean, scaler_std
+                   FROM student_model_params
+                   ORDER BY id DESC LIMIT 1'''
+            )
+            row = cursor.fetchone()
+ 
+        if row is None:
+            return error_response("No model parameters found. Run train first.", 404)
+ 
+        return jsonify(row), 200
+ 
+    except Error as e:
+        current_app.logger.error(f'Database error in get_model_params: {e}')
+        return error_response(str(e))
