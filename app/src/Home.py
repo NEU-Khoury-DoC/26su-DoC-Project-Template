@@ -99,3 +99,14 @@ if st.button('Login as a government agency worker',
     st.session_state['name'] = agent_options_ga[selected_name_ga]['name']
     st.session_state['user_id'] = agent_options_ga[selected_name_ga]['user_id']
     st.switch_page('pages/10_GA_home.py')
+
+
+response_students = requests.get('http://web-api:4000/housing/user', params={'role': 'Student'})
+logger.info(f"STATUS: {response_students.status_code}, BODY: {response_students.text}")
+
+if response_students.status_code == 200:
+    students = response_students.json()
+else:
+    students = []
+    st.error(f"Failed to load students: {response_students.text}")
+    
