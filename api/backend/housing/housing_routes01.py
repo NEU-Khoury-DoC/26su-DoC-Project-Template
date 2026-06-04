@@ -3,6 +3,7 @@ from backend.db_connection import get_db
 from backend.utils import error_response
 from mysql.connector import Error
 import requests
+from backend.ml_models.student_linreg import train, test, predict
 
 # Variable name includes the domain (ngo_bp) so it stays readable when
 # imported alongside other blueprints (e.g. `from ... import ngo_bp, donor_bp`).
@@ -447,7 +448,7 @@ def get_hpi_stats():
 
 # ML model routes for student
 # train model
-@student_bp.route("/student/train", methods=["POST"])
+@housing_bp.route("/student/train", methods=["POST"])
 def train_model():
     current_app.logger.info('POST /student/train')
     try:
@@ -463,7 +464,7 @@ def train_model():
  
  
 # test model
-@student_bp.route("/student/test", methods=["GET"])
+@housing_bp.route("/student/test", methods=["GET"])
 def test_model():
     current_app.logger.info('GET /student/test')
     try:
@@ -481,7 +482,7 @@ def test_model():
  
  
 # predict
-@student_bp.route("/student/predict", methods=["POST"])
+@housing_bp.route("/student/predict", methods=["POST"])
 def predict_satisfaction():
     current_app.logger.info('POST /student/predict')
     try:
@@ -512,7 +513,7 @@ def predict_satisfaction():
  
  
 # stored model params
-@student_bp.route("/student/params", methods=["GET"])
+@housing_bp.route("/student/params", methods=["GET"])
 def get_model_params():
     current_app.logger.info('GET /student/params')
     try:

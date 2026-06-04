@@ -55,7 +55,7 @@ if st.button("Predict"):
     }
 
     try:
-        response = requests.post("http://localhost:4000/student/predict", json=payload)
+        response = requests.post("http://web-api:4000/housing/student/predict", json=payload)
         response.raise_for_status()
         score = round(response.json().get("prediction", 0), 1)
         score_display = max(1.0, min(10.0, score))
