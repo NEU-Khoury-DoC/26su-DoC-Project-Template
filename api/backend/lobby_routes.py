@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, current_app
 from backend.db_connection import get_db
 from backend.utils import error_response
 from mysql.connector import Error
-from ml.predict import predict_influence
+from backend.ml_models import lobby_model
 
 organizations_bp = Blueprint("organizations", __name__)
 policy_bp        = Blueprint("policy", __name__)
@@ -319,71 +319,44 @@ def save_preferences():
 # BLUEPRINT: ml
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Route 10 — POST /organizations/<org_id>/influence-predictions
-# Run ML influence score prediction for a given org.
-# Loads stored model weights from the DB — does NOT retrain on every call.
-# Returns: influence_score (float) + influence_class (str) + top features
-# Example: POST /organizations/42/influence-predictions
-@ml_bp.route("/organizations/<int:org_id>/influence-predictions", methods=["POST"])
-def predict_org_influence(org_id):
-    current_app.logger.info(f"POST /organizations/{org_id}/influence-predictions")
+
+# Route 10 — POST /lobby/prediction
+# Submit lobbying inputs and return the model prediction.
+@ml_bp.route("/lobby/prediction", methods=["POST"])
+def get_lobby_prediction():
+    current_app.logger.info("POST /lobby/prediction")
     try:
-        with get_db().cursor(dictionary=True) as cursor:
-            # Fetch the org's features needed by the model
-            cursor.execute(
-                """SELECT o.lobbying_cost, o.log_lobbying_cost, o.members_eu,
-                          o.members_fte, ci.gdp_usd, ci.inflation_rate
-                   FROM organization o
-                   LEFT JOIN country_indicator ci
-                          ON o.country_code = ci.country_code
-                   WHERE o.org_id = %s
-                   ORDER BY ci.year DESC
-                   LIMIT 1""",
-                (org_id,)
-            )
-            org_features = cursor.fetchone()
-            if not org_features:
-                return error_response("Organization not found", 404)
+        data = request.get_json(silent=True) or {}
 
-            # Load the active model weights from the DB (train once, reuse every call)
-            cursor.execute(
-                "SELECT * FROM ml_model_weights WHERE is_active = TRUE ORDER BY trained_at DESC LIMIT 1"
-            )
-            model_row = cursor.fetchone()
-            if not model_row:
-                return error_response("No active ML model found. Please train a model first.", 503)
+        required_fields = ["lobbying_cost", "ep_passes", "members_fte", "country", "interest"]
+        missing_fields = [field for field in required_fields if field not in data]
+        if missing_fields:
+            return jsonify({"error": f"Missing required fields: {', '.join(missing_fields)}"}), 400
 
-        # Run prediction using stored weights — no retraining
-        result = predict_influence(org_features, model_row["weights_json"])
-
-        # Persist prediction result for future GET lookups
-        with get_db().cursor(dictionary=True) as cursor:
-            cursor.execute(
-                """INSERT INTO influence_prediction
-                       (org_id, model_id, run_date, influence_score,
-                        influence_class, top_features_json)
-                   VALUES (%s, %s, CURDATE(), %s, %s, %s)""",
-                (
-                    org_id,
-                    model_row["model_id"],
-                    result["influence_score"],
-                    result["influence_class"],
-                    str(result["top_features"]),
-                )
-            )
-        get_db().commit()
-
-        current_app.logger.info(
-            f"Influence prediction for org_id={org_id}: score={result['influence_score']}"
+        prediction = lobby_model.predict(
+            data["lobbying_cost"],
+            data["ep_passes"],
+            data["members_fte"],
+            data["country"],
+            data["interest"],
         )
+
+        current_app.logger.info(f"lobby prediction returned {prediction:.2f}")
         return jsonify({
-            "org_id":          org_id,
-            "influence_score": result["influence_score"],
-            "influence_class": result["influence_class"],
-            "top_features":    result["top_features"],
-            "model_version":   model_row["model_version"],
+            "prediction": round(prediction, 2),
+            "input_variables": {
+                "lobbying_cost": float(data["lobbying_cost"]),
+                "ep_passes": float(data["ep_passes"]),
+                "members_fte": float(data["members_fte"]),
+                "country": data["country"],
+                "interest": data["interest"],
+            },
         }), 200
 
-    except Error as e:
-        current_app.logger.error(f"Database error in predict_org_influence: {e}")
-        return error_response(str(e))
+    except ValueError as e:
+        current_app.logger.error(f"lobby prediction input error: {e}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        current_app.logger.error(f"lobby prediction error: {e}")
+        return jsonify({"error": "Error processing prediction request"}), 500
+
