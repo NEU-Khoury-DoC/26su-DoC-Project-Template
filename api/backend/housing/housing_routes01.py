@@ -32,7 +32,7 @@ def get_country():
         return error_response(str(e))
 
 
- #User routes
+#User routes
 @housing_bp.route("/user", methods=["GET"])
 def get_user():
     current_app.logger.info('GET /housing/user')
@@ -104,8 +104,66 @@ def update_user(user_id):
         return error_response(str(e))
 
 
+#Get unviersity
+@housing_bp.route("/university", methods=["GET"])
+def get_university():
+    current_app.logger.info('GET /housing/university')
+    try:
+        query = query = """SELECT DISTINCT university.*, country.country_name 
+        FROM university 
+        JOIN country ON university.country_id = country.country_id
+        JOIN listing ON listing.associated_university_id = university.university_id
+        WHERE 1=1"""
+        params = []
+
+        name = request.args.get("university_name")
+        country = request.args.get("country_name")
+        city_name = request.args.get("city_name")
+        listing_id = request.args.get("listing_id")
+
+        if name:
+            query += " AND university.university_name = %s"
+            params.append(name)
+        if country:
+            query += " AND country.country_name = %s"
+            params.append(country)
+        if city_name:
+            query += " AND university.city_name = %s"
+            params.append(city_name)
+        if listing_id:
+            query += " AND listing.listing_id = %s"
+            params.append(listing_id)
+
+        with get_db().cursor(dictionary=True) as cursor:
+            cursor.execute(query, params)
+            university_list = cursor.fetchall()
 
 
+        current_app.logger.info(f'Retrieved {len(university_list)} universities')
+        return jsonify(university_list), 200
+
+    except Error as e:
+        current_app.logger.error(f'Database error in get_university: {e}')
+        return error_response(str(e))
+
+#get cities
+@housing_bp.route("/cities", methods=["GET"])
+def get_cities():
+    current_app.logger.info('GET /housing/cities')
+    try:
+        query = """
+            SELECT DISTINCT listing.city_name
+            FROM listing
+            ORDER BY listing.city_name ASC
+        """
+        with get_db().cursor(dictionary=True) as cursor:
+            cursor.execute(query)
+            cities = cursor.fetchall()
+
+        return jsonify(cities), 200
+    except Error as e:
+        current_app.logger.error(f'Database error in get_cities: {e}')
+        return error_response(str(e))
 
 
 # --- social indicator types -------------------------------

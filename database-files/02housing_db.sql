@@ -72,7 +72,7 @@ INSERT INTO university(university_id,country_id,university_name,city_name,addres
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (19,13,'Philosophisch-Theologische Hochschule der Salesianer Don Boscos','Nicosia','925 Holmberg Court');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (20,9,'Institute of Teachers Education, Darul Aman','Barcelona','1344 Bonner Way');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (21,14,'Université d''Antananarivo','Riga','4 Summit Circle');
-INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (22,23,'Yüzüncü Yil (Centennial) University','Ljubljana','79 Brown Trail');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (22,23,'Centennial University','Ljubljana','79 Brown Trail');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (23,2,'University of Fribourg','Sofia','62174 Thierer Way');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (24,3,'Mugla University','Prague','8882 Rusk Terrace');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (25,12,'Banasthali University','Rome','31 Arizona Alley');
@@ -96,7 +96,7 @@ INSERT INTO university(university_id,country_id,university_name,city_name,addres
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (43,25,'The Federal Polytechnic Offa','Tampere','02003 Huxley Way');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (44,32,'The World Islamic Sciences & Education University','Skopje','512 Springview Trail');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (45,6,'Luzhou Medical College','Tartu','0045 Buhler Hill');
-INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (46,19,'Fachhochschulstudiengänge Hagenberg','Linz','37988 Beilfuss Point');
+INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (46,19,'University of Applied Sciences Upper Austria','Linz','37988 Beilfuss Point');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (47,19,'Ecole Supérieure d''Electronique de l''Ouest','Graz','4782 Lotheville Point');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (48,4,'University of Peloponnese','Copenhagen','0 Corben Avenue');
 INSERT INTO university(university_id,country_id,university_name,city_name,address) VALUES (49,13,'Fundación Universitaria Manuela Beltrán','Limassol','85 Jana Drive');
