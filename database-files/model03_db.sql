@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS knn_db;
 
 USE knn_db;
 
---dataset used to fit model 03 (knn for crop)
+-- dataset used to fit model 03 (knn for crop)
 CREATE TABLE IF NOT EXISTS crop_stats (
     id INT AUTO_INCREMENT PRIMARY KEY,
     TYPE_OF_CROP VARCHAR(255) NOT NULL,
@@ -22,6 +22,6 @@ CREATE TABLE IF NOT EXISTS crop_stats (
 
     N INT NOT NULL,
     P INT NOT NULL,
-    K INT NOT NULL,
+    K INT NOT NULL
 );
- --no scalar values need to be saved since its unsupervised
+ -- no scalar values need to be saved since its unsupervised
