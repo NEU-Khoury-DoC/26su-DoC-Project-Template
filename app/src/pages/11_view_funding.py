@@ -20,6 +20,9 @@ if st.button("Sync Eurostat Data", type = "secondary"):
     st.success("All data synced!")
     st.rerun()
 
+
+
+# Funding Index Table
 st.subheader("Funding Index")
 st.caption("Existing housing and social funding programs across EU countries.")
 try:
@@ -56,7 +59,7 @@ except Exception as e:
 st.divider()
 
 
-# Social Indicator Index
+# Social Indicator Index Graph
 st.subheader("Social Indicator Index")
 st.caption("Explore Eurostat data on indicators by country and year.")
 
@@ -121,86 +124,51 @@ except Exception as e:
 st.divider()
 
 
-
-# Draft Funding Plan 
+#Draft funding plan form
 st.subheader("Draft Funding Plan")
 
-form_col, indicator_col = st.columns(2)
-
-with form_col:
-    name = st.text_input("Name")
-    max_budget = st.number_input("Max Budget (€)", min_value=0, step=1000)
-    description = st.text_area("Description")
-
-with indicator_col:
-    indicators_targeted = st.selectbox(
+with st.container(border=True):
+    program = st.text_input("Program Name")
+    
+    countries_res2 = requests.get("http://web-api:4000/housing/country")
+    country_list = countries_res2.json() if countries_res2.status_code == 200 else []
+    country_options = {c["country_name"]: c["country_id"] for c in country_list}
+    selected_plan_country = st.selectbox("Country", list(country_options.keys()), key="plan_country")
+    
+    amount = st.number_input("Amount (€)", min_value=0, step=1000)
+    
+    indicators_targeted = st.multiselect(
         "Indicators Targeted",
-        ["All Indicators", "Pollution", "Crime", "Poverty", "Overcrowding", "Noise", "House Price Index", "Under-occupied"]
+        ["All Indicators", "Pollution", "Crime, Violence, and Vandalism",
+         "Poverty", "Overcrowding", "Noise", "House Price Index", "Under-occupied"],
+        default=["All Indicators"]
     )
-    demographics_targeted = st.selectbox(
+    demographics_targeted = st.multiselect(
         "Demographics Targeted",
-        ["All Demographics", "Students", "Low Income", "Elderly", "Families"]
+        ["All Demographics", "Students", "Low Income", "Elderly", "Families"],
+        default=["All Demographics"]
     )
-
-    if st.button("POST", type="primary"):
-        if not name or not description:
-            st.warning("Please fill in Name and Description.")
+    
+    description = st.text_area("Description")
+    
+    if st.button("Submit Draft", type="primary"):
+        if not program or not description:
+            st.warning("Please fill in Program Name and Description.")
         else:
             try:
                 payload = {
-                    "country_id": 1,
-                    "amount": max_budget,
-                    "program": name,
-                    "agency": st.session_state.get("name", "Unknown Agency"),
+                    "user_id": st.session_state.get("user_id", 1),
+                    "country_id": country_options[selected_plan_country],
+                    "program": program,
+                    "amount": amount,
+                    "indicators_targeted": ", ".join(indicators_targeted),
+                    "demographics_targeted": ", ".join(demographics_targeted),
+                    "description": description
                 }
-                response3 = requests.post("http://web-api:4000/housing/funding", json=payload)
-                if response3.status_code == 201:
-                    st.success("Funding plan created successfully!")
+                response = requests.post("http://web-api:4000/housing/funding-draft", json=payload)
+                if response.status_code == 201:
+                    st.success("Draft saved successfully!")
                 else:
-                    st.error(f"Error: {response3.text}")
+                    st.error(f"Error: {response.text}")
             except Exception as e:
                 st.error(f"Error: {e}")
-
-# #Draft Funding Plan form
-# st.subheader("Draft Funding Plan")
-
-# form_col, indicator_col = st.columns(2)
-
-# with form_col:
-#     name = st.text_input("Name")
-#     max_budget = st.number_input("Max Budget", min_value=0, step=1000)
-#     description = st.text_area("Description")
-
-# with indicator_col:
-#     indicators_targeted = st.selectbox(
-#         "Indicators Targeted",
-#         ["All Indicators", "Pollution", "Crime, Violence, and Vandalism",
-#          "Poverty", "Overcrowding", "Noise", "House Price Index", "Under-occupied"]
-#     )
-#     demographics_targeted = st.selectbox(
-#         "Demographics Targeted",
-#         ["All Demographics", "Students", "Low Income", "Elderly", "Families"]
-#     )
-
-#     if st.button("POST", type="primary"):
-#         if not name or not description:
-#             st.warning("Please fill in Name and Description.")
-#         else:
-#             try:
-#                 payload = {
-#                     "country_id": 1,  # placeholder
-#                     "amount": max_budget,
-#                     "program": name,
-#                     "agency": st.session_state.get("name", "Unknown Agency"),
-#                     "funding_id": None
-#                 }
-#                 response = requests.post(
-#                     "http://web-api:4000/housing/funding",
-#                     json=payload
-#                 )
-#                 if response.status_code == 201:
-#                     st.success("Funding plan created successfully!")
-#                 else:
-#                     st.error(f"Error: {response.text}")
-#             except Exception as e:
-#                 st.error(f"Error: {e}")
