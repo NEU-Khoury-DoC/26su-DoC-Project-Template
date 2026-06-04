@@ -126,17 +126,15 @@ CREATE TABLE IF NOT EXISTS access_pass (
     FOREIGN KEY (org_id) REFERENCES organization(org_id)
 );
  
-CREATE TABLE IF NOT EXISTS ml_model_weights (
+CREATE TABLE IF NOT EXISTS lobby_model_weights (
     model_id        INTEGER         PRIMARY KEY,
-    model_version   VARCHAR(100)    NOT NULL,
-    weights_json    VARCHAR(10000)  NOT NULL,
-    features_json   VARCHAR(10000)  NOT NULL,
-    train_r2        FLOAT,
-    test_r2         FLOAT,
-    is_active       BOOLEAN         NOT NULL DEFAULT TRUE,
-    trained_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    created_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    beta_vals       TEXT            NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS lobby_model_scaler (
+    sequence_number INT,
+    feature_means   TEXT,   -- e.g. "[74.32, 0.0106]"
+    feature_stds    TEXT    -- e.g. "[1.85, 0.00092]"
 );
  
 CREATE TABLE IF NOT EXISTS influence_prediction (
@@ -152,7 +150,7 @@ CREATE TABLE IF NOT EXISTS influence_prediction (
     updated_at          DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (org_id) REFERENCES organization(org_id),
     FOREIGN KEY (policy_area_id) REFERENCES policy_area(policy_area_id),
-    FOREIGN KEY (model_id) REFERENCES ml_model_weights(model_id)
+    FOREIGN KEY (model_id) REFERENCES lobby_model_weights(model_id)
 );
  
 CREATE TABLE IF NOT EXISTS saved_query_export (
