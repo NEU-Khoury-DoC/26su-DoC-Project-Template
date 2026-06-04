@@ -1,84 +1,131 @@
+import logging
+logger = logging.getLogger(__name__)
+
 import streamlit as st
 import requests
+import pandas as pd
 from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide')
+st.set_page_config(page_title="Researcher Home", page_icon="📊", layout='wide')
 
-# Initialize sidebar
 SideBarLinks()
 
-st.title("NGO Directory")
+st.markdown("# Organization Comparison")
+st.sidebar.header("Researcher Home")
+st.write("Save organizations from the Add New Organization page, then select two here to compare their lobbying spend, policy areas, and ML influence scores side by side.")
 
-# API endpoint
-API_URL = "http://web-api:4000/ngo/ngos"
+# Session 
+if "saved_orgs" not in st.session_state:
+    st.session_state.saved_orgs = []
+if "compare_pair" not in st.session_state:
+    st.session_state.compare_pair = []
 
-# Create filter columns
-col1, col2, col3 = st.columns(3)
+# Layout: main (left) | saved comparisons (right)
+main_col, saved_col = st.columns([3, 1])
 
-# Get unique values for filters from the API
-try:
-    response = requests.get(API_URL)
-    if response.status_code == 200:
-        ngos = response.json()
+# RIGHT COLUMN — Saved Comparisons
+with saved_col:
+    st.markdown("### Saved Comparisons")
+    st.caption("Select up to 2 orgs to compare.")
 
-        # Extract unique values for filters
-        countries = sorted(list(set(ngo["Country"] for ngo in ngos)))
-        focus_areas = sorted(list(set(ngo["Focus_Area"] for ngo in ngos)))
-        founding_years = sorted(list(set(ngo["Founding_Year"] for ngo in ngos)))
+    if not st.session_state.saved_orgs:
+        st.info("No saved orgs yet. Use the **Add New NGO** page.")
+    else:
+        for org in st.session_state.saved_orgs:
+            in_compare = org["org_id"] in [o["org_id"] for o in st.session_state.compare_pair]
+            border = "#2563EB" if in_compare else "#E0D8C8"
+            check  = "✅ " if in_compare else ""
+            st.markdown(f"""
+            <div style="border: 2px solid {border}; border-radius: 10px;
+                        padding: 10px 14px; margin-bottom: 8px; background: #fff;">
+              <div style="font-weight: 500; font-size: 13px; color: #1A1A1A;">{check}{org['name']}</div>
+              <div style="font-size: 11px; color: #999; margin-top: 2px;">
+                {org.get('country_code','—')} &nbsp;·&nbsp; €{org.get('lobbying_cost', 0):,.0f}
+              </div>
+            </div>""", unsafe_allow_html=True)
 
-        # Create filters
-        with col1:
-            selected_country = st.selectbox("Filter by Country", ["All"] + countries)
+            b1, b2 = st.columns(2)
+            with b1:
+                cmp_label = "✕ Remove" if in_compare else "Compare"
+                if st.button(cmp_label, key=f"cmp_{org['org_id']}", use_container_width=True):
+                    if in_compare:
+                        st.session_state.compare_pair = [
+                            o for o in st.session_state.compare_pair
+                            if o["org_id"] != org["org_id"]
+                        ]
+                    else:
+                        if len(st.session_state.compare_pair) < 2:
+                            st.session_state.compare_pair.append(org)
+                        else:
+                            st.warning("Max 2 orgs. Remove one first.")
+                    st.rerun()
+            with b2:
+                if st.button("🗑️", key=f"del_{org['org_id']}", use_container_width=True):
+                    st.session_state.saved_orgs = [
+                        o for o in st.session_state.saved_orgs
+                        if o["org_id"] != org["org_id"]
+                    ]
+                    st.session_state.compare_pair = [
+                        o for o in st.session_state.compare_pair
+                        if o["org_id"] != org["org_id"]
+                    ]
+                    st.rerun()
 
-        with col2:
-            selected_focus = st.selectbox("Filter by Focus Area", ["All"] + focus_areas)
 
-        with col3:
-            selected_year = st.selectbox(
-                "Filter by Founding Year",
-                ["All"] + [str(year) for year in founding_years],
-            )
+# Score Comparison 
+with main_col:
+    st.tabs(["📊 Score Comparison"])
 
-        # Build query parameters
-        params = {}
-        if selected_country != "All":
-            params["country"] = selected_country
-        if selected_focus != "All":
-            params["focus_area"] = selected_focus
-        if selected_year != "All":
-            params["founding_year"] = selected_year
+    if len(st.session_state.compare_pair) == 0:
+        st.info("Use the **Add New NGO** page to save orgs, then select 2 from the right column to compare.")
 
-        # Get filtered data
-        filtered_response = requests.get(API_URL, params=params)
-        if filtered_response.status_code == 200:
-            filtered_ngos = filtered_response.json()
-
-            # Display results count
-            st.write(f"Found {len(filtered_ngos)} NGOs")
-
-            # Create expandable rows for each NGO
-            for ngo in filtered_ngos:
-                with st.expander(f"{ngo['Name']} ({ngo['Country']})"):
-                    info_col, contact_col = st.columns(2)
-
-                    with info_col:
-                        st.write("**Basic Information**")
-                        st.write(f"**Country:** {ngo['Country']}")
-                        st.write(f"**Founded:** {ngo['Founding_Year']}")
-                        st.write(f"**Focus Area:** {ngo['Focus_Area']}")
-
-                    with contact_col:
-                        st.write("**Contact Information**")
-                        st.write(f"**Website:** [{ngo['Website']}]({ngo['Website']})")
-
-                    # Add a button to view full profile
-                    if st.button("View Full Profile", key=f"view_{ngo['NGO_ID']}"):
-                        st.session_state["selected_ngo_id"] = ngo["NGO_ID"]
-                        st.switch_page("pages/16_NGO_Profile.py")
+    elif len(st.session_state.compare_pair) == 1:
+        st.info("Select one more org from your saved list on the right to compare.")
 
     else:
-        st.error("Failed to fetch NGO data from the API")
+        org1 = st.session_state.compare_pair[0]
+        org2 = st.session_state.compare_pair[1]
 
-except requests.exceptions.RequestException as e:
-    st.error(f"Error connecting to the API: {str(e)}")
-    st.info("Please ensure the API server is running on http://web-api:4000")
+        st.text_input("Filter policy area shown in charts (optional)", placeholder="e.g. Climate")
+
+        col1, col2 = st.columns(2)
+
+        for col, org in [(col1, org1), (col2, org2)]:
+            with col:
+                try:
+                    r       = requests.get(f"http://web-api:4000/organizations/{org['org_id']}")
+                    details = r.json() if r.status_code == 200 else org
+                except:
+                    details = org
+
+                st.markdown(f"#### {details.get('name', org['name'])}")
+                st.markdown(f"**Spend:** &nbsp; €{details.get('lobbying_cost', 0):,.0f}")
+
+                activities = details.get("lobbying_activities", [])
+                area_names = [a.get("eu_institution", "—") for a in activities[:3]]
+                st.markdown(f"**Policy Areas:** &nbsp; {', '.join(area_names) if area_names else '—'}")
+
+                try:
+                    ml_r = requests.get(
+                        f"http://web-api:4000/organizations/{org['org_id']}/influence-prediction"
+                    )
+                    if ml_r.status_code == 200:
+                        ml    = ml_r.json()
+                        score = ml.get("influence_score", "—")
+                        cls   = ml.get("influence_class", "")
+                        st.markdown(f"**ML Score:** &nbsp; `{score}` &nbsp; *{cls}*")
+                    else:
+                        st.markdown("**ML Score:** &nbsp; —")
+                except:
+                    st.markdown("**ML Score:** &nbsp; *(backend not connected)*")
+
+                st.markdown("")
+
+                expenditures = details.get("expenditures", [])
+                if expenditures:
+                    df = pd.DataFrame(expenditures)
+                    if "year" in df.columns and "amount_eur" in df.columns:
+                        df = df[["year", "amount_eur"]].dropna().sort_values("year")
+                        st.bar_chart(df.set_index("year")["amount_eur"], use_container_width=True)
+                else:
+                    st.caption("No expenditure data available for chart.") 

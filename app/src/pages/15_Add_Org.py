@@ -1,0 +1,126 @@
+import logging
+logger = logging.getLogger(__name__)
+
+import streamlit as st
+import requests
+from modules.nav import SideBarLinks
+
+st.set_page_config(page_title="Add New NGO", page_icon="➕", layout='wide')
+
+SideBarLinks()
+
+st.markdown("# Add Organization")
+st.sidebar.header("Add New NGO")
+st.write("Search for existing organizations to save to your comparison list, or create a brand new one.")
+
+# ── Session state ─────────────────────────────────────────────────────────────
+if "saved_orgs" not in st.session_state:
+    st.session_state.saved_orgs = []
+if "search_results" not in st.session_state:
+    st.session_state.search_results = []
+
+# ── Tabs ──────────────────────────────────────────────────────────────────────
+tab_search, tab_create = st.tabs(["🔍 Search & Save", "➕ Create New"])
+
+# ═════════════════════════════════════════════════════════════════════════════
+# TAB 1 — Search & Save
+# ═════════════════════════════════════════════════════════════════════════════
+with tab_search:
+    st.markdown("### Find an Organization")
+    st.write("Search by policy area, country, or industry and save results to your comparison list.")
+
+    f1, f2, f3 = st.columns(3)
+    with f1:
+        policy_filter   = st.text_input("Policy Area", placeholder="e.g. AI, Climate")
+    with f2:
+        country_filter  = st.text_input("Country Code", placeholder="e.g. DE, FR, BE")
+    with f3:
+        industry_filter = st.text_input("Industry", placeholder="e.g. Technology")
+
+    if st.button("Search 🔍", type="primary", use_container_width=True):
+        params = {}
+        if policy_filter:   params["policy_area"] = policy_filter
+        if country_filter:  params["country"]     = country_filter
+        if industry_filter: params["industry"]    = industry_filter
+        try:
+            resp = requests.get("http://web-api:4000/organizations", params=params)
+            st.session_state.search_results = resp.json() if resp.status_code == 200 else []
+        except requests.exceptions.ConnectionError:
+            st.session_state.search_results = []
+            st.warning("⚠️ Backend not connected yet.")
+
+    if st.session_state.search_results:
+        st.markdown(f"**{len(st.session_state.search_results)} results found**")
+        st.markdown("---")
+        for org in st.session_state.search_results[:10]:
+            already = org["org_id"] in [o["org_id"] for o in st.session_state.saved_orgs]
+            r1, r2, r3 = st.columns([4, 2, 1])
+            with r1:
+                st.markdown(f"**{org['name']}**")
+                st.caption(f"{org.get('country_code','—')} · {org.get('interest_represented','—')}")
+            with r2:
+                st.markdown(f"€{org.get('lobbying_cost', 0):,.0f}")
+            with r3:
+                if already:
+                    st.caption("✅ Saved")
+                else:
+                    if st.button("Save", key=f"save_{org['org_id']}", use_container_width=True):
+                        st.session_state.saved_orgs.append(org)
+                        st.rerun()
+    elif st.session_state.get("searched"):
+        st.info("No results found. Try different filters.")
+
+    # Saved orgs summary at bottom
+    if st.session_state.saved_orgs:
+        st.markdown("---")
+        st.markdown(f"**{len(st.session_state.saved_orgs)} org(s) saved to your comparison list.** "
+                    f"Go to the **Organization Comparison** page to compare them.")
+
+# ═════════════════════════════════════════════════════════════════════════════
+# TAB 2 — Create New
+# ═════════════════════════════════════════════════════════════════════════════
+with tab_create:
+    st.markdown("### Create a New Organization")
+    st.write("Fill in the fields below to add a new organization to the database.")
+
+    with st.form("create_org_form"):
+        c1, c2 = st.columns(2)
+        with c1:
+            name                 = st.text_input("Organization Name *")
+            country_code         = st.text_input("Country Code *", placeholder="e.g. DE, FR, BE")
+            lobbying_cost        = st.number_input("Lobbying Cost (€)", min_value=0.0, step=1000.0)
+            members_eu           = st.number_input("EU Members", min_value=0, step=1)
+        with c2:
+            industry_id          = st.number_input("Industry ID *", min_value=1, step=1)
+            interest_represented = st.text_input("Interest Represented", placeholder="e.g. Technology sector")
+            members_fte          = st.number_input("FTE Members", min_value=0, step=1)
+            lobbyfacts_url       = st.text_input("LobbyFacts URL", placeholder="https://...")
+
+        submitted = st.form_submit_button("Create Organization", type="primary", use_container_width=True)
+
+    if submitted:
+        if not name or not country_code or not industry_id:
+            st.error("Please fill in all required fields (marked with *).")
+        else:
+            payload = {
+                "name":                 name,
+                "country_code":         country_code,
+                "industry_id":          int(industry_id),
+                "lobbying_cost":        lobbying_cost,
+                "members_eu":           int(members_eu),
+                "members_fte":          int(members_fte),
+                "interest_represented": interest_represented,
+                "lobbyfacts_url":       lobbyfacts_url,
+            }
+            try:
+                resp = requests.post("http://web-api:4000/organizations", json=payload)
+                if resp.status_code == 201:
+                    new_id = resp.json().get("org_id")
+                    st.success(f"✅ Organization **{name}** created successfully! (ID: {new_id})")
+                    # Auto-save to comparison list
+                    payload["org_id"] = new_id
+                    st.session_state.saved_orgs.append(payload)
+                else:
+                    st.error(f"Failed to create organization. Server response: {resp.status_code}")
+            except requests.exceptions.ConnectionError:
+                st.warning("⚠️ Backend not connected yet.")

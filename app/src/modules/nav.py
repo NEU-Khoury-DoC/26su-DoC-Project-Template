@@ -37,21 +37,21 @@ def map_demo_nav():
 
 def usaid_worker_home_nav():
     st.sidebar.page_link(
-        "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
+        "pages/10_Polysci_Home.py", label="Researcher Home", icon="🏠"
     )
 
 
 def ngo_directory_nav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="📁")
+    st.sidebar.page_link("pages/14_NGO_Directory.py", label="Organization Comparison", icon="📊")
 
 
 def add_ngo_nav():
-    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
+    st.sidebar.page_link("pages/15_Add_Org.py", label="Add New Organization", icon="➕")
 
 
 def prediction_nav():
     st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
+        "pages/11_Prediction.py", label="Meeting Prediction", icon="📈"
     )
 
 
