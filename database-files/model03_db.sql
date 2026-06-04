@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS crop_stats (
     TYPE_OF_CROP VARCHAR(255) NOT NULL,
     SOIL VARCHAR(100) NOT NULL,
     SEASON VARCHAR(100) NOT NULL,
-    SOWN DATETIME NOT NULL,
-    HARVESTED DATETIME NOT NULL,
+    SOWN VARCHAR(50) NOT NULL,
+    HARVESTED VARCHAR(50) NOT NULL,
     WATER_SOURCE VARCHAR(100) NOT NULL,
     CROP VARCHAR(255) NOT NULL, -- what's being predicted
 
@@ -24,4 +24,18 @@ CREATE TABLE IF NOT EXISTS crop_stats (
     P INT NOT NULL,
     K INT NOT NULL
 );
- -- no scalar values need to be saved since its unsupervised
+ --no scalar values need to be saved since its unsupervised
+
+-- for scalar (mean, std)
+ CREATE TABLE IF NOT EXISTS model3_scaler (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    feature_means JSON NOT NULL,
+    feature_stds  JSON NOT NULL
+);
+
+
+--one hot encoding col
+CREATE TABLE IF NOT EXISTS model3_ohe_cols (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    col_names JSON NOT NULL
+);
