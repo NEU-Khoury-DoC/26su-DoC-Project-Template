@@ -51,6 +51,7 @@ CREATE TABLE user (
 
 CREATE TABLE listing (
     listing_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(200),
     country_id INTEGER,
     associated_university_id INTEGER,
     user_id INTEGER,
