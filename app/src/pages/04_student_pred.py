@@ -17,14 +17,14 @@ st.write("Set your ideal housing conditions to see your predicted life satisfact
 st.divider()
  
 
-st.subheader("Start from a country (optional)")
+# st.subheader("Start from a country (optional)")
 
-try:
-    countries_resp = requests.get("http://web-api:4000/housing/country")
-    countries_resp.raise_for_status()
-    country_list = [c['country_name'] for c in countries_resp.json()]
-except:
-    country_list = []
+# try:
+#     countries_resp = requests.get("http://web-api:4000/housing/country")
+#     countries_resp.raise_for_status()
+#     country_list = [c['country_name'] for c in countries_resp.json()]
+# except:
+#     country_list = []
 
 # selected_country = st.selectbox(
 #     "Select a country to pre-fill with real values",
@@ -61,7 +61,7 @@ except:
 #         st.warning(f"Could not load stats for {selected_country}. Using defaults.")
 
 
-st.divider()
+# st.divider()
 
 st.subheader("Environmental Conditions")
 col1, col2 = st.columns(2)
