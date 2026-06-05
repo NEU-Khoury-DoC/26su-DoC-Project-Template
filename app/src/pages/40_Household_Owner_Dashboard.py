@@ -2,6 +2,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+import requests
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -41,31 +42,84 @@ bill_col.metric(
 
 st.divider()
 
-st.subheader("Predicted Energy Price Forecast")
-# Placeholder daily predictions until the ML model endpoint is wired in.
-forecast_dates = pd.date_range(
-    start=pd.Timestamp.today().normalize(),
-    periods=30,
-    freq="D",
+st.subheader("30-Day Electricity Price Forecast")
+
+COUNTRY_OPTIONS = {
+    "Austria": "AT", "Belgium": "BE", "Bulgaria": "BG",
+    "Croatia": "HR", "Czech Republic": "CZ", "Spain": "ES",
+    "France": "FR", "Germany": "DE", "Hungary": "HU",
+    "Latvia": "LV", "Netherlands": "NL", "Poland": "PL",
+    "Portugal": "PT", "Romania": "RO", "Slovakia": "SK"
+}
+
+selected_country_name = st.selectbox(
+    "Select a country:",
+    options=list(COUNTRY_OPTIONS.keys()),
+    index=list(COUNTRY_OPTIONS.keys()).index("Germany")
 )
-base_price = 0.28
-forecast_df = pd.DataFrame(
-    {
+
+selected_country_code = COUNTRY_OPTIONS[selected_country_name]
+
+try:
+    response = requests.get(
+        f"http://web-backend:4000/ml1/forecast",
+        params={"country": selected_country_code},
+        timeout=10
+    )
+    response.raise_for_status()
+    data = response.json()
+
+    forecast_df = pd.DataFrame(data["forecast"])
+    forecast_df["date"] = pd.to_datetime(forecast_df["date"])
+
+    forecast_chart = px.scatter(
+        forecast_df,
+        x="date",
+        y="predicted_price_eur_mwh",
+        title=f"30-Day Electricity Price Forecast — {selected_country_name}",
+        labels={
+            "date": "Date",
+            "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
+        },
+    )
+    forecast_chart.update_traces(
+        marker=dict(size=9),
+        hovertemplate="<b>%{x|%B %d, %Y}</b><br>Price: €%{y:.2f}/MWh<extra></extra>"
+    )
+    forecast_chart.update_layout(
+        height=420,
+        xaxis_title="Date",
+        yaxis_title="Predicted Price (EUR/MWh)",
+        hovermode="closest"
+    )
+    st.plotly_chart(forecast_chart, use_container_width=True)
+
+except requests.exceptions.ConnectionError:
+    st.warning("Could not connect to the backend. Showing placeholder data.")
+
+    forecast_dates = pd.date_range(
+        start=pd.Timestamp.today().normalize(),
+        periods=30,
+        freq="D",
+    )
+    base_price = 0.28
+    forecast_df = pd.DataFrame({
         "Date": forecast_dates,
         "Predicted Price (€/kWh)": [
             round(base_price * (1 + 0.032 * i / 29) + 0.01 * ((i % 7) - 3) / 100, 4)
             for i in range(30)
         ],
-    }
-)
+    })
+    forecast_chart = px.scatter(
+        forecast_df,
+        x="Date",
+        y="Predicted Price (€/kWh)",
+        title="ML Predicted Household Energy Price (Placeholder)",
+        labels={"Date": "Time", "Predicted Price (€/kWh)": "Price (€/kWh)"},
+    )
+    forecast_chart.update_traces(marker=dict(size=9))
+    forecast_chart.update_layout(height=420)
+    st.plotly_chart(forecast_chart, use_container_width=True)
 
-forecast_chart = px.scatter(
-    forecast_df,
-    x="Date",
-    y="Predicted Price (€/kWh)",
-    title="ML Predicted Household Energy Price",
-    labels={"Date": "Time", "Predicted Price (€/kWh)": "Price (€/kWh)"},
-)
-forecast_chart.update_traces(marker=dict(size=9))
-forecast_chart.update_layout(height=420, xaxis_title="Time", yaxis_title="Price (€/kWh)")
-st.plotly_chart(forecast_chart, use_container_width=True)
+except Exception as e:
+    st.error(f"Error loading forecast: {str(e)}")
