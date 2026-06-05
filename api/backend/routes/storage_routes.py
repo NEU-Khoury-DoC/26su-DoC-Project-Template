@@ -3,20 +3,19 @@ from datetime import datetime, timedelta
 from flask import Blueprint, jsonify, request, current_app
 
 from backend.db_connection import get_db
-from backend.routes.storage_service import (
+from backend.ml_models.gas_storage_model import predict_risk
+from backend.services.storage_service import (
     CODE_TO_NAME,
     STRESS_THRESHOLD,
-    country_name,
-    fetch_daily_history,
-    fetch_latest_daily,
-    fetch_daily_on_or_before,
-    fetch_latest_winter,
-    fetch_winters,
-    latest_winter_per_country,
+    get_storage_history as fetch_storage_history,
+    get_latest_storage,
+    get_storage_on_date,
+    get_model_weights,
+    get_winters,
+    get_latest_winters,
+    get_winter_summary,
     normalize_country_code,
-    predict_risk,
     serialize_winter,
-    winter_summary,
 )
 from backend.utils import error_response
 from mysql.connector import Error
@@ -40,7 +39,7 @@ def get_storage_history():
 
     try:
         with get_db().cursor(dictionary=True) as cursor:
-            rows = fetch_daily_history(cursor, code)
+            rows = fetch_storage_history(cursor, code)
 
         if not rows:
             return error_response(
@@ -81,9 +80,9 @@ def get_storage_winters():
                 code = normalize_country_code(country)
                 if code not in CODE_TO_NAME:
                     return error_response(f"Unsupported country code: {country}", 400)
-                rows = fetch_winters(cursor, code)
+                rows = get_winters(cursor, code)
             else:
-                rows = fetch_winters(cursor)
+                rows = get_winters(cursor)
 
         if not rows:
             return error_response(
@@ -109,7 +108,7 @@ def get_storage_summary(country_code):
 
     try:
         with get_db().cursor(dictionary=True) as cursor:
-            latest = fetch_latest_daily(cursor, code)
+            latest = get_latest_storage(cursor, code)
             if not latest:
                 return error_response(
                     "No storage history found for this country. Run scripts/seed_gas_storage.py.",
@@ -117,14 +116,14 @@ def get_storage_summary(country_code):
                 )
 
             month_ago_day = latest["gas_day"] - timedelta(days=30)
-            month_ago = fetch_daily_on_or_before(cursor, code, month_ago_day)
+            month_ago = get_storage_on_date(cursor, code, month_ago_day)
             delta_30d = None
             if month_ago:
                 delta_30d = round(
                     float(latest["full_pct"]) - float(month_ago["full_pct"]), 2
                 )
 
-            summary = winter_summary(cursor, code) or {}
+            summary = get_winter_summary(cursor, code) or {}
 
         return jsonify(
             {
@@ -152,7 +151,8 @@ def compare_storage_risk():
     current_app.logger.info("GET /stats/storage/risk/compare")
     try:
         with get_db().cursor(dictionary=True) as cursor:
-            latest_rows = latest_winter_per_country(cursor)
+            latest_rows = get_latest_winters(cursor)
+            weights = get_model_weights(cursor)
 
         if not latest_rows:
             return error_response(
@@ -163,6 +163,7 @@ def compare_storage_risk():
         countries = []
         for row in latest_rows:
             prediction = predict_risk(
+                weights,
                 float(row["storage_at_start"]),
                 float(row["storage_trend_30d"]),
                 float(row["storage_volatility"]),
@@ -214,7 +215,8 @@ def post_storage_risk():
 
             code = normalize_country_code(country)
             with get_db().cursor(dictionary=True) as cursor:
-                rows = fetch_winters(cursor, code)
+                rows = get_winters(cursor, code)
+                weights = get_model_weights(cursor)
             winter_row = next(
                 (row for row in rows if int(row["winter_year"]) == int(winter)),
                 None,
@@ -228,8 +230,12 @@ def post_storage_risk():
                 storage_trend_30d = winter_row["storage_trend_30d"]
             if storage_volatility is None:
                 storage_volatility = winter_row["storage_volatility"]
+        else:
+            with get_db().cursor(dictionary=True) as cursor:
+                weights = get_model_weights(cursor)
 
         prediction = predict_risk(
+            weights,
             storage_at_start,
             float(storage_trend_30d),
             float(storage_volatility),
