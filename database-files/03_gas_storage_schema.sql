@@ -39,22 +39,38 @@ CREATE TABLE IF NOT EXISTS gas_storage_winters (
 
 -- Logistic regression weights (features: storage_at_start, storage_trend_30d, storage_volatility)
 -- Source: datasets/apsi/apsi.ipynb — logreg.fit(X, y) on all winter rows
+-- Inputs are standardized at prediction time: x_scaled = (x - mean) / std
 CREATE TABLE IF NOT EXISTS gas_storage_model (
     model_id                   INT    NOT NULL,
     intercept                  DOUBLE NOT NULL,
     weight_storage_at_start    DOUBLE NOT NULL,
     weight_storage_trend_30d   DOUBLE NOT NULL,
     weight_storage_volatility  DOUBLE NOT NULL,
+    mean_storage_at_start      DOUBLE NOT NULL,
+    mean_storage_trend_30d     DOUBLE NOT NULL,
+    mean_storage_volatility    DOUBLE NOT NULL,
+    std_storage_at_start       DOUBLE NOT NULL,
+    std_storage_trend_30d      DOUBLE NOT NULL,
+    std_storage_volatility     DOUBLE NOT NULL,
     CONSTRAINT pk_gas_storage_model PRIMARY KEY (model_id)
 );
 
 INSERT INTO gas_storage_model (
-    model_id, intercept, weight_storage_at_start,
-    weight_storage_trend_30d, weight_storage_volatility
+    model_id, intercept,
+    weight_storage_at_start, weight_storage_trend_30d, weight_storage_volatility,
+    mean_storage_at_start, mean_storage_trend_30d, mean_storage_volatility,
+    std_storage_at_start, std_storage_trend_30d, std_storage_volatility
 ) VALUES (
     1,
-    -0.01364296582364657,
-    -0.776213,
-    -0.374907,
-    -0.127339
+    -0.013625481897615465,
+    -0.7741922146400086,
+    -0.3739554990745591,
+    -0.12698315133907542,
+    87.98631048387097,
+    2.54375,
+    8.460241348076158,
+    13.337216251392613,
+    4.952027778528528,
+    3.8891526598466974
 );
+
