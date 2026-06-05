@@ -103,3 +103,7 @@ def post_storage_risk(
     if storage_volatility is not None:
         payload["storage_volatility"] = storage_volatility
     return _post("/stats/storage/risk", payload)
+
+# route: GET /ml1/forecast  →  electricty_price_routes.forecast()
+def get_electricity_forecast(country_code):
+    return _get("/ml1/forecast", params={"country": country_code})

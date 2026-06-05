@@ -2,7 +2,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-import requests
+from modules.zeus_api import get_electricity_forecast
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -61,13 +61,7 @@ selected_country_name = st.selectbox(
 selected_country_code = COUNTRY_OPTIONS[selected_country_name]
 
 try:
-    response = requests.get(
-        f"http://web-backend:4000/ml1/forecast",
-        params={"country": selected_country_code},
-        timeout=10
-    )
-    response.raise_for_status()
-    data = response.json()
+    data = get_electricity_forecast(selected_country_code)
 
     forecast_df = pd.DataFrame(data["forecast"])
     forecast_df["date"] = pd.to_datetime(forecast_df["date"])
@@ -94,7 +88,7 @@ try:
     )
     st.plotly_chart(forecast_chart, use_container_width=True)
 
-except requests.exceptions.ConnectionError:
+except Exception:
     st.warning("Could not connect to the backend. Showing placeholder data.")
 
     forecast_dates = pd.date_range(
