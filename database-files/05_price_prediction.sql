@@ -5,7 +5,7 @@
 --                and      datasets/entsoe/models/lr_scaler_params_ALL.json
 -- =============================================================
 
-USE zeus_db;
+USE Zeus;
 
 -- Daily electricity prices for all countries (source: ENTSO-E)
 CREATE TABLE IF NOT EXISTS price_daily (
