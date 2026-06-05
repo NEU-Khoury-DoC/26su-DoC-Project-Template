@@ -11,7 +11,7 @@ TEAM_MEMBERS = [
     {
         "name": "Anjali Patel",
         "image": "assets/team/headshot_1.jpg",
-        "bio": "Short bio coming soon.",
+        "bio": "Hi! I'm Anjali, a second-year Finance and Data Science major at Northeastern. For Zeus, I built ML2 a winter gas storage stress classifier , and connected it to the journalist pages it powers in our app. My favorite parts of the Dialogue were exploring Strasbourg and the Digital Twins Workshop!",
         "linkedin_url": "https://www.linkedin.com/in/anjalipatel267/",
     },
     {
