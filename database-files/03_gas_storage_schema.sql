@@ -2,8 +2,8 @@
 -- GAS STORAGE — journalist pages (Country Snapshot, Comparison, Risk)
 -- Daily rows: seed from datasets/apsi/agsi_clean.csv via
 --   docker compose exec api python scripts/seed_gas_storage.py
--- Winter rows: seed from app/src/assets/dataset.csv (same script)
--- Model inference uses api/backend/ml_models/gas_model.pkl (not retrained from DB)
+-- Winter rows: seed from datasets/apsi/dataset.csv (same script)
+-- Model weights: INSERT below (from datasets/apsi/apsi.ipynb LogisticRegression fit)
 -- =============================================================
 
 USE ngo_db;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS gas_storage_daily (
 );
 
 -- storage_at_start / storage_trend_30d / storage_volatility must stay DOUBLE —
--- DECIMAL(8,2) rounding would change gas_model.pkl predictions.
+-- DECIMAL rounding would change logistic-regression predictions.
 CREATE TABLE IF NOT EXISTS gas_storage_winters (
     winter_id          INT          NOT NULL AUTO_INCREMENT,
     country_code       CHAR(2)      NOT NULL,
@@ -35,4 +35,26 @@ CREATE TABLE IF NOT EXISTS gas_storage_winters (
     CONSTRAINT pk_gas_storage_winters PRIMARY KEY (winter_id),
     CONSTRAINT uq_gas_storage_winters_country_year UNIQUE (country_code, winter_year),
     INDEX idx_gas_storage_winters_country (country_code)
+);
+
+-- Logistic regression weights (features: storage_at_start, storage_trend_30d, storage_volatility)
+-- Source: datasets/apsi/apsi.ipynb — logreg.fit(X, y) on all winter rows
+CREATE TABLE IF NOT EXISTS gas_storage_model (
+    model_id                   INT    NOT NULL,
+    intercept                  DOUBLE NOT NULL,
+    weight_storage_at_start    DOUBLE NOT NULL,
+    weight_storage_trend_30d   DOUBLE NOT NULL,
+    weight_storage_volatility  DOUBLE NOT NULL,
+    CONSTRAINT pk_gas_storage_model PRIMARY KEY (model_id)
+);
+
+INSERT INTO gas_storage_model (
+    model_id, intercept, weight_storage_at_start,
+    weight_storage_trend_30d, weight_storage_volatility
+) VALUES (
+    1,
+    5.80365757984536,
+    -0.06059500989799969,
+    -0.08006424692274622,
+    -0.033186343522107864
 );
