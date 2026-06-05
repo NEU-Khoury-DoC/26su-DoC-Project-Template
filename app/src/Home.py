@@ -34,6 +34,7 @@ PLACEHOLDER = "Select an option"
 PERSONAS = {
     "household_owner_dropdown": ("household_owner", "Household Owner"),
     "journalist_dropdown": ("journalist", "Journalist"),
+    "energy_trader_dropdown": ("energy_trader", "Energy Trader"),
 }
 
 LOGIN_PAGES = {
@@ -113,7 +114,7 @@ for key, (persona_id, _) in PERSONAS.items():
         break
 st.session_state["active_persona"] = active
 
-col_household, col_journalist, col_login = st.columns([2, 2, 1])
+col_household, col_journalist, col_trader, col_login = st.columns([2, 2, 2, 1])
 
 with col_household:
     _, label = PERSONAS["household_owner_dropdown"]
@@ -139,6 +140,19 @@ with col_journalist:
         label_visibility="collapsed",
         on_change=_on_persona_change,
         args=("journalist_dropdown",),
+    )
+
+with col_trader:
+    _, label = PERSONAS["energy_trader_dropdown"]
+    options, _ = _dropdown_options("energy_trader")
+    st.markdown(f"**{label}**")
+    st.selectbox(
+        f"{label} options",
+        options=options,
+        key="energy_trader_dropdown",
+        label_visibility="collapsed",
+        on_change=_on_persona_change,
+        args=("energy_trader_dropdown",),
     )
 
 with col_login:
