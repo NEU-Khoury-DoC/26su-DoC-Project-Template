@@ -1,9 +1,8 @@
 """Gas storage data access — reads from MySQL, not CSV files."""
 
-from functools import lru_cache
-from pathlib import Path
+import math
 
-import joblib
+from backend.db_connection import get_db
 
 FEATURES = ["storage_at_start", "storage_trend_30d", "storage_volatility"]
 STRESS_THRESHOLD = 30
@@ -16,8 +15,6 @@ CODE_TO_NAME = {
     "ES": "Spain",
 }
 NAME_TO_CODE = {name: code for code, name in CODE_TO_NAME.items()}
-
-MODEL_PATH = Path(__file__).resolve().parents[1] / "ml_models" / "gas_model.pkl"
 
 
 def normalize_country_code(code):
@@ -158,16 +155,29 @@ def serialize_winter(row):
     }
 
 
-@lru_cache(maxsize=1)
-def load_gas_model():
-    return joblib.load(MODEL_PATH)
-
-
 def predict_risk(storage_at_start, storage_trend_30d, storage_volatility):
-    model = load_gas_model()
-    features = [[storage_at_start, storage_trend_30d, storage_volatility]]
-    risk_prob = float(model.predict_proba(features)[0][1])
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            """
+            SELECT intercept, weight_storage_at_start, weight_storage_trend_30d,
+                   weight_storage_volatility
+            FROM gas_storage_model
+            WHERE model_id = 1
+            """
+        )
+        weights = cursor.fetchone()
+
+    if not weights:
+        raise ValueError("No gas storage model weights in database")
+
+    z = (
+        weights["intercept"]
+        + weights["weight_storage_at_start"] * storage_at_start
+        + weights["weight_storage_trend_30d"] * storage_trend_30d
+        + weights["weight_storage_volatility"] * storage_volatility
+    )
+    risk_prob = 1.0 / (1.0 + math.exp(-z))
     return {
-        "at_risk": bool(model.predict(features)[0]),
+        "at_risk": risk_prob >= 0.5,
         "risk_prob": risk_prob,
     }

@@ -182,8 +182,6 @@ def compare_storage_risk():
     except Error as e:
         current_app.logger.error("Database error in compare_storage_risk: %s", e)
         return error_response(str(e))
-    except FileNotFoundError:
-        return error_response("Gas storage model file is not available on the API server", 503)
     except Exception as e:
         current_app.logger.error("Error in compare_storage_risk: %s", e)
         return error_response(str(e))
@@ -244,8 +242,6 @@ def post_storage_risk():
                 "winter": data.get("winter"),
             }
         ), 200
-    except FileNotFoundError:
-        return error_response("Gas storage model file is not available on the API server", 503)
     except (TypeError, ValueError) as e:
         return error_response(f"Invalid input: {e}", 400)
     except Exception as e:
