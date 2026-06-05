@@ -1,19 +1,35 @@
 # `database-files` Folder
 
-The MySQL server that is running in the db container is set up so that when the container is *created*, any `.sql` files in the `database-files` folder are automatically run.  Loosely speaking, the `.sql` files are run in "alphabetical" order.  So if your database schema is broken into a few files, it is easiest to rename them with a number at the beginning so they'll be run in the correct order.  So, something like `01_db.sql`, `02_db.sql` and so on. 
+When the `db` container is **first created**, every `.sql` file here runs in **alphabetical order**.
 
-If you make changes to any of the files in the `database-files/` folder AFTER the db container is started, you'll have to delete the container and re-create it for the SQL files to be re-executed.  **Note:** simply stopping and re-starting the db container will not re-run the files. 
+## Init files (run automatically)
 
-If you are in your sandbox repo, do the following:
+| File | Purpose |
+|------|---------|
+| `01_zeus_database.sql` | Creates `Zeus` (matches `api/.env` `DB_NAME`) |
+| `02_zeus_core.sql` | `users`, `household_profiles` + demo seed rows |
+| `03_gas_storage_schema.sql` | `gas_storage_daily`, `gas_storage_winters`, `gas_storage_model` (empty daily/winter tables until seeded; model weights inserted here) |
+| `04_zeus_persona_features.sql` | `saved_articles`, `snapshots`, `notes` (future UI) |
+
+**Personas in schema:** `household_owner`, `journalist` only.
+
+## After first boot — load gas storage CSV data
+
+Schema alone does not insert AGSI rows. Run once:
 
 ```bash
-docker compose -f sandbox.yaml down db -v && docker compose -f sandbox.yaml up db
+docker compose exec api python scripts/seed_gas_storage.py
 ```
 
-If you are working with your team repository, do the following
+Sources (seed only, not runtime): `datasets/apsi/agsi_clean.csv`, `datasets/apsi/dataset.csv`.
+
+## Re-run SQL after edits
+
+Changes to these files are **not** applied on restart alone. Recreate the db container:
 
 ```bash
-docker compose down db -v && docker compose up db
+docker compose down && docker compose up -d
+docker compose exec api python scripts/seed_gas_storage.py
 ```
 
-The `-v` flag will also delete the volume associated with MySQL, which is necessary to rerun the sql files. 
+The project uses tmpfs for MySQL data, so `docker compose down` is enough locally (no `-v` required).
