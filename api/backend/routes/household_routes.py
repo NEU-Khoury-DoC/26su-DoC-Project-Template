@@ -73,8 +73,7 @@ def _validate_profile_payload(data, require_all=True):
     return None
 
 
-# Get household profile for the logged-in user_id (from session in the app)
-# Example: GET /users/1/household-profile
+# zeus_api: get_household_profile(user_id)
 @household_bp.route("/users/<int:user_id>/household-profile", methods=["GET"])
 def get_household_profile(user_id):
     current_app.logger.info("GET /users/%s/household-profile", user_id)
@@ -98,8 +97,7 @@ def get_household_profile(user_id):
         return error_response(str(e))
 
 
-# Create household profile on first save from Persona Info
-# Example: POST /users/1/household-profile
+# zeus_api: create_household_profile(user_id, profile)
 @household_bp.route("/users/<int:user_id>/household-profile", methods=["POST"])
 def create_household_profile(user_id):
     current_app.logger.info("POST /users/%s/household-profile", user_id)
@@ -152,8 +150,7 @@ def create_household_profile(user_id):
         return error_response(str(e))
 
 
-# Update household profile from Persona Info
-# Example: PUT /users/1/household-profile
+# zeus_api: update_household_profile(user_id, profile)
 @household_bp.route("/users/<int:user_id>/household-profile", methods=["PUT"])
 def update_household_profile(user_id):
     current_app.logger.info("PUT /users/%s/household-profile", user_id)
@@ -193,8 +190,7 @@ def update_household_profile(user_id):
         return error_response(str(e))
 
 
-# Delete household profile from Persona Info
-# Example: DELETE /users/1/household-profile
+# zeus_api: delete_household_profile(user_id)
 @household_bp.route("/users/<int:user_id>/household-profile", methods=["DELETE"])
 def delete_household_profile(user_id):
     current_app.logger.info("DELETE /users/%s/household-profile", user_id)

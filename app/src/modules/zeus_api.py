@@ -31,10 +31,12 @@ def _delete(path):
     return response.json() if response.content else {}
 
 
+# route: GET /users  →  user_routes.get_users()
 def get_users(persona):
     return _get("/users", params={"persona": persona})
 
 
+# route: GET /users/<user_id>/household-profile  →  household_routes.get_household_profile()
 def get_household_profile(user_id):
     response = requests.get(
         f"{API_BASE}/users/{user_id}/household-profile", timeout=30
@@ -45,36 +47,44 @@ def get_household_profile(user_id):
     return response.json()
 
 
+# route: POST /users/<user_id>/household-profile  →  household_routes.create_household_profile()
 def create_household_profile(user_id, profile):
     return _post(f"/users/{user_id}/household-profile", profile)
 
 
+# route: PUT /users/<user_id>/household-profile  →  household_routes.update_household_profile()
 def update_household_profile(user_id, profile):
     return _put(f"/users/{user_id}/household-profile", profile)
 
 
+# route: DELETE /users/<user_id>/household-profile  →  household_routes.delete_household_profile()
 def delete_household_profile(user_id):
     return _delete(f"/users/{user_id}/household-profile")
 
 
+# route: GET /countries/<country_code>/storage/summary  →  storage_routes.get_storage_summary()
 def get_storage_summary(country_code):
     return _get(f"/countries/{country_code}/storage/summary")
 
 
+# route: GET /stats/storage/history  →  storage_routes.get_storage_history()
 def get_storage_history(country_code):
     return _get("/stats/storage/history", params={"country": country_code})
 
 
+# route: GET /stats/storage/winters  →  storage_routes.get_storage_winters()
 def get_storage_winters(country_code=None):
     params = {"country": country_code} if country_code else None
     payload = _get("/stats/storage/winters", params=params)
     return payload["winters"]
 
 
+# route: GET /stats/storage/risk/compare  →  storage_routes.compare_storage_risk()
 def compare_storage_risk():
     return _get("/stats/storage/risk/compare")
 
 
+# route: POST /stats/storage/risk  →  storage_routes.post_storage_risk()
 def post_storage_risk(
     *,
     country=None,

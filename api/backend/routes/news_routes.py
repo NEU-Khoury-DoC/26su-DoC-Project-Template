@@ -19,8 +19,7 @@ EU_SAMPLE_COUNTRIES = "de,fr,it,es,be"
 ENERGY_QUERY = "energy OR electricity OR gas OR power OR renewables OR climate OR carbon"
 
 
-# Fetch latest EU energy news via NewsData.io (external API)
-# Example: GET /news/eu-energy
+# zeus_api: get_eu_energy_news()
 @news_bp.route("/eu-energy", methods=["GET"])
 def get_eu_energy_news():
     current_app.logger.info("GET /news/eu-energy")
