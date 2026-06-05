@@ -5,6 +5,7 @@ and retrieve them at prediction time via a REST route.
 import numpy as np
 from flask import current_app
 from backend.db_connection import get_db
+import json
 
 
 def train():
@@ -73,9 +74,7 @@ def _get_weather(country):
     """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
-            'SELECT AVG(temperature_2m_mean) as temp, AVG(precipitation_sum) as precip '
-            'FROM WeatherData WHERE country = %s',
-            (country,)
+            f'SELECT AVG(temperature_2m_mean) as temp, AVG(precipitation_sum) as precip FROM WeatherData WHERE geo = "{country}";'
         )
         row = cursor.fetchone()
 
@@ -92,7 +91,7 @@ def _get_lag_prices(country, crop):
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
             'SELECT selling_price FROM CropPrices '
-            'WHERE country = %s AND crop = %s '
+            'WHERE geo = %s AND crop = %s '
             'ORDER BY year DESC LIMIT 2',
             (country, crop)
         )
