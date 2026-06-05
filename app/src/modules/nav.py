@@ -16,38 +16,37 @@ def about_page_nav():
 
 
 # ---- Role: student ------------------------------------------------
-
 def student_home_nav():
     st.sidebar.page_link(
-        "pages/00_Student_home.py", label="Student Home", icon="👤"
+        "pages/00_Student_home.py", label="Student Home", icon="🧑‍🎓"
     )
 
 def view_listings_nav():
     st.sidebar.page_link(
-        "pages/01_view_listings_student.py", label="View listings", icon="🏦"
+        "pages/01_view_listings_student.py", label="View listings", icon="🏘️"
     )
 
 def budget_manager_nav():
-    st.sidebar.page_link("pages/02_budget_manager.py", label="Budget Manager", icon="🗺️")
+    st.sidebar.page_link("pages/02_budget_manager.py", label="Budget Manager", icon="💶")
 
 
 def housing_satisfaction_pred_nav():
-    st.sidebar.page_link("pages/04_student_pred.py", label="Housing Satisfaction Predictor", icon="🗺️")
+    st.sidebar.page_link("pages/04_student_pred.py", label="Housing Satisfaction Predictor", icon="😌")
 
 
 # ---- Role: Government Agency -----------------------------------------------------
 
 def government_agency_home_nav():
     st.sidebar.page_link(
-        "pages/10_GA_home.py", label="Government Agency Home", icon="🏠"
+        "pages/10_GA_home.py", label="Government Agency Home", icon="🇪🇺"
     )
 
 def view_funding_nav():
-    st.sidebar.page_link("pages/11_view_funding.py", label="View Funding", icon="📁")
+    st.sidebar.page_link("pages/11_view_funding.py", label="View Funding", icon="💶")
 
 
 def risk_heatmap_nav():
-    st.sidebar.page_link("pages/12_risk_heatmap.py", label="Risk Heatmap", icon="🔥")
+    st.sidebar.page_link("pages/12_risk_heatmap.py", label="Risk Heatmap", icon="🗺️")
 
 
 # ---- Role: real estate agent ----------------------------------------------------
@@ -58,12 +57,12 @@ def real_estate_agent_home_nav():
 
 def market_dashboard_nav():
     st.sidebar.page_link(
-        "pages/06_market_dashboard.py", label="Market Dashboard", icon="🏢"
+        "pages/06_market_dashboard.py", label="Market Dashboard", icon="📈"
     )
 
 def view_listings_rea_nav():
     st.sidebar.page_link(
-        "pages/07_view_listings_rea.py", label="View Listings", icon="🏢"
+        "pages/07_view_listings_rea.py", label="View Listings", icon="🏘️"
     )
 
 # ---- Sidebar assembly -------------------------------------------------------
