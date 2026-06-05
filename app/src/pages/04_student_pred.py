@@ -26,39 +26,39 @@ try:
 except:
     country_list = []
 
-selected_country = st.selectbox(
-    "Select a country to pre-fill with real values",
-    options=["— None —"] + sorted(country_list),
-    key="country_select"
-)
+# selected_country = st.selectbox(
+#     "Select a country to pre-fill with real values",
+#     options=["— None —"] + sorted(country_list),
+#     key="country_select"
+# )
 
-if selected_country != "— None —":
-    try:
-        stats_resp = requests.get(
-            "http://web-api:4000/housing/social-indicator-stats",
-            params={"country": selected_country}
-        )
-        stats_resp.raise_for_status()
-        stats = stats_resp.json()
+# if selected_country != "— None —":
+#     try:
+#         stats_resp = requests.get(
+#             "http://web-api:4000/housing/social-indicator-stats",
+#             params={"country": selected_country}
+#         )
+#         stats_resp.raise_for_status()
+#         stats = stats_resp.json()
 
-        def raw_to_pct(val, col):
-            low, high = RAW_RANGES[col]
-            return int(((val - low) / (high - low)) * 100)
+#         def raw_to_pct(val, col):
+#             low, high = RAW_RANGES[col]
+#             return int(((val - low) / (high - low)) * 100)
 
-        for s in stats:
-            name = s.get('name', '').lower()
-            val  = s.get('value', 0)
-            if 'crime' in name:
-                st.session_state['crime'] = max(0, min(100, raw_to_pct(val, 'crime_rate')))
-            elif 'noise' in name:
-                st.session_state['noise'] = max(0, min(100, raw_to_pct(val, 'noise_rate')))
-            elif 'pollution' in name:
-                st.session_state['pollution'] = max(0, min(100, raw_to_pct(val, 'pollution_rate')))
-            elif 'hpi' in name or 'price' in name:
-                st.session_state['hpi'] = max(0, min(100, raw_to_pct(val, 'hpi_weight')))
+#         for s in stats:
+#             name = s.get('name', '').lower()
+#             val  = s.get('value', 0)
+#             if 'crime' in name:
+#                 st.session_state['crime'] = max(0, min(100, raw_to_pct(val, 'crime_rate')))
+#             elif 'noise' in name:
+#                 st.session_state['noise'] = max(0, min(100, raw_to_pct(val, 'noise_rate')))
+#             elif 'pollution' in name:
+#                 st.session_state['pollution'] = max(0, min(100, raw_to_pct(val, 'pollution_rate')))
+#             elif 'hpi' in name or 'price' in name:
+#                 st.session_state['hpi'] = max(0, min(100, raw_to_pct(val, 'hpi_weight')))
 
-    except:
-        st.warning(f"Could not load stats for {selected_country}. Using defaults.")
+#     except:
+#         st.warning(f"Could not load stats for {selected_country}. Using defaults.")
 
 
 st.divider()
