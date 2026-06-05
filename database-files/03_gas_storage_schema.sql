@@ -53,8 +53,8 @@ INSERT INTO gas_storage_model (
     weight_storage_trend_30d, weight_storage_volatility
 ) VALUES (
     1,
-    5.80365757984536,
-    -0.06059500989799969,
-    -0.08006424692274622,
-    -0.033186343522107864
+    -0.01364296582364657,
+    -0.776213,
+    -0.374907,
+    -0.127339
 );
