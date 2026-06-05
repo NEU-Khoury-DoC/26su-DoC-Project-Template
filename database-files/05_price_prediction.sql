@@ -18,64 +18,52 @@ CREATE TABLE IF NOT EXISTS price_daily (
     INDEX idx_price_daily_country_date (country, price_date)
 );
 
--- Linear regression weights + scaler parameters, one row per feature.
--- The intercept is stored as a dedicated row with feature_name = 'intercept';
--- its mean and std are NULL since it is not standardized.
+-- Linear regression weights stored as a single wide row, one column per feature.
 CREATE TABLE IF NOT EXISTS price_model_weights (
-    feature_id   INT           NOT NULL AUTO_INCREMENT,
-    feature_name VARCHAR(50)   NOT NULL,
-    coefficient  DOUBLE        NOT NULL,
-    feature_mean DOUBLE,
-    feature_std  DOUBLE,
-    CONSTRAINT pk_price_model_weights PRIMARY KEY (feature_id),
-    CONSTRAINT uq_price_model_weights_name UNIQUE (feature_name)
+    model_id                INT    NOT NULL AUTO_INCREMENT,
+    intercept               DOUBLE NOT NULL,
+    weight_lag_1            DOUBLE, weight_lag_2            DOUBLE, weight_lag_3            DOUBLE,
+    weight_lag_4            DOUBLE, weight_lag_5            DOUBLE, weight_lag_6            DOUBLE,
+    weight_lag_7            DOUBLE,
+    weight_rolling_7d_mean  DOUBLE, weight_rolling_30d_mean DOUBLE,
+    weight_rolling_7d_std   DOUBLE, weight_price_vs_7d_avg  DOUBLE,
+    weight_month_2          DOUBLE, weight_month_3          DOUBLE, weight_month_4          DOUBLE,
+    weight_month_5          DOUBLE, weight_month_6          DOUBLE, weight_month_7          DOUBLE,
+    weight_month_8          DOUBLE, weight_month_9          DOUBLE, weight_month_10         DOUBLE,
+    weight_month_11         DOUBLE, weight_month_12         DOUBLE,
+    weight_dow_1            DOUBLE, weight_dow_2            DOUBLE, weight_dow_3            DOUBLE,
+    weight_dow_4            DOUBLE, weight_dow_5            DOUBLE, weight_dow_6            DOUBLE,
+    weight_country_BE       DOUBLE, weight_country_BG       DOUBLE, weight_country_CZ       DOUBLE,
+    weight_country_DE       DOUBLE, weight_country_ES       DOUBLE, weight_country_FR       DOUBLE,
+    weight_country_HR       DOUBLE, weight_country_HU       DOUBLE, weight_country_LV       DOUBLE,
+    weight_country_NL       DOUBLE, weight_country_PL       DOUBLE, weight_country_PT       DOUBLE,
+    weight_country_RO       DOUBLE, weight_country_SK       DOUBLE,
+    CONSTRAINT pk_price_model_weights PRIMARY KEY (model_id)
 );
 
--- Model weights (42 features + intercept)
-INSERT INTO price_model_weights (feature_name, coefficient, feature_mean, feature_std) VALUES
-    ('lag_1', 71.5605059710, 126.5937062961, 91.0988224989),
-    ('lag_2', -11.5751039620, 126.5901007788, 91.1067750843),
-    ('lag_3', 8.6279557767, 126.6001634401, 91.1071132276),
-    ('lag_4', -2.5707056462, 126.6068882698, 91.1108189992),
-    ('lag_5', 0.6822717620, 126.6033483252, 91.1198671791),
-    ('lag_6', 2.3864772343, 126.5958993712, 91.1268364006),
-    ('lag_7', 4.7757543684, 126.5781157182, 91.1373283137),
-    ('rolling_7d_mean', 11.2355132497, 126.5954603142, 85.5863579583),
-    ('rolling_30d_mean', 3.2959029205, 126.4683908579, 80.8386256300),
-    ('rolling_7d_std', -0.6972215120, 26.8854496911, 20.4203081222),
-    ('price_vs_7d_avg', -0.6292110621, 1.0068610446, 0.2969678041),
-    ('month_2', -1.2914130570, 0.0891410049, 0.2849471637),
-    ('month_3', -1.1993591676, 0.0837385197, 0.2769952708),
-    ('month_4', -1.0287725397, 0.0810372771, 0.2728923540),
-    ('month_5', -1.1613438076, 0.0837385197, 0.2769952708),
-    ('month_6', -0.2028740770, 0.0810372771, 0.2728923540),
-    ('month_7', -0.6177520119, 0.0837385197, 0.2769952708),
-    ('month_8', 0.4693113296, 0.0837385197, 0.2769952708),
-    ('month_9', -1.6500148174, 0.0810372771, 0.2728923540),
-    ('month_10', -1.3838149602, 0.0837385197, 0.2769952708),
-    ('month_11', 0.5264356310, 0.0810372771, 0.2728923540),
-    ('month_12', -2.2754990304, 0.0837385197, 0.2769952708),
-    ('dow_1', -8.3937223665, 0.1431658563, 0.3502419077),
-    ('dow_2', -8.1018092415, 0.1426256078, 0.3496906401),
-    ('dow_3', -9.8441919831, 0.1426256078, 0.3496906401),
-    ('dow_4', -10.6718821160, 0.1426256078, 0.3496906401),
-    ('dow_5', -16.2246734524, 0.1426256078, 0.3496906401),
-    ('dow_6', -15.9541680209, 0.1431658563, 0.3502419077),
-    ('country_BE', -0.0438933747, 0.0666666667, 0.2494438258),
-    ('country_BG', 0.1300643378, 0.0666666667, 0.2494438258),
-    ('country_CZ', -0.0036815701, 0.0666666667, 0.2494438258),
-    ('country_DE', -0.0003342801, 0.0666666667, 0.2494438258),
-    ('country_ES', -0.2062427078, 0.0666666667, 0.2494438258),
-    ('country_FR', -0.0659691038, 0.0666666667, 0.2494438258),
-    ('country_HR', 0.0417615364, 0.0666666667, 0.2494438258),
-    ('country_HU', 0.0623761086, 0.0666666667, 0.2494438258),
-    ('country_LV', 0.0431386351, 0.0666666667, 0.2494438258),
-    ('country_NL', -0.0401986729, 0.0666666667, 0.2494438258),
-    ('country_PL', -0.1033202843, 0.0666666667, 0.2494438258),
-    ('country_PT', -0.2097081659, 0.0666666667, 0.2494438258),
-    ('country_RO', 0.0806828229, 0.0666666667, 0.2494438258),
-    ('country_SK', 0.0342686931, 0.0666666667, 0.2494438258),
-    ('intercept', 126.6134388281, NULL, NULL);
+-- Model weights (43 features including intercept)
+INSERT INTO price_model_weights (
+    model_id, intercept,
+    weight_lag_1, weight_lag_2, weight_lag_3, weight_lag_4, weight_lag_5, weight_lag_6, weight_lag_7,
+    weight_rolling_7d_mean, weight_rolling_30d_mean, weight_rolling_7d_std, weight_price_vs_7d_avg,
+    weight_month_2, weight_month_3, weight_month_4, weight_month_5, weight_month_6,
+    weight_month_7, weight_month_8, weight_month_9, weight_month_10, weight_month_11, weight_month_12,
+    weight_dow_1, weight_dow_2, weight_dow_3, weight_dow_4, weight_dow_5, weight_dow_6,
+    weight_country_BE, weight_country_BG, weight_country_CZ, weight_country_DE, weight_country_ES,
+    weight_country_FR, weight_country_HR, weight_country_HU, weight_country_LV, weight_country_NL,
+    weight_country_PL, weight_country_PT, weight_country_RO, weight_country_SK
+) VALUES (
+    1,
+    126.613439,
+    71.560506, -11.575104, 8.627956, -2.570706, 0.682272, 2.386477, 4.775754,
+    11.235513, 3.295903, -0.697222, -0.629211,
+    -1.291413, -1.199359, -1.028773, -1.161344, -0.202874,
+    -0.617752, 0.469311, -1.650015, -1.383815, 0.526436, -2.275499,
+    -8.393722, -8.101809, -9.844192, -10.671882, -16.224673, -15.954168,
+    -0.043893, 0.130064, -0.003682, -0.000334, -0.206243,
+    -0.065969, 0.041762, 0.062376, 0.043139, -0.040199,
+    -0.103320, -0.209708, 0.080683, 0.034269
+);
 
 -- Daily price data (29565 rows, batched in 500s)
 
@@ -29764,61 +29752,3 @@ INSERT INTO price_daily (price_date, country, avg_price_eur_mwh) VALUES
     ('2026-05-23', 'FR', 34.321042),
     ('2026-05-24', 'FR', 17.516042),
     ('2026-05-25', 'FR', 50.000000);
-
-
-INSERT INTO ml1_price_forecast_model (
-    model_id, intercept,
-    weight_lag_1, weight_lag_2, weight_lag_3, weight_lag_4, weight_lag_5, weight_lag_6, weight_lag_7,
-    weight_rolling_7d_mean, weight_rolling_30d_mean, weight_rolling_7d_std, weight_price_vs_7d_avg,
-    weight_month_2, weight_month_3, weight_month_4, weight_month_5, weight_month_6,
-    weight_month_7, weight_month_8, weight_month_9, weight_month_10, weight_month_11, weight_month_12,
-    weight_dow_1, weight_dow_2, weight_dow_3, weight_dow_4, weight_dow_5, weight_dow_6,
-    weight_country_BE, weight_country_BG, weight_country_CZ, weight_country_DE, weight_country_ES,
-    weight_country_FR, weight_country_HR, weight_country_HU, weight_country_LV, weight_country_NL,
-    weight_country_PL, weight_country_PT, weight_country_RO, weight_country_SK
-) VALUES (
-    1,
-    126.613439,
-    71.560506, 
-    -11.575104, 
-    8.627956, 
-    -2.570706, 
-    0.682272, 
-    2.386477, 
-    4.775754,
-    11.235513, 
-    3.295903, 
-    -0.697222, 
-    -0.629211,
-    -1.291413, 
-    -1.199359, 
-    -1.028773, 
-    -1.161344, 
-    -0.202874,
-    -0.617752, 
-    0.469311, 
-    -1.650015, 
-    -1.383815, 
-    0.526436, 
-    -2.275499,
-    -8.393722, 
-    -8.101809, 
-    -9.844192, 
-    -10.671882, 
-    -16.224673, 
-    -15.954168,
-    -0.043893, 
-    0.130064, 
-    -0.003682, 
-    -0.000334, 
-    -0.206243,
-    -0.065969, 
-    0.041762, 
-    0.062376, 
-    0.043139, 
-    -0.040199,
-    -0.103320, 
-    -0.209708, 
-    0.080683, 
-    0.034269
-);
