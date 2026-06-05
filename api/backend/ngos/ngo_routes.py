@@ -47,12 +47,12 @@ def get_all_ngos():
 
 # Get detailed information about a specific NGO including its projects and donors
 # Example: /ngo/ngos/1
-@ngo_bp.route("/ngos/<int:ngo_id>", methods=["GET"])
+@ngo_bp.route("/ngos/<int:ngo_id>", methods=["GET"]) #route-verb+resource; var needs to be var (ngo id) of function handler
 def get_ngo(ngo_id):
-    current_app.logger.info(f'GET /ngo/ngos/{ngo_id}')
+    current_app.logger.info(f'GET /ngo/ngos/{ngo_id}') #logger statements help debug
     try:
         with get_db().cursor(dictionary=True) as cursor:
-            cursor.execute("SELECT * FROM WorldNGOs WHERE NGO_ID = %s", (ngo_id,))
+            cursor.execute("SELECT * FROM WorldNGOs WHERE NGO_ID = %s", (ngo_id,)) #cursor-db object, manage connection
             ngo = cursor.fetchone()
 
             if not ngo:
@@ -60,7 +60,7 @@ def get_ngo(ngo_id):
 
             # Reuse the same cursor for the follow-up queries
             cursor.execute("SELECT * FROM Projects WHERE NGO_ID = %s", (ngo_id,))
-            ngo["projects"] = cursor.fetchall()
+            ngo["projects"] = cursor.fetchall() #give back all data from cursor
 
             cursor.execute("SELECT * FROM Donors WHERE NGO_ID = %s", (ngo_id,))
             ngo["donors"] = cursor.fetchall()

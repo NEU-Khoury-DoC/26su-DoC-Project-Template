@@ -15,71 +15,92 @@ def about_page_nav():
     st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
 
 
-# ---- Role: pol_strat_advisor ------------------------------------------------
+# ---- Role: farmer ------------------------------------------------
 
-def pol_strat_home_nav():
+def farmer_home():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/01_Farmer_Home.py", label="Farmer Home", icon="👨‍🌾"
     )
-
-
-def world_bank_viz_nav():
+    
+def farmer_info():
     st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
+        "pages/02_Farm_Info.py", label="Farm Information", icon="🏡"
     )
-
-
-def map_demo_nav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
-
+    
+def all_farms():
+    st.sidebar.page_link(
+        "pages/03_All_Farms.py", label="All Farms", icon="🚜"
+    )
+    
+def crop_prediction():
+    st.sidebar.page_link(
+        "pages/04_Crop_Predictions.py", label="Crop Success Predictions", icon="🌾"
+    )
+    
+def farmer_blog():
+    st.sidebar.page_link(
+        "pages/05_Farmer_Blog.py", label="Discussion Board", icon="💭"
+    )
 
 # ---- Role: usaid_worker -----------------------------------------------------
 
-def usaid_worker_home_nav():
+def policy_home():
     st.sidebar.page_link(
-        "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
+        "pages/11_Policy_Home.py", label="Policy Maker Home", icon="🧑‍💼"
     )
-
-
-def ngo_directory_nav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="📁")
-
-
-def add_ngo_nav():
-    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
-
-
-def prediction_nav():
+    
+def policy_map():
     st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
+        "pages/12_Policy_Map.py", label="Crop Map", icon="🗺️"
     )
-
-
-def api_test_nav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
-
-
-def classification_nav():
+    
+def policy_compare():
     st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
+        "pages/13_Policy_Compare.py", label="Compare Farms", icon="🚜"
     )
-
+    
+def policy_report():
+    st.sidebar.page_link(
+        "pages/14_Policy_Report.py", label="Report Maker", icon="📝"
+    )
+    
+def policy_predictions():
+    st.sidebar.page_link(
+        "pages/15_Policy_Predictions.py", label="Crop Price Predicitons", icon="🌾"
+    )
+    
+def policy_analysis():
+    st.sidebar.page_link(
+        "pages/16_Policy_Analysis.py", label="Policy Maker Analysis", icon="🖥️"
+    )
+    
+def policy_blog():
+    st.sidebar.page_link(
+        "pages/17_Policy_Blog.py", label="Discussion Board", icon="💭"
+    )
 
 # ---- Role: administrator ----------------------------------------------------
 
-def admin_home_nav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
+def researcher_home():
+    st.sidebar.page_link("pages/21_Researcher_Home.py", label="Home", icon="👨‍🔬")
 
+def researcher_add_data():
+    st.sidebar.page_link("pages/22_Researcher_Add_Data.py", label="Add Soil Data", icon="🪏")
 
-def ml_model_mgmt_nav():
-    st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
-    )
+def researcher_visualize_data():
+    st.sidebar.page_link("pages/23_Researcher_Visualize_Data.py", label="Visualize Data", icon="🗺️")
 
-def new_ml_model_nav():
-    st.sidebar.page_link(
-        "pages/22_Prettier_ML.py", label="New ML Model", icon="📈"
-    )
+def researcher_data_prediction():
+    st.sidebar.page_link("pages/24_Researcher_Data_Prediction.py", label="Soil Health Prediction", icon="🌱")
+    
+def researcher_data_export():
+    st.sidebar.page_link("pages/25_Researcher_Data_Export.py", label="Data Export", icon="🖥️")
+
+def researcher_report():
+    st.sidebar.page_link("pages/26_Researcher_Report.py", label="Generate Reports", icon="📝")
+
+def researcher_blog():
+    st.sidebar.page_link("pages/27_Researcher_Blog.py", label="Discussion Board", icon="💭")
 
 # ---- Sidebar assembly -------------------------------------------------------
 
@@ -102,24 +123,31 @@ def SideBarLinks(show_home=False):
 
     if st.session_state["authenticated"]:
 
-        if st.session_state["role"] == "pol_strat_advisor":
-            pol_strat_home_nav()
-            world_bank_viz_nav()
-            map_demo_nav()
+        if st.session_state["role"] == "farmer":
+            farmer_home()
+            farmer_info()
+            all_farms()
+            crop_prediction()
+            farmer_blog()
 
-        if st.session_state["role"] == "usaid_worker":
-            usaid_worker_home_nav()
-            ngo_directory_nav()
-            add_ngo_nav()
-            prediction_nav()
-            api_test_nav()
-            classification_nav()
+        if st.session_state["role"] == "policy_maker":
+            policy_home()
+            policy_map()
+            policy_compare()
+            policy_report()
+            policy_predictions()
+            policy_analysis()
+            policy_blog()
 
-        if st.session_state["role"] == "administrator":
-            admin_home_nav()
-            ml_model_mgmt_nav()
-            new_ml_model_nav()
-            
+        if st.session_state["role"] == "researcher":
+            researcher_home()
+            researcher_add_data()
+            researcher_visualize_data()
+            researcher_data_prediction()
+            researcher_data_export()
+            researcher_report()
+            researcher_blog()
+
     # About link appears at the bottom for all roles
     about_page_nav()
 

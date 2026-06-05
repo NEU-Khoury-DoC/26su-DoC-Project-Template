@@ -42,7 +42,7 @@ def predict(var01, var02):
         raise ValueError("No model parameters found in the database")
 
     # Parse the stored parameter string (e.g. "[1.2,3.4,5.6]") into a numpy array
-    params_array = np.array(list(map(float, row['beta_vals'][1:-1].split(','))))
+    params_array = np.array(list(map(float, row['beta_vals'][1:-1].split(',')))) #turn into numerical array
     current_app.logger.info(f'params_array = {params_array}')
 
     # Prepend 1.0 as the intercept term, then dot with the parameter vector
