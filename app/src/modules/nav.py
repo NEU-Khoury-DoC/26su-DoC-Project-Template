@@ -15,67 +15,56 @@ def about_page_nav():
     st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
 
 
-# ---- Role: pol_strat_advisor ------------------------------------------------
+# ---- Role: student ------------------------------------------------
 
-def pol_strat_home_nav():
+def student_home_nav():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Student_home.py", label="Student Home", icon="👤"
     )
 
-
-def world_bank_viz_nav():
+def view_listings_nav():
     st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
+        "pages/01_view_listings_student.py", label="View listings", icon="🏦"
     )
 
+def budget_manager_nav():
+    st.sidebar.page_link("pages/02_budget_manager.py", label="Budget Manager", icon="🗺️")
 
-def map_demo_nav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
+
+def housing_satisfaction_pred_nav():
+    st.sidebar.page_link("pages/04_student_pred.py", label="Housing Satisfaction Predictor", icon="🗺️")
 
 
-# ---- Role: usaid_worker -----------------------------------------------------
+# ---- Role: Government Agency -----------------------------------------------------
 
-def usaid_worker_home_nav():
+def government_agency_home_nav():
     st.sidebar.page_link(
-        "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
+        "pages/10_GA_home.py", label="Government Agency Home", icon="🏠"
     )
 
-
-def ngo_directory_nav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="📁")
-
-
-def add_ngo_nav():
-    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
+def view_funding_nav():
+    st.sidebar.page_link("pages/11_view_funding.py", label="View Funding", icon="📁")
 
 
-def prediction_nav():
+def risk_heatmap_nav():
+    st.sidebar.page_link("pages/12_risk_heatmap.py", label="Risk Heatmap", icon="🔥")
+
+
+# ---- Role: real estate agent ----------------------------------------------------
+
+def real_estate_agent_home_nav():
+    st.sidebar.page_link("pages/05_REA_agent_home.py", label="Real Estate Agent Home", icon="🏠")
+
+
+def market_dashboard_nav():
     st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
+        "pages/06_market_dashboard.py", label="Market Dashboard", icon="🏢"
     )
 
-
-def api_test_nav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
-
-
-def classification_nav():
+def view_listings_rea_nav():
     st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
+        "pages/07_view_listings_rea.py", label="View Listings", icon="🏢"
     )
-
-
-# ---- Role: administrator ----------------------------------------------------
-
-def admin_home_nav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
-
-
-def ml_model_mgmt_nav():
-    st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
-    )
-
 
 # ---- Sidebar assembly -------------------------------------------------------
 
@@ -98,22 +87,21 @@ def SideBarLinks(show_home=False):
 
     if st.session_state["authenticated"]:
 
-        if st.session_state["role"] == "pol_strat_advisor":
-            pol_strat_home_nav()
-            world_bank_viz_nav()
-            map_demo_nav()
+        if st.session_state["role"] == "Student":
+            student_home_nav()
+            view_listings_nav()
+            budget_manager_nav()
+            housing_satisfaction_pred_nav()
 
-        if st.session_state["role"] == "usaid_worker":
-            usaid_worker_home_nav()
-            ngo_directory_nav()
-            add_ngo_nav()
-            prediction_nav()
-            api_test_nav()
-            classification_nav()
+        if st.session_state["role"] == "Real Estate Agent":
+            real_estate_agent_home_nav()
+            market_dashboard_nav()
+            view_listings_rea_nav()
 
-        if st.session_state["role"] == "administrator":
-            admin_home_nav()
-            ml_model_mgmt_nav()
+        if st.session_state["role"] == "Government Agency":
+            government_agency_home_nav()
+            view_funding_nav()
+            risk_heatmap_nav()
 
     # About link appears at the bottom for all roles
     about_page_nav()
