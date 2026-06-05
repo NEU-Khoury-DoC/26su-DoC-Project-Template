@@ -4,7 +4,7 @@
 --          41_Household_Persona_Info.py
 -- =============================================================
 
-USE ngo_db;
+USE Zeus;
 
 -- Mock demo users (no passwords). One row per dropdown option on Home.
 CREATE TABLE IF NOT EXISTS users (

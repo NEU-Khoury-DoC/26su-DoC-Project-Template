@@ -4,7 +4,7 @@
 -- Journalist: frozen snapshot payloads + private beat notes
 -- =============================================================
 
-USE ngo_db;
+USE Zeus;
 
 -- Household Owner — bookmark articles from GET /news/eu-energy
 CREATE TABLE IF NOT EXISTS saved_articles (

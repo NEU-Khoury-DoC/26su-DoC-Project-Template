@@ -6,7 +6,7 @@
 -- Model weights: INSERT below (from datasets/apsi/apsi.ipynb LogisticRegression fit)
 -- =============================================================
 
-USE ngo_db;
+USE Zeus;
 
 CREATE TABLE IF NOT EXISTS gas_storage_daily (
     storage_id     BIGINT       NOT NULL AUTO_INCREMENT,
