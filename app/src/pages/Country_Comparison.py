@@ -1,12 +1,12 @@
 import logging
 logger = logging.getLogger(__name__)
 
-import joblib
 import pandas as pd
 import plotly.express as px
+import requests
 import streamlit as st
 from modules.nav import SideBarLinks
-from modules import entsoe_data
+from modules.zeus_api import compare_storage_risk
 
 st.set_page_config(layout='wide')
 
@@ -15,39 +15,20 @@ SideBarLinks()
 st.title("Country Comparison")
 st.write("#### Which countries should you worry about this winter?")
 
-# ---- Load model + data (cached) ----
-@st.cache_resource
-def load_model():
-    return joblib.load("assets/gas_model.pkl")
+try:
+    payload = compare_storage_risk()
+except requests.exceptions.HTTPError as exc:
+    st.error(f"Could not load risk comparison from the API: {exc}")
+    st.info("Ensure the API and database are running, then seed data with `docker compose exec api python scripts/seed_gas_storage.py`.")
+    st.stop()
+except requests.exceptions.RequestException as exc:
+    st.error(f"Could not reach the API: {exc}")
+    st.stop()
 
-@st.cache_data
-def load_data():
-    return pd.read_csv("assets/dataset.csv")
+latest = pd.DataFrame(payload["countries"])
+latest["Country"] = latest["country_name"]
+latest["Verdict"] = latest["verdict"]
 
-model = load_model()
-data = load_data()
-
-CODE_TO_NAME = {
-    "AT": "Austria", "BE": "Belgium", "BG": "Bulgaria", "HR": "Croatia",
-    "CZ": "Czech Republic", "DK": "Denmark", "FR": "France", "DE": "Germany",
-    "HU": "Hungary", "IT": "Italy", "LV": "Latvia", "NL": "Netherlands",
-    "PL": "Poland", "PT": "Portugal", "RO": "Romania", "SK": "Slovakia",
-    "ES": "Spain",
-}
-FEATURES = ["storage_at_start", "storage_trend_30d", "storage_volatility"]
-
-# ---- Run the model on every country's most recent winter ----
-latest = (data.sort_values("winter")
-              .groupby("country")
-              .tail(1)
-              .reset_index(drop=True))
-
-latest["risk_prob"] = model.predict_proba(latest[FEATURES])[:, 1]
-latest["Country"] = latest["country"].map(CODE_TO_NAME)
-latest["Verdict"] = (latest["risk_prob"] >= 0.5).map(
-    {True: "At risk", False: "Not at risk"})
-
-# ---- The answer, first ----
 at_risk_df = latest[latest["Verdict"] == "At risk"].sort_values(
     "risk_prob", ascending=False)
 n_risk = len(at_risk_df)
@@ -74,7 +55,6 @@ st.caption(
 
 st.divider()
 
-# ---- Risk leaderboard ----
 st.write("### All countries, ranked by risk")
 
 default_country = st.session_state.get("journalist_country", "Poland")
@@ -105,10 +85,10 @@ st.caption(
     "the 50% line and are flagged as at-risk"
 )
 
-#  Details for the curious 
 with st.expander("View the data behind the rankings"):
     table = (shown.sort_values("risk_prob", ascending=False)
-             [["Country", "winter", "risk_prob"] + FEATURES]
+             [["Country", "winter", "risk_prob", "storage_at_start",
+               "storage_trend_30d", "storage_volatility"]]
              .rename(columns={
                  "winter": "Winter",
                  "risk_prob": "Risk probability",
@@ -121,12 +101,11 @@ with st.expander("View the data behind the rankings"):
     st.dataframe(table, use_container_width=True)
     st.caption(
         "These three columns are the model's only inputs. Countries are "
-        "shown for their most recent complete winter in the data."
+        "shown for their most recent complete winter in the database."
     )
 
 st.divider()
 
-# Cross-page navigation
 nav_left, nav_right = st.columns(2)
 with nav_left:
     if st.button("← Back to Country Snapshot", use_container_width=True):

@@ -16,14 +16,13 @@ NEWSDATA_BASE_URL = "https://newsdata.io/api/1/latest"
 EU_SAMPLE_COUNTRIES = "de,fr,it,es,be"
 
 # Free/Basic plans limit q to 100 chars; EU scope comes from the country filter.
-ENERGY_QUERY = (
-    "energy, electricity, EU"
-)
+ENERGY_QUERY = "energy OR electricity OR gas OR power OR renewables OR climate OR carbon"
 
 
+# Fetch latest EU energy news via NewsData.io (external API)
+# Example: GET /news/eu-energy
 @news_bp.route("/eu-energy", methods=["GET"])
 def get_eu_energy_news():
-    """Fetch latest EU energy news via NewsData.io."""
     current_app.logger.info("GET /news/eu-energy")
 
     api_key = os.getenv("NEWSDATA_API_KEY", "").strip()
@@ -65,8 +64,6 @@ def get_eu_energy_news():
         return error_response(message, 502)
 
     articles = payload.get("results") or []
-
-    # Lower source_priority values indicate more reputable domains in NewsData.io.
     articles.sort(key=lambda article: article.get("source_priority") or 999_999)
 
     trimmed = [
@@ -89,6 +86,6 @@ def get_eu_energy_news():
             "articles": trimmed,
             "query": ENERGY_QUERY,
             "countries": EU_SAMPLE_COUNTRIES,
-            "sourceFilter": "prioritydomain=top (top 10% domains), sorted by source authority",
+            "sourceFilter": "sorted by source authority",
         }
     ), 200

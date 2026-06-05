@@ -3,8 +3,15 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+import requests
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.zeus_api import (
+    create_household_profile,
+    delete_household_profile,
+    get_household_profile,
+    update_household_profile,
+)
 
 st.set_page_config(layout="wide")
 
@@ -15,6 +22,11 @@ st.write(
     "Save your household details so Zeus can personalize price forecasts, "
     "bill reminders, and country-level energy context."
 )
+
+user_id = st.session_state.get("user_id")
+if not user_id:
+    st.error("No user is logged in. Return to Home and log in as a household owner.")
+    st.stop()
 
 COUNTRIES = [
     "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus",
@@ -27,8 +39,6 @@ COUNTRIES = [
 
 BILLING_FREQUENCIES = ["Weekly", "Monthly", "Quarterly", "Annually"]
 TARIFF_TYPES = ["Fixed rate", "Variable rate", "Time-of-use"]
-
-PROFILE_KEY = "household_profile"
 
 
 def _empty_profile():
@@ -46,30 +56,53 @@ def _empty_profile():
     }
 
 
-def _load_profile():
-    saved = st.session_state.get(PROFILE_KEY)
-    if not saved:
-        return _empty_profile()
-
+def _profile_from_api(row):
     profile = _empty_profile()
-    profile.update(saved)
-    if isinstance(profile["bill_due_date"], str):
-        profile["bill_due_date"] = datetime.date.fromisoformat(profile["bill_due_date"])
-    return profile
+    if not row:
+        return profile, False
+
+    profile.update({
+        "household_name": row.get("household_name", ""),
+        "email": row.get("email", ""),
+        "country": row.get("country", "Germany"),
+        "utility_provider": row.get("utility_provider", ""),
+        "monthly_bill_amount": float(row.get("monthly_bill_amount") or 0),
+        "billing_frequency": row.get("billing_frequency", "Monthly"),
+        "avg_monthly_kwh": float(row.get("avg_monthly_kwh") or 0),
+        "tariff_type": row.get("tariff_type", "Variable rate"),
+        "notes": row.get("notes") or "",
+    })
+    due = row.get("bill_due_date")
+    if isinstance(due, str):
+        profile["bill_due_date"] = datetime.date.fromisoformat(due)
+    elif isinstance(due, datetime.date):
+        profile["bill_due_date"] = due
+    return profile, True
 
 
-def _save_profile(profile):
-    st.session_state[PROFILE_KEY] = {
-        **profile,
-        "bill_due_date": profile["bill_due_date"].isoformat(),
+def _payload_from_form(profile):
+    due = profile["bill_due_date"]
+    return {
+        "household_name": profile["household_name"],
+        "email": profile["email"],
+        "country": profile["country"],
+        "utility_provider": profile["utility_provider"],
+        "monthly_bill_amount": profile["monthly_bill_amount"],
+        "bill_due_date": due.isoformat() if hasattr(due, "isoformat") else due,
+        "billing_frequency": profile["billing_frequency"],
+        "avg_monthly_kwh": profile["avg_monthly_kwh"],
+        "tariff_type": profile["tariff_type"],
+        "notes": profile["notes"] or "",
     }
 
 
-if PROFILE_KEY not in st.session_state:
-    st.session_state[PROFILE_KEY] = None
+try:
+    saved_row = get_household_profile(user_id)
+except requests.exceptions.RequestException as exc:
+    st.error(f"Could not load profile from the API: {exc}")
+    st.stop()
 
-profile = _load_profile()
-has_profile = st.session_state.get(PROFILE_KEY) is not None
+profile, has_profile = _profile_from_api(saved_row)
 
 if has_profile:
     st.success(
@@ -192,10 +225,20 @@ with st.form("household_profile_form"):
                 "tariff_type": tariff_type,
                 "notes": notes.strip(),
             }
-            _save_profile(updated_profile)
-            logger.info("Household profile saved for %s", household_name.strip())
-            st.success("Household profile saved.")
-            st.rerun()
+            payload = _payload_from_form(updated_profile)
+            try:
+                if has_profile:
+                    update_household_profile(user_id, payload)
+                else:
+                    create_household_profile(user_id, payload)
+            except requests.exceptions.HTTPError as exc:
+                st.error(f"Could not save profile: {exc}")
+            except requests.exceptions.RequestException as exc:
+                st.error(f"Could not reach the API: {exc}")
+            else:
+                logger.info("Household profile saved for user_id=%s", user_id)
+                st.success("Household profile saved.")
+                st.rerun()
 
 st.divider()
 
@@ -217,10 +260,14 @@ if has_profile:
             st.markdown(f"**Notes:** {profile['notes']}")
 
     if st.button("Delete saved profile", type="secondary"):
-        st.session_state[PROFILE_KEY] = None
-        logger.info("Household profile deleted")
-        st.warning("Household profile deleted.")
-        st.rerun()
+        try:
+            delete_household_profile(user_id)
+        except requests.exceptions.RequestException as exc:
+            st.error(f"Could not delete profile: {exc}")
+        else:
+            logger.info("Household profile deleted for user_id=%s", user_id)
+            st.warning("Household profile deleted.")
+            st.rerun()
 
 if st.button("Return to Dashboard"):
     st.switch_page("pages/40_Household_Owner_Dashboard.py")

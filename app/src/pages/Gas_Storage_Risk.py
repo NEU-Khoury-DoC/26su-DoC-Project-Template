@@ -1,11 +1,12 @@
 import logging
 logger = logging.getLogger(__name__)
 
-import joblib
 import pandas as pd
 import plotly.express as px
+import requests
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.zeus_api import get_storage_winters, post_storage_risk
 
 st.set_page_config(layout='wide')
 
@@ -18,19 +19,6 @@ st.caption(
     "Adjust the inputs to explore what-if scenarios."
 )
 
-# ---- Load model + data (cached) ----
-@st.cache_resource
-def load_model():
-    return joblib.load("assets/gas_model.pkl")
-
-@st.cache_data
-def load_data():
-    return pd.read_csv("assets/dataset.csv")
-
-model = load_model()
-data = load_data()
-
-# Countries covered by the gas storage model.
 COUNTRIES = [
     "Austria", "Belgium", "Bulgaria", "Croatia", "Czech Republic",
     "Denmark", "France", "Germany", "Hungary", "Italy",
@@ -46,7 +34,6 @@ NAME_TO_CODE = {
     "Spain": "ES",
 }
 
-FEATURES = ["storage_at_start", "storage_trend_30d", "storage_volatility"]
 RISK_THRESHOLD = 30  # %
 
 default_country = st.session_state.get("journalist_country", "Poland")
@@ -57,13 +44,26 @@ selected_country = st.selectbox(
 )
 st.session_state["journalist_country"] = selected_country
 
-# Selected country's most recent winter = default slider values
 code = NAME_TO_CODE[selected_country]
-latest = data[data["country"] == code].sort_values("winter").iloc[-1]
+
+try:
+    country_winters = get_storage_winters(code)
+except requests.exceptions.RequestException as exc:
+    st.error(f"Could not load winter data from the API: {exc}")
+    st.info(
+        "Ensure the API and database are running, then seed data with "
+        "`docker compose exec api python scripts/seed_gas_storage.py`."
+    )
+    st.stop()
+
+if not country_winters:
+    st.warning("No winter records in the database for this country.")
+    st.stop()
+
+latest = max(country_winters, key=lambda row: row["winter"])
 
 st.divider()
 
-# ---- User-adjustable model inputs ----
 st.write("#### Model inputs")
 st.caption(
     "Defaults show the country's most recent winter. Drag to explore what-if scenarios."
@@ -92,21 +92,24 @@ storage_volatility = c3.slider(
          "(standard deviation). Higher = more erratic filling/draining.",
 )
 
-# Plain-language readout of the trend slider
 if storage_trend_30d >= 0:
     c2.caption(f"Filling: +{storage_trend_30d:.1f} points in the final month")
 else:
     c2.caption(f"Draining: {storage_trend_30d:.1f} points in the final month")
 
-# ---- Prediction ----
-X_new = pd.DataFrame(
-    [[storage_at_start, storage_trend_30d, storage_volatility]],
-    columns=FEATURES,
-)
-at_risk = bool(model.predict(X_new)[0])
-risk_prob = model.predict_proba(X_new)[0][1]
+try:
+    risk_result = post_storage_risk(
+        storage_at_start=storage_at_start,
+        storage_trend_30d=storage_trend_30d,
+        storage_volatility=storage_volatility,
+    )
+except requests.exceptions.RequestException as exc:
+    st.error(f"Risk prediction failed: {exc}")
+    st.stop()
 
-# Verdict
+at_risk = bool(risk_result["at_risk"])
+risk_prob = float(risk_result["risk_prob"])
+
 if at_risk:
     st.error(
         f"⚠️ **At risk** — the model predicts {selected_country}'s gas storage "
@@ -122,10 +125,15 @@ st.metric("Risk probability", f"{risk_prob:.0%}")
 
 st.divider()
 
-# ---- EDA: pre-winter storage vs winter minimum ----
 st.write("#### A full tank doesn't mean a safe winter")
 
-plot_df = data.copy()
+try:
+    all_winters = get_storage_winters()
+except requests.exceptions.RequestException as exc:
+    st.error(f"Could not load winter history: {exc}")
+    st.stop()
+
+plot_df = pd.DataFrame(all_winters)
 plot_df["outcome"] = plot_df["storage_stress"].map({0: "No stress", 1: "Stress"})
 
 fig = px.scatter(
@@ -147,7 +155,6 @@ fig.add_scatter(
     name=selected_country,
 )
 
-# Drop the user's scenario onto the chart
 scenario_color = "red" if at_risk else "green"
 fig.add_vline(
     x=storage_at_start,
@@ -163,7 +170,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
 
-# Cross-page navigation
 nav_left, nav_right = st.columns(2)
 with nav_left:
     if st.button("← Back to Country Snapshot", use_container_width=True):
