@@ -66,7 +66,7 @@ st.divider()
 
 st.write("#### Model inputs")
 st.caption(
-    "Defaults show the country's most recent winter. Drag to explore what-if scenarios."
+    "Defaults show the country's most recent winter. Drag to explore different scenarios."
 )
 
 c1, c2, c3 = st.columns(3)
