@@ -1,10 +1,7 @@
 """Gas storage data access — reads from MySQL, not CSV files."""
 
-import math
-
 from backend.db_connection import get_db
 
-FEATURES = ["storage_at_start", "storage_trend_30d", "storage_volatility"]
 STRESS_THRESHOLD = 30
 
 CODE_TO_NAME = {
@@ -14,18 +11,12 @@ CODE_TO_NAME = {
     "PL": "Poland", "PT": "Portugal", "RO": "Romania", "SK": "Slovakia",
     "ES": "Spain",
 }
-NAME_TO_CODE = {name: code for code, name in CODE_TO_NAME.items()}
-
 
 def normalize_country_code(code):
     return code.strip().upper()
 
 
-def country_name(code):
-    return CODE_TO_NAME.get(normalize_country_code(code))
-
-
-def fetch_daily_history(cursor, country_code):
+def get_storage_history(cursor, country_code):
     cursor.execute(
         """
         SELECT gas_day, full_pct
@@ -38,7 +29,7 @@ def fetch_daily_history(cursor, country_code):
     return cursor.fetchall()
 
 
-def fetch_winters(cursor, country_code=None):
+def get_winters(cursor, country_code=None):
     if country_code:
         cursor.execute(
             """
@@ -64,23 +55,7 @@ def fetch_winters(cursor, country_code=None):
     return cursor.fetchall()
 
 
-def fetch_latest_winter(cursor, country_code):
-    cursor.execute(
-        """
-        SELECT country_code, winter_year, min_winter_full, days,
-               storage_stress, storage_at_start, storage_trend_30d,
-               storage_volatility
-        FROM gas_storage_winters
-        WHERE country_code = %s
-        ORDER BY winter_year DESC
-        LIMIT 1
-        """,
-        (normalize_country_code(country_code),),
-    )
-    return cursor.fetchone()
-
-
-def fetch_latest_daily(cursor, country_code):
+def get_latest_storage(cursor, country_code):
     cursor.execute(
         """
         SELECT gas_day, full_pct
@@ -94,7 +69,7 @@ def fetch_latest_daily(cursor, country_code):
     return cursor.fetchone()
 
 
-def fetch_daily_on_or_before(cursor, country_code, gas_day):
+def get_storage_on_date(cursor, country_code, gas_day):
     cursor.execute(
         """
         SELECT gas_day, full_pct
@@ -108,8 +83,8 @@ def fetch_daily_on_or_before(cursor, country_code, gas_day):
     return cursor.fetchone()
 
 
-def winter_summary(cursor, country_code):
-    winters = fetch_winters(cursor, country_code)
+def get_winter_summary(cursor, country_code):
+    winters = get_winters(cursor, country_code)
     if not winters:
         return None
 
@@ -123,7 +98,7 @@ def winter_summary(cursor, country_code):
     }
 
 
-def latest_winter_per_country(cursor):
+def get_latest_winters(cursor):
     cursor.execute(
         """
         SELECT w.*
@@ -141,6 +116,21 @@ def latest_winter_per_country(cursor):
     return cursor.fetchall()
 
 
+def get_model_weights(cursor):
+    cursor.execute(
+        """
+        SELECT intercept, weight_storage_at_start, weight_storage_trend_30d,
+               weight_storage_volatility
+        FROM gas_storage_model
+        WHERE model_id = 1
+        """
+    )
+    weights = cursor.fetchone()
+    if not weights:
+        raise ValueError("No gas storage model weights in database")
+    return weights
+
+
 def serialize_winter(row):
     return {
         "country": row["country_code"],
@@ -154,30 +144,3 @@ def serialize_winter(row):
         "storage_volatility": float(row["storage_volatility"]),
     }
 
-
-def predict_risk(storage_at_start, storage_trend_30d, storage_volatility):
-    with get_db().cursor(dictionary=True) as cursor:
-        cursor.execute(
-            """
-            SELECT intercept, weight_storage_at_start, weight_storage_trend_30d,
-                   weight_storage_volatility
-            FROM gas_storage_model
-            WHERE model_id = 1
-            """
-        )
-        weights = cursor.fetchone()
-
-    if not weights:
-        raise ValueError("No gas storage model weights in database")
-
-    z = (
-        weights["intercept"]
-        + weights["weight_storage_at_start"] * storage_at_start
-        + weights["weight_storage_trend_30d"] * storage_trend_30d
-        + weights["weight_storage_volatility"] * storage_volatility
-    )
-    risk_prob = 1.0 / (1.0 + math.exp(-z))
-    return {
-        "at_risk": risk_prob >= 0.5,
-        "risk_prob": risk_prob,
-    }

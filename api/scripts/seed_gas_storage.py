@@ -52,7 +52,7 @@ def get_connection():
         host=os.getenv("DB_HOST", "db"),
         user=os.getenv("DB_USER", "root"),
         password=os.getenv("MYSQL_ROOT_PASSWORD"),
-        database=os.getenv("DB_NAME", "ngo_db"),
+        database=os.getenv("DB_NAME", "Zeus"),
         port=int(os.getenv("DB_PORT", "3306")),
     )
 
