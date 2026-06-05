@@ -1,35 +1,51 @@
 import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from flask import current_app
 from backend.db_connection import get_db
+from sklearn.linear_model import LinearRegression
 
+FEATURE_COLS = ['crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight', 'deg_urb_Rural areas', 'deg_urb_Towns and suburbs']
+
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+df = pd.read_csv(os.path.join(BASE_DIR, "raw_project_models/merged2.csv"))
+
+def line_of_best_fit(X, y):
+    model = LinearRegression(fit_intercept = True)
+    model.fit(X, y)
+    return np.concatenate([[model.intercept_], model.coef_])
+
+def linreg_predict(X, y, b):
+    X_with_intercept = np.column_stack([np.ones(len(X)), X])
+    y_pred = X_with_intercept @ b
+    mse = float(np.mean((y - y_pred) ** 2))
+    ss_res = np.sum((y - y_pred) ** 2)
+    ss_tot = np.sum((y - np.mean(y)) ** 2)
+    r2 = float(1 - ss_res / ss_tot)
+    return {"mse": mse, "r2": r2}
 
 def train():
-    """
-    Trains the model on clean data and stores parameters in the db
-
-    Returns:
-        dict with mse and r2
-    """
     cols = ['crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight', 'deg_urb_Rural areas', 'deg_urb_Towns and suburbs']
     X = np.array(df[cols])
     y = np.array(df['happy_rate'])
- 
+
     Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, test_size=0.3, random_state=42)
- 
+
     scaler = StandardScaler()
     Xtrain_scaled = scaler.fit_transform(Xtrain)
-    Xtest_scaled  = scaler.transform(Xtest)
- 
+    Xtest_scaled = scaler.transform(Xtest)
+
     b = line_of_best_fit(Xtrain_scaled, ytrain)
     results = linreg_predict(Xtest_scaled, ytest, b)
- 
+
     current_app.logger.info(f"train mse={results['mse']:.4f} r2={results['r2']:.4f}")
- 
-    # storing b, scaler mean, and scaler std in db
+
     b_str = '[' + ','.join(map(str, b)) + ']'
     scaler_mean_str = '[' + ','.join(map(str, scaler.mean_)) + ']'
     scaler_std_str = '[' + ','.join(map(str, scaler.scale_)) + ']'
- 
+
     with get_db().cursor() as cursor:
         cursor.execute(
             '''INSERT INTO student_model_params
@@ -37,9 +53,10 @@ def train():
                VALUES (%s, %s, %s)''',
             (b_str, scaler_mean_str, scaler_std_str)
         )
- 
+    get_db().commit()
+
     return {'mse': results['mse'], 'r2': results['r2']}
- 
+
 
 def test():
     """

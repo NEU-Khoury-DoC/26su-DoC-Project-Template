@@ -96,3 +96,11 @@ CREATE TABLE funding_draft (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (country_id) REFERENCES country(country_id)
 );
+
+CREATE TABLE student_model_params (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    beta_vals TEXT NOT NULL,
+    scaler_mean TEXT NOT NULL,
+    scaler_std TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
