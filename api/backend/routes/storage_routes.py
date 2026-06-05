@@ -23,8 +23,7 @@ from mysql.connector import Error
 storage_bp = Blueprint("storage", __name__)
 
 
-# Daily gas storage history for charts
-# Example: GET /stats/storage/history?country=DE
+# zeus_api: get_storage_history(country_code)
 @storage_bp.route("/stats/storage/history", methods=["GET"])
 def get_storage_history():
     current_app.logger.info("GET /stats/storage/history")
@@ -67,8 +66,7 @@ def get_storage_history():
         return error_response(str(e))
 
 
-# Winter feature rows for ML charts and slider defaults
-# Example: GET /stats/storage/winters?country=DE
+# zeus_api: get_storage_winters(country_code)
 @storage_bp.route("/stats/storage/winters", methods=["GET"])
 def get_storage_winters():
     current_app.logger.info("GET /stats/storage/winters")
@@ -96,8 +94,7 @@ def get_storage_winters():
         return error_response(str(e))
 
 
-# Latest storage headline metrics for Country Snapshot
-# Example: GET /countries/DE/storage/summary
+# zeus_api: get_storage_summary(country_code)
 @storage_bp.route("/countries/<country_code>/storage/summary", methods=["GET"])
 def get_storage_summary(country_code):
     current_app.logger.info("GET /countries/%s/storage/summary", country_code)
@@ -144,8 +141,7 @@ def get_storage_summary(country_code):
         return error_response(str(e))
 
 
-# Gas storage risk ranking for Country Comparison
-# Example: GET /stats/storage/risk/compare
+# zeus_api: compare_storage_risk()
 @storage_bp.route("/stats/storage/risk/compare", methods=["GET"])
 def compare_storage_risk():
     current_app.logger.info("GET /stats/storage/risk/compare")
@@ -188,8 +184,7 @@ def compare_storage_risk():
         return error_response(str(e))
 
 
-# What-if gas storage risk prediction for Gas Storage Risk page
-# Example: POST /stats/storage/risk
+# zeus_api: post_storage_risk(storage_at_start, storage_trend_30d, storage_volatility)
 @storage_bp.route("/stats/storage/risk", methods=["POST"])
 def post_storage_risk():
     current_app.logger.info("POST /stats/storage/risk")

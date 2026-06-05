@@ -8,8 +8,7 @@ VALID_PERSONAS = ("household_owner", "journalist")
 user_bp = Blueprint("users", __name__)
 
 
-# List mock users for a persona dropdown on Home
-# Example: GET /users?persona=household_owner
+# zeus_api: get_users()
 @user_bp.route("/users", methods=["GET"])
 def get_users():
     current_app.logger.info("GET /users")
@@ -43,8 +42,7 @@ def get_users():
         return error_response(str(e))
 
 
-# Get one mock user after login
-# Example: GET /users/1
+# zeus_api: (called directly via requests in Home.py)
 @user_bp.route("/users/<int:user_id>", methods=["GET"])
 def get_user(user_id):
     current_app.logger.info("GET /users/%s", user_id)
