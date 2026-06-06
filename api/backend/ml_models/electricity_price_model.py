@@ -38,7 +38,7 @@ def _get_weights():
     """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
-            'SELECT * FROM ml1_price_forecast_model ORDER BY model_id DESC LIMIT 1'
+            'SELECT * FROM price_model_weights ORDER BY model_id DESC LIMIT 1'
         )
         row = cursor.fetchone()
 
@@ -56,8 +56,8 @@ def _get_recent_prices(country_code):
     """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
-            'SELECT date, avg_price_eur_mwh FROM daily_prices '
-            'WHERE country = %s ORDER BY date DESC LIMIT 30',
+            'SELECT price_date, avg_price_eur_mwh FROM price_daily '
+            'WHERE country = %s ORDER BY price_date DESC LIMIT 30',
             (country_code,)
         )
         rows = cursor.fetchall()
