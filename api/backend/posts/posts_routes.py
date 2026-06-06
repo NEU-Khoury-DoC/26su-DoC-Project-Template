@@ -120,3 +120,35 @@ def delete_post(id):
     except Error as e:
         current_app.logger.error(f'Database error in delete_post: {e}')
         return error_response(str(e))
+    
+@posts_bp.route("/<int:id>/comments", methods=["GET"])
+def get_comments(id):
+    current_app.logger.info(f"GET /posts/{id}/comments")
+    conn = get_db()
+    cur = conn.cursor(dictionary=True)
+    cur.execute("SELECT * FROM comments WHERE post_id = %s ORDER BY created_at ASC;", (id,))
+    rows = cur.fetchall()
+    cur.close()
+    return jsonify(rows), 200
+
+@posts_bp.route("/<int:id>/comments", methods=["POST"])
+def create_comment(id):
+    current_app.logger.info(f"POST /posts/{id}/comments")
+    data = request.get_json() or {}
+    texts = data.get("texts")
+    user_id = data.get("user_id")
+    created_by = data.get("created_by", str(user_id))
+
+    if not texts:
+        return jsonify({"error": "missing texts"}), 400
+
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO comments (texts, post_id, user_id, created_by) VALUES (%s, %s, %s, %s)",
+        (texts, id, user_id, created_by)
+    )
+    conn.commit()
+    new_id = cur.lastrowid
+    cur.close()
+    return jsonify({"comment_id": new_id}), 201
