@@ -13,6 +13,15 @@ import pandas as pd
 from flask import current_app
 from backend.db_connection import get_db
 
+FEATURE_ORDER = [
+    "lag_1","lag_2","lag_3","lag_4","lag_5","lag_6","lag_7",
+    "rolling_7d_mean","rolling_30d_mean","rolling_7d_std","price_vs_7d_avg",
+    "month_2","month_3","month_4","month_5","month_6",
+    "month_7","month_8","month_9","month_10","month_11","month_12",
+    "dow_1","dow_2","dow_3","dow_4","dow_5","dow_6",
+    "country_BE","country_BG","country_CZ","country_DE","country_ES",
+    "country_FR","country_HR","country_HU","country_LV","country_NL",
+    "country_PL","country_PT","country_RO","country_SK"]
 
 def train():
     """
@@ -48,6 +57,26 @@ def _get_weights():
     current_app.logger.info('ML1 weights loaded from DB')
     return row
 
+def _get_scaler_params():
+    """
+    Fetches scaler means and stds from price_model_scaler.
+    Returns means and stds as np.arrays in correct feature order.
+    """
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            'SELECT feature_name, feature_mean, feature_std '
+            'FROM price_model_scaler'
+        )
+        rows = cursor.fetchall()
+
+    if not rows:
+        raise ValueError("No scaler parameters found in the database.")
+
+    scaler_dict = {row["feature_name"]: row for row in rows}
+
+    means = np.array([scaler_dict[f]["feature_mean"] for f in FEATURE_ORDER])
+    stds  = np.array([scaler_dict[f]["feature_std"]  for f in FEATURE_ORDER])
+    return means, stds
 
 def _get_recent_prices(country_code):
     """
@@ -160,6 +189,7 @@ def predict(country_code, days=30):
         list[dict]: list of {date, predicted_price_eur_mwh}
     """
     weights = _get_weights()
+    means, stds = _get_scaler_params()
     last_prices, last_date = _get_recent_prices(country_code)
 
     # Build w vector in exact same order as x
@@ -191,8 +221,11 @@ def predict(country_code, days=30):
         # Build x
         x = _build_x(last_prices, next_date, country_code)
 
+        # Scale x to match training conditions
+        x_scaled = (x - means) / stds
+
         # wTx + intercept
-        pred = float(w.T @ x) + intercept
+        pred = float(w.T @ x_scaled) + intercept
 
         predictions.append({
             "date": str(next_date.date()),
