@@ -76,8 +76,8 @@ CREATE TABLE IF NOT EXISTS farms_location (
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
 );
 
-CREATE TABLE IF NOT EXISTS user_crop_data (
-    user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS user_growing_data (
+    user_growing_data INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
     type_of_crop VARCHAR(255) NOT NULL,
     season VARCHAR(100) NOT NULL,
