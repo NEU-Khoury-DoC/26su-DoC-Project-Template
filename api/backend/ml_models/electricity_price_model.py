@@ -65,8 +65,8 @@ def _get_recent_prices(country_code):
     if not rows:
         raise ValueError(f"No price data found for country: {country_code}")
 
-    df = pd.DataFrame(rows).sort_values("date").reset_index(drop=True)
-    return list(df["avg_price_eur_mwh"]), pd.Timestamp(df["date"].iloc[-1])
+    df = pd.DataFrame(rows).sort_values("price_date").reset_index(drop=True)
+    return list(df["avg_price_eur_mwh"]), pd.Timestamp(df["price_date"].iloc[-1])
 
 
 def _build_x(last_prices, next_date, country_code):

@@ -88,7 +88,7 @@ try:
     )
     st.plotly_chart(forecast_chart, use_container_width=True)
 
-except Exception:
+except Exception as e:
     st.warning("Could not connect to the backend. Showing placeholder data.")
 
     forecast_dates = pd.date_range(
@@ -114,6 +114,3 @@ except Exception:
     forecast_chart.update_traces(marker=dict(size=9))
     forecast_chart.update_layout(height=420)
     st.plotly_chart(forecast_chart, use_container_width=True)
-
-except Exception as e:
-    st.error(f"Error loading forecast: {str(e)}")
