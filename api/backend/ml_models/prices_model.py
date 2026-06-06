@@ -66,6 +66,7 @@ def _get_scaler_params():
 
     means = np.array(json.loads(row['feature_means']))
     stds = np.array(json.loads(row['feature_stds']))
+    current_app.logger.info(f'crop_price_model scalers loaded: {means, stds}')
     return means, stds
 
 def _get_weather(country):
@@ -81,6 +82,7 @@ def _get_weather(country):
     if row is None or row['temp'] is None:
         raise ValueError(f"No weather data found for country: {country}")
 
+    current_app.logger.info(f'Weather data loaded for country: {country}')
     return float(row['temp']), float(row['precip'])
 
 
@@ -90,15 +92,14 @@ def _get_lag_prices(country, crop):
     """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
-            'SELECT selling_price FROM CropPrices '
-            'WHERE geo = %s AND crop = %s '
-            'ORDER BY year DESC LIMIT 2',
-            (country, crop)
+            f'SELECT selling_price FROM CropPrices WHERE geo = "{country}" AND prod_veg = "{crop}" ORDER BY year DESC LIMIT 2'
         )
         rows = cursor.fetchall()
 
     if len(rows) < 2:
         raise ValueError(f"Not enough price history for {crop} in {country}")
+
+    current_app.logger.info(f'Price history data loaded for country, crop: {(country, crop)}')
 
     return float(rows[0]['selling_price']), float(rows[1]['selling_price'])
 
