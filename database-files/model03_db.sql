@@ -1,6 +1,36 @@
 USE farmers_market_db;
 
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS model3_scaler (
+=======
+USE knn_db;
+
+-- dataset used to fit model 03 (knn for crop)
+CREATE TABLE IF NOT EXISTS crop_stats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    TYPE_OF_CROP VARCHAR(255) NOT NULL,
+    SOIL VARCHAR(100) NOT NULL,
+    SEASON VARCHAR(100) NOT NULL,
+    SOWN VARCHAR(50) NOT NULL,
+    HARVESTED VARCHAR(50) NOT NULL,
+    WATER_SOURCE VARCHAR(100) NOT NULL,
+    CROP VARCHAR(255) NOT NULL, -- what's being predicted
+
+    SOIL_PH DOUBLE NOT NULL,
+    CROPDURATION DOUBLE NOT NULL,
+    TEMP DOUBLE NOT NULL,
+    WATERREQUIRED DOUBLE NOT NULL,
+    RELATIVE_HUMIDITY DOUBLE NOT NULL,
+
+    N INT NOT NULL,
+    P INT NOT NULL,
+    K INT NOT NULL
+);
+-- no scalar values need to be saved since its unsupervised
+
+-- for scalar (mean, std)
+ CREATE TABLE IF NOT EXISTS model3_scaler (
+>>>>>>> b171cafbf36646c4dd9e638425f26ed296e6443d
     id INT AUTO_INCREMENT PRIMARY KEY,
     feature_means JSON NOT NULL,
     feature_stds  JSON NOT NULL
