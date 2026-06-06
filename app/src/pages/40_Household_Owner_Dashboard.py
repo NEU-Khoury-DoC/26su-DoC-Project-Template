@@ -66,18 +66,20 @@ try:
     forecast_df = pd.DataFrame(data["forecast"])
     forecast_df["date"] = pd.to_datetime(forecast_df["date"])
 
-    forecast_chart = px.scatter(
-        forecast_df,
-        x="date",
-        y="predicted_price_eur_mwh",
-        title=f"30-Day Electricity Price Forecast — {selected_country_name}",
-        labels={
-            "date": "Date",
-            "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
-        },
+    forecast_chart = px.line(
+    forecast_df,
+    x="date",
+    y="predicted_price_eur_mwh",
+    title=f"30-Day Electricity Price Forecast — {selected_country_name}",
+    labels={
+        "date": "Date",
+        "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
+    },
     )
     forecast_chart.update_traces(
-        marker=dict(size=9),
+        mode="lines+markers",
+        marker=dict(size=6),
+        line=dict(color="steelblue", width=2),
         hovertemplate="<b>%{x|%B %d, %Y}</b><br>Price: €%{y:.2f}/MWh<extra></extra>"
     )
     forecast_chart.update_layout(
