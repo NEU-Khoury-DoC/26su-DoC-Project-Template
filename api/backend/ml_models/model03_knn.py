@@ -6,7 +6,7 @@ Predicts what type of crop to plant from:
   - P:               soil phosphorus content
   - K:               soil potassium content
   - TYPE_OF_CROP:    categorical crop category (e.g. 'cereals')
-  - TEMPERATURE:     average temperature\
+  - TEMPERATURE:     average temperature
   - SEASON:          growing season (e.g. 'kharif', 'rabi')
   - SOWN:            sowing month (e.g. 'Jun')
   - HARVESTED:       harvest month (e.g. 'Oct')
@@ -87,7 +87,7 @@ def _get_scaler_params():
         cursor.execute(
             'SELECT feature_means, feature_stds '
             'FROM model3_scaler '
-            'ORDER BY sequence_number DESC LIMIT 1'
+            'ORDER BY id DESC LIMIT 1'
         )
         row = cursor.fetchone()
 
@@ -115,7 +115,7 @@ def _get_ohe_cols():
         cursor.execute(
             'SELECT col_names '
             'FROM model3_ohe_cols '
-            'ORDER BY sequence_number DESC LIMIT 1'
+            'ORDER BY id DESC LIMIT 1'
         )
         row = cursor.fetchone()
 
