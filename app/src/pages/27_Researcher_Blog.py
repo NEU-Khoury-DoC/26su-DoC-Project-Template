@@ -1,13 +1,9 @@
-import logging
-logger = logging.getLogger(__name__)
-
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.community_feed import render_feed
 
 st.set_page_config(layout='wide')
-
-# Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"WIP FOR RESEARCHER BLOG")
-st.write('Place for researchers to see and reply to farmer and policy maker posts')
+st.title("Discussion Board")
+render_feed()

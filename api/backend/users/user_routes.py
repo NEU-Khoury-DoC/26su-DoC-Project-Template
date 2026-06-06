@@ -28,3 +28,15 @@ def create_user():
     conn.commit()
     cur.close()
     return jsonify({"user_id": cur.lastrowid}), 201
+
+@users_bp.route("/id/<int:user_id>", methods=["GET"])
+def get_user_by_id(user_id):
+    current_app.logger.info(f"GET /users/id/{user_id}")
+    conn = get_db()
+    cur = conn.cursor(dictionary=True)
+    cur.execute("SELECT user_id, user_name, user_type FROM users WHERE user_id = %s;", (user_id,))
+    row = cur.fetchone()
+    cur.close()
+    if not row:
+        return jsonify({"error": "User not found"}), 404
+    return jsonify(row), 200
