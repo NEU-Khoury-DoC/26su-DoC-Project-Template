@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS crop_stats (
     P INT NOT NULL,
     K INT NOT NULL
 );
- --no scalar values need to be saved since its unsupervised
+-- no scalar values need to be saved since its unsupervised
 
 -- for scalar (mean, std)
  CREATE TABLE IF NOT EXISTS model3_scaler (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS crop_stats (
 );
 
 
---one hot encoding col
+-- one hot encoding col
 CREATE TABLE IF NOT EXISTS model3_ohe_cols (
     id INT AUTO_INCREMENT PRIMARY KEY,
     col_names JSON NOT NULL
