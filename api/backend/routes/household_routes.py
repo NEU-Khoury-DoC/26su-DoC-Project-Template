@@ -8,9 +8,6 @@ from mysql.connector import Error
 household_bp = Blueprint("household", __name__)
 
 PROFILE_FIELDS = [
-    "household_name",
-    "email",
-    "country",
     "utility_provider",
     "monthly_bill_amount",
     "bill_due_date",
@@ -121,16 +118,13 @@ def create_household_profile(user_id):
             cursor.execute(
                 """
                 INSERT INTO household_profiles (
-                    user_id, household_name, email, country, utility_provider,
+                    user_id, utility_provider,
                     monthly_bill_amount, bill_due_date, billing_frequency,
                     avg_monthly_kwh, tariff_type, notes
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 (
                     user_id,
-                    data["household_name"].strip(),
-                    data["email"].strip(),
-                    data["country"],
                     data["utility_provider"].strip(),
                     data["monthly_bill_amount"],
                     data["bill_due_date"],

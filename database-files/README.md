@@ -7,7 +7,7 @@ When the `db` container is **first created**, every `.sql` file here runs in **a
 | File | Purpose |
 |------|---------|
 | `01_zeus_database.sql` | Creates `Zeus` (matches `api/.env` `DB_NAME`) |
-| `02_zeus_core.sql` | `users`, `household_profiles` + demo seed rows |
+| `02_zeus_core.sql` | `users` (with email, country, language), `household_profiles` (billing only) + demo seed rows |
 | `03_gas_storage_schema.sql` | `gas_storage_daily`, `gas_storage_winters`, `gas_storage_model` (empty daily/winter tables until seeded; model weights inserted here) |
 | `04_zeus_persona_features.sql` | `saved_articles`, `snapshots`, `notes` (future UI) |
 

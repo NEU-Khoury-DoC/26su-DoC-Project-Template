@@ -36,6 +36,16 @@ def get_users(persona):
     return _get("/users", params={"persona": persona})
 
 
+# route: GET /users/<user_id>  →  user_routes.get_user()
+def get_user(user_id):
+    return _get(f"/users/{user_id}")
+
+
+# route: PUT /users/<user_id>  →  user_routes.update_user()
+def update_user(user_id, payload):
+    return _put(f"/users/{user_id}", payload)
+
+
 # route: GET /users/<user_id>/household-profile  →  household_routes.get_household_profile()
 def get_household_profile(user_id):
     response = requests.get(
