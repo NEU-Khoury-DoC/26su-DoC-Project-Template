@@ -42,7 +42,7 @@ def get_storage_history():
 
         if not rows:
             return error_response(
-                "No storage history found for this country. Run scripts/seed_gas_storage.py.",
+                "No storage history found for this country.",
                 404,
             )
 
@@ -84,7 +84,7 @@ def get_storage_winters():
 
         if not rows:
             return error_response(
-                "No winter data found. Run scripts/seed_gas_storage.py.",
+                "No winter data found.",
                 404,
             )
 
@@ -108,7 +108,7 @@ def get_storage_summary(country_code):
             latest = get_latest_storage(cursor, code)
             if not latest:
                 return error_response(
-                    "No storage history found for this country. Run scripts/seed_gas_storage.py.",
+                    "No storage history found for this country.",
                     404,
                 )
 
@@ -152,7 +152,7 @@ def compare_storage_risk():
 
         if not latest_rows:
             return error_response(
-                "No winter data found. Run scripts/seed_gas_storage.py.",
+                "No winter data found.",
                 404,
             )
 

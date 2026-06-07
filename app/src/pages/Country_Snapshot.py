@@ -39,7 +39,7 @@ try:
     history_payload = get_storage_history(code)
 except requests.exceptions.HTTPError as exc:
     st.error(f"Could not load storage data from the API: {exc}")
-    st.info("Ensure the API and database are running, then seed data with `docker compose exec api python scripts/seed_gas_storage.py`.")
+    st.info("Ensure the API and database are running (`docker compose up -d`).")
     st.stop()
 except requests.exceptions.RequestException as exc:
     st.error(f"Could not reach the API: {exc}")

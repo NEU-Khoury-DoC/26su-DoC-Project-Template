@@ -1,8 +1,6 @@
 -- =============================================================
 -- GAS STORAGE — journalist pages (Country Snapshot, Comparison, Risk)
--- Daily rows: seed from datasets/apsi/agsi_clean.csv via
---   docker compose exec api python scripts/seed_gas_storage.py
--- Winter rows: seed from datasets/apsi/dataset.csv (same script)
+-- Daily + winter rows: 06_gas_storage_data.sql (loaded on db init)
 -- Model weights: INSERT below (from datasets/apsi/apsi.ipynb LogisticRegression fit)
 -- =============================================================
 

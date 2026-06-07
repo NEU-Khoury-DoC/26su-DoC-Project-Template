@@ -50,10 +50,7 @@ try:
     country_winters = get_storage_winters(code)
 except requests.exceptions.RequestException as exc:
     st.error(f"Could not load winter data from the API: {exc}")
-    st.info(
-        "Ensure the API and database are running, then seed data with "
-        "`docker compose exec api python scripts/seed_gas_storage.py`."
-    )
+    st.info("Ensure the API and database are running (`docker compose up -d`).")
     st.stop()
 
 if not country_winters:
