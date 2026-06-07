@@ -101,7 +101,7 @@ def SideBarLinks(show_home=False):
             government_agency_home_nav()
             view_funding_nav()
             risk_heatmap_nav()
-
+        
     # About link appears at the bottom for all roles
     about_page_nav()
 
