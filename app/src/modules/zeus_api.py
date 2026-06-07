@@ -117,3 +117,7 @@ def post_storage_risk(
 # route: GET /ml1/forecast  →  electricty_price_routes.forecast()
 def get_electricity_forecast(country_code):
     return _get("/ml1/forecast", params={"country": country_code})
+
+# route: GET /ml1/history  →  electricty_price_routes.history()
+def get_electricity_history(country_code):
+    return _get("/ml1/history", params={"country": country_code})
