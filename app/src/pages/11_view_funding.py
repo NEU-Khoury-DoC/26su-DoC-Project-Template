@@ -12,19 +12,10 @@ SideBarLinks()
 
 # running POST request to sync data from Eurostat
 st.title("Plan Funds")
-if st.button("Sync Eurostat Data", type = "secondary"):
-    with st.spinner("Syncing..."):
-        endpoints = ["pollution", "crime", "poverty", "overcrowding", "noise", "hpi"]
-        for ep in endpoints:
-            requests.post(f"http://web-api:4000/housing/social-indicator-stats/{ep}")
-    st.success("All data synced!")
-    st.rerun()
-
-
 
 # Funding Index Table
 st.subheader("Funding Index")
-st.caption("Existing housing and social funding programs across EU countries.")
+st.caption("Explore existing housing and social funding programs across EU countries.")
 try:
     countries_res = requests.get("http://web-api:4000/housing/country")
     countries = ["All"] + [c["country_name"] for c in countries_res.json()]
@@ -58,72 +49,6 @@ except Exception as e:
 
 st.divider()
 
-
-# Social Indicator Index Graph
-st.subheader("Social Indicator Index")
-st.caption("Explore Eurostat data on indicators by country and year.")
-
-try:
-    indicator_types = st.multiselect(
-        "Demographic Type",
-        ["Pollution", "Crime", "Poverty", "Overcrowding", "Noise", "House Price Index", "Under-occupied"],
-        default = [],
-        key = "indicator_type"
-    )
-    selected_countries = st.multiselect(
-        "Select Countries to Compare",
-        [c for c in countries if c != "All"],
-        default = [],
-        key = "indicator_country"
-    )
-    selected_years = st.multiselect(
-        "Filter by Year",
-        [str(y) for y in range(2010, 2026)],
-        default = [],
-        key = "indicator_year"
-    )
-
-    if indicator_types and selected_years:
-        results = []
-        for ind in indicator_types:
-            for year in selected_years:
-                params2 = {"social_indicator_type": ind, "year": year}
-                r = requests.get("http://web-api:4000/housing/social-indicator-stats", params = params2)
-                if r.status_code == 200 and r.json():
-                    df_temp = pd.DataFrame(r.json())[["country_name", "year", "value"]]
-                    df_temp["indicator"] = ind
-                    results.append(df_temp)
-
-        if results:
-            df2 = pd.concat(results)
-            df2.columns = ["Country", "Year", "Value", "Indicator"]
-
-            if selected_countries:
-                df2 = df2[df2["Country"].isin(selected_countries)]
-
-            df2 = df2.sort_values("Value", ascending = False)
-            fig = px.bar(
-                df2,
-                x = "Country",
-                y = "Value",
-                color = "Indicator",
-                barmode = "stack",
-                title = "Social Indicators by Country",
-            )
-            fig.update_layout(xaxis_tickangle=-45, height=400, yaxis_title="Rate (%)")
-            st.plotly_chart(fig, use_container_width=True)
-            
-        else:
-            st.info("No data — sync indicators first via the Sync button.")
-    else:
-        st.info("Select at least one indicator and year to view the chart.")
-
-except Exception as e:
-    st.error(f"Error: {e}")
-
-st.divider()
-
-
 #Draft funding plan form
 st.subheader("Draft Funding Plan")
 
@@ -139,7 +64,7 @@ with st.container(border=True):
     
     indicators_targeted = st.multiselect(
         "Indicators Targeted",
-        ["All Indicators", "Pollution", "Crime, Violence, and Vandalism",
+        ["All Indicators", "Pollution", "Crime",
          "Poverty", "Overcrowding", "Noise", "House Price Index", "Under-occupied"],
         default=["All Indicators"]
     )

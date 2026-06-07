@@ -5,6 +5,7 @@ import streamlit as st
 import requests
 import pandas as pd
 import folium
+import plotly.express as px
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from streamlit_folium import st_folium
@@ -13,10 +14,25 @@ from modules.nav import SideBarLinks
 st.set_page_config(layout = 'wide')
 SideBarLinks()
 
+st.markdown("""
+    <style>
+    thead tr th { color: white !important; }
+    </style>
+""", unsafe_allow_html = True)
+
 st.title("Risk Heatmap")
 st.caption("Visualize social indicator risk levels across EU countries.")
 
 GEOJSON_URL = "https://raw.githubusercontent.com/leakyMirror/map-of-europe/master/GeoJSON/europe.geojson"
+
+INDICATOR_UNITS = {
+    "Pollution": "% of population",
+    "Crime, Violence, and Vandalism": "% of population",
+    "Poverty": "% of population",
+    "Overcrowding": "% of population",
+    "Noise": "% of population",
+    "House Price Index": "Index (2015=100)",
+}
 
 country_coordinates = {
     'Austria': [47.5162, 14.5501],
@@ -57,16 +73,15 @@ country_coordinates = {
     'Kosovo': [42.6026, 20.9030],
 }
 
-INDICATORS = [
-    "Pollution",
-    "Crime",
-    "Poverty",
-    "Overcrowding",
-    "Noise",
-    "House Price Index",
-]
+# Sync
+if st.button("Sync Eurostat Data", type = "secondary"):
+    with st.spinner("Syncing..."):
+        for ep in ["pollution", "crime", "poverty", "overcrowding", "noise", "hpi"]:
+            requests.post(f"http://web-api:4000/housing/social-indicator-stats/{ep}")
+    st.success("All data synced!")
+    st.rerun()
 
-#Filters
+# Filters
 col1, col2 = st.columns(2)
 
 with col1:
@@ -79,44 +94,10 @@ with col1:
 with col2:
     indicator_type = st.selectbox(
         "Shade Map By",
-        INDICATORS
+        list(INDICATOR_UNITS.keys())
     )
 
-#ranking tables
-st.subheader("Indicator Rankings")
-st.caption("Country rankings by indicator for the selected year.")
-
-try:
-    all_ranks = []
-    for ind in INDICATORS:
-        r = requests.get(
-            "http://web-api:4000/housing/social-indicator-stats",
-            params = {"social_indicator_type": ind, "year": selected_year}
-        )
-        if r.status_code == 200 and r.json():
-            df_ind = pd.DataFrame(r.json())[["country_name", "value"]]
-            df_ind["value"] = pd.to_numeric(df_ind["value"], errors = "coerce")
-            df_ind = df_ind.dropna().sort_values("value", ascending = False).reset_index(drop = True)
-            df_ind.index = df_ind.index + 1
-            df_ind.columns = ["Country", "Value"]
-            all_ranks.append(df_ind)
-        else:
-            all_ranks.append(None)
-
-    tabs = st.tabs(INDICATORS)
-    for i, tab in enumerate(tabs):
-        with tab:
-            if all_ranks[i] is not None:
-                st.dataframe(all_ranks[i][["Country", "Value"]], use_container_width = True)
-            else:
-                st.info("No data — sync indicators first via the Plan Funds page.")
-
-except Exception as e:
-    st.error(f"Error loading rankings: {e}")
-
-st.divider()
-
-#map
+# Map
 st.subheader(f"{indicator_type} Risk Map ({selected_year})")
 
 try:
@@ -131,8 +112,12 @@ try:
         df["value"] = pd.to_numeric(df["value"], errors = "coerce")
         df = df.dropna()
 
-        cmap = plt.get_cmap('RdYlGn_r')
-        norm = mcolors.Normalize(vmin = df["value"].min(), vmax = df["value"].max())
+        if indicator_type == "House Price Index":
+            cmap = plt.get_cmap('YlOrRd')
+            norm = mcolors.Normalize(vmin = 80, vmax = 200)
+        else:
+            cmap = plt.get_cmap('RdYlGn_r')
+            norm = mcolors.Normalize(vmin = df["value"].min(), vmax = df["value"].max())
 
         def get_color(value):
             return mcolors.to_hex(cmap(norm(value)))
@@ -140,7 +125,6 @@ try:
         color_map = {row["country_name"]: get_color(row["value"]) for _, row in df.iterrows()}
 
         geo_data = requests.get(GEOJSON_URL).json()
-
         m = folium.Map(location = [54.5260, 15.2551], zoom_start = 4)
 
         def style_function(feature):
@@ -155,10 +139,7 @@ try:
         folium.GeoJson(
             geo_data,
             style_function = style_function,
-            tooltip = folium.GeoJsonTooltip(
-                fields = ['NAME'],
-                aliases = ['Country'],
-            ),
+            tooltip = folium.GeoJsonTooltip(fields = ['NAME'], aliases = ['Country']),
         ).add_to(m)
 
         for _, row in df.iterrows():
@@ -181,7 +162,73 @@ try:
         st.caption("Map boundaries: leakyMirror/map-of-europe (GitHub), MIT License.")
 
     else:
-        st.info("No data — sync indicators first via the Plan Funds page.")
+        st.info("No data — sync indicators first.")
 
 except Exception as e:
     st.error(f"Error: {e}")
+
+st.divider()
+
+# Rankings
+st.subheader(f"{indicator_type} Rankings ({selected_year})")
+
+if indicator_type == "House Price Index":
+    st.caption("% change in house prices relative to the 2015 baseline. Positive = prices risen, negative = prices fallen.")
+else:
+    st.caption("Countries ranked highest to lowest.")
+
+try:
+    r = requests.get(
+        "http://web-api:4000/housing/social-indicator-stats",
+        params = {"social_indicator_type": indicator_type, "year": selected_year}
+    )
+
+    if r.status_code == 200 and r.json():
+        unit = INDICATOR_UNITS.get(indicator_type, "value")
+        df_rank = pd.DataFrame(r.json())[["country_name", "value"]]
+        df_rank["value"] = pd.to_numeric(df_rank["value"], errors = "coerce")
+        df_rank = df_rank.dropna().sort_values("value", ascending = False).reset_index(drop = True)
+        df_rank.columns = ["Country", f"Value ({unit})"]
+
+        if indicator_type == "House Price Index":
+            unit = "% change from 2015 baseline"
+            df_rank["Value (Index (2015=100))"] = df_rank["Value (Index (2015=100))"] - 100
+            df_rank.columns = ["Country", f"Value ({unit})"]
+
+        x_label = "% Change from 2015 Baseline" if indicator_type == "House Price Index" else "% of Population Impacted"
+        color_scale = "ylorrd" if indicator_type == "House Price Index" else "RdYlGn_r"
+        range_color = [-50, 150] if indicator_type == "House Price Index" else None
+
+        fig = px.bar(
+            df_rank,
+            x = f"Value ({unit})",
+            y = "Country",
+            orientation = 'h',
+            color = f"Value ({unit})",
+            color_continuous_scale = color_scale,
+            range_color = range_color,
+            title = f"{indicator_type} by Country ({selected_year})",
+            labels = {f"Value ({unit})": x_label}
+        )
+
+        if indicator_type == "House Price Index":
+            fig.update_layout(
+                xaxis = dict(range = [-50, 150]),
+                yaxis = dict(autorange = "reversed"),
+                height = 600,
+                showlegend = False
+            )
+        else:
+            fig.update_layout(
+                yaxis = dict(autorange = "reversed"),
+                height = 600,
+                showlegend = False
+            )
+
+        st.plotly_chart(fig, use_container_width = True)
+
+    else:
+        st.info("No data — sync indicators first.")
+
+except Exception as e:
+    st.error(f"Error loading rankings: {e}")
