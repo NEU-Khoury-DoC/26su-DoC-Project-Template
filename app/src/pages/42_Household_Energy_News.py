@@ -205,5 +205,12 @@ else:
         for article in favorites:
             _render_article_card(article, saved_by_link)
 
-if st.button("Return to Dashboard"):
-    st.switch_page("pages/40_Household_Owner_Dashboard.py")
+st.divider()
+
+nav_left, nav_right = st.columns(2)
+with nav_left:
+    if st.button("← Dashboard", use_container_width=True):
+        st.switch_page("pages/40_Household_Owner_Dashboard.py")
+with nav_right:
+    if st.button("← Persona Info", use_container_width=True):
+        st.switch_page("pages/41_Household_Persona_Info.py")

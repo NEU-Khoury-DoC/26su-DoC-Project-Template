@@ -12,14 +12,7 @@ st.set_page_config(layout='wide')
 
 SideBarLinks()
 
-trader = st.session_state.get("first_name", "Trader")
-
 st.title("30-Day Price Forecast")
-st.write("#### Where day-ahead power is heading over the next month")
-st.write(
-    f"Welcome back, {trader}. Pick a market to see the model's 30-day "
-    "day-ahead price path and what it means for your positions."
-)
 
 default_country = st.session_state.get("trader_country", "Germany")
 selected_country = st.selectbox(
@@ -45,15 +38,14 @@ st.divider()
 
 st.subheader(f"{selected_country} — next 30 days")
 
-m1, m2, m3, m4 = st.columns(4)
+m1, m2, m3 = st.columns(3)
 m1.metric("Forecast start (day 1)", f"€{s['day1']:.1f}/MWh")
 m2.metric(
     "Forecast end (day 30)",
     f"€{s['day30']:.1f}/MWh",
     f"{s['trend_pct']:+.1f}% over the month",
 )
-m3.metric("30-day average", f"€{s['avg']:.1f}/MWh")
-m4.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
+m3.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
 
 st.divider()
 

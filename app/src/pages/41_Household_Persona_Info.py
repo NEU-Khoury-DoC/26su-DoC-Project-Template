@@ -321,5 +321,12 @@ if has_billing:
             st.warning("Billing profile deleted.")
             st.rerun()
 
-if st.button("Return to Dashboard"):
-    st.switch_page("pages/40_Household_Owner_Dashboard.py")
+st.divider()
+
+nav_left, nav_right = st.columns(2)
+with nav_left:
+    if st.button("← Dashboard", use_container_width=True):
+        st.switch_page("pages/40_Household_Owner_Dashboard.py")
+with nav_right:
+    if st.button("Energy News →", type="primary", use_container_width=True):
+        st.switch_page("pages/42_Household_Energy_News.py")
