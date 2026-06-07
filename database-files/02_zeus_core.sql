@@ -10,14 +10,15 @@ USE Zeus;
 CREATE TABLE IF NOT EXISTS users (
     user_id      INT          NOT NULL AUTO_INCREMENT,
     display_name VARCHAR(100) NOT NULL,
-    persona      ENUM('household_owner', 'journalist') NOT NULL,
+    persona      ENUM('household_owner', 'journalist', 'energy_trader') NOT NULL,
     first_name   VARCHAR(50),
     CONSTRAINT pk_users PRIMARY KEY (user_id)
 );
 
 INSERT INTO users (display_name, persona, first_name) VALUES
     ('Maria Schmidt', 'household_owner', 'Maria'),
-    ('James O''Brien', 'journalist', 'James');
+    ('James O''Brien', 'journalist', 'James'),
+    ('Niels Becker', 'energy_trader', 'Niels');
 
 -- One profile row per household_owner user (Persona Info CRUD form)
 CREATE TABLE IF NOT EXISTS household_profiles (

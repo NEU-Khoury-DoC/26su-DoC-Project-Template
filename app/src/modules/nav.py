@@ -107,6 +107,27 @@ def household_owner_nav():
     )
 
 
+# ---- Role: energy_trader ----------------------------------------------------
+
+def energy_trader_nav():
+    st.sidebar.markdown("**Energy Trader**")
+    st.sidebar.page_link(
+        "pages/Price_Forecast.py",
+        label="30-Day Price Forecast",
+        icon="📈",
+    )
+    st.sidebar.page_link(
+        "pages/My_Markets.py",
+        label="My Markets",
+        icon="⭐",
+    )
+    st.sidebar.page_link(
+        "pages/Trade_Journal.py",
+        label="Trade Journal",
+        icon="📓",
+    )
+
+
 # ---- Role: administrator ----------------------------------------------------
 
 def admin_home_nav():
@@ -151,6 +172,9 @@ def SideBarLinks(show_home=False):
 
         if st.session_state["role"] == "journalist":
             journalist_nav()
+
+        if st.session_state["role"] == "energy_trader":
+            energy_trader_nav()
 
         if st.session_state["role"] == "pol_strat_advisor":
             pol_strat_home_nav()

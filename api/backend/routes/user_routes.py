@@ -3,7 +3,7 @@ from backend.db_connection import get_db
 from backend.utils import error_response
 from mysql.connector import Error
 
-VALID_PERSONAS = ("household_owner", "journalist")
+VALID_PERSONAS = ("household_owner", "journalist", "energy_trader")
 
 user_bp = Blueprint("users", __name__)
 

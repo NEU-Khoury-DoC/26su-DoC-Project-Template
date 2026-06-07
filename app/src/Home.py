@@ -40,6 +40,7 @@ PERSONAS = {
 LOGIN_PAGES = {
     "household_owner": "pages/40_Household_Owner_Dashboard.py",
     "journalist": "pages/Country_Snapshot.py",
+    "energy_trader": "pages/Price_Forecast.py",
 }
 
 
