@@ -13,7 +13,7 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title("Country Snapshot")
-st.write("#### Ten years of gas storage, one country at a time")
+st.write("#### Ten years of gas storage by country")
 
 NAME_TO_CODE = {
     "Austria": "AT", "Belgium": "BE", "Bulgaria": "BG", "Croatia": "HR",
@@ -69,8 +69,7 @@ m3.metric(
 )
 m4.metric("Stress threshold", f"{STRESS_THRESHOLD}%")
 st.caption(
-    f"Latest reported value: {summary['latest_date']} · "
-    "GIE AGSI transparency platform (via database)"
+    f"Latest reported value: {summary['latest_date']}"
 )
 
 st.divider()
@@ -88,96 +87,62 @@ fig.add_hline(
 fig.update_layout(height=400)
 st.plotly_chart(fig, use_container_width=True)
 st.caption(
-    "The pattern is the seasonal cycle: fill through summer, drain "
-    "through winter. Note how close the fill gets to the red line"
+    "Typical fill cycle, fill through summer and drain "
+    "through winter (Note how close the fill gets to the red line)"
 )
 
 st.divider()
 
-st.write("##### Context for your story")
 
 stress_count = summary["stressed_winters"]
 total_winters = summary["total_winters"]
 worst = summary.get("worst_winter_min")
 worst_winter = summary.get("worst_winter_year")
 
-if stress_count > 0 and worst is not None and worst_winter is not None:
-    st.write(
-        f"{selected_country} has dipped below the 30% line in "
-        f"{stress_count} of the last {total_winters} winters. The closest "
-        f"call was the winter of {worst_winter}, when storage bottomed "
-        f"out at {worst:.0f}%. Worth asking national regulators what changed "
-        "since."
-    )
-
-st.write(
-    "Since the 2022 gas crisis, EU rules require storage to be 90% full by "
-    "November 1 each year.  "
-    "A country can enter winter full and still drain fast if it "
-    "depends heavily on imports or has a cold snap."
-)
-
 st.write("##### Recommendations")
 
 current_level = summary["latest_full"]
 
 if current_level < 40:
-    st.warning(
-        f"**Storage is running low ({current_level:.0f}%).** Angles worth "
-        "pursuing now: whether the country is buying LNG on the spot market "
-        "to compensate (and at what price), whether neighbors are sending gas "
-        "through interconnectors, and whether officials are discussing demand "
-        "reduction measures. Ask the energy ministry how they plan to hit the "
-        "EU's 90% refill target by November 1, refilling from a low base is "
-        "expensive, and that cost lands on consumers."
+    st.warning(f"**Low: {current_level:.0f}% full**")
+    st.markdown(
+        "Storage this low before winter is a warning sign, and topping back up to the "
+        "EU's 90% target by November 1 gets costly. Worth reporting on:\n\n"
+        "&nbsp;&nbsp;1. Is the country buying LNG on the spot market to catch up, and at what price?\n\n"
+        "&nbsp;&nbsp;2. Are neighboring countries sending gas through pipeline connections?\n\n"
+        "&nbsp;&nbsp;3. Is the government discussing ways to cut demand this winter?"
     )
 elif current_level < 70:
-    st.info(
-        f"**Storage is mid-range ({current_level:.0f}%).** The story here is "
-        "the refill race: track whether the level climbs steadily toward the "
-        "EU's 90% November 1 target over the coming months. A flat or falling "
-        "line in summer is unusual and worth a phone call, it can signal "
-        "high prices discouraging refills or strong export demand."
+    st.info(f"**Mid-range: {current_level:.0f}% full**")
+    st.markdown(
+        "Storage is in a normal range, so the question is whether it is refilling fast "
+        "enough to reach 90% by November 1. Worth watching:\n\n"
+        "&nbsp;&nbsp;1. Is the level rising steadily, or has it stalled?\n\n"
+        "&nbsp;&nbsp;2. Are high prices making it too expensive to refill right now?\n\n"
+        "&nbsp;&nbsp;3. Is the country exporting gas instead of storing it?"
     )
 else:
-    st.success(
-        f"**Storage is comfortable ({current_level:.0f}%).** Low urgency, but "
-        "two angles still work: what filling storage this full costs and who "
-        "pays for it, and whether a full tank actually guarantees a safe "
-        "winter, our model shows it often doesn't."
-    )
-
-if stress_count > 0 and worst_winter is not None:
-    st.write(
-        f"Because {selected_country} has a history of stressed winters "
-        f"({stress_count} of {total_winters}), it's worth building a source "
-        "relationship with the national TSO and storage operators before "
-        "winter, not during the crisis. Past coverage of the "
-        f"{worst_winter} winter is your best background reading."
-    )
-
-st.write("")
-left, right = st.columns(2)
-
-with left:
-    st.write("**Watch these through the season**")
+    st.success(f"**High: {current_level:.0f}% full**")
     st.markdown(
-        "- [GIE AGSI](https://agsi.gie.eu) — the live version of this page's "
-        "data, updated daily\n"
-        "- [EC gas storage policy](https://energy.ec.europa.eu/topics/energy-security/gas-storage_en) "
-        "— the 90% mandate and compliance tracking\n"
-        "- National TSO announcements — supply warnings appear here first"
+        "Storage is healthy and immediate risk is low, but kep watch:\n\n"
+        "&nbsp;&nbsp;1. What did filling storage this high cost, and who paid for it?\n\n"
+        "&nbsp;&nbsp;2. A full tank does not guarantee a safe winter. Our model shows storage can "
+        "still fall below 30% if a cold snap hits, so the buffer matters as much as the starting level."
     )
 
-with right:
-    st.write("**Background for a deeper piece**")
-    st.markdown(
-        "- [Eurostat import dependency](https://ec.europa.eu/eurostat/databrowser/product/page/nrg_ind_id) "
-        "— who's most exposed to supply shocks\n"
-        "- [Ember](https://ember-energy.org/data/) — prices and electricity "
-        "mix, if the story widens beyond gas\n"
-        "- [ENTSOG](https://www.entsog.eu) — how gas physically moves "
-        "between countries"
+
+
+st.write("##### **Updates**")
+st.markdown(
+        "- [GIE AGSI](https://agsi.gie.eu): the live version of this page's "
+        "data, updated everyday\n"
+        "- [EC gas storage policy](https://energy.ec.europa.eu/topics/energy-security/gas-storage_en): "
+        "90% mandate and compliance tracking\n"
+        "- National TSO announcements: view supply warnings\n"
+        "- [ENTSOG](https://www.entsog.eu): how gas physically moves "
+        "between countries\n"
+        "- [Eurostat import dependency](https://ec.europa.eu/eurostat/databrowser/product/page/nrg_ind_id): "
+        "what country is most exposed to supply shocks\n"
     )
 
 st.divider()
