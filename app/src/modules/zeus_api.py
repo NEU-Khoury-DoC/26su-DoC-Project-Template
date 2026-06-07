@@ -121,3 +121,23 @@ def get_electricity_forecast(country_code):
 # route: GET /ml1/history  →  electricty_price_routes.history()
 def get_electricity_history(country_code):
     return _get("/ml1/history", params={"country": country_code})
+
+
+# route: GET /news/eu-energy  →  news_routes.get_eu_energy_news()
+def get_eu_energy_news(user_id):
+    return _get("/news/eu-energy", params={"user_id": user_id})
+
+
+# route: GET /users/<user_id>/saved-articles  →  saved_articles_routes.get_saved_articles()
+def get_saved_articles(user_id):
+    return _get(f"/users/{user_id}/saved-articles")
+
+
+# route: POST /users/<user_id>/saved-articles  →  saved_articles_routes.save_article()
+def save_article(user_id, article):
+    return _post(f"/users/{user_id}/saved-articles", article)
+
+
+# route: DELETE /users/<user_id>/saved-articles/<article_id>  →  saved_articles_routes.delete_saved_article()
+def delete_saved_article(user_id, article_id):
+    return _delete(f"/users/{user_id}/saved-articles/{article_id}")
