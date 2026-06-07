@@ -8,28 +8,25 @@ When the `db` container is **first created**, every `.sql` file here runs in **a
 |------|---------|
 | `01_zeus_database.sql` | Creates `Zeus` (matches `api/.env` `DB_NAME`) |
 | `02_zeus_core.sql` | `users` (with email, country, language), `household_profiles` (billing only) + demo seed rows |
-| `03_gas_storage_schema.sql` | `gas_storage_daily`, `gas_storage_winters`, `gas_storage_model` (empty daily/winter tables until seeded; model weights inserted here) |
+| `03_gas_storage_schema.sql` | `gas_storage_daily`, `gas_storage_winters`, `gas_storage_model` + model weights |
 | `04_zeus_persona_features.sql` | `saved_articles`, `snapshots`, `notes` (future UI) |
+| `05_price_prediction.sql` | Price forecast tables + ENTSO-E daily prices and model weights |
+| `06_gas_storage_data.sql` | AGSI daily storage + winter feature rows for journalist gas pages |
 
 **Personas in schema:** `household_owner`, `journalist` only.
 
-## After first boot — load gas storage CSV data
+## Regenerate gas storage data SQL
 
-Schema alone does not insert AGSI rows. Run once:
+If you update `datasets/apsi/agsi_clean.csv` or `datasets/apsi/dataset.csv`:
 
 ```bash
-docker compose exec api python scripts/seed_gas_storage.py
+python api/scripts/generate_gas_storage_sql.py
 ```
 
-Sources (seed only, not runtime): `datasets/apsi/agsi_clean.csv`, `datasets/apsi/dataset.csv`.
-
-## Re-run SQL after edits
-
-Changes to these files are **not** applied on restart alone. Recreate the db container:
+Then recreate the db container so MySQL re-runs init:
 
 ```bash
 docker compose down && docker compose up -d
-docker compose exec api python scripts/seed_gas_storage.py
 ```
 
 The project uses tmpfs for MySQL data, so `docker compose down` is enough locally (no `-v` required).

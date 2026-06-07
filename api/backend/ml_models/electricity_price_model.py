@@ -23,22 +23,6 @@ FEATURE_ORDER = [
     "country_FR","country_HR","country_HU","country_LV","country_NL",
     "country_PL","country_PT","country_RO","country_SK"]
 
-def train():
-    """
-    Model is trained in the Jupyter notebook (datasets/entsoe/entsoe.ipynb).
-    Weights are inserted into ml1_price_forecast_model table manually.
-    To retrain: run Step 4 in the notebook and update the DB insert statement.
-    """
-    pass
-
-
-def test():
-    """
-    Model evaluation (MAE, RMSE, R²) is performed in the Jupyter notebook.
-    Current performance: R²=0.608, MAE=17.68, RMSE=23.21
-    """
-    pass
-
 
 def _get_weights():
     """

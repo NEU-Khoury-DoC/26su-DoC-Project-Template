@@ -13,13 +13,12 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title("Country Comparison")
-st.write("#### Which countries should you worry about this winter?")
 
 try:
     payload = compare_storage_risk()
 except requests.exceptions.HTTPError as exc:
     st.error(f"Could not load risk comparison from the API: {exc}")
-    st.info("Ensure the API and database are running, then seed data with `docker compose exec api python scripts/seed_gas_storage.py`.")
+    st.info("Ensure the API and database are running (`docker compose up -d`).")
     st.stop()
 except requests.exceptions.RequestException as exc:
     st.error(f"Could not reach the API: {exc}")
@@ -29,61 +28,75 @@ latest = pd.DataFrame(payload["countries"])
 latest["Country"] = latest["country_name"]
 latest["Verdict"] = latest["verdict"]
 
-at_risk_df = latest[latest["Verdict"] == "At risk"].sort_values(
-    "risk_prob", ascending=False)
-n_risk = len(at_risk_df)
-n_total = len(latest)
-
-if n_risk == 0:
-    st.success(
-        f"✅ **No countries flagged** — the model predicts all {n_total} "
-        f"covered countries keep gas storage above 30% this winter."
-    )
-else:
-    riskiest = at_risk_df.iloc[0]
-    st.error(
-        f"⚠️ **{n_risk} / {n_total} countries flagged**:  the model predicts "
-        f"{', '.join(at_risk_df['Country'])} could see gas storage fall below "
-        f"30% this winter. Highest risk: {riskiest['Country']} "
-        f"({riskiest['risk_prob']:.0%})."
-    )
-
-st.caption(
-    "Based on each country's most recent pre-winter storage conditions, "
-    "using the same model as the Gas Storage Risk page."
-)
-
-st.divider()
-
-st.write("### All countries, ranked by risk")
 
 default_country = st.session_state.get("journalist_country", "Poland")
 all_countries = sorted(latest["Country"])
-defaults = [c for c in [default_country, "Germany", "France"] if c in all_countries]
+defaults = [c for c in [default_country, "Germany"] if c in all_countries][:2]
+
 selected_countries = st.multiselect(
-    "Filter countries",
+    "Pick two countries to compare",
     all_countries,
-    default=list(dict.fromkeys(defaults)),
+    default=defaults,
+    max_selections=2,   # professor's requirement: hard cap at 2
 )
 
-shown = latest if not selected_countries else (
-    latest[latest["Country"].isin(selected_countries)])
-shown = shown.sort_values("risk_prob", ascending=True)
+if len(selected_countries) < 2:
+    st.info("Select two countries to see the comparison.")
+    st.stop()
+
+# pull the two rows
+a_name, b_name = selected_countries
+a = latest[latest["Country"] == a_name].iloc[0]
+b = latest[latest["Country"] == b_name].iloc[0]
+
+# --- KPI row: 3 metrics, each comparing the two countries ---
+st.write(f"#### {a_name} vs {b_name}")
+k1, k2, k3 = st.columns(3)
+
+k1.metric(
+    "Risk of falling below 30%",
+    f"{a['risk_prob']:.0%}",
+    f"{(a['risk_prob'] - b['risk_prob']):+.0%} vs {b_name}",
+    delta_color="inverse",   # higher risk = bad = red
+)
+k1.caption(f"{b_name}: {b['risk_prob']:.0%}")
+
+k2.metric(
+    "Storage entering winter",
+    f"{a['storage_at_start']:.0f}%",
+    f"{(a['storage_at_start'] - b['storage_at_start']):+.0f} pts vs {b_name}",
+)
+k2.caption(f"{b_name}: {b['storage_at_start']:.0f}%")
+
+k3.metric(
+    "Change over final month",
+    f"{a['storage_trend_30d']:+.0f} pts",
+    f"{(a['storage_trend_30d'] - b['storage_trend_30d']):+.0f} vs {b_name}",
+)
+k3.caption(f"{b_name}: {b['storage_trend_30d']:+.0f} pts")
+
+st.divider()
+
+# --- chart, now just the two selected ---
+shown = latest[latest["Country"].isin(selected_countries)].sort_values(
+    "risk_prob", ascending=True)
 
 fig = px.bar(
     shown, x="risk_prob", y="Country", orientation="h", color="Verdict",
-    color_discrete_map={"At risk": "red", "Not at risk": "steelblue"},
+    color_discrete_map={"At risk": "red", "Not at risk": "royalblue"},
     labels={"risk_prob": "Chance of storage falling below 30%"},
 )
 fig.update_xaxes(tickformat=".0%", range=[0, 1])
 fig.add_vline(x=0.5, line_dash="dash", line_color="gray")
-fig.update_layout(height=max(300, 35 * len(shown)), showlegend=False)
+fig.update_layout(height=300, showlegend=False)
 
 st.plotly_chart(fig, use_container_width=True)
 st.caption(
-    "Longer bar = higher chance of a stressed winter and Red countries cross the line "
-    "the 50% line and are flagged as at-risk"
+    "Longer bar = higher chance of a stressed winter. Countries past the dashed "
+    "50% line are flagged as risky."
 )
+
+st.divider()
 
 with st.expander("View the data behind the rankings"):
     table = (shown.sort_values("risk_prob", ascending=False)
