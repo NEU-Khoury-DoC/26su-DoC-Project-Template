@@ -11,6 +11,8 @@ from backend.users.user_routes import users_bp
 from backend.posts.posts_routes import posts_bp
 from backend.comments.comments_routes import comments_bp
 from backend.reactions.reactions_routes import reactions_bp
+from backend.farm_location.farm_loc_routs import farms_loc_bp
+from backend.user_growing_data.user_growing_route import user_growing_bp
 from backend.prices_model_routing.prices_route import price_bp
 from backend.model_routes.cropknnmd_01 import crop_routes
 
@@ -54,5 +56,7 @@ def create_app():
     app.register_blueprint(reactions_bp, url_prefix="/reactions")
     app.register_blueprint(price_bp, url_prefix="/prices_model")
     app.register_blueprint(crop_routes, url_prefix="/crop")
+    app.register_blueprint(farms_loc_bp, url_prefix="/farm_loc")
+    app.register_blueprint(user_growing_bp, url_prefix="/user_growing")
 
     return app
