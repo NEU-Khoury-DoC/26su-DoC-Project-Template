@@ -35,7 +35,7 @@ SideBarLinks(show_home=True)
 # ***************************************************
 
 logger.info("Loading the Home page of the app")
-st.title('Summer 2026 Belgium DoC Project Template')
+st.title('Welcome to Farmers Market')
 st.write('#### Hi! As which user would you like to log in?')
 
 ##THESE ARE ALL PLACEHOLDERS UNTIL API IS MADE
@@ -80,7 +80,7 @@ with farmer_variable_col:
     )
 
 with farmer_col:
-    if st.button("Log In",
+    if st.button("Log In as Farmer",
                 type='primary',
                 use_container_width=True,
                 key='login_farmer_button'):
@@ -113,7 +113,7 @@ with policy_variable_col:
     )
 
 with policy_col:
-    if st.button('Log in',
+    if st.button('Log in as Policy Maker',
                  type='primary',
                  use_container_width=True,
                  key='login_policy_button'):
@@ -140,7 +140,7 @@ with reseacher_variable_col:
     )
 
 with researcher_col:
-    if st.button('Log in',
+    if st.button('Log in as Researcher',
                 type='primary',
                 use_container_width=True,
                 key='login_researcher_button'):

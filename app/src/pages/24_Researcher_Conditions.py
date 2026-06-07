@@ -9,5 +9,5 @@ st.set_page_config(layout='wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"WIP FOR RESEARCHER PREDICTION")
-st.write('Place for researchers to predict future data')
+st.title(f"WIP FOR RESEARCHER CONDITIONS")
+st.write('Allows researchers to query through database')

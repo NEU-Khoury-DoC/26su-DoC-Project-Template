@@ -17,6 +17,9 @@ st.write('## Predict crop price')
 crop = st.selectbox('Crop', ['Barley', 'Durum Wheat', 'Feed Barley', 'Rye', 'Soft Wheat'])
 region = st.selectbox('Country / Region', ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden'])
 
+#TODO ADD NEW ERROR FOR WHEN SOMETHING DOESNT EXIST IN DB (BARLEY IN AUSTRIA AS AN EXAMPLE)
+# GERBER SAYS TO THROW A NEW ERROR INSTEAD OF A 404
+
 if st.button('Predict'):
     logger.info(f'Prediction placeholder — crop: {crop}, region: {region}')
     try:
