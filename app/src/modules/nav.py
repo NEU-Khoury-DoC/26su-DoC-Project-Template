@@ -42,7 +42,7 @@ def farmer_blog():
         "pages/05_Farmer_Blog.py", label="Discussion Board", icon="💭"
     )
 
-# ---- Role: usaid_worker -----------------------------------------------------
+# ---- Role: policy-maker -----------------------------------------------------
 
 def policy_home():
     st.sidebar.page_link(
@@ -79,28 +79,31 @@ def policy_blog():
         "pages/17_Policy_Blog.py", label="Discussion Board", icon="💭"
     )
 
-# ---- Role: administrator ----------------------------------------------------
+# ---- Role: researcher ----------------------------------------------------
 
 def researcher_home():
     st.sidebar.page_link("pages/21_Researcher_Home.py", label="Home", icon="👨‍🔬")
 
-def researcher_add_data():
-    st.sidebar.page_link("pages/22_Researcher_Add_Data.py", label="Add Soil Data", icon="🪏")
+def researcher_dash():
+    st.sidebar.page_link("pages/22_Researcher_Dashboard.py", label="Dashboard", icon="📊")
 
-def researcher_visualize_data():
-    st.sidebar.page_link("pages/23_Researcher_Visualize_Data.py", label="Visualize Data", icon="🗺️")
+def researcher_map():
+    st.sidebar.page_link("pages/23_Researcher_Map.py", label="Map", icon="🗺️")
 
-def researcher_data_prediction():
-    st.sidebar.page_link("pages/24_Researcher_Data_Prediction.py", label="Soil Health Prediction", icon="🌱")
+def researcher_conditions():
+    st.sidebar.page_link("pages/24_Researcher_Conditions.py", label="Explore Crop Conditions", icon="🌱")
     
-def researcher_data_export():
-    st.sidebar.page_link("pages/25_Researcher_Data_Export.py", label="Data Export", icon="🖥️")
+def researcher_trends():
+    st.sidebar.page_link("pages/25_Researcher_Trends.py", label="Explore Trends", icon="📈")
 
 def researcher_report():
     st.sidebar.page_link("pages/26_Researcher_Report.py", label="Generate Reports", icon="📝")
 
+def researcher_data_export():
+    st.sidebar.page_link("pages/27_Researcher_Data_Export.py", label="Data Export", icon="🖥️")
+
 def researcher_blog():
-    st.sidebar.page_link("pages/27_Researcher_Blog.py", label="Discussion Board", icon="💭")
+    st.sidebar.page_link("pages/28_Researcher_Blog.py", label="Discussion Board", icon="💭")
 
 # ---- Sidebar assembly -------------------------------------------------------
 
@@ -141,11 +144,12 @@ def SideBarLinks(show_home=False):
 
         if st.session_state["role"] == "researcher":
             researcher_home()
-            researcher_add_data()
-            researcher_visualize_data()
-            researcher_data_prediction()
-            researcher_data_export()
+            researcher_dash()
+            researcher_map()
+            researcher_conditions()
+            researcher_trends()
             researcher_report()
+            researcher_data_export()
             researcher_blog()
 
     # About link appears at the bottom for all roles

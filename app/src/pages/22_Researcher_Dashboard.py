@@ -10,4 +10,4 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title(f"WIP FOR RESEARCHER ADD DATA")
-st.write('Place for researchers to add in data')
+st.write('Place for researchers to view basic statitics')
