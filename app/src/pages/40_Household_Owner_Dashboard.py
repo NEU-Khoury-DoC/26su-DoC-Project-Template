@@ -18,31 +18,6 @@ st.write("Welcome. This is your default landing page after logging in.")
 st.divider()
 
 st.subheader("Your energy at a glance")
-st.caption("Placeholder data · will connect to live price forecasts and billing cycle")
-
-price_col, change_col, bill_col = st.columns(3)
-
-price_col.metric(
-    "Current Energy Price",
-    "€0.28/kWh",
-    help="Your household's current electricity rate.",
-)
-change_col.metric(
-    "Predicted Price Change",
-    "+3.2%",
-    "next month",
-    delta_color="inverse",
-    help="Forecasted change in your energy price over the next billing period.",
-)
-bill_col.metric(
-    "Time Until Next Bill",
-    "12 days",
-    help="Days remaining until your next energy bill is due.",
-)
-
-st.divider()
-
-st.subheader("30-Day Electricity Price Forecast")
 
 COUNTRY_OPTIONS = {
     "Austria": "AT", "Belgium": "BE", "Bulgaria": "BG",
@@ -60,21 +35,62 @@ selected_country_name = st.selectbox(
 
 selected_country_code = COUNTRY_OPTIONS[selected_country_name]
 
+# Fetch forecast data to use in metrics and chart
 try:
     data = get_electricity_forecast(selected_country_code)
-
     forecast_df = pd.DataFrame(data["forecast"])
     forecast_df["date"] = pd.to_datetime(forecast_df["date"])
+    forecast_available = True
+except Exception as e:
+    forecast_available = False
 
+# Compute metrics from forecast
+if forecast_available:
+    current_price = forecast_df["predicted_price_eur_mwh"].iloc[0]
+    price_in_30d  = forecast_df["predicted_price_eur_mwh"].iloc[-1]
+    pct_change    = ((price_in_30d - current_price) / current_price) * 100
+    price_display = f"€{current_price:.2f}/MWh"
+    change_display = f"{pct_change:+.1f}%"
+    change_delta   = "next 30 days"
+else:
+    price_display  = "€0.28/kWh"
+    change_display = "+3.2%"
+    change_delta   = "next month"
+
+price_col, change_col, bill_col = st.columns(3)
+
+price_col.metric(
+    "Current Energy Price",
+    price_display,
+    help="Forecasted day-ahead electricity price for tomorrow in EUR/MWh.",
+)
+change_col.metric(
+    "Predicted Price Change",
+    change_display,
+    change_delta,
+    delta_color="inverse",
+    help="Forecasted price change over the next 30 days.",
+)
+bill_col.metric(
+    "Time Until Next Bill",
+    "12 days",
+    help="Days remaining until your next energy bill is due.",
+)
+
+st.divider()
+
+st.subheader("30-Day Electricity Price Forecast")
+
+if forecast_available:
     forecast_chart = px.line(
-    forecast_df,
-    x="date",
-    y="predicted_price_eur_mwh",
-    title=f"30-Day Electricity Price Forecast — {selected_country_name}",
-    labels={
-        "date": "Date",
-        "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
-    },
+        forecast_df,
+        x="date",
+        y="predicted_price_eur_mwh",
+        title=f"30-Day Electricity Price Forecast — {selected_country_name}",
+        labels={
+            "date": "Date",
+            "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
+        },
     )
     forecast_chart.update_traces(
         mode="lines+markers",
@@ -90,9 +106,8 @@ try:
     )
     st.plotly_chart(forecast_chart, use_container_width=True)
 
-except Exception as e:
+else:
     st.warning("Could not connect to the backend. Showing placeholder data.")
-
     forecast_dates = pd.date_range(
         start=pd.Timestamp.today().normalize(),
         periods=30,
