@@ -77,12 +77,15 @@ CREATE TABLE IF NOT EXISTS farms_location (
 );
 
 CREATE TABLE IF NOT EXISTS user_growing_data (
-    user_growing_data INT AUTO_INCREMENT PRIMARY KEY,
+    user_growing_data_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_id INT,
-    type_of_crop VARCHAR(255) NOT NULL,
-    season VARCHAR(100) NOT NULL,
-    sown DATETIME NOT NULL,
-    harvested DATETIME NOT NULL,
+    n FLOAT NOT NULL,
+    p FLOAT NOT NULL,
+    k FLOAT NOT NULL,
+    type_of_crop VARCHAR(50) NOT NULL,
+    season VARCHAR(20) NOT NULL,
+    sown VARCHAR(20) NOT NULL,
+    harvested VARCHAR(20) NOT NULL,
     water_source VARCHAR(100) NOT NULL,
     temp FLOAT NOT NULL,
     relative_humidity FLOAT NOT NULL,
