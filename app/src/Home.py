@@ -35,7 +35,7 @@ SideBarLinks(show_home=True)
 # ***************************************************
 
 logger.info("Loading the Home page of the app")
-st.title('Summer 2026 Belgium DoC Project Template')
+st.title('Welcome to Farmers Market')
 st.write('#### Hi! As which user would you like to log in?')
 
 ##THESE ARE ALL PLACEHOLDERS UNTIL API IS MADE
