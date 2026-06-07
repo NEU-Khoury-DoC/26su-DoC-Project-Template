@@ -146,7 +146,7 @@ def _build_x(last_prices, next_date, country_code):
     country_RO = 1 if country_code == "RO" else 0
     country_SK = 1 if country_code == "SK" else 0
 
-    # Build x vector in exact feature order matching w
+    # Builds x vector in feature order matching w
     x = np.array([
         lag_1, lag_2, lag_3, lag_4, lag_5, lag_6, lag_7,
         rolling_7d_mean, rolling_30d_mean, rolling_7d_std, price_vs_7d_avg,
@@ -176,7 +176,7 @@ def predict(country_code, days=30):
     means, stds = _get_scaler_params()
     last_prices, last_date = _get_recent_prices(country_code)
 
-    # Build w vector in exact same order as x
+    # Builds w vector in exact same order as x
     w = np.array([
         weights["weight_lag_1"], weights["weight_lag_2"], weights["weight_lag_3"],
         weights["weight_lag_4"], weights["weight_lag_5"], weights["weight_lag_6"],
@@ -202,10 +202,10 @@ def predict(country_code, days=30):
     for _ in range(days):
         next_date = last_date + pd.Timedelta(days=1)
 
-        # Build x
+        # Builds x
         x = _build_x(last_prices, next_date, country_code)
 
-        # Scale x to match training conditions
+        # Scales x to match training conditions
         x_scaled = (x - means) / stds
 
         # wTx + intercept
@@ -216,7 +216,7 @@ def predict(country_code, days=30):
             "predicted_price_eur_mwh": round(pred, 2)
         })
 
-        # Roll forward
+        # Rolls forward
         last_prices.append(pred)
         last_date = next_date
 
