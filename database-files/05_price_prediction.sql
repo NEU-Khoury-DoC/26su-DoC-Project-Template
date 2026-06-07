@@ -65,6 +65,59 @@ INSERT INTO price_model_weights (
     -0.103320, -0.209708, 0.080683, 0.034269
 );
 
+-- Model means and st. devs
+CREATE TABLE IF NOT EXISTS price_model_scaler (
+    scaler_id       INT NOT NULL AUTO_INCREMENT,
+    feature_name    VARCHAR(50) NOT NULL,
+    feature_mean    DOUBLE NOT NULL,
+    feature_std     DOUBLE NOT NULL,
+    CONSTRAINT pk_price_model_scaler PRIMARY KEY (scaler_id)
+);
+
+INSERT INTO price_model_scaler (feature_name, feature_mean, feature_std) VALUES
+    ('lag_1', 126.593706, 91.098822),
+    ('lag_2', 126.590101, 91.106775),
+    ('lag_3', 126.600163, 91.107113),
+    ('lag_4', 126.606888, 91.110819),
+    ('lag_5', 126.603348, 91.119867),
+    ('lag_6', 126.595899, 91.126836),
+    ('lag_7', 126.578116, 91.137328),
+    ('rolling_7d_mean', 126.595460, 85.586358),
+    ('rolling_30d_mean', 126.468391, 80.838626),
+    ('rolling_7d_std', 26.885450, 20.420308),
+    ('price_vs_7d_avg', 1.006861, 0.296968),
+    ('month_2', 0.089141, 0.284947),
+    ('month_3', 0.083739, 0.276995),
+    ('month_4', 0.081037, 0.272892),
+    ('month_5', 0.083739, 0.276995),
+    ('month_6', 0.081037, 0.272892),
+    ('month_7', 0.083739, 0.276995),
+    ('month_8', 0.083739, 0.276995),
+    ('month_9', 0.081037, 0.272892),
+    ('month_10', 0.083739, 0.276995),
+    ('month_11', 0.081037, 0.272892),
+    ('month_12', 0.083739, 0.276995),
+    ('dow_1', 0.143166, 0.350242),
+    ('dow_2', 0.142626, 0.349691),
+    ('dow_3', 0.142626, 0.349691),
+    ('dow_4', 0.142626, 0.349691),
+    ('dow_5', 0.142626, 0.349691),
+    ('dow_6', 0.143166, 0.350242),
+    ('country_BE', 0.066667, 0.249444),
+    ('country_BG', 0.066667, 0.249444),
+    ('country_CZ', 0.066667, 0.249444),
+    ('country_DE', 0.066667, 0.249444),
+    ('country_ES', 0.066667, 0.249444),
+    ('country_FR', 0.066667, 0.249444),
+    ('country_HR', 0.066667, 0.249444),
+    ('country_HU', 0.066667, 0.249444),
+    ('country_LV', 0.066667, 0.249444),
+    ('country_NL', 0.066667, 0.249444),
+    ('country_PL', 0.066667, 0.249444),
+    ('country_PT', 0.066667, 0.249444),
+    ('country_RO', 0.066667, 0.249444),
+    ('country_SK', 0.066667, 0.249444);
+
 -- Daily price data (29565 rows, batched in 500s)
 
 

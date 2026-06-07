@@ -11,6 +11,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 import streamlit as st
+from modules.ml_countries import resolve_ml_country
 from modules.nav import SideBarLinks
 from modules.zeus_api import get_users
 
@@ -21,6 +22,7 @@ st.session_state["authenticated"] = False
 st.session_state.pop("role", None)
 st.session_state.pop("user_id", None)
 st.session_state.pop("first_name", None)
+st.session_state.pop("user_country", None)
 
 SideBarLinks(show_home=True)
 
@@ -173,4 +175,9 @@ with col_login:
                 st.session_state["role"] = persona
                 st.session_state["user_id"] = user["user_id"]
                 st.session_state["first_name"] = user.get("first_name") or user["display_name"]
+                country = resolve_ml_country(user.get("country"))
+                if country:
+                    st.session_state["user_country"] = country
+                else:
+                    st.session_state.pop("user_country", None)
                 st.switch_page(LOGIN_PAGES[persona])
