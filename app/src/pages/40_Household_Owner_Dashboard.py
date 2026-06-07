@@ -1,11 +1,20 @@
+import datetime
 import logging
 
 logger = logging.getLogger(__name__)
 
-from modules.zeus_api import get_electricity_forecast
+from modules.zeus_api import get_electricity_forecast, get_household_profile, get_user
 import pandas as pd
 import plotly.express as px
+import requests
 import streamlit as st
+from modules.ml_countries import (
+    COUNTRY_PLACEHOLDER,
+    ML_COUNTRY_OPTIONS,
+    ml_country_select_index,
+    ml_country_select_options,
+    resolve_ml_country,
+)
 from modules.nav import SideBarLinks
 
 st.set_page_config(layout="wide")
@@ -19,29 +28,47 @@ st.divider()
 
 st.subheader("Your energy at a glance")
 
-COUNTRY_OPTIONS = {
-    "Austria": "AT", "Belgium": "BE", "Bulgaria": "BG",
-    "Croatia": "HR", "Czech Republic": "CZ", "Spain": "ES",
-    "France": "FR", "Germany": "DE", "Hungary": "HU",
-    "Latvia": "LV", "Netherlands": "NL", "Poland": "PL",
-    "Portugal": "PT", "Romania": "RO", "Slovakia": "SK"
-}
+user_id = st.session_state.get("user_id")
+profile_country = resolve_ml_country(st.session_state.get("user_country"))
+if user_id:
+    try:
+        user = get_user(user_id)
+        profile_country = resolve_ml_country(user.get("country")) or profile_country
+    except requests.exceptions.RequestException:
+        pass
 
+if profile_country:
+    st.session_state["user_country"] = profile_country
+else:
+    st.session_state.pop("user_country", None)
+
+country_options = ml_country_select_options()
 selected_country_name = st.selectbox(
     "Select a country:",
-    options=list(COUNTRY_OPTIONS.keys()),
-    index=list(COUNTRY_OPTIONS.keys()).index("Germany")
+    options=country_options,
+    index=ml_country_select_index(profile_country),
 )
 
-selected_country_code = COUNTRY_OPTIONS[selected_country_name]
+if selected_country_name == COUNTRY_PLACEHOLDER:
+    selected_country_code = None
+    forecast_available = False
+    st.info(
+        "Select a country to view your energy forecast. "
+        "Your profile country is used as the default when one is saved on Persona Info."
+    )
+else:
+    selected_country_code = ML_COUNTRY_OPTIONS[selected_country_name]
 
 # Fetch forecast data to use in metrics and chart
-try:
-    data = get_electricity_forecast(selected_country_code)
-    forecast_df = pd.DataFrame(data["forecast"])
-    forecast_df["date"] = pd.to_datetime(forecast_df["date"])
-    forecast_available = True
-except Exception as e:
+if selected_country_code:
+    try:
+        data = get_electricity_forecast(selected_country_code)
+        forecast_df = pd.DataFrame(data["forecast"])
+        forecast_df["date"] = pd.to_datetime(forecast_df["date"])
+        forecast_available = True
+    except Exception:
+        forecast_available = False
+else:
     forecast_available = False
 
 # Compute metrics from forecast
@@ -52,10 +79,47 @@ if forecast_available:
     price_display = f"€{current_price:.2f}/MWh"
     change_display = f"{pct_change:+.1f}%"
     change_delta   = "next 30 days"
+elif selected_country_code is None:
+    price_display = "—"
+    change_display = "—"
+    change_delta = None
 else:
     price_display  = "€0.28/kWh"
     change_display = "+3.2%"
     change_delta   = "next month"
+
+def _days_until_next_bill(user_id):
+    try:
+        profile = get_household_profile(user_id)
+    except requests.exceptions.RequestException:
+        return None
+    if not profile or not profile.get("bill_due_date"):
+        return None
+
+    due = profile["bill_due_date"]
+    if isinstance(due, str):
+        due = datetime.date.fromisoformat(due)
+    if not isinstance(due, datetime.date):
+        return None
+    return (due - datetime.date.today()).days
+
+
+days_until_bill = _days_until_next_bill(user_id) if user_id else None
+if days_until_bill is None:
+    bill_display = "—"
+    bill_delta = None
+elif days_until_bill == 0:
+    bill_display = "Due today"
+    bill_delta = None
+elif days_until_bill == 1:
+    bill_display = "1 day"
+    bill_delta = None
+elif days_until_bill > 1:
+    bill_display = f"{days_until_bill} days"
+    bill_delta = None
+else:
+    bill_display = f"{abs(days_until_bill)} days overdue"
+    bill_delta = None
 
 price_col, change_col, bill_col = st.columns(3)
 
@@ -73,15 +137,18 @@ change_col.metric(
 )
 bill_col.metric(
     "Time Until Next Bill",
-    "12 days",
-    help="Days remaining until your next energy bill is due.",
+    bill_display,
+    bill_delta,
+    help="Days remaining until your next energy bill is due. Set this on the Persona Info page.",
 )
 
 st.divider()
 
 st.subheader("30-Day Electricity Price Forecast")
 
-if forecast_available:
+if selected_country_code is None:
+    pass
+elif forecast_available:
     forecast_chart = px.line(
         forecast_df,
         x="date",
@@ -106,7 +173,7 @@ if forecast_available:
     )
     st.plotly_chart(forecast_chart, use_container_width=True)
 
-else:
+elif selected_country_code is not None:
     st.warning("Could not connect to the backend. Showing placeholder data.")
     forecast_dates = pd.date_range(
         start=pd.Timestamp.today().normalize(),
