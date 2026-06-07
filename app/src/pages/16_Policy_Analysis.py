@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"WIP FOR POLICY ANALYSIS")
+st.title(f"POLICY ANALYSIS")
 st.write('Quick analysis tools for policy makers — basic exploration and indicators.')
 
 st.write('## Policymaker Analysis (draft)')

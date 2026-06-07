@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"WIP FOR POLICY COMPARE")
+st.title(f"POLICY COMPARE")
 st.write('Select two farms or regions to compare key metrics side-by-side.')
 
 col1, col2 = st.columns(2)
