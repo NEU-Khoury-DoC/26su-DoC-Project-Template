@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh pr create --base main --head journalist-pages --title 'Add journalist persona and pages' --body ' *)",
+      "Bash(cat)",
+      "Bash(gh pr *)",
+      "Bash(command -v gh /opt/homebrew/bin/gh /usr/local/bin/gh)",
+      "Bash(command -v brew)",
+      "Bash(echo \"brew: $\\(command -v brew\\)\")",
+      "Bash(git rm *)",
+      "Bash(docker compose *)",
+      "Bash(curl -s -o /dev/null -w \"app HTTP %{http_code}\\\\n\" http://localhost:8501)",
+      "Bash(python3 -c \"import entsoe; print\\('entsoe-py', entsoe.__version__\\)\")",
+      "Bash(python3 -c \"import streamlit, pandas, altair; print\\('core libs ok'\\)\")",
+      "Bash(python3 -m pip install --quiet entsoe-py)",
+      "Bash(python3 -)",
+      "Bash(echo \"tracked? exit=$?\")"
+    ]
+  }
+}
