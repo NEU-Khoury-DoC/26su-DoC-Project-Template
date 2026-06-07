@@ -3,84 +3,115 @@ logger = logging.getLogger(__name__)
 
 import streamlit as st
 import pandas as pd
-import numpy as np
+import plotly.express as px
+import requests
+
 from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide')
-
 SideBarLinks()
 
-st.title("Regional Overview Map")
-st.write("Policy makers can view regional farming suitability, crop data, and environmental risk factors.")
+st.title("Crop Price Map")
+st.write("Explore historical and predicted crop prices across Europe.")
 
-col1, col2, col3 = st.columns([2, 2, 2])
+API_BASE = "http://web-api:4000"
 
-with col1:
-    region_search = st.text_input("Search Region")
+CROPS = ['Barley', 'Durum wheat', 'Feed barley', 'Rye', 'Soft wheat']
+COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia',
+             'Denmark', 'Estonia', 'Finland', 'Germany', 'Greece', 'Hungary',
+             'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg',
+             'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia',
+             'Slovenia', 'Spain', 'Sweden']
 
-with col2:
-    time_period = st.selectbox("Time Period", ["2024", "2023", "2022", "Last 5 Years"])
+# cache predictions for 1 hour so we dont call the model 25 times on every load
+@st.cache_data(ttl=3600)
+def get_all_predictions(crop):
+    results = []
+    for country in COUNTRIES:
+        try:
+            r = requests.get(
+                f"{API_BASE}/prices_model/prediction/{crop}/{country}",
+                timeout=10
+            )
+            if r.status_code == 200:
+                results.append({
+                    'country': country,
+                    'predicted_price': round(r.json()['prediction'], 2)
+                })
+        except:
+            pass
+    return pd.DataFrame(results)
 
-with col3:
-    data_layer = st.selectbox(
-        "Data Layer",
-        ["Overall Suitability", "Soil Quality", "Flood Risk", "Crop Type", "Crop Price"]
-    )
+tab1, tab2 = st.tabs(["Historical prices", "Predicted prices"])
 
-region_data = pd.DataFrame({
-    "Region": ["North Valley", "East Farms", "South Plains", "River District", "West Hills"],
-    "Suitability": ["High", "Low", "Moderate", "Very High", "Low"],
-    "Main Crop": ["Wheat", "Corn", "Soybeans", "Rice", "Wheat"],
-    "Productivity": [87, 62, 74, 91, 58],
-    "Crop Price": [6.40, 5.20, 4.80, 7.10, 5.90],
-    "Soil Quality": [82, 55, 70, 90, 49],
-    "Flood Risk": ["Low", "High", "Moderate", "Low", "High"],
-    "lat": [50.879, 50.860, 50.850, 50.890, 50.840],
-    "lon": [4.700, 4.720, 4.680, 4.740, 4.660]
-})
+with tab1:
+    st.subheader("Average historical selling price by country")
 
-st.divider()
+    col1, col2 = st.columns(2)
+    with col1:
+        crop_filter = st.selectbox("Filter by crop", ["All crops"] + CROPS, key="hist_crop")
+    with col2:
+        year_range = st.slider("Year range", 2017, 2024, (2017, 2024))
 
-left_col, map_col = st.columns([1, 3])
+    try:
+        response = requests.get(f"{API_BASE}/prices_model/average", params={
+            'year_min': year_range[0],
+            'year_max': year_range[1]
+        })
+        data = response.json()
+        df = pd.DataFrame(data)
 
-with left_col:
-    st.subheader("Key")
-    st.write("Very High")
-    st.write("High")
-    st.write("Moderate")
-    st.write("Low")
-    st.write("Very Low")
+        df['avg_price'] = pd.to_numeric(df['avg_price'], errors='coerce')
+        
+        if crop_filter != "All crops":
+            df = df[df['prod_veg'] == crop_filter]
 
-    st.subheader("Other Info")
-    st.write("- Soil Quality")
-    st.write("- Flood Risk")
-    st.write("- Main Crop Type")
-    st.write("- Average Crop Price")
+        df_map = df.groupby('geo')['avg_price'].mean().reset_index()
+        df_map.columns = ['country', 'avg_price']
 
-with map_col:
-    st.subheader("Map View")
-    st.map(region_data, latitude="lat", longitude="lon", zoom=10)
+        fig = px.choropleth(
+            df_map,
+            locations='country',
+            locationmode='country names',
+            color='avg_price',
+            scope='europe',
+            color_continuous_scale='YlOrRd',
+            title=f'Average selling price {year_range[0]}–{year_range[1]} — {crop_filter}',
+            labels={'avg_price': '€ / 100kg'}
+        )
+        fig.update_layout(margin=dict(l=0, r=0, t=40, b=0))
+        st.plotly_chart(fig, use_container_width=True)
 
-selected_region = st.selectbox("Select District", region_data["Region"])
-selected = region_data[region_data["Region"] == selected_region].iloc[0]
+        with st.expander("View data table"):
+            st.dataframe(df_map.sort_values('avg_price', ascending=False), use_container_width=True)
 
-st.divider()
+    except Exception as e:
+        st.error(f"Could not load historical data: {e}")
 
-st.subheader(f"{selected['Region']} — {selected['Suitability']} Suitability")
+with tab2:
+    st.subheader("Predicted selling price by country")
+    st.write("Based on the linear regression model using weather data and recent price history.")
 
-col1, col2, col3, col4 = st.columns(4)
+    pred_crop = st.selectbox("Select crop", CROPS, key="pred_crop")
 
-col1.metric("Main Crop Type", selected["Main Crop"])
-col2.metric("Average Productivity", f"{selected['Productivity']}%")
-col3.metric("Average Crop Price", f"${selected['Crop Price']}")
-col4.metric("Soil Quality", f"{selected['Soil Quality']}/100")
+    with st.spinner("Loading predictions..."):
+        df_pred = get_all_predictions(pred_crop)
 
-col1, col2 = st.columns(2)
+    if not df_pred.empty:
+        fig2 = px.choropleth(
+            df_pred,
+            locations='country',
+            locationmode='country names',
+            color='predicted_price',
+            scope='europe',
+            color_continuous_scale='YlOrRd',
+            title=f'Predicted price — {pred_crop}',
+            labels={'predicted_price': '€ / 100kg'}
+        )
+        fig2.update_layout(margin=dict(l=0, r=0, t=40, b=0))
+        st.plotly_chart(fig2, use_container_width=True)
 
-with col1:
-    if st.button("Save Analysis"):
-        st.success("Analysis saved!")
-
-with col2:
-    if st.button("Generate Report"):
-        st.info("Report generation coming soon.")
+        with st.expander("View data table"):
+            st.dataframe(df_pred.sort_values('predicted_price', ascending=False), use_container_width=True)
+    else:
+        st.error("Could not load predictions.")
