@@ -11,7 +11,7 @@ USE Zeus;
 CREATE TABLE IF NOT EXISTS users (
     user_id      INT          NOT NULL AUTO_INCREMENT,
     display_name VARCHAR(100) NOT NULL,
-    persona      ENUM('household_owner', 'journalist') NOT NULL,
+    persona      ENUM('household_owner', 'journalist', 'energy_trader') NOT NULL,
     first_name   VARCHAR(50),
     email        VARCHAR(255),
     country      VARCHAR(100),
@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS users (
 
 INSERT INTO users (display_name, persona, first_name, email, country, language) VALUES
     ('Maria Schmidt', 'household_owner', 'Maria', 'maria.schmidt@example.com', 'Germany', 'German'),
-    ('James O''Brien', 'journalist', 'James', 'james.obrien@example.com', 'Ireland', 'English');
+    ('James O''Brien', 'journalist', 'James', 'james.obrien@example.com', 'Ireland', 'English'),
+    ('Niels Becker', 'energy_trader', 'Niels', 'neils.becker@example.com', 'Germany', 'German');
 
 -- Billing preferences per household_owner user (Persona Info billing form)
 CREATE TABLE IF NOT EXISTS household_profiles (

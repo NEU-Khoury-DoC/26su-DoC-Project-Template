@@ -4,7 +4,7 @@ from backend.ml_countries import VALID_ML_COUNTRY_NAMES
 from backend.utils import error_response
 from mysql.connector import Error
 
-VALID_PERSONAS = ("household_owner", "journalist")
+VALID_PERSONAS = ("household_owner", "journalist", "energy_trader")
 USER_FIELDS = ("display_name", "email", "country", "language")
 
 user_bp = Blueprint("users", __name__)
