@@ -5,11 +5,11 @@ from backend.simple.playlist import sample_playlist_data
 crop_routes = Blueprint("crop_routes", __name__)
 
 from backend.ml_models import model01, model02, model03_knn as model03
-@crop_routes.route("/model3/prediction/<N>/<P>/<K>/<type_of_crop>/<temperature>/<season>/<sown>/<harvested>/<water_source>/<relative_humidity>", methods=["GET"])
-def get_model3_prediction(N, P, K, type_of_crop, temperature, season, sown, harvested, water_source, relative_humidity):
+@crop_routes.route("/model3/prediction/<N>/<P>/<K>/<type_of_crop>/<temperature>/<season>/<sown>/<harvested>/<water_source>/<relative_humidity>/<crop_duration>/<water_required>", methods=["GET"])
+def get_model3_prediction(N, P, K, type_of_crop, temperature, season, sown, harvested, water_source, relative_humidity, crop_duration, water_required):
     current_app.logger.info("GET /model3/prediction handler")
     try:
-        prediction = model03.predict(
+        predictions = model03.predict(
             N=N, P=P, K=K,
             TYPE_OF_CROP=type_of_crop,
             TEMPERATURE=temperature,
@@ -18,9 +18,11 @@ def get_model3_prediction(N, P, K, type_of_crop, temperature, season, sown, harv
             HARVESTED=harvested,
             WATER_SOURCE=water_source,
             RELATIVE_HUMIDITY=relative_humidity,
+            CROPDURATION=crop_duration,
+            WATERREQUIRED=water_required,
         )
         return jsonify({
-            "prediction": prediction,
+            "predictions": predictions,
             "input_variables": {
                 "N": float(N), "P": float(P), "K": float(K),
                 "TYPE_OF_CROP": type_of_crop,
@@ -30,6 +32,8 @@ def get_model3_prediction(N, P, K, type_of_crop, temperature, season, sown, harv
                 "HARVESTED": harvested,
                 "WATER_SOURCE": water_source,
                 "RELATIVE_HUMIDITY": float(relative_humidity),
+                "CROPDURATION": float(crop_duration),
+                "WATERREQUIRED": float(water_required),
             },
         }), 200
     except ValueError as e:
