@@ -54,11 +54,6 @@ m2.metric(
 )
 m3.metric("30-day average", f"€{s['avg']:.1f}/MWh")
 m4.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
-st.caption(
-    f"Forecast horizon: {forecast['date'].min().date()} → "
-    f"{forecast['date'].max().date()} · ML1 linear price model "
-    f"({'live' if is_live else 'illustrative'})"
-)
 
 st.divider()
 
@@ -80,17 +75,6 @@ st.caption(
 )
 
 st.divider()
-
-st.write("##### What this means for your book")
-
-st.write(
-    f"Over the next month the model has {selected_country} day-ahead prices "
-    f"moving from about €{s['day1']:.0f}/MWh to €{s['day30']:.0f}/MWh "
-    f"({s['trend_pct']:+.1f}%), averaging €{s['avg']:.0f}/MWh and staying within "
-    f"a €{s['min']:.0f}–€{s['max']:.0f} band. The width of that band is your "
-    "volatility signal: a tight range favours calendar spreads and steady "
-    "hedging, a wide one rewards intraday and optionality."
-)
 
 st.write("##### Trading signals")
 
