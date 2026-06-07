@@ -66,7 +66,7 @@ def policy_report():
     
 def policy_predictions():
     st.sidebar.page_link(
-        "pages/15_Policy_Predictions.py", label="Crop Price Predicitons", icon="🌾"
+        "pages/15_Policy_Predictions.py", label="Crop Price Predictions", icon="🌾"
     )
     
 def policy_analysis():
