@@ -80,7 +80,7 @@ with farmer_variable_col:
     )
 
 with farmer_col:
-    if st.button("Log In",
+    if st.button("Log In as Farmer",
                 type='primary',
                 use_container_width=True,
                 key='login_farmer_button'):
@@ -113,7 +113,7 @@ with policy_variable_col:
     )
 
 with policy_col:
-    if st.button('Log in',
+    if st.button('Log in as Policy Maker',
                  type='primary',
                  use_container_width=True,
                  key='login_policy_button'):
@@ -140,7 +140,7 @@ with reseacher_variable_col:
     )
 
 with researcher_col:
-    if st.button('Log in',
+    if st.button('Log in as Researcher',
                 type='primary',
                 use_container_width=True,
                 key='login_researcher_button'):
