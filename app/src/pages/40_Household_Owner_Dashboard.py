@@ -82,9 +82,6 @@ zone_map = {
 if selected_country_code:
     try:
         from entsoe import EntsoePandasClient
-        from dotenv import load_dotenv
-        import os
-        load_dotenv()
         client = EntsoePandasClient(api_key="be9993ee-346c-45b9-bef1-201dd8f8bf3d")
         today    = pd.Timestamp.now(tz="Europe/Berlin").normalize()
         tomorrow = today + pd.Timedelta(days=1)
@@ -92,7 +89,7 @@ if selected_country_code:
         prices   = client.query_day_ahead_prices(zone, start=today, end=tomorrow)
         live_price    = float(prices.mean())
         price_display = f"€{live_price:.2f}/MWh"
-    except Exception:
+    except Exception as e:
         price_display = "Unavailable"
 else:
     price_display = "—"
