@@ -173,7 +173,7 @@ elif forecast_available:
         forecast_df,
         x="date",
         y="predicted_price_eur_mwh",
-        title=f"30-Day Electricity Price Forecast — {selected_country_name}",
+        title=f"{selected_country_name}",
         labels={
             "date": "Date",
             "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
@@ -189,7 +189,8 @@ elif forecast_available:
         height=420,
         xaxis_title="Date",
         yaxis_title="Predicted Price (EUR/MWh)",
-        hovermode="closest"
+        hovermode="closest",
+        title_font_size=20
     )
     st.plotly_chart(forecast_chart, use_container_width=True)
 
@@ -221,7 +222,7 @@ elif selected_country_code is not None:
 
 st.divider()
 
-st.subheader(f"Historical Average Electricity Price by Month — {selected_country_name} (2021–2026)")
+st.subheader(f"Historical Average Electricity Price by Month")
 
 if selected_country_code:
     try:
@@ -238,6 +239,7 @@ if selected_country_code:
             monthly_avg,
             x="month_name",
             y="avg_price_eur_mwh",
+            title=f"{selected_country_name}",
             labels={"avg_price_eur_mwh": "EUR/MWh", "month_name": "Month"},
             color_discrete_sequence=["steelblue"],
             template="plotly_white"
@@ -249,7 +251,8 @@ if selected_country_code:
             height=400,
             xaxis_title="Month",
             yaxis_title="EUR/MWh",
-            hovermode="closest"
+            hovermode="closest",
+            title_font_size=20
         )
         st.plotly_chart(hist_chart, use_container_width=True)
 
