@@ -15,8 +15,8 @@ SideBarLinks()
 st.title("Gas Storage Risk")
 st.write("#### Will storage fall below 30% this winter?")
 st.caption(
-    "Logistic regression trained on GIE AGSI storage data, winters 2015–2024. "
-    "Adjust the inputs to explore what-if scenarios."
+    "Logistic regression trained on GIE AGSI storage data from 2015-2025\n\n"
+    "Explore what-if scenarios"
 )
 
 COUNTRIES = [
@@ -65,9 +65,7 @@ latest = max(country_winters, key=lambda row: row["winter"])
 st.divider()
 
 st.write("#### Model inputs")
-st.caption(
-    "Defaults show the country's most recent winter. Drag to explore different scenarios."
-)
+
 
 c1, c2, c3 = st.columns(3)
 
@@ -89,7 +87,7 @@ storage_volatility = c3.slider(
     "Storage volatility (past 90 days)", 0.0, 30.0,
     value=float(latest["storage_volatility"]),
     help="How much the storage level bounced around in the 90 days before winter "
-         "(standard deviation). Higher = more erratic filling/draining.",
+         "(standard deviation)",
 )
 
 if storage_trend_30d >= 0:
@@ -112,13 +110,13 @@ risk_prob = float(risk_result["risk_prob"])
 
 if at_risk:
     st.error(
-        f"⚠️ **At risk** — the model predicts {selected_country}'s gas storage "
-        f"would fall below {RISK_THRESHOLD}% this winter."
+        f"⚠️ **At risk**: the model predicts {selected_country}'s gas storage "
+        f"would fall below {RISK_THRESHOLD}% this winter"
     )
 else:
     st.success(
-        f"✅ **Not at risk** — the model predicts {selected_country}'s gas storage "
-        f"would stay above {RISK_THRESHOLD}% this winter."
+        f"✅ **Not at risk**: the model predicts {selected_country}'s gas storage "
+        f"would stay above {RISK_THRESHOLD}% this winter"
     )
 
 st.metric("Risk probability", f"{risk_prob:.0%}")
