@@ -126,7 +126,7 @@ def predict(crime, noise, pollution, hpi, is_rural, is_towns):
                ORDER BY id DESC LIMIT 1'''
         )
         row = cursor.fetchone()
- 
+
     if row is None:
         raise ValueError("No model parameters found. Run train() first.")
  

@@ -1,350 +1,838 @@
-geo,year,deprivation_rate,immigration_count,log_immigration,immigration_lag1,country_Belgium,country_Bulgaria,country_Croatia,country_Cyprus,country_Czechia,country_Denmark,country_Estonia,country_Finland,country_France,country_Germany,country_Greece,country_Hungary,country_Iceland,country_Ireland,country_Italy,country_Latvia,country_Lithuania,country_Luxembourg,country_Malta,country_Montenegro,country_Netherlands,country_North Macedonia,country_Norway,country_Poland,country_Portugal,country_Romania,country_Slovakia,country_Slovenia,country_Spain,country_Sweden,country_Switzerland,country_United Kingdom
-Austria,2014,31.0,116262.0,11.663610145154312,11.531423319852347,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2015,31.2,166323.0,12.021692972266747,11.663610145154312,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2016,31.2,129509.0,11.771513377217634,12.021692972266747,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2017,31.2,111801.0,11.624484728630785,11.771513377217634,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2018,31.0,105633.0,11.567735568130148,11.624484728630785,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2019,29.9,109167.0,11.600643259055206,11.567735568130148,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2020,31.5,103565.0,11.547964369614744,11.600643259055206,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2021,31.1,118511.0,11.68276950025307,11.547964369614744,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2022,31.3,201622.0,12.214154895973477,11.68276950025307,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2023,30.8,147591.0,11.902206989137602,12.214154895973477,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Austria,2024,30.1,128805.0,11.766062675418327,11.902206989137602,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2014,72.0,123158.0,11.721231482486148,11.695905138491188,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2015,71.2,146626.0,11.895647226101454,11.721231482486148,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2016,67.3,123702.0,11.725638810309619,11.895647226101454,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2017,65.0,126703.0,11.749608936450194,11.725638810309619,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2018,58.6,137860.0,11.834001210149008,11.749608936450194,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2019,58.8,150006.0,11.918437238656205,11.834001210149008,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2020,58.5,118683.0,11.684219777914981,11.918437238656205,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2021,59.2,139743.0,11.847567456285287,11.684219777914981,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2022,59.6,208356.0,12.247008233598438,11.847567456285287,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2023,59.2,169609.0,12.041256962865885,12.247008233598438,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Belgium,2024,57.9,162926.0,12.001057526712163,12.041256962865885,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2014,9.8,26615.0,10.189267817698312,9.829356503193052,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2015,10.7,25223.0,10.135551201224898,10.189267817698312,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2016,10.5,21241.0,9.963735632881486,10.135551201224898,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2017,11.1,25597.0,10.150269502415737,9.963735632881486,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2018,11.5,29559.0,10.294177375062137,10.150269502415737,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2019,11.5,37929.0,10.543497634682945,10.294177375062137,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2020,12.1,37364.0,10.52848971636439,10.543497634682945,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2021,11.8,39461.0,10.583093462529407,10.52848971636439,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2022,12.7,40619.0,10.612015835134375,10.583093462529407,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2023,13.7,56807.0,10.94743243986193,10.612015835134375,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Bulgaria,2024,14.3,52189.0,10.862646184637459,10.94743243986193,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2014,9.1,10638.0,9.272281773516365,9.24753981296529,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2015,10.1,11706.0,9.367942232479672,9.272281773516365,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2016,10.4,13985.0,9.545812108263812,9.367942232479672,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2017,11.0,15553.0,9.652073119254888,9.545812108263812,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2018,11.6,26029.0,10.167004997988611,9.652073119254888,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2019,12.0,37726.0,10.538131297472674,10.167004997988611,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2020,12.7,33414.0,10.41676017994517,10.538131297472674,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2021,13.8,35912.0,10.48885462591948,10.41676017994517,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2022,14.7,57972.0,10.967732663900387,10.48885462591948,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2023,15.2,69396.0,11.147598917894847,10.967732663900387,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Croatia,2024,14.6,70391.0,11.161834899325397,11.147598917894847,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2014,69.7,13003.0,9.473012281423795,9.5227394469648,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2015,71.1,15364.0,9.639847474564585,9.473012281423795,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2016,69.6,18590.0,9.830432871630217,9.639847474564585,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2017,70.8,22458.0,10.019446703703723,9.830432871630217,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2018,71.4,25740.0,10.155840330434325,10.019446703703723,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2019,70.2,27553.0,10.223902994604545,10.155840330434325,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2020,70.4,22850.0,10.036750159040897,10.223902994604545,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2021,72.2,25473.0,10.145413603149704,10.036750159040897,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2022,69.8,37558.0,10.533668308899614,10.145413603149704,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2023,71.1,40761.0,10.615505553846324,10.533668308899614,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Cyprus,2024,70.1,40471.0,10.608365655971772,10.615505553846324,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2014,21.3,29897.0,10.30554686750946,10.313110670792955,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2015,22.1,29602.0,10.295630986527803,10.30554686750946,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2016,24.2,64083.0,11.067950001766604,10.295630986527803,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2017,25.6,51847.0,10.856071640107553,11.067950001766604,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2018,26.8,65910.0,11.09606062613619,10.856071640107553,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2019,27.3,105888.0,11.570146654617513,11.09606062613619,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2020,27.3,63095.0,11.052412655077827,11.570146654617513,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2021,27.2,69360.0,11.147080028882211,11.052412655077827,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2022,26.7,347429.0,12.758318484846534,11.147080028882211,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2023,27.1,142149.0,11.864638117079146,12.758318484846534,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Czechia,2024,26.7,123910.0,11.72731884495163,11.864638117079146,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2014,45.5,68388.0,11.132967271964477,11.007302948202419,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2015,44.6,78492.0,11.270764727819921,11.132967271964477,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2016,44.0,74383.0,11.216996143930366,11.270764727819921,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2017,43.6,68579.0,11.13575622601691,11.216996143930366,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2018,41.9,64669.0,11.077052694440638,11.13575622601691,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2019,42.6,61384.0,11.02492078461494,11.077052694440638,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2020,42.9,57230.0,10.954850988603628,11.02492078461494,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2021,42.5,63489.0,11.058637692164496,10.954850988603628,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2022,42.6,121183.0,11.70506533070152,11.058637692164496,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2023,43.1,98344.0,11.496236983683993,11.70506533070152,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Denmark,2024,42.4,101724.0,11.530028372869891,11.496236983683993,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2014,29.5,3904.0,8.270013062273787,8.32117830749028,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2015,29.2,15413.0,9.643031466337938,8.270013062273787,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2016,29.0,14822.0,9.60393530751386,9.643031466337938,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2017,29.3,17616.0,9.77661962392714,9.60393530751386,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2018,31.2,17547.0,9.772695262286105,9.77661962392714,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2019,29.9,18259.0,9.81246815414896,9.772695262286105,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2020,30.3,16209.0,9.693383614729722,9.81246815414896,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2021,27.9,19524.0,9.879450974707886,9.693383614729722,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2022,27.2,49414.0,10.808009300810284,9.879450974707886,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2023,25.7,26399.0,10.181119289134408,10.808009300810284,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Estonia,2024,25.7,18634.0,9.832796811913358,10.181119289134408,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2014,48.7,31507.0,10.357996760823214,10.371677037216255,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2015,48.7,28746.0,10.266288692954797,10.357996760823214,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2016,48.0,34905.0,10.460414013184781,10.266288692954797,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2017,46.8,31797.0,10.367158673708655,10.460414013184781,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2018,46.9,31106.0,10.345188153226388,10.367158673708655,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2019,47.5,32758.0,10.396933012470582,10.345188153226388,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2020,47.5,32898.0,10.401197541154744,10.396933012470582,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2021,46.5,36364.0,10.501362052588641,10.401197541154744,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2022,48.3,49998.0,10.81975828421028,10.501362052588641,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2023,48.2,73236.0,11.201456036726139,10.81975828421028,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Finland,2024,46.9,63965.0,11.066106971178531,11.201456036726139,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2014,43.8,340383.0,12.737829671051392,12.733026507225393,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2015,43.5,364221.0,12.805518850821379,12.737829671051392,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2016,43.3,377709.0,12.841881984389248,12.805518850821379,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2017,43.2,369621.0,12.820236140787719,12.841881984389248,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2018,43.6,387160.0,12.866595906171147,12.820236140787719,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2019,43.8,385596.0,12.862548061605276,12.866595906171147,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2020,42.2,331137.0,12.710290485901863,12.862548061605276,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2021,41.8,388513.0,12.870084484176592,12.710290485901863,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2022,41.6,490655.0,13.103498550236116,12.870084484176592,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2023,40.2,467548.0,13.055259435052623,13.103498550236116,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-France,2024,40.0,438626.0,12.99140467257874,13.055259435052623,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2014,36.6,898840.0,13.708861434630307,13.448372494575914,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2015,35.7,1595865.0,14.282927093567313,13.708861434630307,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2016,35.3,1042484.0,13.857117844062369,14.282927093567313,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2017,35.4,900291.0,13.710474434130175,13.857117844062369,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2018,36.0,855708.0,13.659685644055639,13.710474434130175,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2019,35.3,834338.0,13.634395073572517,13.659685644055639,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2020,35.3,666639.0,13.410005449056088,13.634395073572517,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2021,34.2,801361.0,13.594068059039744,13.410005449056088,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2022,33.4,1977121.0,14.497152809909894,13.594068059039744,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2023,33.0,1303251.0,14.08037323725415,14.497152809909894,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Germany,2024,33.1,1078504.0,13.891086380869215,14.08037323725415,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2014,10.5,59013.0,10.985529982875073,10.96728407866167,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2015,9.9,64446.0,11.073598459572551,10.985529982875073,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2016,10.2,116867.0,11.6688003717492,11.073598459572551,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2017,10.3,112247.0,11.628465988073831,11.6688003717492,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2018,10.4,119489.0,11.6909879648438,11.628465988073831,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2019,10.7,129459.0,11.7711272320995,11.6909879648438,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2020,10.9,84221.0,11.341211448762381,11.7711272320995,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2021,11.8,57120.0,10.952927103863022,11.341211448762381,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2022,11.3,95374.0,11.465571768586758,10.952927103863022,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2023,12.3,116591.0,11.666435939910063,11.465571768586758,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Greece,2024,12.7,132149.0,11.791692920032435,11.666435939910063,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2014,7.2,54581.0,10.907459437050116,10.57052173723882,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2015,8.3,58344.0,10.974128944240208,10.907459437050116,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2016,8.5,53618.0,10.889658761858488,10.974128944240208,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2017,9.1,68070.0,11.128306557093602,10.889658761858488,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2018,25.0,82937.0,11.325848619692412,11.128306557093602,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2019,23.8,88581.0,11.39168395568245,11.325848619692412,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2020,24.8,75470.0,11.23150375548926,11.39168395568245,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2021,26.2,80471.0,11.295664576814174,11.23150375548926,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2022,26.7,94148.0,11.45263391267998,11.295664576814174,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2023,25.3,96192.0,11.474111868933527,11.45263391267998,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Hungary,2024,26.1,88418.0,11.389842157657831,11.474111868933527,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2014,32.4,5368.0,8.58839695042257,8.765146421639022,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2015,32.7,5635.0,8.636929873018572,8.58839695042257,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2016,33.6,8710.0,9.072341873818893,8.636929873018572,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2017,30.5,12116.0,9.402364704231523,9.072341873818893,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2018,29.2,11830.0,9.378478484253662,9.402364704231523,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2019,29.8,9872.0,9.19755903761145,9.378478484253662,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Iceland,2020,30.5,8544.0,9.053101595549691,9.19755903761145,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2014,68.4,73519.0,11.205312757029569,11.090415922252806,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2015,70.5,80792.0,11.299645607092907,11.205312757029569,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2016,70.4,93378.0,11.444421759536338,11.299645607092907,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2017,69.6,84743.0,11.347390226276332,11.444421759536338,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2018,71.4,105699.0,11.568360171858329,11.347390226276332,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2019,68.8,96321.0,11.475452024446678,11.568360171858329,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2020,70.6,81918.0,11.313486233167579,11.475452024446678,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2021,69.8,83770.0,11.335842164524378,11.313486233167579,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2022,67.3,157537.0,11.967421977988208,11.335842164524378,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2023,66.0,135617.0,11.817597389041644,11.967421977988208,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Ireland,2024,66.8,127664.0,11.757164924579172,11.817597389041644,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2014,15.5,277631.0,12.53405177474649,12.636084014056339,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2015,15.5,280078.0,12.542826985213718,12.53405177474649,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2016,14.9,300823.0,12.614280655109033,12.542826985213718,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2017,15.3,343440.0,12.746770614610952,12.614280655109033,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2018,14.9,332324.0,12.7138686847358,12.746770614610952,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2019,14.2,332778.0,12.715233884976703,12.7138686847358,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2020,15.9,247526.0,12.419274945949992,12.715233884976703,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2021,15.4,318366.0,12.670960084364955,12.419274945949992,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2022,16.6,410985.0,12.926314429637864,12.670960084364955,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2023,16.1,439658.0,12.993754705426692,12.926314429637864,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Italy,2024,17.1,451583.0,13.0205166810463,12.993754705426692,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2014,12.2,10365.0,9.246286498749653,9.02401079378469,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2015,11.1,9479.0,9.156939595249067,9.246286498749653,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2016,9.6,8345.0,9.029537661151497,9.156939595249067,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2017,10.2,9916.0,9.202005735186125,9.029537661151497,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2018,9.9,10909.0,9.297435078827116,9.202005735186125,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2019,9.6,11223.0,9.325809621782296,9.297435078827116,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2020,10.3,8840.0,9.087155271405804,9.325809621782296,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2021,10.1,12689.0,9.448569560708433,9.087155271405804,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2022,9.4,38708.0,10.563827410119956,9.448569560708433,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2023,9.8,15629.0,9.656947423415522,10.563827410119956,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Latvia,2024,9.7,14701.0,9.595738817934032,9.656947423415522,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2014,19.1,33544.0,10.420643099996989,10.339320197260689,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2015,20.1,31085.0,10.344512836042844,10.420643099996989,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2016,22.7,31395.0,10.354435775246705,10.344512836042844,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2017,23.0,33305.0,10.413492839918217,10.354435775246705,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2018,24.3,37420.0,10.529987323148188,10.413492839918217,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2019,24.5,46526.0,10.747788068227562,10.529987323148188,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2020,27.5,46020.0,10.736853093036018,10.747788068227562,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2021,21.8,44858.0,10.711279516251953,10.736853093036018,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2022,21.7,87367.0,11.377884361877564,10.711279516251953,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2023,20.3,66682.0,11.107705326854465,11.377884361877564,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Lithuania,2024,17.6,51845.0,10.856033065069454,11.107705326854465,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2014,58.0,22332.0,10.013820684220475,9.956980924976127,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2015,56.0,23803.0,10.077608912764743,10.013820684220475,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2016,54.1,22888.0,10.038411724792649,10.077608912764743,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2017,55.5,24379.0,10.101518403035262,10.038411724792649,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2018,53.7,24644.0,10.112329319139478,10.101518403035262,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2019,54.0,26668.0,10.191257121160007,10.112329319139478,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2020,49.9,22490.0,10.020870508171171,10.191257121160007,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2021,50.0,25335.0,10.139981588218475,10.020870508171171,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2022,58.6,31433.0,10.355645388636274,10.139981588218475,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2023,59.2,26964.0,10.202295007771328,10.355645388636274,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Luxembourg,2024,57.5,25725.0,10.155257432638662,10.202295007771328,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2014,69.2,15928.0,9.675896626294639,9.429234909000977,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2015,67.9,18202.0,9.809341694645898,9.675896626294639,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2016,68.0,18116.0,9.80460600297601,9.809341694645898,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2017,72.1,22750.0,10.032364379457015,9.80460600297601,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2018,73.4,27394.0,10.218115793972515,10.032364379457015,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2019,72.6,29304.0,10.28551342891053,10.218115793972515,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2020,72.5,14751.0,9.599133945796375,10.28551342891053,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2021,71.8,16963.0,9.738848730594482,9.599133945796375,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2022,72.3,34964.0,10.462102840137968,9.738848730594482,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2023,69.2,42239.0,10.651122918380143,10.462102840137968,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Malta,2024,62.9,34033.0,10.435115303931381,10.651122918380143,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2014,8.5,5353.0,8.585599224080298,8.53954159508,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2015,9.6,4553.0,8.423761246623686,8.585599224080298,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2016,7.9,4904.0,8.498010371999463,8.423761246623686,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2017,4.9,6684.0,8.807621489536043,8.498010371999463,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2018,4.1,8643.0,9.064620717626777,8.807621489536043,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2019,4.2,10737.0,9.281544130982514,9.064620717626777,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2020,4.7,6008.0,8.701013624333928,9.281544130982514,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2022,6.4,15989.0,9.679718805828,8.701013624333928,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Montenegro,2023,5.9,18316.0,9.815584869360217,9.679718805828,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2014,52.9,145323.0,11.886721011417372,11.770887747222599,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2015,51.8,166872.0,12.024988323046104,11.886721011417372,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2016,51.4,189232.0,12.15073433899541,12.024988323046104,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2017,52.9,189646.0,12.152919728378695,12.15073433899541,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2018,53.9,194306.0,12.177194661479321,12.152919728378695,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2019,53.4,215756.0,12.281908053378793,12.177194661479321,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2020,53.0,182244.0,12.113107214652313,12.281908053378793,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2021,61.7,214105.0,12.274226498472817,12.113107214652313,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2022,61.1,326798.0,12.697100581987783,12.274226498472817,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2023,60.2,274597.0,12.52306348896829,12.697100581987783,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-Netherlands,2024,58.7,257714.0,12.459609602164177,12.52306348896829,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2014,18.2,1935.0,7.568379267836522,7.62608275807238,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2015,13.9,1741.0,7.462789157412448,7.568379267836522,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2016,14.4,2262.0,7.724446645633537,7.462789157412448,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2017,15.8,2064.0,7.632885505395133,7.724446645633537,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2018,16.3,2053.0,7.627544390488503,7.632885505395133,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2019,13.6,2118.0,7.6586995582682995,7.627544390488503,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2020,18.4,2555.0,7.846198815497425,7.6586995582682995,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2021,19.3,1570.0,7.359467638255621,7.846198815497425,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2022,19.7,2452.0,7.8050670442584895,7.359467638255621,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-North Macedonia,2024,17.0,7458.0,8.917176635955164,7.8050670442584895,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False,False
-Norway,2014,55.8,66903.0,11.11101403506136,11.131870002591821,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2015,53.9,60816.0,11.015624634135149,11.11101403506136,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2016,53.6,61460.0,11.02615810629731,11.015624634135149,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2017,53.6,53351.0,10.884666744312142,11.02615810629731,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2018,52.0,47864.0,10.776139827380453,10.884666744312142,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2019,51.5,48680.0,10.793044089207646,10.776139827380453,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2020,51.3,36287.0,10.499242387087424,10.793044089207646,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2021,51.0,53947.0,10.895775898636748,10.499242387087424,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2022,51.6,90475.0,11.412839901147873,10.895775898636748,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2023,52.5,86589.0,11.368939614441848,11.412839901147873,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Norway,2024,52.6,66077.0,11.098591141393,11.368939614441848,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False,False
-Poland,2014,11.6,222275.0,12.311675131910723,12.302800002482604,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2015,12.9,218147.0,12.292929010506063,12.311675131910723,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2016,14.2,208302.0,12.24674902944972,12.292929010506063,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2017,14.6,209353.0,12.251781878023774,12.24674902944972,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2018,14.4,214083.0,12.274123740351332,12.251781878023774,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2019,15.0,226649.0,12.331162256368994,12.274123740351332,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2020,15.9,210615.0,12.257791849205486,12.331162256368994,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2021,16.2,241116.0,12.393037571845296,12.257791849205486,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2022,16.5,275515.0,12.526400982113794,12.393037571845296,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2023,17.1,303275.0,12.622398560971083,12.526400982113794,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Poland,2024,17.3,300496.0,12.613193049546501,12.622398560971083,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False,False
-Portugal,2014,38.3,23077.0,10.046635061754612,9.784591397592273,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2015,37.5,36849.0,10.514610897617482,10.046635061754612,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2016,37.2,37644.0,10.535955422284223,10.514610897617482,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2017,36.8,46649.0,10.75042820627549,10.535955422284223,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2018,36.1,55357.0,10.92157646247132,10.75042820627549,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2019,36.9,95382.0,11.465655644492404,10.92157646247132,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2020,36.3,83654.0,11.334456477491765,11.465655644492404,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2021,33.8,97119.0,11.483702606293326,11.334456477491765,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2022,37.4,167098.0,12.026341730125123,11.483702606293326,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Portugal,2023,36.4,189367.0,12.151447490866227,12.026341730125123,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False,False
-Romania,2014,5.2,136035.0,11.820674835572122,11.942413042473778,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2015,5.5,132795.0,11.796569395088913,11.820674835572122,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2016,6.3,137455.0,11.831059144877837,11.796569395088913,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2017,6.9,177435.0,12.08636525949872,11.831059144877837,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2018,7.3,172578.0,12.058610381631325,12.08636525949872,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2019,7.7,202422.0,12.218114846302962,12.058610381631325,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2020,7.1,145519.0,11.888068813192003,12.218114846302962,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2021,7.2,194642.0,12.178922390408907,11.888068813192003,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2022,7.3,293024.0,12.58801320859138,12.178922390408907,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2023,7.2,324091.0,12.688782705085403,12.58801320859138,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Romania,2024,7.1,286538.0,12.565629931527125,12.688782705085403,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
-Slovakia,2014,11.6,5357.0,8.586346050104554,8.546751993657782,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2015,11.2,6997.0,8.853379672927634,8.586346050104554,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2016,11.4,7686.0,8.947285869349132,8.853379672927634,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2017,11.7,7188.0,8.880307358983872,8.947285869349132,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2018,12.7,7253.0,8.889308319842847,8.880307358983872,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2019,14.0,7016.0,8.85609105525229,8.889308319842847,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2020,15.8,6775.0,8.821142236331891,8.85609105525229,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2021,15.2,5733.0,8.654168646443315,8.821142236331891,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2022,15.8,5463.0,8.605936401250625,8.654168646443315,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2023,15.8,5923.0,8.68676717538769,8.605936401250625,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovakia,2024,14.6,6824.0,8.82834762005316,8.68676717538769,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False
-Slovenia,2014,28.2,13846.0,9.535823881654714,9.537627699020323,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2015,29.5,15420.0,9.643485495857657,9.535823881654714,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2016,29.3,16623.0,9.718602713339008,9.643485495857657,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2017,28.9,18808.0,9.842090757670805,9.718602713339008,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2018,30.4,28455.0,10.256114313628292,9.842090757670805,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2019,32.0,31319.0,10.35201215010474,10.256114313628292,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2020,33.1,36110.0,10.494352807047845,10.35201215010474,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2021,34.7,23624.0,10.070060752361943,10.494352807047845,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2022,36.1,35613.0,10.480494097961259,10.070060752361943,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2023,36.4,33939.0,10.432349538788218,10.480494097961259,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Slovenia,2024,35.3,33023.0,10.404989848841234,10.432349538788218,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False,False
-Spain,2014,57.1,305454.0,12.629557747235147,12.545301792664562,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2015,57.9,342114.0,12.742902216832865,12.629557747235147,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2016,55.7,414746.0,12.935423974753474,12.742902216832865,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2017,55.9,532132.0,13.184648737078989,12.935423974753474,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2018,56.3,643684.0,13.374964754988394,13.184648737078989,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2019,55.4,750480.0,13.52846961327949,13.374964754988394,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2020,53.8,467918.0,13.056050482997168,13.52846961327949,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2021,58.5,887960.0,13.696683102090924,13.056050482997168,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2022,58.2,1258894.0,14.04574491002512,13.696683102090924,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2023,57.1,1250991.0,14.039447394544508,14.04574491002512,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Spain,2024,55.4,1288562.0,14.069038201942146,14.039447394544508,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False,False
-Sweden,2014,39.8,126966.0,11.751682489156126,11.660017001858309,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2015,39.9,134240.0,11.807391971017745,11.751682489156126,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2016,38.5,163005.0,12.001542288927386,11.807391971017745,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2017,38.5,144489.0,11.880965579987658,12.001542288927386,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2018,37.5,132602.0,11.79511498091236,11.880965579987658,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2019,37.6,115805.0,11.659671656250262,11.79511498091236,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2020,37.5,82518.0,11.320783848837403,11.659671656250262,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2021,38.4,90631.0,11.414562630553325,11.320783848837403,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2022,37.4,102436.0,11.537003254449258,11.414562630553325,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2023,37.0,94514.0,11.456513831044266,11.537003254449258,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Sweden,2024,36.3,116197.0,11.663050911547867,11.456513831044266,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False,False
-Switzerland,2014,47.8,156282.0,11.959423745299068,11.98391610695859,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2015,46.5,153627.0,11.942289374749269,11.959423745299068,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2016,46.6,149305.0,11.913753170261646,11.942289374749269,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2017,45.8,143377.0,11.873239778362722,11.913753170261646,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2018,45.1,144857.0,11.88350923122021,11.873239778362722,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2019,44.5,145129.0,11.885385171464408,11.88350923122021,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2020,43.1,138778.0,11.84063801877835,11.885385171464408,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2021,43.3,144907.0,11.883854337274723,11.84063801877835,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2022,43.2,167079.0,12.026228018611112,11.883854337274723,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2023,42.0,263081.0,12.480221049636656,12.026228018611112,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-Switzerland,2024,42.4,212578.0,12.267068962965116,12.480221049636656,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,False
-United Kingdom,2014,52.2,631991.0,13.356632014821031,13.173145841340219,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True
-United Kingdom,2015,51.7,631452.0,13.35577879203302,13.356632014821031,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True
-United Kingdom,2016,51.5,588993.0,13.286171275824623,13.35577879203302,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True
-United Kingdom,2017,62.3,644209.0,13.375780038888216,13.286171275824623,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True
-United Kingdom,2018,55.8,603953.0,13.311253315076316,13.375780038888216,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True
+rskpovth,sex,geo,year,deprivation_rate,citizen,agedef,immigration_count,overburden_rate,log_immigration,immigration_lag1
+Below 60%,Total,Austria,2013,11.0,Total,Age in completed years,101866.0,39.1,11.531423319852347,11.531423319852347
+Above 60%,Total,Austria,2013,2.7,Total,Age in completed years,101866.0,1.8,11.531423319852347,11.531423319852347
+Total,Total,Austria,2014,3.7,Total,Age in completed years,116262.0,6.6,11.663610145154312,11.531423319852347
+Below 60%,Total,Austria,2014,9.3,Total,Age in completed years,116262.0,36.7,11.663610145154312,11.663610145154312
+Above 60%,Total,Austria,2014,2.8,Total,Age in completed years,116262.0,1.6,11.663610145154312,11.663610145154312
+Total,Total,Austria,2015,4.3,Total,Age in completed years,166323.0,6.4,12.021692972266747,11.663610145154312
+Below 60%,Total,Austria,2015,11.4,Total,Age in completed years,166323.0,34.8,12.021692972266747,12.021692972266747
+Above 60%,Total,Austria,2015,3.1,Total,Age in completed years,166323.0,1.8,12.021692972266747,12.021692972266747
+Total,Total,Austria,2016,4.2,Total,Age in completed years,129509.0,7.2,11.771513377217634,12.021692972266747
+Below 60%,Total,Austria,2016,10.3,Total,Age in completed years,129509.0,38.8,11.771513377217634,11.771513377217634
+Above 60%,Total,Austria,2016,3.2,Total,Age in completed years,129509.0,2.0,11.771513377217634,11.771513377217634
+Total,Total,Austria,2017,4.4,Total,Age in completed years,111801.0,7.1,11.624484728630785,11.771513377217634
+Below 60%,Total,Austria,2017,10.9,Total,Age in completed years,111801.0,40.3,11.624484728630785,11.624484728630785
+Above 60%,Total,Austria,2017,3.3,Total,Age in completed years,111801.0,1.5,11.624484728630785,11.624484728630785
+Total,Total,Austria,2018,3.2,Total,Age in completed years,105633.0,6.8,11.567735568130148,11.624484728630785
+Below 60%,Total,Austria,2018,10.6,Total,Age in completed years,105633.0,36.5,11.567735568130148,11.567735568130148
+Above 60%,Total,Austria,2018,1.9,Total,Age in completed years,105633.0,1.9,11.567735568130148,11.567735568130148
+Total,Total,Austria,2019,3.0,Total,Age in completed years,109167.0,7.0,11.600643259055206,11.567735568130148
+Below 60%,Total,Austria,2019,6.0,Total,Age in completed years,109167.0,40.8,11.600643259055206,11.600643259055206
+Above 60%,Total,Austria,2019,2.5,Total,Age in completed years,109167.0,1.9,11.600643259055206,11.600643259055206
+Total,Total,Austria,2020,3.0,Total,Age in completed years,103565.0,6.3,11.547964369614744,11.600643259055206
+Below 60%,Total,Austria,2020,6.3,Total,Age in completed years,103565.0,37.1,11.547964369614744,11.547964369614744
+Above 60%,Total,Austria,2020,2.4,Total,Age in completed years,103565.0,1.4,11.547964369614744,11.547964369614744
+Total,Total,Austria,2023,4.5,Total,Age in completed years,147591.0,6.0,11.902206989137602,11.547964369614744
+Below 60%,Total,Austria,2023,14.2,Total,Age in completed years,147591.0,32.9,11.902206989137602,11.902206989137602
+Above 60%,Total,Austria,2023,2.8,Total,Age in completed years,147591.0,1.3,11.902206989137602,11.902206989137602
+Below 60%,Total,Belgium,2013,4.7,Total,Age in completed years,120078.0,39.0,11.695905138491188,11.695905138491188
+Above 60%,Total,Belgium,2013,0.2,Total,Age in completed years,120078.0,4.4,11.695905138491188,11.695905138491188
+Total,Total,Belgium,2014,0.9,Total,Age in completed years,123158.0,10.4,11.721231482486148,11.695905138491188
+Below 60%,Total,Belgium,2014,3.8,Total,Age in completed years,123158.0,42.6,11.721231482486148,11.721231482486148
+Above 60%,Total,Belgium,2014,0.3,Total,Age in completed years,123158.0,4.5,11.721231482486148,11.721231482486148
+Total,Total,Belgium,2015,0.9,Total,Age in completed years,146626.0,9.4,11.895647226101454,11.721231482486148
+Below 60%,Total,Belgium,2015,4.1,Total,Age in completed years,146626.0,37.6,11.895647226101454,11.895647226101454
+Above 60%,Total,Belgium,2015,0.3,Total,Age in completed years,146626.0,4.5,11.895647226101454,11.895647226101454
+Total,Total,Belgium,2016,1.7,Total,Age in completed years,123702.0,9.8,11.725638810309619,11.895647226101454
+Below 60%,Total,Belgium,2016,6.1,Total,Age in completed years,123702.0,38.7,11.725638810309619,11.725638810309619
+Above 60%,Total,Belgium,2016,0.9,Total,Age in completed years,123702.0,4.5,11.725638810309619,11.725638810309619
+Total,Total,Belgium,2017,2.3,Total,Age in completed years,126703.0,9.4,11.749608936450194,11.725638810309619
+Below 60%,Total,Belgium,2017,7.7,Total,Age in completed years,126703.0,35.5,11.749608936450194,11.749608936450194
+Above 60%,Total,Belgium,2017,1.2,Total,Age in completed years,126703.0,4.5,11.749608936450194,11.749608936450194
+Total,Total,Belgium,2018,2.2,Total,Age in completed years,137860.0,8.9,11.834001210149008,11.749608936450194
+Below 60%,Total,Belgium,2018,8.1,Total,Age in completed years,137860.0,36.5,11.834001210149008,11.834001210149008
+Above 60%,Total,Belgium,2018,1.0,Total,Age in completed years,137860.0,3.5,11.834001210149008,11.834001210149008
+Total,Total,Belgium,2019,1.9,Total,Age in completed years,150006.0,8.4,11.918437238656205,11.834001210149008
+Below 60%,Total,Belgium,2019,5.4,Total,Age in completed years,150006.0,32.7,11.918437238656205,11.918437238656205
+Above 60%,Total,Belgium,2019,1.3,Total,Age in completed years,150006.0,4.1,11.918437238656205,11.918437238656205
+Total,Total,Belgium,2020,2.3,Total,Age in completed years,118683.0,7.7,11.684219777914981,11.918437238656205
+Below 60%,Total,Belgium,2020,5.8,Total,Age in completed years,118683.0,33.9,11.684219777914981,11.684219777914981
+Above 60%,Total,Belgium,2020,1.7,Total,Age in completed years,118683.0,3.5,11.684219777914981,11.684219777914981
+Total,Total,Belgium,2023,1.7,Total,Age in completed years,169609.0,7.8,12.041256962865885,11.684219777914981
+Below 60%,Total,Belgium,2023,6.2,Total,Age in completed years,169609.0,33.3,12.041256962865885,12.041256962865885
+Above 60%,Total,Belgium,2023,1.1,Total,Age in completed years,169609.0,4.1,12.041256962865885,12.041256962865885
+Below 60%,Total,Bulgaria,2013,35.7,Total,Age in completed years,18570.0,38.5,9.829356503193052,9.829356503193052
+Above 60%,Total,Bulgaria,2013,7.0,Total,Age in completed years,18570.0,7.9,9.829356503193052,9.829356503193052
+Total,Total,Bulgaria,2014,12.9,Total,Age in completed years,26615.0,12.9,10.189267817698312,9.829356503193052
+Below 60%,Total,Bulgaria,2014,34.4,Total,Age in completed years,26615.0,40.4,10.189267817698312,10.189267817698312
+Above 60%,Total,Bulgaria,2014,6.9,Total,Age in completed years,26615.0,5.2,10.189267817698312,10.189267817698312
+Total,Total,Bulgaria,2015,11.4,Total,Age in completed years,25223.0,14.8,10.135551201224898,10.189267817698312
+Below 60%,Total,Bulgaria,2015,27.2,Total,Age in completed years,25223.0,44.6,10.135551201224898,10.135551201224898
+Above 60%,Total,Bulgaria,2015,6.9,Total,Age in completed years,25223.0,6.4,10.135551201224898,10.135551201224898
+Total,Total,Bulgaria,2016,11.6,Total,Age in completed years,21241.0,20.7,9.963735632881486,10.135551201224898
+Below 60%,Total,Bulgaria,2016,29.2,Total,Age in completed years,21241.0,55.3,9.963735632881486,9.963735632881486
+Above 60%,Total,Bulgaria,2016,6.3,Total,Age in completed years,21241.0,10.4,9.963735632881486,9.963735632881486
+Total,Total,Bulgaria,2017,10.6,Total,Age in completed years,25597.0,18.9,10.150269502415737,9.963735632881486
+Below 60%,Total,Bulgaria,2017,27.2,Total,Age in completed years,25597.0,50.1,10.150269502415737,10.150269502415737
+Above 60%,Total,Bulgaria,2017,5.5,Total,Age in completed years,25597.0,9.4,10.150269502415737,10.150269502415737
+Total,Total,Bulgaria,2018,10.1,Total,Age in completed years,29559.0,17.9,10.294177375062137,10.150269502415737
+Below 60%,Total,Bulgaria,2018,26.2,Total,Age in completed years,29559.0,50.6,10.294177375062137,10.294177375062137
+Above 60%,Total,Bulgaria,2018,5.6,Total,Age in completed years,29559.0,8.7,10.294177375062137,10.294177375062137
+Total,Total,Bulgaria,2019,8.9,Total,Age in completed years,37929.0,16.0,10.543497634682945,10.294177375062137
+Below 60%,Total,Bulgaria,2019,22.8,Total,Age in completed years,37929.0,48.1,10.543497634682945,10.543497634682945
+Above 60%,Total,Bulgaria,2019,4.8,Total,Age in completed years,37929.0,6.6,10.543497634682945,10.543497634682945
+Total,Total,Bulgaria,2020,8.6,Total,Age in completed years,37364.0,14.4,10.52848971636439,10.543497634682945
+Below 60%,Total,Bulgaria,2020,20.9,Total,Age in completed years,37364.0,41.7,10.52848971636439,10.52848971636439
+Above 60%,Total,Bulgaria,2020,4.7,Total,Age in completed years,37364.0,5.9,10.52848971636439,10.52848971636439
+Total,Total,Bulgaria,2023,6.0,Total,Age in completed years,56807.0,11.1,10.94743243986193,10.52848971636439
+Below 60%,Total,Bulgaria,2023,15.8,Total,Age in completed years,56807.0,39.3,10.94743243986193,10.94743243986193
+Above 60%,Total,Bulgaria,2023,3.5,Total,Age in completed years,56807.0,3.8,10.94743243986193,10.94743243986193
+Below 60%,Total,Croatia,2013,14.9,Total,Age in completed years,10378.0,34.8,9.24753981296529,9.24753981296529
+Above 60%,Total,Croatia,2013,7.6,Total,Age in completed years,10378.0,2.1,9.24753981296529,9.24753981296529
+Total,Total,Croatia,2014,7.8,Total,Age in completed years,10638.0,7.5,9.272281773516365,9.24753981296529
+Below 60%,Total,Croatia,2014,13.1,Total,Age in completed years,10638.0,30.0,9.272281773516365,9.272281773516365
+Above 60%,Total,Croatia,2014,6.6,Total,Age in completed years,10638.0,2.2,9.272281773516365,9.272281773516365
+Total,Total,Croatia,2015,7.3,Total,Age in completed years,11706.0,7.2,9.367942232479672,9.272281773516365
+Below 60%,Total,Croatia,2015,13.9,Total,Age in completed years,11706.0,31.1,9.367942232479672,9.367942232479672
+Above 60%,Total,Croatia,2015,5.6,Total,Age in completed years,11706.0,1.3,9.367942232479672,9.367942232479672
+Total,Total,Croatia,2016,7.1,Total,Age in completed years,13985.0,6.4,9.545812108263812,9.367942232479672
+Below 60%,Total,Croatia,2016,12.8,Total,Age in completed years,13985.0,29.4,9.545812108263812,9.545812108263812
+Above 60%,Total,Croatia,2016,5.7,Total,Age in completed years,13985.0,1.0,9.545812108263812,9.545812108263812
+Total,Total,Croatia,2017,6.5,Total,Age in completed years,15553.0,5.8,9.652073119254888,9.545812108263812
+Below 60%,Total,Croatia,2017,12.6,Total,Age in completed years,15553.0,26.2,9.652073119254888,9.652073119254888
+Above 60%,Total,Croatia,2017,5.0,Total,Age in completed years,15553.0,0.7,9.652073119254888,9.652073119254888
+Total,Total,Croatia,2018,6.2,Total,Age in completed years,26029.0,5.1,10.167004997988611,9.652073119254888
+Below 60%,Total,Croatia,2018,10.9,Total,Age in completed years,26029.0,24.4,10.167004997988611,10.167004997988611
+Above 60%,Total,Croatia,2018,5.1,Total,Age in completed years,26029.0,0.6,10.167004997988611,10.167004997988611
+Total,Total,Croatia,2019,5.9,Total,Age in completed years,37726.0,4.7,10.538131297472674,10.167004997988611
+Below 60%,Total,Croatia,2019,11.6,Total,Age in completed years,37726.0,23.3,10.538131297472674,10.538131297472674
+Above 60%,Total,Croatia,2019,4.6,Total,Age in completed years,37726.0,0.6,10.538131297472674,10.538131297472674
+Total,Total,Croatia,2020,5.1,Total,Age in completed years,33414.0,4.2,10.41676017994517,10.538131297472674
+Below 60%,Total,Croatia,2020,7.8,Total,Age in completed years,33414.0,20.5,10.41676017994517,10.41676017994517
+Above 60%,Total,Croatia,2020,4.5,Total,Age in completed years,33414.0,0.6,10.41676017994517,10.41676017994517
+Total,Total,Croatia,2023,2.8,Total,Age in completed years,69396.0,4.0,11.147598917894847,10.41676017994517
+Below 60%,Total,Croatia,2023,6.0,Total,Age in completed years,69396.0,19.4,11.147598917894847,11.147598917894847
+Above 60%,Total,Croatia,2023,2.1,Total,Age in completed years,69396.0,0.4,11.147598917894847,11.147598917894847
+Below 60%,Total,Cyprus,2013,3.2,Total,Age in completed years,13666.0,11.5,9.5227394469648,9.5227394469648
+Above 60%,Total,Cyprus,2013,1.0,Total,Age in completed years,13666.0,1.8,9.5227394469648,9.5227394469648
+Total,Total,Cyprus,2014,1.5,Total,Age in completed years,13003.0,4.0,9.473012281423795,9.5227394469648
+Below 60%,Total,Cyprus,2014,2.9,Total,Age in completed years,13003.0,14.4,9.473012281423795,9.473012281423795
+Above 60%,Total,Cyprus,2014,1.3,Total,Age in completed years,13003.0,2.2,9.473012281423795,9.473012281423795
+Total,Total,Cyprus,2015,0.5,Total,Age in completed years,15364.0,3.9,9.639847474564585,9.473012281423795
+Below 60%,Total,Cyprus,2015,1.0,Total,Age in completed years,15364.0,13.1,9.639847474564585,9.639847474564585
+Above 60%,Total,Cyprus,2015,0.4,Total,Age in completed years,15364.0,2.1,9.639847474564585,9.639847474564585
+Total,Total,Cyprus,2016,1.3,Total,Age in completed years,18590.0,3.1,9.830432871630217,9.639847474564585
+Below 60%,Total,Cyprus,2016,3.7,Total,Age in completed years,18590.0,12.6,9.830432871630217,9.830432871630217
+Above 60%,Total,Cyprus,2016,0.9,Total,Age in completed years,18590.0,1.3,9.830432871630217,9.830432871630217
+Total,Total,Cyprus,2017,0.9,Total,Age in completed years,22458.0,2.8,10.019446703703723,9.830432871630217
+Below 60%,Total,Cyprus,2017,3.9,Total,Age in completed years,22458.0,10.3,10.019446703703723,10.019446703703723
+Above 60%,Total,Cyprus,2017,0.4,Total,Age in completed years,22458.0,1.4,10.019446703703723,10.019446703703723
+Total,Total,Cyprus,2018,1.1,Total,Age in completed years,25740.0,2.0,10.155840330434325,10.019446703703723
+Below 60%,Total,Cyprus,2018,3.2,Total,Age in completed years,25740.0,6.6,10.155840330434325,10.155840330434325
+Above 60%,Total,Cyprus,2018,0.8,Total,Age in completed years,25740.0,1.2,10.155840330434325,10.155840330434325
+Total,Total,Cyprus,2019,1.9,Total,Age in completed years,27553.0,2.2,10.223902994604545,10.155840330434325
+Below 60%,Total,Cyprus,2019,5.0,Total,Age in completed years,27553.0,10.0,10.223902994604545,10.223902994604545
+Above 60%,Total,Cyprus,2019,1.4,Total,Age in completed years,27553.0,0.8,10.223902994604545,10.223902994604545
+Total,Total,Cyprus,2020,1.7,Total,Age in completed years,22850.0,1.9,10.036750159040897,10.223902994604545
+Below 60%,Total,Cyprus,2020,3.2,Total,Age in completed years,22850.0,6.8,10.036750159040897,10.036750159040897
+Above 60%,Total,Cyprus,2020,1.4,Total,Age in completed years,22850.0,1.1,10.036750159040897,10.036750159040897
+Total,Total,Cyprus,2023,1.2,Total,Age in completed years,40761.0,2.6,10.615505553846324,10.036750159040897
+Below 60%,Total,Cyprus,2023,2.9,Total,Age in completed years,40761.0,7.9,10.615505553846324,10.615505553846324
+Above 60%,Total,Cyprus,2023,1.0,Total,Age in completed years,40761.0,1.7,10.615505553846324,10.615505553846324
+Below 60%,Total,Czechia,2013,13.2,Total,Age in completed years,30124.0,51.6,10.313110670792955,10.313110670792955
+Above 60%,Total,Czechia,2013,3.1,Total,Age in completed years,30124.0,7.9,10.313110670792955,10.313110670792955
+Total,Total,Czechia,2014,3.5,Total,Age in completed years,29897.0,10.5,10.30554686750946,10.313110670792955
+Below 60%,Total,Czechia,2014,12.9,Total,Age in completed years,29897.0,44.1,10.30554686750946,10.30554686750946
+Above 60%,Total,Czechia,2014,2.5,Total,Age in completed years,29897.0,6.9,10.30554686750946,10.30554686750946
+Total,Total,Czechia,2015,3.3,Total,Age in completed years,29602.0,10.4,10.295630986527803,10.30554686750946
+Below 60%,Total,Czechia,2015,11.0,Total,Age in completed years,29602.0,48.0,10.295630986527803,10.295630986527803
+Above 60%,Total,Czechia,2015,2.5,Total,Age in completed years,29602.0,6.3,10.295630986527803,10.295630986527803
+Total,Total,Czechia,2016,3.0,Total,Age in completed years,64083.0,9.5,11.067950001766604,10.295630986527803
+Below 60%,Total,Czechia,2016,9.9,Total,Age in completed years,64083.0,45.4,11.067950001766604,11.067950001766604
+Above 60%,Total,Czechia,2016,2.3,Total,Age in completed years,64083.0,5.7,11.067950001766604,11.067950001766604
+Total,Total,Czechia,2017,2.1,Total,Age in completed years,51847.0,8.7,10.856071640107553,11.067950001766604
+Below 60%,Total,Czechia,2017,4.8,Total,Age in completed years,51847.0,44.2,10.856071640107553,10.856071640107553
+Above 60%,Total,Czechia,2017,1.9,Total,Age in completed years,51847.0,5.1,10.856071640107553,10.856071640107553
+Total,Total,Czechia,2018,2.3,Total,Age in completed years,65910.0,7.8,11.09606062613619,10.856071640107553
+Below 60%,Total,Czechia,2018,5.3,Total,Age in completed years,65910.0,41.9,11.09606062613619,11.09606062613619
+Above 60%,Total,Czechia,2018,2.0,Total,Age in completed years,65910.0,4.2,11.09606062613619,11.09606062613619
+Total,Total,Czechia,2019,1.9,Total,Age in completed years,105888.0,6.9,11.570146654617513,11.09606062613619
+Below 60%,Total,Czechia,2019,7.6,Total,Age in completed years,105888.0,37.9,11.570146654617513,11.570146654617513
+Above 60%,Total,Czechia,2019,1.3,Total,Age in completed years,105888.0,3.4,11.570146654617513,11.570146654617513
+Total,Total,Czechia,2020,2.0,Total,Age in completed years,63095.0,6.5,11.052412655077827,11.570146654617513
+Below 60%,Total,Czechia,2020,5.2,Total,Age in completed years,63095.0,38.9,11.052412655077827,11.052412655077827
+Above 60%,Total,Czechia,2020,1.7,Total,Age in completed years,63095.0,3.1,11.052412655077827,11.052412655077827
+Total,Total,Czechia,2023,2.6,Total,Age in completed years,142149.0,9.1,11.864638117079146,11.052412655077827
+Below 60%,Total,Czechia,2023,10.9,Total,Age in completed years,142149.0,47.4,11.864638117079146,11.864638117079146
+Above 60%,Total,Czechia,2023,1.7,Total,Age in completed years,142149.0,5.0,11.864638117079146,11.864638117079146
+Below 60%,Total,Denmark,2013,8.4,Total,Age in completed years,60312.0,75.2,11.007302948202419,11.007302948202419
+Above 60%,Total,Denmark,2013,1.5,Total,Age in completed years,60312.0,10.2,11.007302948202419,11.007302948202419
+Total,Total,Denmark,2014,2.3,Total,Age in completed years,68388.0,15.6,11.132967271964477,11.007302948202419
+Below 60%,Total,Denmark,2014,6.9,Total,Age in completed years,68388.0,68.1,11.132967271964477,11.132967271964477
+Above 60%,Total,Denmark,2014,1.7,Total,Age in completed years,68388.0,8.5,11.132967271964477,11.132967271964477
+Total,Total,Denmark,2015,2.8,Total,Age in completed years,78492.0,15.1,11.270764727819921,11.132967271964477
+Below 60%,Total,Denmark,2015,10.4,Total,Age in completed years,78492.0,66.8,11.270764727819921,11.270764727819921
+Above 60%,Total,Denmark,2015,1.7,Total,Age in completed years,78492.0,7.9,11.270764727819921,11.270764727819921
+Total,Total,Denmark,2016,1.7,Total,Age in completed years,74383.0,15.1,11.216996143930366,11.270764727819921
+Below 60%,Total,Denmark,2016,4.3,Total,Age in completed years,74383.0,74.2,11.216996143930366,11.216996143930366
+Above 60%,Total,Denmark,2016,1.3,Total,Age in completed years,74383.0,7.1,11.216996143930366,11.216996143930366
+Total,Total,Denmark,2017,2.7,Total,Age in completed years,68579.0,15.7,11.13575622601691,11.216996143930366
+Below 60%,Total,Denmark,2017,9.7,Total,Age in completed years,68579.0,75.4,11.13575622601691,11.13575622601691
+Above 60%,Total,Denmark,2017,1.8,Total,Age in completed years,68579.0,7.4,11.13575622601691,11.13575622601691
+Total,Total,Denmark,2018,3.2,Total,Age in completed years,64669.0,14.7,11.077052694440638,11.13575622601691
+Below 60%,Total,Denmark,2018,12.4,Total,Age in completed years,64669.0,69.7,11.077052694440638,11.077052694440638
+Above 60%,Total,Denmark,2018,1.9,Total,Age in completed years,64669.0,6.8,11.077052694440638,11.077052694440638
+Total,Total,Denmark,2019,2.8,Total,Age in completed years,61384.0,15.6,11.02492078461494,11.077052694440638
+Below 60%,Total,Denmark,2019,11.7,Total,Age in completed years,61384.0,74.1,11.02492078461494,11.02492078461494
+Above 60%,Total,Denmark,2019,1.6,Total,Age in completed years,61384.0,7.2,11.02492078461494,11.02492078461494
+Total,Total,Denmark,2020,2.8,Total,Age in completed years,57230.0,14.1,10.954850988603628,11.02492078461494
+Below 60%,Total,Denmark,2020,11.8,Total,Age in completed years,57230.0,70.2,10.954850988603628,10.954850988603628
+Above 60%,Total,Denmark,2020,1.6,Total,Age in completed years,57230.0,6.5,10.954850988603628,10.954850988603628
+Total,Total,Denmark,2023,1.8,Total,Age in completed years,98344.0,15.4,11.496236983683993,10.954850988603628
+Below 60%,Total,Denmark,2023,5.0,Total,Age in completed years,98344.0,72.3,11.496236983683993,11.496236983683993
+Above 60%,Total,Denmark,2023,1.4,Total,Age in completed years,98344.0,7.8,11.496236983683993,11.496236983683993
+Below 60%,Total,Estonia,2013,7.6,Total,Age in completed years,4109.0,29.3,8.32117830749028,8.32117830749028
+Above 60%,Total,Estonia,2013,5.4,Total,Age in completed years,4109.0,2.2,8.32117830749028,8.32117830749028
+Total,Total,Estonia,2014,3.9,Total,Age in completed years,3904.0,8.3,8.270013062273787,8.32117830749028
+Below 60%,Total,Estonia,2014,6.9,Total,Age in completed years,3904.0,30.8,8.270013062273787,8.270013062273787
+Above 60%,Total,Estonia,2014,3.1,Total,Age in completed years,3904.0,2.0,8.270013062273787,8.270013062273787
+Total,Total,Estonia,2015,2.8,Total,Age in completed years,15413.0,6.8,9.643031466337938,8.270013062273787
+Below 60%,Total,Estonia,2015,4.5,Total,Age in completed years,15413.0,25.8,9.643031466337938,9.643031466337938
+Above 60%,Total,Estonia,2015,2.3,Total,Age in completed years,15413.0,1.6,9.643031466337938,9.643031466337938
+Total,Total,Estonia,2016,3.3,Total,Age in completed years,14822.0,4.9,9.60393530751386,9.643031466337938
+Below 60%,Total,Estonia,2016,4.6,Total,Age in completed years,14822.0,19.3,9.60393530751386,9.60393530751386
+Above 60%,Total,Estonia,2016,3.0,Total,Age in completed years,14822.0,0.9,9.60393530751386,9.60393530751386
+Total,Total,Estonia,2017,3.3,Total,Age in completed years,17616.0,4.8,9.77661962392714,9.60393530751386
+Below 60%,Total,Estonia,2017,4.0,Total,Age in completed years,17616.0,18.4,9.77661962392714,9.77661962392714
+Above 60%,Total,Estonia,2017,3.1,Total,Age in completed years,17616.0,1.1,9.77661962392714,9.77661962392714
+Total,Total,Estonia,2018,2.9,Total,Age in completed years,17547.0,4.0,9.772695262286105,9.77661962392714
+Below 60%,Total,Estonia,2018,2.8,Total,Age in completed years,17547.0,16.1,9.772695262286105,9.772695262286105
+Above 60%,Total,Estonia,2018,2.9,Total,Age in completed years,17547.0,0.6,9.772695262286105,9.772695262286105
+Total,Total,Estonia,2019,2.7,Total,Age in completed years,18259.0,4.4,9.81246815414896,9.772695262286105
+Below 60%,Total,Estonia,2019,4.5,Total,Age in completed years,18259.0,16.2,9.81246815414896,9.81246815414896
+Above 60%,Total,Estonia,2019,2.2,Total,Age in completed years,18259.0,1.2,9.81246815414896,9.81246815414896
+Total,Total,Estonia,2020,2.1,Total,Age in completed years,16209.0,4.4,9.693383614729722,9.81246815414896
+Below 60%,Total,Estonia,2020,3.7,Total,Age in completed years,16209.0,16.9,9.693383614729722,9.693383614729722
+Above 60%,Total,Estonia,2020,1.7,Total,Age in completed years,16209.0,1.1,9.693383614729722,9.693383614729722
+Total,Total,Estonia,2023,2.9,Total,Age in completed years,26399.0,7.6,10.181119289134408,9.693383614729722
+Below 60%,Total,Estonia,2023,4.5,Total,Age in completed years,26399.0,27.8,10.181119289134408,10.181119289134408
+Above 60%,Total,Estonia,2023,2.4,Total,Age in completed years,26399.0,1.8,10.181119289134408,10.181119289134408
+Below 60%,Total,Finland,2013,2.7,Total,Age in completed years,31941.0,20.4,10.371677037216255,10.371677037216255
+Above 60%,Total,Finland,2013,0.5,Total,Age in completed years,31941.0,2.8,10.371677037216255,10.371677037216255
+Total,Total,Finland,2014,0.7,Total,Age in completed years,31507.0,5.1,10.357996760823214,10.371677037216255
+Below 60%,Total,Finland,2014,1.9,Total,Age in completed years,31507.0,21.2,10.357996760823214,10.357996760823214
+Above 60%,Total,Finland,2014,0.5,Total,Age in completed years,31507.0,2.8,10.357996760823214,10.357996760823214
+Total,Total,Finland,2015,0.7,Total,Age in completed years,28746.0,4.9,10.266288692954797,10.357996760823214
+Below 60%,Total,Finland,2015,2.0,Total,Age in completed years,28746.0,20.4,10.266288692954797,10.266288692954797
+Above 60%,Total,Finland,2015,0.5,Total,Age in completed years,28746.0,2.7,10.266288692954797,10.266288692954797
+Total,Total,Finland,2016,0.7,Total,Age in completed years,34905.0,4.4,10.460414013184781,10.266288692954797
+Below 60%,Total,Finland,2016,3.2,Total,Age in completed years,34905.0,19.5,10.460414013184781,10.460414013184781
+Above 60%,Total,Finland,2016,0.4,Total,Age in completed years,34905.0,2.4,10.460414013184781,10.460414013184781
+Total,Total,Finland,2017,0.7,Total,Age in completed years,31797.0,4.3,10.367158673708655,10.460414013184781
+Below 60%,Total,Finland,2017,2.4,Total,Age in completed years,31797.0,18.2,10.367158673708655,10.367158673708655
+Above 60%,Total,Finland,2017,0.5,Total,Age in completed years,31797.0,2.5,10.367158673708655,10.367158673708655
+Total,Total,Finland,2018,0.9,Total,Age in completed years,31106.0,4.3,10.345188153226388,10.367158673708655
+Below 60%,Total,Finland,2018,2.3,Total,Age in completed years,31106.0,18.1,10.345188153226388,10.345188153226388
+Above 60%,Total,Finland,2018,0.7,Total,Age in completed years,31106.0,2.4,10.345188153226388,10.345188153226388
+Total,Total,Finland,2019,0.9,Total,Age in completed years,32758.0,4.0,10.396933012470582,10.345188153226388
+Below 60%,Total,Finland,2019,1.6,Total,Age in completed years,32758.0,18.2,10.396933012470582,10.396933012470582
+Above 60%,Total,Finland,2019,0.8,Total,Age in completed years,32758.0,2.1,10.396933012470582,10.396933012470582
+Total,Total,Finland,2020,1.0,Total,Age in completed years,32898.0,4.1,10.401197541154744,10.396933012470582
+Below 60%,Total,Finland,2020,3.2,Total,Age in completed years,32898.0,17.4,10.401197541154744,10.401197541154744
+Above 60%,Total,Finland,2020,0.8,Total,Age in completed years,32898.0,2.3,10.401197541154744,10.401197541154744
+Total,Total,Finland,2023,1.0,Total,Age in completed years,73236.0,5.5,11.201456036726139,10.401197541154744
+Below 60%,Total,Finland,2023,3.1,Total,Age in completed years,73236.0,22.4,11.201456036726139,11.201456036726139
+Above 60%,Total,Finland,2023,0.7,Total,Age in completed years,73236.0,3.1,11.201456036726139,11.201456036726139
+Below 60%,Total,France,2013,8.0,Total,Age in completed years,338752.0,23.1,12.733026507225393,12.733026507225393
+Above 60%,Total,France,2013,1.2,Total,Age in completed years,338752.0,2.4,12.733026507225393,12.733026507225393
+Total,Total,France,2014,2.3,Total,Age in completed years,340383.0,5.1,12.737829671051392,12.733026507225393
+Below 60%,Total,France,2014,8.3,Total,Age in completed years,340383.0,20.9,12.737829671051392,12.737829671051392
+Above 60%,Total,France,2014,1.4,Total,Age in completed years,340383.0,2.7,12.737829671051392,12.737829671051392
+Total,Total,France,2015,2.3,Total,Age in completed years,364221.0,5.7,12.805518850821379,12.737829671051392
+Below 60%,Total,France,2015,7.8,Total,Age in completed years,364221.0,21.5,12.805518850821379,12.805518850821379
+Above 60%,Total,France,2015,1.5,Total,Age in completed years,364221.0,3.2,12.805518850821379,12.805518850821379
+Total,Total,France,2016,2.7,Total,Age in completed years,377709.0,5.2,12.841881984389248,12.805518850821379
+Below 60%,Total,France,2016,9.8,Total,Age in completed years,377709.0,22.3,12.841881984389248,12.841881984389248
+Above 60%,Total,France,2016,1.6,Total,Age in completed years,377709.0,2.5,12.841881984389248,12.841881984389248
+Total,Total,France,2017,2.1,Total,Age in completed years,369621.0,5.0,12.820236140787719,12.841881984389248
+Below 60%,Total,France,2017,5.4,Total,Age in completed years,369621.0,20.2,12.820236140787719,12.820236140787719
+Above 60%,Total,France,2017,1.6,Total,Age in completed years,369621.0,2.7,12.820236140787719,12.820236140787719
+Total,Total,France,2018,2.7,Total,Age in completed years,387160.0,4.7,12.866595906171147,12.820236140787719
+Below 60%,Total,France,2018,8.3,Total,Age in completed years,387160.0,20.3,12.866595906171147,12.866595906171147
+Above 60%,Total,France,2018,1.9,Total,Age in completed years,387160.0,2.2,12.866595906171147,12.866595906171147
+Total,Total,France,2019,2.3,Total,Age in completed years,385596.0,5.5,12.862548061605276,12.866595906171147
+Below 60%,Total,France,2019,7.3,Total,Age in completed years,385596.0,22.8,12.862548061605276,12.862548061605276
+Above 60%,Total,France,2019,1.5,Total,Age in completed years,385596.0,2.8,12.862548061605276,12.862548061605276
+Total,Total,France,2020,3.8,Total,Age in completed years,331137.0,5.6,12.710290485901863,12.862548061605276
+Below 60%,Total,France,2020,10.6,Total,Age in completed years,331137.0,24.6,12.710290485901863,12.710290485901863
+Above 60%,Total,France,2020,2.7,Total,Age in completed years,331137.0,2.6,12.710290485901863,12.710290485901863
+Total,Total,France,2023,4.6,Total,Age in completed years,467548.0,6.5,13.055259435052623,12.710290485901863
+Below 60%,Total,France,2023,13.7,Total,Age in completed years,467548.0,27.9,13.055259435052623,13.055259435052623
+Above 60%,Total,France,2023,2.9,Total,Age in completed years,467548.0,2.7,13.055259435052623,13.055259435052623
+Below 60%,Total,Germany,2013,4.8,Total,Age in completed years,692713.0,49.2,13.448372494575914,13.448372494575914
+Above 60%,Total,Germany,2013,1.0,Total,Age in completed years,692713.0,10.1,13.448372494575914,13.448372494575914
+Total,Total,Germany,2014,1.9,Total,Age in completed years,898840.0,15.9,13.708861434630307,13.448372494575914
+Below 60%,Total,Germany,2014,6.1,Total,Age in completed years,898840.0,54.4,13.708861434630307,13.708861434630307
+Above 60%,Total,Germany,2014,1.0,Total,Age in completed years,898840.0,8.3,13.708861434630307,13.708861434630307
+Total,Total,Germany,2015,1.8,Total,Age in completed years,1595865.0,15.6,14.282927093567313,13.708861434630307
+Below 60%,Total,Germany,2015,5.2,Total,Age in completed years,1595865.0,51.9,14.282927093567313,14.282927093567313
+Above 60%,Total,Germany,2015,1.1,Total,Age in completed years,1595865.0,8.4,14.282927093567313,14.282927093567313
+Total,Total,Germany,2016,1.9,Total,Age in completed years,1042484.0,15.8,13.857117844062369,14.282927093567313
+Below 60%,Total,Germany,2016,6.0,Total,Age in completed years,1042484.0,50.3,13.857117844062369,13.857117844062369
+Above 60%,Total,Germany,2016,1.1,Total,Age in completed years,1042484.0,9.1,13.857117844062369,13.857117844062369
+Total,Total,Germany,2017,1.8,Total,Age in completed years,900291.0,14.5,13.710474434130175,13.857117844062369
+Below 60%,Total,Germany,2017,5.4,Total,Age in completed years,900291.0,48.5,13.710474434130175,13.710474434130175
+Above 60%,Total,Germany,2017,1.1,Total,Age in completed years,900291.0,7.9,13.710474434130175,13.710474434130175
+Total,Total,Germany,2018,2.3,Total,Age in completed years,855708.0,14.2,13.659685644055639,13.710474434130175
+Below 60%,Total,Germany,2018,5.9,Total,Age in completed years,855708.0,49.5,13.659685644055639,13.659685644055639
+Above 60%,Total,Germany,2018,1.6,Total,Age in completed years,855708.0,7.5,13.659685644055639,13.659685644055639
+Total,Total,Germany,2019,2.1,Total,Age in completed years,834338.0,13.9,13.634395073572517,13.659685644055639
+Below 60%,Total,Germany,2019,5.5,Total,Age in completed years,834338.0,48.3,13.634395073572517,13.634395073572517
+Above 60%,Total,Germany,2019,1.4,Total,Age in completed years,834338.0,8.0,13.634395073572517,13.634395073572517
+Total,Total,Germany,2020,1.2,Total,Age in completed years,666639.0,9.0,13.410005449056088,13.634395073572517
+Below 60%,Total,Germany,2020,2.6,Total,Age in completed years,666639.0,39.4,13.410005449056088,13.410005449056088
+Above 60%,Total,Germany,2020,0.9,Total,Age in completed years,666639.0,3.3,13.410005449056088,13.410005449056088
+Total,Total,Germany,2023,1.9,Total,Age in completed years,1303251.0,13.0,14.08037323725415,13.410005449056088
+Below 60%,Total,Germany,2023,4.8,Total,Age in completed years,1303251.0,43.2,14.08037323725415,14.08037323725415
+Above 60%,Total,Germany,2023,1.5,Total,Age in completed years,1303251.0,7.9,14.08037323725415,14.08037323725415
+Below 60%,Total,Greece,2013,11.8,Total,Age in completed years,57946.0,93.1,10.96728407866167,10.96728407866167
+Above 60%,Total,Greece,2013,5.5,Total,Age in completed years,57946.0,19.9,10.96728407866167,10.96728407866167
+Total,Total,Greece,2014,6.0,Total,Age in completed years,59013.0,44.9,10.985529982875073,10.96728407866167
+Below 60%,Total,Greece,2014,11.6,Total,Age in completed years,59013.0,93.3,10.985529982875073,10.985529982875073
+Above 60%,Total,Greece,2014,4.4,Total,Age in completed years,59013.0,31.2,10.985529982875073,10.985529982875073
+Total,Total,Greece,2015,6.7,Total,Age in completed years,64446.0,45.5,11.073598459572551,10.985529982875073
+Below 60%,Total,Greece,2015,12.1,Total,Age in completed years,64446.0,94.0,11.073598459572551,11.073598459572551
+Above 60%,Total,Greece,2015,5.2,Total,Age in completed years,64446.0,32.3,11.073598459572551,11.073598459572551
+Total,Total,Greece,2016,6.3,Total,Age in completed years,116867.0,40.5,11.6688003717492,11.073598459572551
+Below 60%,Total,Greece,2016,11.9,Total,Age in completed years,116867.0,91.9,11.6688003717492,11.6688003717492
+Above 60%,Total,Greece,2016,4.8,Total,Age in completed years,116867.0,26.7,11.6688003717492,11.6688003717492
+Total,Total,Greece,2017,6.0,Total,Age in completed years,112247.0,39.6,11.628465988073831,11.6688003717492
+Below 60%,Total,Greece,2017,12.1,Total,Age in completed years,112247.0,89.7,11.628465988073831,11.628465988073831
+Above 60%,Total,Greece,2017,4.5,Total,Age in completed years,112247.0,26.8,11.628465988073831,11.628465988073831
+Total,Total,Greece,2018,5.9,Total,Age in completed years,119489.0,39.5,11.6909879648438,11.628465988073831
+Below 60%,Total,Greece,2018,12.1,Total,Age in completed years,119489.0,90.7,11.6909879648438,11.6909879648438
+Above 60%,Total,Greece,2018,4.5,Total,Age in completed years,119489.0,27.8,11.6909879648438,11.6909879648438
+Total,Total,Greece,2019,6.0,Total,Age in completed years,129459.0,36.2,11.7711272320995,11.6909879648438
+Below 60%,Total,Greece,2019,11.7,Total,Age in completed years,129459.0,88.2,11.7711272320995,11.7711272320995
+Above 60%,Total,Greece,2019,4.7,Total,Age in completed years,129459.0,24.8,11.7711272320995,11.7711272320995
+Total,Total,Greece,2020,5.8,Total,Age in completed years,84221.0,33.3,11.341211448762381,11.7711272320995
+Below 60%,Total,Greece,2020,13.7,Total,Age in completed years,84221.0,83.4,11.341211448762381,11.341211448762381
+Above 60%,Total,Greece,2020,4.1,Total,Age in completed years,84221.0,22.5,11.341211448762381,11.341211448762381
+Total,Total,Greece,2023,6.9,Total,Age in completed years,116591.0,28.5,11.666435939910063,11.341211448762381
+Below 60%,Total,Greece,2023,14.8,Total,Age in completed years,116591.0,86.3,11.666435939910063,11.666435939910063
+Above 60%,Total,Greece,2023,5.0,Total,Age in completed years,116591.0,15.1,11.666435939910063,11.666435939910063
+Below 60%,Total,Hungary,2013,43.0,Total,Age in completed years,38968.0,40.7,10.57052173723882,10.57052173723882
+Above 60%,Total,Hungary,2013,12.8,Total,Age in completed years,38968.0,9.7,10.57052173723882,10.57052173723882
+Total,Total,Hungary,2014,17.3,Total,Age in completed years,54581.0,12.8,10.907459437050116,10.57052173723882
+Below 60%,Total,Hungary,2014,42.1,Total,Age in completed years,54581.0,38.4,10.907459437050116,10.907459437050116
+Above 60%,Total,Hungary,2014,12.9,Total,Age in completed years,54581.0,8.3,10.907459437050116,10.907459437050116
+Total,Total,Hungary,2015,15.5,Total,Age in completed years,58344.0,8.5,10.974128944240208,10.907459437050116
+Below 60%,Total,Hungary,2015,35.0,Total,Age in completed years,58344.0,31.5,10.974128944240208,10.974128944240208
+Above 60%,Total,Hungary,2015,12.0,Total,Age in completed years,58344.0,4.5,10.974128944240208,10.974128944240208
+Total,Total,Hungary,2016,16.9,Total,Age in completed years,53618.0,8.8,10.889658761858488,10.974128944240208
+Below 60%,Total,Hungary,2016,32.7,Total,Age in completed years,53618.0,32.9,10.889658761858488,10.889658761858488
+Above 60%,Total,Hungary,2016,14.2,Total,Age in completed years,53618.0,4.7,10.889658761858488,10.889658761858488
+Total,Total,Hungary,2017,15.9,Total,Age in completed years,68070.0,10.7,11.128306557093602,10.889658761858488
+Below 60%,Total,Hungary,2017,25.0,Total,Age in completed years,68070.0,49.4,11.128306557093602,11.128306557093602
+Above 60%,Total,Hungary,2017,14.5,Total,Age in completed years,68070.0,4.7,11.128306557093602,11.128306557093602
+Total,Total,Hungary,2018,7.5,Total,Age in completed years,82937.0,9.6,11.325848619692412,11.128306557093602
+Below 60%,Total,Hungary,2018,14.5,Total,Age in completed years,82937.0,46.4,11.325848619692412,11.325848619692412
+Above 60%,Total,Hungary,2018,6.4,Total,Age in completed years,82937.0,4.2,11.325848619692412,11.325848619692412
+Total,Total,Hungary,2019,7.9,Total,Age in completed years,88581.0,3.9,11.39168395568245,11.325848619692412
+Below 60%,Total,Hungary,2019,18.8,Total,Age in completed years,88581.0,17.8,11.39168395568245,11.39168395568245
+Above 60%,Total,Hungary,2019,6.2,Total,Age in completed years,88581.0,1.7,11.39168395568245,11.39168395568245
+Total,Total,Hungary,2020,7.6,Total,Age in completed years,75470.0,3.7,11.23150375548926,11.39168395568245
+Below 60%,Total,Hungary,2020,23.3,Total,Age in completed years,75470.0,9.8,11.23150375548926,11.23150375548926
+Above 60%,Total,Hungary,2020,5.0,Total,Age in completed years,75470.0,2.7,11.23150375548926,11.23150375548926
+Total,Total,Hungary,2023,5.3,Total,Age in completed years,96192.0,7.3,11.474111868933527,11.23150375548926
+Below 60%,Total,Hungary,2023,16.1,Total,Age in completed years,96192.0,28.3,11.474111868933527,11.474111868933527
+Above 60%,Total,Hungary,2023,3.6,Total,Age in completed years,96192.0,3.9,11.474111868933527,11.474111868933527
+Below 60%,Total,Iceland,2013,7.6,Total,Age in completed years,6406.0,44.3,8.765146421639022,8.765146421639022
+Above 60%,Total,Iceland,2013,2.3,Total,Age in completed years,6406.0,5.4,8.765146421639022,8.765146421639022
+Total,Total,Iceland,2014,2.2,Total,Age in completed years,5368.0,8.1,8.58839695042257,8.765146421639022
+Below 60%,Total,Iceland,2014,4.4,Total,Age in completed years,5368.0,41.0,8.58839695042257,8.58839695042257
+Above 60%,Total,Iceland,2014,2.0,Total,Age in completed years,5368.0,5.4,8.58839695042257,8.58839695042257
+Total,Total,Iceland,2015,2.5,Total,Age in completed years,5635.0,8.2,8.636929873018572,8.58839695042257
+Below 60%,Total,Iceland,2015,7.2,Total,Age in completed years,5635.0,45.2,8.636929873018572,8.636929873018572
+Above 60%,Total,Iceland,2015,2.1,Total,Age in completed years,5635.0,4.7,8.636929873018572,8.636929873018572
+Total,Total,Iceland,2016,1.5,Total,Age in completed years,8710.0,6.3,9.072341873818893,8.636929873018572
+Below 60%,Total,Iceland,2016,1.8,Total,Age in completed years,8710.0,32.4,9.072341873818893,9.072341873818893
+Above 60%,Total,Iceland,2016,1.5,Total,Age in completed years,8710.0,3.9,9.072341873818893,9.072341873818893
+Total,Total,Iceland,2017,1.6,Total,Age in completed years,12116.0,8.4,9.402364704231523,9.072341873818893
+Below 60%,Total,Iceland,2017,2.3,Total,Age in completed years,12116.0,40.2,9.402364704231523,9.402364704231523
+Above 60%,Total,Iceland,2017,1.6,Total,Age in completed years,12116.0,4.8,9.402364704231523,9.402364704231523
+Total,Total,Iceland,2018,1.6,Total,Age in completed years,11830.0,8.9,9.378478484253662,9.402364704231523
+Below 60%,Total,Iceland,2018,4.6,Total,Age in completed years,11830.0,33.3,9.378478484253662,9.378478484253662
+Above 60%,Total,Iceland,2018,1.3,Total,Age in completed years,11830.0,6.5,9.378478484253662,9.378478484253662
+Total,Total,Iceland,2019,3.3,Total,Age in completed years,9872.0,12.6,9.19755903761145,9.378478484253662
+Below 60%,Total,Iceland,2019,10.1,Total,Age in completed years,9872.0,50.8,9.19755903761145,9.19755903761145
+Above 60%,Total,Iceland,2019,2.7,Total,Age in completed years,9872.0,8.8,9.19755903761145,9.19755903761145
+Total,Total,Iceland,2020,2.8,Total,Age in completed years,8544.0,13.1,9.053101595549691,9.19755903761145
+Below 60%,Total,Iceland,2020,3.4,Total,Age in completed years,8544.0,57.1,9.053101595549691,9.053101595549691
+Above 60%,Total,Iceland,2020,2.7,Total,Age in completed years,8544.0,9.2,9.053101595549691,9.053101595549691
+Below 60%,Total,Ireland,2013,1.7,Total,Age in completed years,65539.0,21.0,11.090415922252806,11.090415922252806
+Above 60%,Total,Ireland,2013,1.3,Total,Age in completed years,65539.0,1.6,11.090415922252806,11.090415922252806
+Total,Total,Ireland,2014,1.3,Total,Age in completed years,73519.0,6.4,11.205312757029569,11.090415922252806
+Below 60%,Total,Ireland,2014,2.7,Total,Age in completed years,73519.0,26.7,11.205312757029569,11.205312757029569
+Above 60%,Total,Ireland,2014,1.0,Total,Age in completed years,73519.0,2.3,11.205312757029569,11.205312757029569
+Total,Total,Ireland,2015,1.2,Total,Age in completed years,80792.0,4.7,11.299645607092907,11.205312757029569
+Below 60%,Total,Ireland,2015,2.2,Total,Age in completed years,80792.0,18.3,11.299645607092907,11.299645607092907
+Above 60%,Total,Ireland,2015,1.0,Total,Age in completed years,80792.0,2.1,11.299645607092907,11.299645607092907
+Total,Total,Ireland,2016,1.0,Total,Age in completed years,93378.0,4.6,11.444421759536338,11.299645607092907
+Below 60%,Total,Ireland,2016,3.0,Total,Age in completed years,93378.0,18.6,11.444421759536338,11.444421759536338
+Above 60%,Total,Ireland,2016,0.6,Total,Age in completed years,93378.0,1.7,11.444421759536338,11.444421759536338
+Total,Total,Ireland,2017,0.7,Total,Age in completed years,84743.0,4.5,11.347390226276332,11.444421759536338
+Below 60%,Total,Ireland,2017,1.7,Total,Age in completed years,84743.0,19.9,11.347390226276332,11.347390226276332
+Above 60%,Total,Ireland,2017,0.5,Total,Age in completed years,84743.0,1.7,11.347390226276332,11.347390226276332
+Total,Total,Ireland,2018,0.8,Total,Age in completed years,105699.0,3.4,11.568360171858329,11.347390226276332
+Below 60%,Total,Ireland,2018,1.5,Total,Age in completed years,105699.0,14.6,11.568360171858329,11.568360171858329
+Above 60%,Total,Ireland,2018,0.7,Total,Age in completed years,105699.0,1.5,11.568360171858329,11.568360171858329
+Total,Total,Ireland,2019,1.2,Total,Age in completed years,96321.0,5.2,11.475452024446678,11.568360171858329
+Below 60%,Total,Ireland,2019,4.1,Total,Age in completed years,96321.0,22.6,11.475452024446678,11.475452024446678
+Above 60%,Total,Ireland,2019,0.7,Total,Age in completed years,96321.0,2.5,11.475452024446678,11.475452024446678
+Total,Total,Ireland,2020,1.3,Total,Age in completed years,81918.0,4.2,11.313486233167579,11.475452024446678
+Below 60%,Total,Ireland,2020,5.2,Total,Age in completed years,81918.0,18.1,11.313486233167579,11.313486233167579
+Above 60%,Total,Ireland,2020,0.8,Total,Age in completed years,81918.0,2.2,11.313486233167579,11.313486233167579
+Below 60%,Total,Italy,2013,16.8,Total,Age in completed years,307454.0,32.2,12.636084014056339,12.636084014056339
+Above 60%,Total,Italy,2013,6.9,Total,Age in completed years,307454.0,3.3,12.636084014056339,12.636084014056339
+Total,Total,Italy,2014,9.5,Total,Age in completed years,277631.0,8.5,12.53405177474649,12.636084014056339
+Below 60%,Total,Italy,2014,17.6,Total,Age in completed years,277631.0,31.9,12.53405177474649,12.53405177474649
+Above 60%,Total,Italy,2014,7.6,Total,Age in completed years,277631.0,2.9,12.53405177474649,12.53405177474649
+Total,Total,Italy,2015,9.6,Total,Age in completed years,280078.0,8.6,12.542826985213718,12.53405177474649
+Below 60%,Total,Italy,2015,18.9,Total,Age in completed years,280078.0,32.9,12.542826985213718,12.542826985213718
+Above 60%,Total,Italy,2015,7.3,Total,Age in completed years,280078.0,2.5,12.542826985213718,12.542826985213718
+Total,Total,Italy,2016,7.6,Total,Age in completed years,300823.0,9.6,12.614280655109033,12.542826985213718
+Below 60%,Total,Italy,2016,14.3,Total,Age in completed years,300823.0,35.8,12.614280655109033,12.614280655109033
+Above 60%,Total,Italy,2016,5.8,Total,Age in completed years,300823.0,2.7,12.614280655109033,12.614280655109033
+Total,Total,Italy,2017,5.5,Total,Age in completed years,343440.0,8.2,12.746770614610952,12.614280655109033
+Below 60%,Total,Italy,2017,9.3,Total,Age in completed years,343440.0,32.9,12.746770614610952,12.746770614610952
+Above 60%,Total,Italy,2017,4.5,Total,Age in completed years,343440.0,1.9,12.746770614610952,12.746770614610952
+Total,Total,Italy,2018,5.0,Total,Age in completed years,332324.0,8.2,12.7138686847358,12.746770614610952
+Below 60%,Total,Italy,2018,9.7,Total,Age in completed years,332324.0,32.9,12.7138686847358,12.7138686847358
+Above 60%,Total,Italy,2018,3.9,Total,Age in completed years,332324.0,1.9,12.7138686847358,12.7138686847358
+Total,Total,Italy,2019,5.0,Total,Age in completed years,332778.0,8.7,12.715233884976703,12.7138686847358
+Below 60%,Total,Italy,2019,7.1,Total,Age in completed years,332778.0,34.8,12.715233884976703,12.715233884976703
+Above 60%,Total,Italy,2019,4.5,Total,Age in completed years,332778.0,2.1,12.715233884976703,12.715233884976703
+Total,Total,Italy,2020,6.1,Total,Age in completed years,247526.0,7.2,12.419274945949992,12.715233884976703
+Below 60%,Total,Italy,2020,10.0,Total,Age in completed years,247526.0,28.6,12.419274945949992,12.419274945949992
+Above 60%,Total,Italy,2020,5.2,Total,Age in completed years,247526.0,1.8,12.419274945949992,12.419274945949992
+Total,Total,Italy,2023,5.8,Total,Age in completed years,439658.0,5.7,12.993754705426692,12.419274945949992
+Below 60%,Total,Italy,2023,8.9,Total,Age in completed years,439658.0,22.2,12.993754705426692,12.993754705426692
+Above 60%,Total,Italy,2023,5.1,Total,Age in completed years,439658.0,1.8,12.993754705426692,12.993754705426692
+Below 60%,Total,Latvia,2013,29.7,Total,Age in completed years,8299.0,38.2,9.02401079378469,9.02401079378469
+Above 60%,Total,Latvia,2013,13.1,Total,Age in completed years,8299.0,5.0,9.02401079378469,9.02401079378469
+Total,Total,Latvia,2014,16.6,Total,Age in completed years,10365.0,9.6,9.246286498749653,9.02401079378469
+Below 60%,Total,Latvia,2014,27.3,Total,Age in completed years,10365.0,32.5,9.246286498749653,9.246286498749653
+Above 60%,Total,Latvia,2014,13.7,Total,Age in completed years,10365.0,3.5,9.246286498749653,9.246286498749653
+Total,Total,Latvia,2015,15.5,Total,Age in completed years,9479.0,8.1,9.156939595249067,9.246286498749653
+Below 60%,Total,Latvia,2015,27.3,Total,Age in completed years,9479.0,25.9,9.156939595249067,9.156939595249067
+Above 60%,Total,Latvia,2015,12.1,Total,Age in completed years,9479.0,3.0,9.156939595249067,9.156939595249067
+Total,Total,Latvia,2016,14.6,Total,Age in completed years,8345.0,7.0,9.029537661151497,9.156939595249067
+Below 60%,Total,Latvia,2016,24.2,Total,Age in completed years,8345.0,25.2,9.029537661151497,9.029537661151497
+Above 60%,Total,Latvia,2016,11.9,Total,Age in completed years,8345.0,1.9,9.029537661151497,9.029537661151497
+Total,Total,Latvia,2017,15.2,Total,Age in completed years,9916.0,6.9,9.202005735186125,9.029537661151497
+Below 60%,Total,Latvia,2017,23.4,Total,Age in completed years,9916.0,25.6,9.202005735186125,9.202005735186125
+Above 60%,Total,Latvia,2017,12.9,Total,Age in completed years,9916.0,1.6,9.202005735186125,9.202005735186125
+Total,Total,Latvia,2018,14.9,Total,Age in completed years,10909.0,6.7,9.297435078827116,9.202005735186125
+Below 60%,Total,Latvia,2018,21.1,Total,Age in completed years,10909.0,23.0,9.297435078827116,9.297435078827116
+Above 60%,Total,Latvia,2018,13.0,Total,Age in completed years,10909.0,1.9,9.297435078827116,9.297435078827116
+Total,Total,Latvia,2019,12.7,Total,Age in completed years,11223.0,5.4,9.325809621782296,9.297435078827116
+Below 60%,Total,Latvia,2019,16.7,Total,Age in completed years,11223.0,19.4,9.325809621782296,9.325809621782296
+Above 60%,Total,Latvia,2019,11.6,Total,Age in completed years,11223.0,1.3,9.325809621782296,9.325809621782296
+Total,Total,Latvia,2020,11.5,Total,Age in completed years,8840.0,4.8,9.087155271405804,9.325809621782296
+Below 60%,Total,Latvia,2020,16.5,Total,Age in completed years,8840.0,17.4,9.087155271405804,9.087155271405804
+Above 60%,Total,Latvia,2020,10.2,Total,Age in completed years,8840.0,1.3,9.087155271405804,9.087155271405804
+Total,Total,Latvia,2023,11.6,Total,Age in completed years,15629.0,7.2,9.656947423415522,9.087155271405804
+Below 60%,Total,Latvia,2023,16.5,Total,Age in completed years,15629.0,25.9,9.656947423415522,9.656947423415522
+Above 60%,Total,Latvia,2023,10.2,Total,Age in completed years,15629.0,1.9,9.656947423415522,9.656947423415522
+Below 60%,Total,Lithuania,2013,18.5,Total,Age in completed years,30924.0,28.8,10.339320197260689,10.339320197260689
+Above 60%,Total,Lithuania,2013,6.6,Total,Age in completed years,30924.0,2.9,10.339320197260689,10.339320197260689
+Total,Total,Lithuania,2014,10.1,Total,Age in completed years,33544.0,7.1,10.420643099996989,10.339320197260689
+Below 60%,Total,Lithuania,2014,18.2,Total,Age in completed years,33544.0,27.4,10.420643099996989,10.420643099996989
+Above 60%,Total,Lithuania,2014,8.2,Total,Age in completed years,33544.0,2.2,10.420643099996989,10.420643099996989
+Total,Total,Lithuania,2015,8.9,Total,Age in completed years,31085.0,9.1,10.344512836042844,10.420643099996989
+Below 60%,Total,Lithuania,2015,19.1,Total,Age in completed years,31085.0,32.2,10.344512836042844,10.344512836042844
+Above 60%,Total,Lithuania,2015,6.0,Total,Age in completed years,31085.0,2.5,10.344512836042844,10.344512836042844
+Total,Total,Lithuania,2016,8.6,Total,Age in completed years,31395.0,7.8,10.354435775246705,10.344512836042844
+Below 60%,Total,Lithuania,2016,19.1,Total,Age in completed years,31395.0,29.6,10.354435775246705,10.354435775246705
+Above 60%,Total,Lithuania,2016,5.7,Total,Age in completed years,31395.0,1.7,10.354435775246705,10.354435775246705
+Total,Total,Lithuania,2017,8.1,Total,Age in completed years,33305.0,7.2,10.413492839918217,10.354435775246705
+Below 60%,Total,Lithuania,2017,16.2,Total,Age in completed years,33305.0,26.8,10.413492839918217,10.413492839918217
+Above 60%,Total,Lithuania,2017,5.7,Total,Age in completed years,33305.0,1.3,10.413492839918217,10.413492839918217
+Total,Total,Lithuania,2018,6.9,Total,Age in completed years,37420.0,5.6,10.529987323148188,10.413492839918217
+Below 60%,Total,Lithuania,2018,10.5,Total,Age in completed years,37420.0,22.3,10.529987323148188,10.529987323148188
+Above 60%,Total,Lithuania,2018,5.8,Total,Age in completed years,37420.0,0.6,10.529987323148188,10.529987323148188
+Total,Total,Lithuania,2019,7.8,Total,Age in completed years,46526.0,4.8,10.747788068227562,10.529987323148188
+Below 60%,Total,Lithuania,2019,12.4,Total,Age in completed years,46526.0,19.8,10.747788068227562,10.747788068227562
+Above 60%,Total,Lithuania,2019,6.6,Total,Age in completed years,46526.0,0.9,10.747788068227562,10.747788068227562
+Total,Total,Lithuania,2020,5.4,Total,Age in completed years,46020.0,2.7,10.736853093036018,10.747788068227562
+Below 60%,Total,Lithuania,2020,9.2,Total,Age in completed years,46020.0,11.6,10.736853093036018,10.736853093036018
+Above 60%,Total,Lithuania,2020,4.4,Total,Age in completed years,46020.0,0.3,10.736853093036018,10.736853093036018
+Total,Total,Lithuania,2023,4.0,Total,Age in completed years,66682.0,5.2,11.107705326854465,10.736853093036018
+Below 60%,Total,Lithuania,2023,4.3,Total,Age in completed years,66682.0,20.8,11.107705326854465,11.107705326854465
+Above 60%,Total,Lithuania,2023,3.9,Total,Age in completed years,66682.0,1.1,11.107705326854465,11.107705326854465
+Below 60%,Total,Luxembourg,2013,8.0,Total,Age in completed years,21098.0,25.9,9.956980924976127,9.956980924976127
+Above 60%,Total,Luxembourg,2013,0.6,Total,Age in completed years,21098.0,1.8,9.956980924976127,9.956980924976127
+Total,Total,Luxembourg,2014,1.6,Total,Age in completed years,22332.0,6.8,10.013820684220475,9.956980924976127
+Below 60%,Total,Luxembourg,2014,5.4,Total,Age in completed years,22332.0,30.9,10.013820684220475,10.013820684220475
+Above 60%,Total,Luxembourg,2014,0.9,Total,Age in completed years,22332.0,2.1,10.013820684220475,10.013820684220475
+Total,Total,Luxembourg,2015,1.7,Total,Age in completed years,23803.0,6.0,10.077608912764743,10.013820684220475
+Below 60%,Total,Luxembourg,2015,6.8,Total,Age in completed years,23803.0,27.9,10.077608912764743,10.077608912764743
+Above 60%,Total,Luxembourg,2015,0.7,Total,Age in completed years,23803.0,2.1,10.077608912764743,10.077608912764743
+Total,Total,Luxembourg,2016,2.1,Total,Age in completed years,22888.0,7.0,10.038411724792649,10.077608912764743
+Below 60%,Total,Luxembourg,2016,7.0,Total,Age in completed years,22888.0,29.7,10.038411724792649,10.038411724792649
+Above 60%,Total,Luxembourg,2016,1.2,Total,Age in completed years,22888.0,2.9,10.038411724792649,10.038411724792649
+Total,Total,Luxembourg,2017,2.3,Total,Age in completed years,24379.0,7.1,10.101518403035262,10.038411724792649
+Below 60%,Total,Luxembourg,2017,5.8,Total,Age in completed years,24379.0,31.8,10.101518403035262,10.101518403035262
+Above 60%,Total,Luxembourg,2017,1.7,Total,Age in completed years,24379.0,2.6,10.101518403035262,10.101518403035262
+Total,Total,Luxembourg,2018,2.2,Total,Age in completed years,24644.0,9.3,10.112329319139478,10.101518403035262
+Below 60%,Total,Luxembourg,2018,5.3,Total,Age in completed years,24644.0,40.5,10.112329319139478,10.112329319139478
+Above 60%,Total,Luxembourg,2018,1.6,Total,Age in completed years,24644.0,3.3,10.112329319139478,10.112329319139478
+Total,Total,Luxembourg,2019,2.0,Total,Age in completed years,26668.0,10.1,10.191257121160007,10.112329319139478
+Below 60%,Total,Luxembourg,2019,6.9,Total,Age in completed years,26668.0,37.7,10.191257121160007,10.191257121160007
+Above 60%,Total,Luxembourg,2019,0.9,Total,Age in completed years,26668.0,4.3,10.191257121160007,10.191257121160007
+Total,Total,Luxembourg,2020,1.6,Total,Age in completed years,22490.0,8.5,10.020870508171171,10.191257121160007
+Below 60%,Total,Luxembourg,2020,4.3,Total,Age in completed years,22490.0,34.3,10.020870508171171,10.020870508171171
+Above 60%,Total,Luxembourg,2020,1.0,Total,Age in completed years,22490.0,3.1,10.020870508171171,10.020870508171171
+Total,Total,Luxembourg,2023,2.2,Total,Age in completed years,26964.0,11.5,10.202295007771328,10.020870508171171
+Below 60%,Total,Luxembourg,2023,5.4,Total,Age in completed years,26964.0,41.2,10.202295007771328,10.202295007771328
+Above 60%,Total,Luxembourg,2023,1.5,Total,Age in completed years,26964.0,5.8,10.202295007771328,10.202295007771328
+Below 60%,Total,Malta,2013,2.5,Total,Age in completed years,12446.0,11.2,9.429234909000977,9.429234909000977
+Above 60%,Total,Malta,2013,1.1,Total,Age in completed years,12446.0,0.8,9.429234909000977,9.429234909000977
+Total,Total,Malta,2014,1.3,Total,Age in completed years,15928.0,1.6,9.675896626294639,9.429234909000977
+Below 60%,Total,Malta,2014,2.8,Total,Age in completed years,15928.0,5.8,9.675896626294639,9.675896626294639
+Above 60%,Total,Malta,2014,1.0,Total,Age in completed years,15928.0,0.8,9.675896626294639,9.675896626294639
+Total,Total,Malta,2015,1.3,Total,Age in completed years,18202.0,1.1,9.809341694645898,9.675896626294639
+Below 60%,Total,Malta,2015,3.1,Total,Age in completed years,18202.0,4.8,9.809341694645898,9.809341694645898
+Above 60%,Total,Malta,2015,0.9,Total,Age in completed years,18202.0,0.4,9.809341694645898,9.809341694645898
+Total,Total,Malta,2016,1.6,Total,Age in completed years,18116.0,1.4,9.80460600297601,9.809341694645898
+Below 60%,Total,Malta,2016,4.3,Total,Age in completed years,18116.0,5.7,9.80460600297601,9.80460600297601
+Above 60%,Total,Malta,2016,1.0,Total,Age in completed years,18116.0,0.6,9.80460600297601,9.80460600297601
+Total,Total,Malta,2017,1.4,Total,Age in completed years,22750.0,1.4,10.032364379457015,9.80460600297601
+Below 60%,Total,Malta,2017,5.6,Total,Age in completed years,22750.0,5.6,10.032364379457015,10.032364379457015
+Above 60%,Total,Malta,2017,0.6,Total,Age in completed years,22750.0,0.6,10.032364379457015,10.032364379457015
+Total,Total,Malta,2018,1.2,Total,Age in completed years,27394.0,1.7,10.218115793972515,10.032364379457015
+Below 60%,Total,Malta,2018,4.3,Total,Age in completed years,27394.0,5.6,10.218115793972515,10.218115793972515
+Above 60%,Total,Malta,2018,0.5,Total,Age in completed years,27394.0,0.9,10.218115793972515,10.218115793972515
+Total,Total,Malta,2019,1.3,Total,Age in completed years,29304.0,2.6,10.28551342891053,10.218115793972515
+Below 60%,Total,Malta,2019,3.5,Total,Age in completed years,29304.0,9.2,10.28551342891053,10.28551342891053
+Above 60%,Total,Malta,2019,0.8,Total,Age in completed years,29304.0,1.2,10.28551342891053,10.28551342891053
+Total,Total,Malta,2020,1.0,Total,Age in completed years,14751.0,2.8,9.599133945796375,10.28551342891053
+Below 60%,Total,Malta,2020,1.4,Total,Age in completed years,14751.0,9.8,9.599133945796375,9.599133945796375
+Above 60%,Total,Malta,2020,0.9,Total,Age in completed years,14751.0,1.3,9.599133945796375,9.599133945796375
+Total,Total,Malta,2023,0.5,Total,Age in completed years,42239.0,6.0,10.651122918380143,9.599133945796375
+Below 60%,Total,Malta,2023,0.3,Total,Age in completed years,42239.0,24.8,10.651122918380143,10.651122918380143
+Above 60%,Total,Malta,2023,0.5,Total,Age in completed years,42239.0,2.3,10.651122918380143,10.651122918380143
+Below 60%,Total,Montenegro,2013,38.1,Total,Age in completed years,5112.0,43.4,8.53954159508,8.53954159508
+Above 60%,Total,Montenegro,2013,18.3,Total,Age in completed years,5112.0,11.9,8.53954159508,8.53954159508
+Total,Total,Montenegro,2014,21.2,Total,Age in completed years,5353.0,16.9,8.585599224080298,8.53954159508
+Below 60%,Total,Montenegro,2014,36.5,Total,Age in completed years,5353.0,42.1,8.585599224080298,8.585599224080298
+Above 60%,Total,Montenegro,2014,16.4,Total,Age in completed years,5353.0,9.0,8.585599224080298,8.585599224080298
+Total,Total,Montenegro,2015,24.2,Total,Age in completed years,4553.0,16.8,8.423761246623686,8.585599224080298
+Below 60%,Total,Montenegro,2015,35.0,Total,Age in completed years,4553.0,44.1,8.423761246623686,8.423761246623686
+Above 60%,Total,Montenegro,2015,20.7,Total,Age in completed years,4553.0,8.0,8.423761246623686,8.423761246623686
+Total,Total,Montenegro,2016,18.3,Total,Age in completed years,4904.0,16.5,8.498010371999463,8.423761246623686
+Below 60%,Total,Montenegro,2016,30.6,Total,Age in completed years,4904.0,44.9,8.498010371999463,8.498010371999463
+Above 60%,Total,Montenegro,2016,14.5,Total,Age in completed years,4904.0,7.5,8.498010371999463,8.498010371999463
+Total,Total,Montenegro,2017,16.6,Total,Age in completed years,6684.0,15.1,8.807621489536043,8.498010371999463
+Below 60%,Total,Montenegro,2017,28.6,Total,Age in completed years,6684.0,40.5,8.807621489536043,8.807621489536043
+Above 60%,Total,Montenegro,2017,12.8,Total,Age in completed years,6684.0,7.3,8.807621489536043,8.807621489536043
+Total,Total,Montenegro,2018,18.3,Total,Age in completed years,8643.0,14.7,9.064620717626777,8.807621489536043
+Below 60%,Total,Montenegro,2018,30.9,Total,Age in completed years,8643.0,43.5,9.064620717626777,9.064620717626777
+Above 60%,Total,Montenegro,2018,14.4,Total,Age in completed years,8643.0,5.7,9.064620717626777,9.064620717626777
+Total,Total,Montenegro,2019,19.0,Total,Age in completed years,10737.0,11.7,9.281544130982514,9.064620717626777
+Below 60%,Total,Montenegro,2019,31.1,Total,Age in completed years,10737.0,34.0,9.281544130982514,9.281544130982514
+Above 60%,Total,Montenegro,2019,15.1,Total,Age in completed years,10737.0,4.4,9.281544130982514,9.281544130982514
+Total,Total,Montenegro,2020,18.2,Total,Age in completed years,6008.0,9.4,8.701013624333928,9.281544130982514
+Below 60%,Total,Montenegro,2020,31.9,Total,Age in completed years,6008.0,28.8,8.701013624333928,8.701013624333928
+Above 60%,Total,Montenegro,2020,14.2,Total,Age in completed years,6008.0,3.7,8.701013624333928,8.701013624333928
+Total,Total,Montenegro,2023,14.6,Total,Age in completed years,18316.0,6.1,9.815584869360217,8.701013624333928
+Below 60%,Total,Montenegro,2023,22.2,Total,Age in completed years,18316.0,21.8,9.815584869360217,9.815584869360217
+Above 60%,Total,Montenegro,2023,12.7,Total,Age in completed years,18316.0,2.1,9.815584869360217,9.815584869360217
+Below 60%,Total,Netherlands,2013,5.6,Total,Age in completed years,129428.0,48.3,11.770887747222599,11.770887747222599
+Above 60%,Total,Netherlands,2013,0.3,Total,Age in completed years,129428.0,11.9,11.770887747222599,11.770887747222599
+Total,Total,Netherlands,2014,0.6,Total,Age in completed years,145323.0,15.4,11.886721011417372,11.770887747222599
+Below 60%,Total,Netherlands,2014,2.3,Total,Age in completed years,145323.0,51.1,11.886721011417372,11.886721011417372
+Above 60%,Total,Netherlands,2014,0.4,Total,Age in completed years,145323.0,10.7,11.886721011417372,11.886721011417372
+Total,Total,Netherlands,2015,1.0,Total,Age in completed years,166872.0,14.9,12.024988323046104,11.886721011417372
+Below 60%,Total,Netherlands,2015,4.9,Total,Age in completed years,166872.0,51.4,12.024988323046104,12.024988323046104
+Above 60%,Total,Netherlands,2015,0.5,Total,Age in completed years,166872.0,10.2,12.024988323046104,12.024988323046104
+Total,Total,Netherlands,2016,1.4,Total,Age in completed years,189232.0,10.7,12.15073433899541,12.024988323046104
+Below 60%,Total,Netherlands,2016,4.3,Total,Age in completed years,189232.0,42.9,12.15073433899541,12.15073433899541
+Above 60%,Total,Netherlands,2016,0.9,Total,Age in completed years,189232.0,6.0,12.15073433899541,12.15073433899541
+Total,Total,Netherlands,2017,1.0,Total,Age in completed years,189646.0,9.4,12.152919728378695,12.15073433899541
+Below 60%,Total,Netherlands,2017,4.3,Total,Age in completed years,189646.0,40.9,12.152919728378695,12.152919728378695
+Above 60%,Total,Netherlands,2017,0.6,Total,Age in completed years,189646.0,4.6,12.152919728378695,12.152919728378695
+Total,Total,Netherlands,2018,1.3,Total,Age in completed years,194306.0,9.4,12.177194661479321,12.152919728378695
+Below 60%,Total,Netherlands,2018,3.5,Total,Age in completed years,194306.0,40.6,12.177194661479321,12.177194661479321
+Above 60%,Total,Netherlands,2018,0.9,Total,Age in completed years,194306.0,4.7,12.177194661479321,12.177194661479321
+Total,Total,Netherlands,2019,1.5,Total,Age in completed years,215756.0,9.9,12.281908053378793,12.177194661479321
+Below 60%,Total,Netherlands,2019,4.4,Total,Age in completed years,215756.0,39.6,12.281908053378793,12.281908053378793
+Above 60%,Total,Netherlands,2019,1.0,Total,Age in completed years,215756.0,5.4,12.281908053378793,12.281908053378793
+Total,Total,Netherlands,2020,1.5,Total,Age in completed years,182244.0,8.3,12.113107214652313,12.281908053378793
+Below 60%,Total,Netherlands,2020,5.6,Total,Age in completed years,182244.0,33.3,12.113107214652313,12.113107214652313
+Above 60%,Total,Netherlands,2020,0.9,Total,Age in completed years,182244.0,4.4,12.113107214652313,12.113107214652313
+Total,Total,Netherlands,2023,1.3,Total,Age in completed years,274597.0,9.3,12.52306348896829,12.113107214652313
+Below 60%,Total,Netherlands,2023,5.4,Total,Age in completed years,274597.0,34.5,12.52306348896829,12.52306348896829
+Above 60%,Total,Netherlands,2023,0.8,Total,Age in completed years,274597.0,5.6,12.52306348896829,12.52306348896829
+Below 60%,Total,North Macedonia,2013,25.6,Total,Age in completed years,2050.0,57.4,7.62608275807238,7.62608275807238
+Above 60%,Total,North Macedonia,2013,7.1,Total,Age in completed years,2050.0,4.8,7.62608275807238,7.62608275807238
+Total,Total,North Macedonia,2014,11.8,Total,Age in completed years,1935.0,15.6,7.568379267836522,7.62608275807238
+Below 60%,Total,North Macedonia,2014,25.5,Total,Age in completed years,1935.0,55.4,7.568379267836522,7.568379267836522
+Above 60%,Total,North Macedonia,2014,7.9,Total,Age in completed years,1935.0,4.3,7.568379267836522,7.568379267836522
+Total,Total,North Macedonia,2015,9.8,Total,Age in completed years,1741.0,12.3,7.462789157412448,7.568379267836522
+Below 60%,Total,North Macedonia,2015,20.7,Total,Age in completed years,1741.0,46.3,7.462789157412448,7.462789157412448
+Above 60%,Total,North Macedonia,2015,6.8,Total,Age in completed years,1741.0,2.9,7.462789157412448,7.462789157412448
+Total,Total,North Macedonia,2016,12.2,Total,Age in completed years,2262.0,12.5,7.724446645633537,7.462789157412448
+Below 60%,Total,North Macedonia,2016,27.5,Total,Age in completed years,2262.0,50.2,7.724446645633537,7.724446645633537
+Above 60%,Total,North Macedonia,2016,8.0,Total,Age in completed years,2262.0,2.0,7.724446645633537,7.724446645633537
+Total,Total,North Macedonia,2017,10.1,Total,Age in completed years,2064.0,11.7,7.632885505395133,7.724446645633537
+Below 60%,Total,North Macedonia,2017,22.0,Total,Age in completed years,2064.0,46.1,7.632885505395133,7.632885505395133
+Above 60%,Total,North Macedonia,2017,6.7,Total,Age in completed years,2064.0,1.8,7.632885505395133,7.632885505395133
+Total,Total,North Macedonia,2018,11.1,Total,Age in completed years,2053.0,10.2,7.627544390488503,7.632885505395133
+Below 60%,Total,North Macedonia,2018,25.6,Total,Age in completed years,2053.0,42.5,7.627544390488503,7.627544390488503
+Above 60%,Total,North Macedonia,2018,7.0,Total,Age in completed years,2053.0,1.1,7.627544390488503,7.627544390488503
+Total,Total,North Macedonia,2019,9.7,Total,Age in completed years,2118.0,9.9,7.6586995582682995,7.627544390488503
+Below 60%,Total,North Macedonia,2019,21.9,Total,Age in completed years,2118.0,37.4,7.6586995582682995,7.6586995582682995
+Above 60%,Total,North Macedonia,2019,6.4,Total,Age in completed years,2118.0,2.4,7.6586995582682995,7.6586995582682995
+Total,Total,North Macedonia,2020,9.9,Total,Age in completed years,2555.0,8.5,7.846198815497425,7.6586995582682995
+Below 60%,Total,North Macedonia,2020,23.2,Total,Age in completed years,2555.0,33.4,7.846198815497425,7.846198815497425
+Above 60%,Total,North Macedonia,2020,6.1,Total,Age in completed years,2555.0,1.5,7.846198815497425,7.846198815497425
+Below 60%,Total,Norway,2013,6.5,Total,Age in completed years,68313.0,42.5,11.131870002591821,11.131870002591821
+Above 60%,Total,Norway,2013,0.7,Total,Age in completed years,68313.0,5.5,11.131870002591821,11.131870002591821
+Total,Total,Norway,2014,0.7,Total,Age in completed years,66903.0,8.2,11.11101403506136,11.131870002591821
+Below 60%,Total,Norway,2014,4.4,Total,Age in completed years,66903.0,41.5,11.11101403506136,11.11101403506136
+Above 60%,Total,Norway,2014,0.3,Total,Age in completed years,66903.0,4.1,11.11101403506136,11.11101403506136
+Total,Total,Norway,2015,0.7,Total,Age in completed years,60816.0,9.4,11.015624634135149,11.11101403506136
+Below 60%,Total,Norway,2015,3.7,Total,Age in completed years,60816.0,43.2,11.015624634135149,11.015624634135149
+Above 60%,Total,Norway,2015,0.3,Total,Age in completed years,60816.0,4.8,11.015624634135149,11.015624634135149
+Total,Total,Norway,2016,1.0,Total,Age in completed years,61460.0,9.7,11.02615810629731,11.015624634135149
+Below 60%,Total,Norway,2016,5.3,Total,Age in completed years,61460.0,43.6,11.02615810629731,11.02615810629731
+Above 60%,Total,Norway,2016,0.4,Total,Age in completed years,61460.0,5.0,11.02615810629731,11.02615810629731
+Total,Total,Norway,2017,0.8,Total,Age in completed years,53351.0,9.3,10.884666744312142,11.02615810629731
+Below 60%,Total,Norway,2017,3.7,Total,Age in completed years,53351.0,41.9,10.884666744312142,10.884666744312142
+Above 60%,Total,Norway,2017,0.4,Total,Age in completed years,53351.0,4.8,10.884666744312142,10.884666744312142
+Total,Total,Norway,2018,0.9,Total,Age in completed years,47864.0,10.6,10.776139827380453,10.884666744312142
+Below 60%,Total,Norway,2018,2.7,Total,Age in completed years,47864.0,49.5,10.776139827380453,10.776139827380453
+Above 60%,Total,Norway,2018,0.6,Total,Age in completed years,47864.0,4.8,10.776139827380453,10.776139827380453
+Total,Total,Norway,2019,1.0,Total,Age in completed years,48680.0,10.5,10.793044089207646,10.776139827380453
+Below 60%,Total,Norway,2019,3.9,Total,Age in completed years,48680.0,45.9,10.793044089207646,10.793044089207646
+Above 60%,Total,Norway,2019,0.6,Total,Age in completed years,48680.0,5.3,10.793044089207646,10.793044089207646
+Total,Total,Norway,2020,1.0,Total,Age in completed years,36287.0,9.4,10.499242387087424,10.793044089207646
+Below 60%,Total,Norway,2020,5.8,Total,Age in completed years,36287.0,44.8,10.499242387087424,10.499242387087424
+Above 60%,Total,Norway,2020,0.3,Total,Age in completed years,36287.0,4.2,10.499242387087424,10.499242387087424
+Total,Total,Norway,2023,1.0,Total,Age in completed years,86589.0,13.9,11.368939614441848,10.499242387087424
+Below 60%,Total,Norway,2023,4.2,Total,Age in completed years,86589.0,50.5,11.368939614441848,11.368939614441848
+Above 60%,Total,Norway,2023,0.6,Total,Age in completed years,86589.0,9.2,11.368939614441848,11.368939614441848
+Below 60%,Total,Poland,2013,20.8,Total,Age in completed years,220311.0,33.5,12.302800002482604,12.302800002482604
+Above 60%,Total,Poland,2013,7.9,Total,Age in completed years,220311.0,5.5,12.302800002482604,12.302800002482604
+Total,Total,Poland,2014,9.1,Total,Age in completed years,222275.0,9.6,12.311675131910723,12.302800002482604
+Below 60%,Total,Poland,2014,19.9,Total,Age in completed years,222275.0,32.0,12.311675131910723,12.311675131910723
+Above 60%,Total,Poland,2014,6.9,Total,Age in completed years,222275.0,4.8,12.311675131910723,12.311675131910723
+Total,Total,Poland,2015,9.8,Total,Age in completed years,218147.0,8.7,12.292929010506063,12.311675131910723
+Below 60%,Total,Poland,2015,19.8,Total,Age in completed years,218147.0,30.7,12.292929010506063,12.292929010506063
+Above 60%,Total,Poland,2015,7.6,Total,Age in completed years,218147.0,3.7,12.292929010506063,12.292929010506063
+Total,Total,Poland,2016,9.4,Total,Age in completed years,208302.0,7.7,12.24674902944972,12.292929010506063
+Below 60%,Total,Poland,2016,19.7,Total,Age in completed years,208302.0,29.6,12.24674902944972,12.24674902944972
+Above 60%,Total,Poland,2016,7.3,Total,Age in completed years,208302.0,2.9,12.24674902944972,12.24674902944972
+Total,Total,Poland,2017,9.8,Total,Age in completed years,209353.0,6.7,12.251781878023774,12.24674902944972
+Below 60%,Total,Poland,2017,16.0,Total,Age in completed years,209353.0,30.4,12.251781878023774,12.251781878023774
+Above 60%,Total,Poland,2017,8.7,Total,Age in completed years,209353.0,2.3,12.251781878023774,12.251781878023774
+Total,Total,Poland,2018,8.6,Total,Age in completed years,214083.0,6.2,12.274123740351332,12.251781878023774
+Below 60%,Total,Poland,2018,15.8,Total,Age in completed years,214083.0,28.1,12.274123740351332,12.274123740351332
+Above 60%,Total,Poland,2018,7.3,Total,Age in completed years,214083.0,2.1,12.274123740351332,12.274123740351332
+Total,Total,Poland,2019,7.9,Total,Age in completed years,226649.0,6.0,12.331162256368994,12.274123740351332
+Below 60%,Total,Poland,2019,13.0,Total,Age in completed years,226649.0,26.3,12.331162256368994,12.331162256368994
+Above 60%,Total,Poland,2019,7.0,Total,Age in completed years,226649.0,2.1,12.331162256368994,12.331162256368994
+Total,Total,Poland,2023,4.6,Total,Age in completed years,303275.0,5.9,12.622398560971083,12.331162256368994
+Below 60%,Total,Poland,2023,8.0,Total,Age in completed years,303275.0,29.1,12.622398560971083,12.622398560971083
+Above 60%,Total,Poland,2023,4.1,Total,Age in completed years,303275.0,2.1,12.622398560971083,12.622398560971083
+Below 60%,Total,Portugal,2013,11.4,Total,Age in completed years,17757.0,30.9,9.784591397592273,9.784591397592273
+Above 60%,Total,Portugal,2013,4.3,Total,Age in completed years,17757.0,3.0,9.784591397592273,9.784591397592273
+Total,Total,Portugal,2014,5.5,Total,Age in completed years,23077.0,9.2,10.046635061754612,9.784591397592273
+Below 60%,Total,Portugal,2014,13.1,Total,Age in completed years,23077.0,33.7,10.046635061754612,10.046635061754612
+Above 60%,Total,Portugal,2014,3.7,Total,Age in completed years,23077.0,3.2,10.046635061754612,10.046635061754612
+Total,Total,Portugal,2015,4.7,Total,Age in completed years,36849.0,9.1,10.514610897617482,10.046635061754612
+Below 60%,Total,Portugal,2015,11.2,Total,Age in completed years,36849.0,33.5,10.514610897617482,10.514610897617482
+Above 60%,Total,Portugal,2015,3.2,Total,Age in completed years,36849.0,3.2,10.514610897617482,10.514610897617482
+Total,Total,Portugal,2016,4.9,Total,Age in completed years,37644.0,7.5,10.535955422284223,10.514610897617482
+Below 60%,Total,Portugal,2016,11.3,Total,Age in completed years,37644.0,29.1,10.535955422284223,10.535955422284223
+Above 60%,Total,Portugal,2016,3.4,Total,Age in completed years,37644.0,2.5,10.535955422284223,10.535955422284223
+Total,Total,Portugal,2017,4.0,Total,Age in completed years,46649.0,6.7,10.75042820627549,10.535955422284223
+Below 60%,Total,Portugal,2017,9.3,Total,Age in completed years,46649.0,26.0,10.75042820627549,10.75042820627549
+Above 60%,Total,Portugal,2017,2.8,Total,Age in completed years,46649.0,2.4,10.75042820627549,10.75042820627549
+Total,Total,Portugal,2018,4.1,Total,Age in completed years,55357.0,5.7,10.92157646247132,10.75042820627549
+Below 60%,Total,Portugal,2018,8.7,Total,Age in completed years,55357.0,22.3,10.92157646247132,10.92157646247132
+Above 60%,Total,Portugal,2018,3.2,Total,Age in completed years,55357.0,2.3,10.92157646247132,10.92157646247132
+Total,Total,Portugal,2019,4.1,Total,Age in completed years,95382.0,5.7,11.465655644492404,10.92157646247132
+Below 60%,Total,Portugal,2019,10.4,Total,Age in completed years,95382.0,22.8,11.465655644492404,11.465655644492404
+Above 60%,Total,Portugal,2019,2.8,Total,Age in completed years,95382.0,2.2,11.465655644492404,11.465655644492404
+Total,Total,Portugal,2020,3.9,Total,Age in completed years,83654.0,4.1,11.334456477491765,11.465655644492404
+Below 60%,Total,Portugal,2020,7.2,Total,Age in completed years,83654.0,17.3,11.334456477491765,11.334456477491765
+Above 60%,Total,Portugal,2020,3.3,Total,Age in completed years,83654.0,1.5,11.334456477491765,11.334456477491765
+Total,Total,Portugal,2023,6.0,Total,Age in completed years,189367.0,4.9,12.151447490866227,11.334456477491765
+Below 60%,Total,Portugal,2023,14.8,Total,Age in completed years,189367.0,18.8,12.151447490866227,12.151447490866227
+Above 60%,Total,Portugal,2023,4.2,Total,Age in completed years,189367.0,2.0,12.151447490866227,12.151447490866227
+Below 60%,Total,Romania,2013,48.8,Total,Age in completed years,153646.0,41.5,11.942413042473778,11.942413042473778
+Above 60%,Total,Romania,2013,15.0,Total,Age in completed years,153646.0,9.5,11.942413042473778,11.942413042473778
+Total,Total,Romania,2014,20.6,Total,Age in completed years,136035.0,16.2,11.820674835572122,11.942413042473778
+Below 60%,Total,Romania,2014,45.2,Total,Age in completed years,136035.0,40.1,11.820674835572122,11.820674835572122
+Above 60%,Total,Romania,2014,12.3,Total,Age in completed years,136035.0,8.1,11.820674835572122,11.820674835572122
+Total,Total,Romania,2015,19.8,Total,Age in completed years,132795.0,15.9,11.796569395088913,11.820674835572122
+Below 60%,Total,Romania,2015,44.7,Total,Age in completed years,132795.0,42.6,11.796569395088913,11.796569395088913
+Above 60%,Total,Romania,2015,11.3,Total,Age in completed years,132795.0,6.9,11.796569395088913,11.796569395088913
+Total,Total,Romania,2016,19.8,Total,Age in completed years,137455.0,14.4,11.831059144877837,11.796569395088913
+Below 60%,Total,Romania,2016,42.7,Total,Age in completed years,137455.0,38.8,11.831059144877837,11.831059144877837
+Above 60%,Total,Romania,2016,12.1,Total,Age in completed years,137455.0,6.1,11.831059144877837,11.831059144877837
+Total,Total,Romania,2017,17.2,Total,Age in completed years,177435.0,12.3,12.08636525949872,11.831059144877837
+Below 60%,Total,Romania,2017,36.7,Total,Age in completed years,177435.0,36.3,12.08636525949872,12.08636525949872
+Above 60%,Total,Romania,2017,11.2,Total,Age in completed years,177435.0,4.9,12.08636525949872,12.08636525949872
+Total,Total,Romania,2018,16.1,Total,Age in completed years,172578.0,10.3,12.058610381631325,12.08636525949872
+Below 60%,Total,Romania,2018,37.4,Total,Age in completed years,172578.0,33.3,12.058610381631325,12.058610381631325
+Above 60%,Total,Romania,2018,9.5,Total,Age in completed years,172578.0,3.2,12.058610381631325,12.058610381631325
+Total,Total,Romania,2019,14.2,Total,Age in completed years,202422.0,8.6,12.218114846302962,12.058610381631325
+Below 60%,Total,Romania,2019,34.9,Total,Age in completed years,202422.0,29.7,12.218114846302962,12.218114846302962
+Above 60%,Total,Romania,2019,7.7,Total,Age in completed years,202422.0,2.1,12.218114846302962,12.218114846302962
+Total,Total,Romania,2020,14.3,Total,Age in completed years,145519.0,7.1,11.888068813192003,12.218114846302962
+Below 60%,Total,Romania,2020,35.7,Total,Age in completed years,145519.0,24.0,11.888068813192003,11.888068813192003
+Above 60%,Total,Romania,2020,7.7,Total,Age in completed years,145519.0,2.0,11.888068813192003,11.888068813192003
+Total,Total,Romania,2023,9.6,Total,Age in completed years,324091.0,9.1,12.688782705085403,11.888068813192003
+Below 60%,Total,Romania,2023,26.2,Total,Age in completed years,324091.0,28.3,12.688782705085403,12.688782705085403
+Above 60%,Total,Romania,2023,5.2,Total,Age in completed years,324091.0,4.0,12.688782705085403,12.688782705085403
+Below 60%,Total,Slovakia,2013,16.3,Total,Age in completed years,5149.0,36.2,8.546751993657782,8.546751993657782
+Above 60%,Total,Slovakia,2013,2.7,Total,Age in completed years,5149.0,4.2,8.546751993657782,8.546751993657782
+Total,Total,Slovakia,2014,4.3,Total,Age in completed years,5357.0,9.0,8.586346050104554,8.546751993657782
+Below 60%,Total,Slovakia,2014,19.7,Total,Age in completed years,5357.0,36.4,8.586346050104554,8.586346050104554
+Above 60%,Total,Slovakia,2014,2.0,Total,Age in completed years,5357.0,5.1,8.586346050104554,8.586346050104554
+Total,Total,Slovakia,2015,4.2,Total,Age in completed years,6997.0,9.1,8.853379672927634,8.586346050104554
+Below 60%,Total,Slovakia,2015,15.2,Total,Age in completed years,6997.0,34.5,8.853379672927634,8.853379672927634
+Above 60%,Total,Slovakia,2015,2.6,Total,Age in completed years,6997.0,5.5,8.853379672927634,8.853379672927634
+Total,Total,Slovakia,2016,4.3,Total,Age in completed years,7686.0,7.7,8.947285869349132,8.853379672927634
+Below 60%,Total,Slovakia,2016,16.0,Total,Age in completed years,7686.0,35.6,8.947285869349132,8.947285869349132
+Above 60%,Total,Slovakia,2016,2.5,Total,Age in completed years,7686.0,3.7,8.947285869349132,8.947285869349132
+Total,Total,Slovakia,2017,5.2,Total,Age in completed years,7188.0,8.4,8.880307358983872,8.947285869349132
+Below 60%,Total,Slovakia,2017,20.7,Total,Age in completed years,7188.0,38.9,8.880307358983872,8.880307358983872
+Above 60%,Total,Slovakia,2017,3.0,Total,Age in completed years,7188.0,4.1,8.880307358983872,8.880307358983872
+Total,Total,Slovakia,2018,3.7,Total,Age in completed years,7253.0,4.1,8.889308319842847,8.880307358983872
+Below 60%,Total,Slovakia,2018,14.3,Total,Age in completed years,7253.0,24.4,8.889308319842847,8.889308319842847
+Above 60%,Total,Slovakia,2018,2.2,Total,Age in completed years,7253.0,1.3,8.889308319842847,8.889308319842847
+Total,Total,Slovakia,2019,3.6,Total,Age in completed years,7016.0,5.7,8.85609105525229,8.889308319842847
+Below 60%,Total,Slovakia,2019,14.9,Total,Age in completed years,7016.0,26.8,8.85609105525229,8.85609105525229
+Above 60%,Total,Slovakia,2019,2.0,Total,Age in completed years,7016.0,2.8,8.85609105525229,8.85609105525229
+Total,Total,Slovakia,2020,3.2,Total,Age in completed years,6775.0,3.2,8.821142236331891,8.85609105525229
+Below 60%,Total,Slovakia,2020,11.5,Total,Age in completed years,6775.0,22.5,8.821142236331891,8.821142236331891
+Above 60%,Total,Slovakia,2020,2.1,Total,Age in completed years,6775.0,0.8,8.821142236331891,8.821142236331891
+Total,Total,Slovakia,2023,4.0,Total,Age in completed years,5923.0,5.9,8.68676717538769,8.821142236331891
+Below 60%,Total,Slovakia,2023,15.2,Total,Age in completed years,5923.0,34.1,8.68676717538769,8.68676717538769
+Above 60%,Total,Slovakia,2023,2.1,Total,Age in completed years,5923.0,1.2,8.68676717538769,8.68676717538769
+Below 60%,Total,Slovenia,2013,14.1,Total,Age in completed years,13871.0,26.3,9.537627699020323,9.537627699020323
+Above 60%,Total,Slovenia,2013,5.2,Total,Age in completed years,13871.0,2.6,9.537627699020323,9.537627699020323
+Total,Total,Slovenia,2014,6.5,Total,Age in completed years,13846.0,6.4,9.535823881654714,9.537627699020323
+Below 60%,Total,Slovenia,2014,12.5,Total,Age in completed years,13846.0,29.4,9.535823881654714,9.535823881654714
+Above 60%,Total,Slovenia,2014,5.4,Total,Age in completed years,13846.0,2.6,9.535823881654714,9.535823881654714
+Total,Total,Slovenia,2015,5.6,Total,Age in completed years,15420.0,6.1,9.643485495857657,9.535823881654714
+Below 60%,Total,Slovenia,2015,12.5,Total,Age in completed years,15420.0,27.7,9.643485495857657,9.643485495857657
+Above 60%,Total,Slovenia,2015,4.5,Total,Age in completed years,15420.0,2.6,9.643485495857657,9.643485495857657
+Total,Total,Slovenia,2016,4.5,Total,Age in completed years,16623.0,5.7,9.718602713339008,9.643485495857657
+Below 60%,Total,Slovenia,2016,9.6,Total,Age in completed years,16623.0,28.3,9.718602713339008,9.718602713339008
+Above 60%,Total,Slovenia,2016,3.6,Total,Age in completed years,16623.0,2.0,9.718602713339008,9.718602713339008
+Total,Total,Slovenia,2017,4.4,Total,Age in completed years,18808.0,5.2,9.842090757670805,9.718602713339008
+Below 60%,Total,Slovenia,2017,7.9,Total,Age in completed years,18808.0,26.7,9.842090757670805,9.842090757670805
+Above 60%,Total,Slovenia,2017,3.9,Total,Age in completed years,18808.0,1.9,9.842090757670805,9.842090757670805
+Total,Total,Slovenia,2018,4.8,Total,Age in completed years,28455.0,4.9,10.256114313628292,9.842090757670805
+Below 60%,Total,Slovenia,2018,8.6,Total,Age in completed years,28455.0,24.0,10.256114313628292,10.256114313628292
+Above 60%,Total,Slovenia,2018,4.2,Total,Age in completed years,28455.0,1.9,10.256114313628292,10.256114313628292
+Total,Total,Slovenia,2019,3.9,Total,Age in completed years,31319.0,4.1,10.35201215010474,10.256114313628292
+Below 60%,Total,Slovenia,2019,7.2,Total,Age in completed years,31319.0,21.9,10.35201215010474,10.35201215010474
+Above 60%,Total,Slovenia,2019,3.5,Total,Age in completed years,31319.0,1.7,10.35201215010474,10.35201215010474
+Total,Total,Slovenia,2020,3.1,Total,Age in completed years,36110.0,4.4,10.494352807047845,10.35201215010474
+Below 60%,Total,Slovenia,2020,6.5,Total,Age in completed years,36110.0,23.1,10.494352807047845,10.494352807047845
+Above 60%,Total,Slovenia,2020,2.7,Total,Age in completed years,36110.0,1.8,10.494352807047845,10.494352807047845
+Total,Total,Slovenia,2023,3.5,Total,Age in completed years,33939.0,3.7,10.432349538788218,10.494352807047845
+Below 60%,Total,Slovenia,2023,8.5,Total,Age in completed years,33939.0,20.6,10.432349538788218,10.432349538788218
+Above 60%,Total,Slovenia,2023,2.8,Total,Age in completed years,33939.0,1.3,10.432349538788218,10.432349538788218
+Below 60%,Total,Spain,2013,4.4,Total,Age in completed years,280772.0,38.3,12.545301792664562,12.545301792664562
+Above 60%,Total,Spain,2013,1.1,Total,Age in completed years,280772.0,3.2,12.545301792664562,12.545301792664562
+Total,Total,Spain,2014,1.7,Total,Age in completed years,305454.0,10.9,12.629557747235147,12.545301792664562
+Below 60%,Total,Spain,2014,5.2,Total,Age in completed years,305454.0,39.6,12.629557747235147,12.629557747235147
+Above 60%,Total,Spain,2014,0.7,Total,Age in completed years,305454.0,2.7,12.629557747235147,12.629557747235147
+Total,Total,Spain,2015,1.5,Total,Age in completed years,342114.0,10.3,12.742902216832865,12.629557747235147
+Below 60%,Total,Spain,2015,3.4,Total,Age in completed years,342114.0,38.1,12.742902216832865,12.742902216832865
+Above 60%,Total,Spain,2015,1.0,Total,Age in completed years,342114.0,2.5,12.742902216832865,12.742902216832865
+Total,Total,Spain,2016,1.7,Total,Age in completed years,414746.0,10.2,12.935423974753474,12.742902216832865
+Below 60%,Total,Spain,2016,4.6,Total,Age in completed years,414746.0,36.4,12.935423974753474,12.935423974753474
+Above 60%,Total,Spain,2016,0.8,Total,Age in completed years,414746.0,2.6,12.935423974753474,12.935423974753474
+Total,Total,Spain,2017,1.0,Total,Age in completed years,532132.0,9.8,13.184648737078989,12.935423974753474
+Below 60%,Total,Spain,2017,2.7,Total,Age in completed years,532132.0,36.5,13.184648737078989,13.184648737078989
+Above 60%,Total,Spain,2017,0.6,Total,Age in completed years,532132.0,2.5,13.184648737078989,13.184648737078989
+Total,Total,Spain,2018,1.5,Total,Age in completed years,643684.0,8.9,13.374964754988394,13.184648737078989
+Below 60%,Total,Spain,2018,4.9,Total,Age in completed years,643684.0,32.9,13.374964754988394,13.374964754988394
+Above 60%,Total,Spain,2018,0.6,Total,Age in completed years,643684.0,2.3,13.374964754988394,13.374964754988394
+Total,Total,Spain,2019,1.7,Total,Age in completed years,750480.0,8.5,13.52846961327949,13.374964754988394
+Below 60%,Total,Spain,2019,4.6,Total,Age in completed years,750480.0,31.8,13.52846961327949,13.52846961327949
+Above 60%,Total,Spain,2019,0.9,Total,Age in completed years,750480.0,2.5,13.52846961327949,13.52846961327949
+Total,Total,Spain,2020,3.4,Total,Age in completed years,467918.0,8.2,13.056050482997168,13.52846961327949
+Below 60%,Total,Spain,2020,9.2,Total,Age in completed years,467918.0,30.6,13.056050482997168,13.056050482997168
+Above 60%,Total,Spain,2020,1.9,Total,Age in completed years,467918.0,2.2,13.056050482997168,13.056050482997168
+Total,Total,Spain,2023,2.9,Total,Age in completed years,1250991.0,8.2,14.039447394544508,13.056050482997168
+Below 60%,Total,Spain,2023,6.7,Total,Age in completed years,1250991.0,31.7,14.039447394544508,14.039447394544508
+Above 60%,Total,Spain,2023,1.9,Total,Age in completed years,1250991.0,2.3,14.039447394544508,14.039447394544508
+Below 60%,Total,Sweden,2013,5.6,Total,Age in completed years,115845.0,41.0,11.660017001858309,11.660017001858309
+Above 60%,Total,Sweden,2013,1.1,Total,Age in completed years,115845.0,3.0,11.660017001858309,11.660017001858309
+Total,Total,Sweden,2014,2.1,Total,Age in completed years,126966.0,8.6,11.751682489156126,11.660017001858309
+Below 60%,Total,Sweden,2014,6.9,Total,Age in completed years,126966.0,42.3,11.751682489156126,11.751682489156126
+Above 60%,Total,Sweden,2014,1.2,Total,Age in completed years,126966.0,2.5,11.751682489156126,11.751682489156126
+Total,Total,Sweden,2015,2.6,Total,Age in completed years,134240.0,8.7,11.807391971017745,11.751682489156126
+Below 60%,Total,Sweden,2015,7.9,Total,Age in completed years,134240.0,39.9,11.807391971017745,11.807391971017745
+Above 60%,Total,Sweden,2015,1.5,Total,Age in completed years,134240.0,2.6,11.807391971017745,11.807391971017745
+Total,Total,Sweden,2016,2.7,Total,Age in completed years,163005.0,8.5,12.001542288927386,11.807391971017745
+Below 60%,Total,Sweden,2016,6.8,Total,Age in completed years,163005.0,38.7,12.001542288927386,12.001542288927386
+Above 60%,Total,Sweden,2016,1.9,Total,Age in completed years,163005.0,2.6,12.001542288927386,12.001542288927386
+Total,Total,Sweden,2017,2.5,Total,Age in completed years,144489.0,8.4,11.880965579987658,12.001542288927386
+Below 60%,Total,Sweden,2017,7.4,Total,Age in completed years,144489.0,38.8,11.880965579987658,11.880965579987658
+Above 60%,Total,Sweden,2017,1.6,Total,Age in completed years,144489.0,2.7,11.880965579987658,11.880965579987658
+Total,Total,Sweden,2018,2.9,Total,Age in completed years,132602.0,8.3,11.79511498091236,11.880965579987658
+Below 60%,Total,Sweden,2018,8.4,Total,Age in completed years,132602.0,37.0,11.79511498091236,11.79511498091236
+Above 60%,Total,Sweden,2018,1.8,Total,Age in completed years,132602.0,2.6,11.79511498091236,11.79511498091236
+Total,Total,Sweden,2019,2.6,Total,Age in completed years,115805.0,9.4,11.659671656250262,11.79511498091236
+Below 60%,Total,Sweden,2019,8.1,Total,Age in completed years,115805.0,41.2,11.659671656250262,11.659671656250262
+Above 60%,Total,Sweden,2019,1.5,Total,Age in completed years,115805.0,2.8,11.659671656250262,11.659671656250262
+Total,Total,Sweden,2020,2.5,Total,Age in completed years,82518.0,8.3,11.320783848837403,11.659671656250262
+Below 60%,Total,Sweden,2020,5.4,Total,Age in completed years,82518.0,38.1,11.320783848837403,11.320783848837403
+Above 60%,Total,Sweden,2020,2.0,Total,Age in completed years,82518.0,2.5,11.320783848837403,11.320783848837403
+Total,Total,Sweden,2023,2.3,Total,Age in completed years,94514.0,10.9,11.456513831044266,11.320783848837403
+Below 60%,Total,Sweden,2023,6.4,Total,Age in completed years,94514.0,47.4,11.456513831044266,11.456513831044266
+Above 60%,Total,Sweden,2023,1.5,Total,Age in completed years,94514.0,4.0,11.456513831044266,11.456513831044266
+Below 60%,Total,Switzerland,2013,2.7,Total,Age in completed years,160157.0,43.9,11.98391610695859,11.98391610695859
+Above 60%,Total,Switzerland,2013,1.9,Total,Age in completed years,160157.0,5.0,11.98391610695859,11.98391610695859
+Total,Total,Switzerland,2014,1.4,Total,Age in completed years,156282.0,11.7,11.959423745299068,11.98391610695859
+Below 60%,Total,Switzerland,2014,4.9,Total,Age in completed years,156282.0,47.2,11.959423745299068,11.959423745299068
+Above 60%,Total,Switzerland,2014,0.9,Total,Age in completed years,156282.0,6.0,11.959423745299068,11.959423745299068
+Total,Total,Switzerland,2015,1.7,Total,Age in completed years,153627.0,11.7,11.942289374749269,11.959423745299068
+Below 60%,Total,Switzerland,2015,4.3,Total,Age in completed years,153627.0,43.9,11.942289374749269,11.942289374749269
+Above 60%,Total,Switzerland,2015,1.2,Total,Age in completed years,153627.0,5.8,11.942289374749269,11.942289374749269
+Total,Total,Switzerland,2016,2.3,Total,Age in completed years,149305.0,12.0,11.913753170261646,11.942289374749269
+Below 60%,Total,Switzerland,2016,6.1,Total,Age in completed years,149305.0,44.7,11.913753170261646,11.913753170261646
+Above 60%,Total,Switzerland,2016,1.6,Total,Age in completed years,149305.0,6.4,11.913753170261646,11.913753170261646
+Total,Total,Switzerland,2017,2.2,Total,Age in completed years,143377.0,12.7,11.873239778362722,11.913753170261646
+Below 60%,Total,Switzerland,2017,6.3,Total,Age in completed years,143377.0,51.2,11.873239778362722,11.873239778362722
+Above 60%,Total,Switzerland,2017,1.5,Total,Age in completed years,143377.0,5.7,11.873239778362722,11.873239778362722
+Total,Total,Switzerland,2018,2.3,Total,Age in completed years,144857.0,12.8,11.88350923122021,11.873239778362722
+Below 60%,Total,Switzerland,2018,4.4,Total,Age in completed years,144857.0,48.4,11.88350923122021,11.88350923122021
+Above 60%,Total,Switzerland,2018,2.0,Total,Age in completed years,144857.0,6.7,11.88350923122021,11.88350923122021
+Total,Total,Switzerland,2019,1.6,Total,Age in completed years,145129.0,14.2,11.885385171464408,11.88350923122021
+Below 60%,Total,Switzerland,2019,2.4,Total,Age in completed years,145129.0,55.0,11.885385171464408,11.885385171464408
+Above 60%,Total,Switzerland,2019,1.5,Total,Age in completed years,145129.0,6.3,11.885385171464408,11.885385171464408
+Total,Total,Switzerland,2020,1.8,Total,Age in completed years,138778.0,13.6,11.84063801877835,11.885385171464408
+Below 60%,Total,Switzerland,2020,3.9,Total,Age in completed years,138778.0,51.8,11.84063801877835,11.84063801877835
+Above 60%,Total,Switzerland,2020,1.4,Total,Age in completed years,138778.0,6.6,11.84063801877835,11.84063801877835
+Total,Total,Switzerland,2023,1.3,Total,Age in completed years,263081.0,14.2,12.480221049636656,11.84063801877835
+Below 60%,Total,Switzerland,2023,1.6,Total,Age in completed years,263081.0,52.9,12.480221049636656,12.480221049636656
+Above 60%,Total,Switzerland,2023,1.2,Total,Age in completed years,263081.0,6.6,12.480221049636656,12.480221049636656
+Below 60%,Total,United Kingdom,2013,3.7,Total,Age in completed years,526046.0,27.0,13.173145841340219,13.173145841340219
+Above 60%,Total,United Kingdom,2013,2.3,Total,Age in completed years,526046.0,4.3,13.173145841340219,13.173145841340219
+Total,Total,United Kingdom,2014,2.4,Total,Age in completed years,631991.0,12.5,13.356632014821031,13.173145841340219
+Below 60%,Total,United Kingdom,2014,5.4,Total,Age in completed years,631991.0,41.7,13.356632014821031,13.356632014821031
+Above 60%,Total,United Kingdom,2014,1.8,Total,Age in completed years,631991.0,6.7,13.356632014821031,13.356632014821031
+Total,Total,United Kingdom,2015,2.2,Total,Age in completed years,631452.0,12.4,13.35577879203302,13.356632014821031
+Below 60%,Total,United Kingdom,2015,5.1,Total,Age in completed years,631452.0,40.0,13.35577879203302,13.35577879203302
+Above 60%,Total,United Kingdom,2015,1.6,Total,Age in completed years,631452.0,6.9,13.35577879203302,13.35577879203302
+Total,Total,United Kingdom,2016,2.2,Total,Age in completed years,588993.0,12.3,13.286171275824623,13.35577879203302
+Below 60%,Total,United Kingdom,2016,4.0,Total,Age in completed years,588993.0,42.4,13.286171275824623,13.286171275824623
+Above 60%,Total,United Kingdom,2016,1.8,Total,Age in completed years,588993.0,6.6,13.286171275824623,13.286171275824623
+Total,Total,United Kingdom,2017,1.0,Total,Age in completed years,644209.0,12.4,13.375780038888216,13.286171275824623
+Below 60%,Total,United Kingdom,2017,2.2,Total,Age in completed years,644209.0,40.8,13.375780038888216,13.375780038888216
+Above 60%,Total,United Kingdom,2017,0.7,Total,Age in completed years,644209.0,6.9,13.375780038888216,13.375780038888216
+Total,Total,United Kingdom,2018,1.9,Total,Age in completed years,603953.0,15.1,13.311253315076316,13.375780038888216
+Below 60%,Total,United Kingdom,2018,4.0,Total,Age in completed years,603953.0,50.3,13.311253315076316,13.311253315076316
+Above 60%,Total,United Kingdom,2018,1.5,Total,Age in completed years,603953.0,7.4,13.311253315076316,13.311253315076316
