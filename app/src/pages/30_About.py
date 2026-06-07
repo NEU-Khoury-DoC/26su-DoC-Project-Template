@@ -26,35 +26,35 @@ st.write("# About the team")
 col1, col2 = st.columns(2)
 
 with col1:
-    with st.container(border=True, height = 600):
+    with st.container(border=True, height = 650):
         img_path = Path(__file__).parent.parent / "assets" / "geo-headshot.JPG"
-        st.image(str(img_path), width = 300)
+        st.image(str(img_path))
         st.write("##### Geo Thatch")
 
         st.write('Geo is an incoming sophomore at Northeastern University studying ' \
         'computer science and math. Currently taking CS 3200 and CS 4973.')
     
-    with st.container(border=True, height = 600):
+    with st.container(border=True, height = 650):
         img_path = Path(__file__).parent.parent / "assets" / "isabel-headshot.jpeg"
         st.image(str(img_path))
         st.write("##### Isabel larenas")
         st.write('Isabel is an incoming junior at Northeastern University majoring in ' \
-        'computer science with a minor in spanish . Currently taking DS 3000 and CS 4973.')
+        'computer science with a minor in spanish. Currently taking DS 3000 and CS 4973.')
 
 with col2:
-    with st.container(border=True, height = 600):
+    with st.container(border=True, height = 650):
         img_path = Path(__file__).parent.parent / "assets" / "maira-headshot.png"
         st.image(str(img_path))
         st.write("##### Maira Padani")
         st.write('Maira is an incoming senior at Northeastern University majoring in ' \
-        'business administration with a minor in data science . Currently taking CS 3200 and CS 4973.')
+        'business administration with a minor in data science. Currently taking CS 3200 and CS 4973.')
 
-    with st.container(border=True, height = 600):
+    with st.container(border=True, height = 650):
         img_path = Path(__file__).parent.parent / "assets" / "laasya-headshot.jpeg"
         st.image(str(img_path))
         st.write("##### Laasya Gattu")
         st.write('Laasya is an incoming sophomore at Northeastern University majoring in ' \
-        'computer science and business administration with a minor in public health . Currently taking DS 3000 and CS 4973.')
+        'computer science and business administration with a minor in public health. Currently taking DS 3000 and CS 4973.')
 
 
 # Add a button to return to home page

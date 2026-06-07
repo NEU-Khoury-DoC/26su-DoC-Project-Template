@@ -19,6 +19,7 @@ primaryColor="#c2b390"
 backgroundColor = "#dccfb3"
 secondaryBackgroundColor = "#d1ab8a"
 font="monospace"
+baseFontSize = 25
 
 [server]
 runOnSave = true

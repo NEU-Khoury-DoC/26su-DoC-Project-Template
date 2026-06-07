@@ -36,7 +36,7 @@ SideBarLinks(show_home=True)
 logger.info("Loading the Home page of the app")
 st.title('EuroHome')
 st.write('###### Welcome to EuroHome! Eurohome is a web-app designed to help ' \
-'students, real estate agents, and government agencies' \
+'students, real estate agents, and government agencies ' \
 'with all aspects of the housing market in the EU. Users can view available listings, manage their budgets,'
 ' and predict housing satisfaction based on their preferences. ' \
     'Our goal is to make the housing market more transparent and accessible for everyone.')
