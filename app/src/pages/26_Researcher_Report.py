@@ -10,4 +10,4 @@ st.set_page_config(layout='wide')
 SideBarLinks()
 
 st.title(f"WIP FOR RESEARCHER REPROT")
-st.write('Place for researchers to generate reports')
+st.write('Place for researchers to generate reports WILL USE ReportLab')
