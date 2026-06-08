@@ -6,7 +6,10 @@ from flask import current_app
 from backend.db_connection import get_db
 from sklearn.linear_model import LinearRegression
 
-FEATURE_COLS = ['crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight', 'deg_urb_Rural areas', 'deg_urb_Towns and suburbs']
+FEATURE_COLS = [
+    'crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight',
+    'deg_urb_Rural areas', 'deg_urb_Towns and suburbs', 'crime_noise', 'poll_noise', 'crime_hpi', 'poll_crime'
+]
 
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -27,7 +30,10 @@ def linreg_predict(X, y, b):
     return {"mse": mse, "r2": r2}
 
 def train():
-    cols = ['crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight', 'deg_urb_Rural areas', 'deg_urb_Towns and suburbs']
+    cols = [
+    'crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight',
+    'deg_urb_Rural areas', 'deg_urb_Towns and suburbs', 'crime_noise', 'poll_noise', 'crime_hpi', 'poll_crime'
+    ]
     X = np.array(df[cols])
     y = np.array(df['happy_rate'])
 
@@ -138,12 +144,16 @@ def predict(crime, noise, pollution, hpi, is_rural, is_towns):
     scaler_std = parse(row['scaler_std'])
  
     input_dict = {
-        'crime_rate':                  float(crime),
-        'noise_rate':                  float(noise),
-        'pollution_rate':              float(pollution),
-        'hpi_weight':                  float(hpi),
+        'crime_rate':                  crime,
+        'noise_rate':                  noise,
+        'pollution_rate':              pollution,
+        'hpi_weight':                  hpi,
         'deg_urb_Rural areas':         float(is_rural),
         'deg_urb_Towns and suburbs':   float(is_towns),
+        'crime_noise':                 crime * noise,
+        'poll_noise':                  pollution * noise,
+        'crime_hpi':                   crime * hpi,
+        'poll_crime':                  pollution * crime,
     }
  
     X_input  = np.array([input_dict[col] for col in FEATURE_COLS]).astype(float)

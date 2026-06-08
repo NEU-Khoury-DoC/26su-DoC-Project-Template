@@ -148,8 +148,8 @@ st.subheader("Environmental conditions")
 col1, col2 = st.columns(2)
 
 with col1:
-    crime     = st.slider("🔒 Crime & Vandalism",  0, 100, 25, key="crime")
-    pollution = st.slider("🌫️ Pollution & Grime",  0, 100, 25, key="pollution")
+    crime     = st.slider("🔒 Crime Levels",  0, 100, 25, key="crime")
+    pollution = st.slider("🌫️ Pollution Levels",  0, 100, 25, key="pollution")
 
 with col2:
     noise = st.slider("🔊 Noise Levels",          0, 100, 25, key="noise")
