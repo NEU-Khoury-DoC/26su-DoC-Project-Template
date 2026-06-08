@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"RESEARCHER REPROT")
+st.title(f"RESEARCHER REPORT")
 st.write('Generate summary reports from collected observations. Choose filters and export a PDF/summary.')
 
 col1, col2 = st.columns([3,1])

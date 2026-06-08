@@ -34,7 +34,7 @@ def all_farms():
     
 def crop_prediction():
     st.sidebar.page_link(
-        "pages/04_Crop_Predictions.py", label="Crop Success Predictions", icon="🌾"
+        "pages/04_Crop_Predictions.py", label="Crop Type Suggestion", icon="🌾"
     )
     
 def farmer_blog():
@@ -67,11 +67,6 @@ def policy_report():
 def policy_predictions():
     st.sidebar.page_link(
         "pages/15_Policy_Predictions.py", label="Crop Price Predictions", icon="🌾"
-    )
-    
-def policy_analysis():
-    st.sidebar.page_link(
-        "pages/16_Policy_Analysis.py", label="Policy Maker Analysis", icon="🖥️"
     )
     
 def policy_blog():
