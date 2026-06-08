@@ -7,42 +7,66 @@ def render_feed():
     user_id = st.session_state.get('user_id')
     role = st.session_state.get('role')
 
-    options = ["All", "Farmers", "Policymakers", "Researchers"]
-    map_to_state = {"All": "all", "Farmers": "farmer", "Policymakers": "politician", "Researchers": "researcher"}
+    # filter chips
+    # selected filter default
+    if 'feed_filter' not in st.session_state:
+        st.session_state['feed_filter'] = 'all'
 
-    initial = "All"
-    if 'feed_filter' in st.session_state:
-        rev = {v:k for k,v in map_to_state.items()}
-        initial = rev.get(st.session_state.get('feed_filter'), 'All')
+    # custom CSS for selected/unselected buttons
+    st.markdown("""
+    <style>
+    div.stButton > button[kind="primary"] {
+        background-color: light grey;
+        color: white;
+        border: 1px solid light grey;
+    }
 
-    # style the radio to look like chip buttons
-    st.markdown(
-        """
-        <style>
-        /* scoped-ish chip-style for radio groups */
-        div[role="radiogroup"] > div { display:inline-block; margin-right:8px; }
-        div[role="radiogroup"] input[type="radio"]{ display:none; }
-        div[role="radiogroup"] label {
-            background:#f0f0f0;
-            padding:10px 18px;
-            border-radius:999px;
-            cursor:pointer;
-            color:#333;
-            font-family: 'Courier New', monospace;
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-        div[role="radiogroup"] input[type="radio"]:checked + label {
-            background: #6f49f6;
-            color: #fff;
-            border-color: #5b35e6;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    div.stButton > button[kind="secondary"] {
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-    selected = st.radio('', options, index=options.index(initial), horizontal=True, key='feed_filter_radio')
-    st.session_state['feed_filter'] = map_to_state[selected]
+    # filter chips
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        if st.button(
+            "All",
+            use_container_width=True,
+            type="primary" if st.session_state['feed_filter'] == 'all' else "secondary"
+        ):
+            st.session_state['feed_filter'] = 'all'
+            st.rerun()
+
+    with col2:
+        if st.button(
+            "Farmers",
+            use_container_width=True,
+            type="primary" if st.session_state['feed_filter'] == 'farmer' else "secondary"
+        ):
+            st.session_state['feed_filter'] = 'farmer'
+            st.rerun()
+
+    with col3:
+        if st.button(
+            "Policymakers",
+            use_container_width=True,
+            type="primary" if st.session_state['feed_filter'] == 'politician' else "secondary"
+        ):
+            st.session_state['feed_filter'] = 'politician'
+            st.rerun()
+
+    with col4:
+        if st.button(
+            "Researchers",
+            use_container_width=True,
+            type="primary" if st.session_state['feed_filter'] == 'researcher' else "secondary"
+        ):
+            st.session_state['feed_filter'] = 'researcher'
+            st.rerun()
 
     # fetch posts
     try:
