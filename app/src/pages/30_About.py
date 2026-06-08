@@ -26,7 +26,7 @@ st.write("# About the team")
 col1, col2 = st.columns(2)
 
 with col1:
-    with st.container(border=True, height = 650):
+    with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "geo-headshot.JPG"
         st.image(str(img_path))
         st.write("##### Geo Thatch")
@@ -34,7 +34,7 @@ with col1:
         st.write('Geo is an incoming sophomore at Northeastern University studying ' \
         'computer science and math. Currently taking CS 3200 and CS 4973.')
     
-    with st.container(border=True, height = 650):
+    with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "isabel-headshot.jpeg"
         st.image(str(img_path))
         st.write("##### Isabel larenas")
@@ -42,14 +42,14 @@ with col1:
         'computer science with a minor in spanish. Currently taking DS 3000 and CS 4973.')
 
 with col2:
-    with st.container(border=True, height = 650):
+    with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "maira-headshot.png"
         st.image(str(img_path))
         st.write("##### Maira Padani")
         st.write('Maira is an incoming senior at Northeastern University majoring in ' \
         'business administration with a minor in data science. Currently taking CS 3200 and CS 4973.')
 
-    with st.container(border=True, height = 650):
+    with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "laasya-headshot.jpeg"
         st.image(str(img_path))
         st.write("##### Laasya Gattu")
