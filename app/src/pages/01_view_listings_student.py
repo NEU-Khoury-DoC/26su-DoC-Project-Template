@@ -84,40 +84,64 @@ for listing in listings:
         # with col2:
         #     st.subheader(f"${listing['price']} / month")
 
-    if listing['university_name']:
-        with st.container(border=False):
-            col1, col2, col3= st.columns([3, 3, 2])
+        if listing['university_name']:
+            with st.container(border=True):
+                col1, col2, col3= st.columns([3, 3, 2])
 
-            with col1:
-                st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
-                st.write(f"🏠 {listing['property_type']}")
-                st.write(f"🏫 Associated with {listing['university_name']}")
+                with col1:
+                    st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
+                    st.write(f"🏠 {listing['property_type']}")
+                    st.write(f"🏫 Associated with {listing['university_name']}")
 
-            with col2:
-                st.subheader(f"€{listing['price']} / month")
+                with col2:
+                    st.subheader(f"€{listing['price']} / month")
 
-            with col3:
-                if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
-                    st.session_state['listing_id'] = listing['listing_id']
-                    st.session_state['title'] = listing['title']
-                    st.switch_page('pages/03_view_reviews.py')
-    
-    else:
-        with st.container(border=False):
-            col1, col2, col3 = st.columns([3, 3, 2])
+                with col3:
+                    if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
+                        st.session_state['listing_id'] = listing['listing_id']
+                        st.session_state['title'] = listing['title']
+                        st.switch_page('pages/03_view_reviews.py')
 
-            with col1:
-                st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
-                st.write(f"🏠 {listing['property_type']}")
+                    if st.button("♡ Save", key=f"save_{listing['listing_id']}"):
+                        requests.post('http://web-api:4000/housing/favorites', json={
+                            "listing_id": listing['listing_id'],
+                            "user_id": st.session_state['user_id']
+                        })
+                        st.success("Saved!")
+                        
+                        
+        
+        else:
+            with st.container(border=True):
+                col1, col2, col3 = st.columns([3, 3, 2])
 
-            with col2:
-                st.subheader(f"€{listing['price']} / month")
-            
-            with col3:
-                if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
-                    st.session_state['listing_id'] = listing['listing_id']
-                    st.session_state['title'] = listing['title']
-                    st.switch_page('pages/03_view_reviews.py')
+                with col1:
+                    st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
+                    st.write(f"🏠 {listing['property_type']}")
+
+                with col2:
+                    st.subheader(f"€{listing['price']} / month")
+                
+                with col3:
+                    if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
+                        st.session_state['listing_id'] = listing['listing_id']
+                        st.session_state['title'] = listing['title']
+                        st.switch_page('pages/03_view_reviews.py')
+
+                    if st.button("♡ Save", key=f"save_{listing['listing_id']}"):
+                        requests.post('http://web-api:4000/housing/favorites', json={
+                            "listing_id": listing['listing_id'],
+                            "user_id": st.session_state['user_id']
+                        })
+                        st.success("Saved!")
+
+                        st.write(st.session_state.get('user_id'))  # is user_id set?
+                        res = requests.post('http://web-api:4000/housing/favorites', json={
+                            "listing_id": listing['listing_id'],
+                            "user_id": st.session_state['user_id']
+                        })
+                        st.write(res.status_code)
+                        st.write(res.text)  # see exactly what Flask returned
 
 
     st.write("")

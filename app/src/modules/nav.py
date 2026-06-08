@@ -23,8 +23,12 @@ def student_home_nav():
 
 def view_listings_nav():
     st.sidebar.page_link(
-        "pages/01_view_listings_student.py", label="View listings", icon="🏘️"
+        "pages/01_view_listings_student.py", label="View Listings", icon="🏘️"
     )
+
+def view_saved_listings_nav():
+    st.sidebar.page_link(
+        "pages/001_view_saved_listings.py", label="View Saved Listings", icon="❤️")
 
 def budget_manager_nav():
     st.sidebar.page_link("pages/02_budget_manager.py", label="Budget Manager", icon="💶")
@@ -96,6 +100,7 @@ def SideBarLinks(show_home=False):
         if st.session_state["role"] == "Student":
             student_home_nav()
             view_listings_nav()
+            view_saved_listings_nav()
             budget_manager_nav()
             housing_satisfaction_pred_nav()
 
