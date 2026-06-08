@@ -102,15 +102,25 @@ def render_feed():
 
                 with react_col1:
                     if st.button(f"👍 {likes}", key=f"like_{pid}"):
-                        if my_reaction:
+
+                        if my_reaction and my_reaction.get("pos_neg") is True:
+                            # undo like
+                            requests.delete(
+                                f"{API_BASE}/reactions/{my_reaction['reaction_id']}"
+                            )
+                        
+                        elif my_reaction:
+                            # switch dislike -> like
                             requests.put(
-                                f"{API_BASE}/reactions/{my_reaction.get('reaction_id')}",
+                                f"{API_BASE}/reactions/{my_reaction['reaction_id']}",
                                 json={
                                     "pos_neg": True,
                                     "updated_by": str(user_id)
                                 }
                             )
+                        
                         else:
+                            # create like
                             requests.post(
                                 f"{API_BASE}/reactions/post/{pid}",
                                 json={
@@ -123,23 +133,34 @@ def render_feed():
 
                 with react_col2:
                     if st.button(f"👎 {dislikes}", key=f"dislike_{pid}"):
-                        if my_reaction:
+                        
+                        if my_reaction and my_reaction.get("pos_neg") is False:
+                            # undo dislike
+                            requests.delete(
+                                f"{API_BASE}/reactions/{my_reaction['reaction_id']}"
+                            )
+
+                        elif my_reaction:
+                            # switch like -> dislike
                             requests.put(
-                                f"{API_BASE}/reactions/{my_reaction.get('reaction_id')}",
+                                f"{API_BASE}/reactions/{my_reaction['reaction_id']}",
                                 json={
                                     "pos_neg": False,
                                     "updated_by": str(user_id)
                                 }
                             )
+
                         else:
-                            requests.post(
-                                f"{API_BASE}/reactions/post/{pid}",
-                                json={
-                                    "pos_neg": False,
-                                    "user_id": user_id,
-                                    "created_by": str(user_id)
-                                }
-                            )
+                            # create dislike
+                                requests.post(
+                                    f"{API_BASE}/reactions/post/{pid}",
+                                    json={
+                                        "pos_neg": False,
+                                        "user_id": user_id,
+                                        "created_by": str(user_id)
+                                    }
+                                )
+                            
                         st.rerun()
 
                 # comments
