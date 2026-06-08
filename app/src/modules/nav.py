@@ -4,6 +4,8 @@
 
 import streamlit as st
 
+from modules.theme import apply_zeus_theme
+
 
 # ---- General ----------------------------------------------------------------
 
@@ -151,6 +153,8 @@ def SideBarLinks(show_home=False):
     Renders sidebar navigation links based on the logged-in user's role.
     The role is stored in st.session_state when the user logs in on Home.py.
     """
+
+    apply_zeus_theme()
 
     # Logo appears at the top of the sidebar on every page
     st.sidebar.image("assets/logo.png", width=150)
