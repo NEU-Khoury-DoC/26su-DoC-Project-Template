@@ -10,8 +10,12 @@ import plotly.express as px
 st.set_page_config(layout = 'wide')
 SideBarLinks()
 
+if st.session_state.get("scroll_to_draft"):
+    st.session_state["scroll_to_draft"] = False
+    st.info("Scroll down to the Draft Funding Plan section to submit your proposal.")
+
 # running POST request to sync data from Eurostat
-st.title("Plan Funds")
+st.title("Explore Funding Programs")
 
 # Funding Index Table
 st.subheader("Funding Index")
@@ -97,3 +101,7 @@ with st.container(border=True):
                     st.error(f"Error: {response.text}")
             except Exception as e:
                 st.error(f"Error: {e}")
+
+#Button for funding drafts page
+if st.button("View My Funding Drafts", type = "secondary"):
+    st.switch_page("pages/13_funding_drafts.py")

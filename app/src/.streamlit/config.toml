@@ -19,7 +19,7 @@ primaryColor = "#1D3461"
 backgroundColor = "#F5F2F0"
 secondaryBackgroundColor = "#EAE5E2"
 font = "sans serif"
-baseFontSize = 25
+baseFontSize = 22
 
 [server]
 runOnSave = true
