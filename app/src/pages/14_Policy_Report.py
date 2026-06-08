@@ -2,91 +2,144 @@ import logging
 logger = logging.getLogger(__name__)
 
 import streamlit as st
-import pandas as pd
+import requests
+from datetime import date
+from fpdf import FPDF
 from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide')
-
 SideBarLinks()
 
-st.title("Community Reports & Alerts")
-st.write("Policy makers can view, filter, and respond to community-reported agricultural and environmental issues.")
+API_BASE = "http://web-api:4000"
 
-reports_data = pd.DataFrame({
-    "ID": [1, 2, 3, 4, 5],
-    "Date": ["2024-05-30", "2024-05-29", "2024-05-28", "2024-05-27", "2024-05-26"],
-    "Type": ["Flooding", "Soil Erosion", "Crop Disease", "Water Shortage", "Road Damage"],
-    "Location": ["East Farms", "River Valley", "South Plains", "West Hills", "North Valley"],
-    "Severity": ["High", "Medium", "High", "Medium", "Low"],
-    "Status": ["Under Review", "Open", "Open", "Under Review", "Resolved"],
-    "Description": [
-        "Severe flooding damaging wheat crops.",
-        "Rapid soil erosion near riverbank.",
-        "Unusual crop disease spotted in corn fields.",
-        "Irrigation water not sufficient.",
-        "Farm access road damaged by heavy rain."
-    ],
-    "lat": [50.860, 50.890, 50.850, 50.840, 50.879],
-    "lon": [4.720, 4.740, 4.680, 4.660, 4.700]
-})
+st.title("Policy Report Builder")
+st.write("Create and save a policy report based on your findings.")
 
-col1, col2, col3, col4 = st.columns(4)
+COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia',
+             'Denmark', 'Estonia', 'Finland', 'Germany', 'Greece', 'Hungary',
+             'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg',
+             'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia',
+             'Slovenia', 'Spain', 'Sweden']
 
-with col1:
-    type_filter = st.selectbox("Filter by Type", ["All"] + list(reports_data["Type"].unique()))
+CROPS = ['Barley', 'Durum wheat', 'Feed barley', 'Rye', 'Soft wheat']
 
-with col2:
-    severity_filter = st.selectbox("Severity", ["All", "High", "Medium", "Low"])
+def build_report_text(report_name, policymaker_name, report_date, countries_text, crops_text, findings, recommendations):
+    return f"""POLICY REPORT
+=============
+Title: {report_name}
+Author: {policymaker_name}
+Date: {report_date}
+Countries: {countries_text}
+Crops: {crops_text}
 
-with col3:
-    status_filter = st.selectbox("Status", ["All", "Open", "Under Review", "Resolved"])
+FINDINGS
+--------
+{findings}
 
-with col4:
-    date_filter = st.selectbox("Date Range", ["All", "Last 7 Days", "Last 30 Days"])
+RECOMMENDATIONS
+---------------
+{recommendations}
+"""
 
-filtered_reports = reports_data.copy()
-
-if type_filter != "All":
-    filtered_reports = filtered_reports[filtered_reports["Type"] == type_filter]
-
-if severity_filter != "All":
-    filtered_reports = filtered_reports[filtered_reports["Severity"] == severity_filter]
-
-if status_filter != "All":
-    filtered_reports = filtered_reports[filtered_reports["Status"] == status_filter]
+def generate_pdf(report_text):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    for line in report_text.split('\n'):
+        pdf.cell(200, 10, txt=line.encode('latin-1', 'replace').decode('latin-1'), ln=True)
+    return bytes(pdf.output())
 
 st.divider()
 
-st.subheader("Reports List")
+col1, col2 = st.columns(2)
+with col1:
+    report_name = st.text_input("Report title", placeholder="e.g. Soft Wheat Price Analysis 2025")
+with col2:
+    policymaker_name = st.text_input("Policymaker name", value=st.session_state.get('first_name', ''))
 
-st.dataframe(
-    filtered_reports[["ID", "Date", "Type", "Location", "Severity", "Status", "Description"]],
-    use_container_width=True
+col3, col4 = st.columns(2)
+with col3:
+    report_date = st.date_input("Date", value=date.today())
+with col4:
+    st.write("")
+
+select_all_countries = st.checkbox("Select all countries")
+if select_all_countries:
+    countries = COUNTRIES
+else:
+    countries = st.multiselect("Countries", COUNTRIES, placeholder="Select one or more countries")
+
+select_all_crops = st.checkbox("All crops (optional)")
+if select_all_crops:
+    crops = CROPS
+else:
+    crops = st.multiselect("Crops (optional)", CROPS, placeholder="Select crops if relevant")
+
+st.divider()
+
+findings = st.text_area("Findings", height=150,
+    placeholder="Summarise the key data findings here...")
+
+recommendations = st.text_area("Recommendations", height=150,
+    placeholder="What actions or policies do you recommend?")
+
+st.divider()
+
+crops_text = ", ".join(crops) if crops else "All crops"
+countries_text = ", ".join(countries) if countries else "None selected"
+report_text = build_report_text(
+    report_name, policymaker_name, report_date,
+    countries_text, crops_text, findings, recommendations
 )
 
-st.divider()
+col_save, col_pdf, col_txt, _ = st.columns([1, 1, 1, 2])
 
-map_col, summary_col = st.columns([1, 1])
+with col_save:
+    if st.button("Save to database", type="primary", use_container_width=True):
+        if not report_name:
+            st.warning("Please enter a report title.")
+        elif not countries:
+            st.warning("Please select at least one country.")
+        elif not findings:
+            st.warning("Please enter your findings.")
+        else:
+            try:
+                response = requests.post(f"{API_BASE}/reports/", json={
+                    'title': report_name,
+                    'texts': report_text,
+                    'created_by': policymaker_name or str(st.session_state.get('user_id'))
+                })
+                if response.status_code == 201:
+                    st.success("Report saved successfully!")
+                else:
+                    st.error(f"Could not save report: {response.json()}")
+            except Exception as e:
+                st.error(f"Error saving report: {e}")
 
-with map_col:
-    st.subheader("Reports on Map")
-
-    if len(filtered_reports) > 0:
-        st.map(filtered_reports, latitude="lat", longitude="lon", zoom=10)
+with col_pdf:
+    if report_name and findings:
+        try:
+            pdf_bytes = generate_pdf(report_text)
+            st.download_button(
+                label="Download PDF",
+                data=pdf_bytes,
+                file_name=f"{report_name}.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+        except Exception as e:
+            st.error(f"PDF error: {e}")
     else:
-        st.warning("No reports match your filters.")
+        st.button("Download PDF", disabled=True, use_container_width=True)
 
-with summary_col:
-    st.subheader("Reports Summary")
-
-    st.write(f"Total Reports: {len(filtered_reports)}")
-    st.write(f"High Severity: {len(filtered_reports[filtered_reports['Severity'] == 'High'])}")
-    st.write(f"Medium Severity: {len(filtered_reports[filtered_reports['Severity'] == 'Medium'])}")
-    st.write(f"Low Severity: {len(filtered_reports[filtered_reports['Severity'] == 'Low'])}")
-    st.write(f"Under Review: {len(filtered_reports[filtered_reports['Status'] == 'Under Review'])}")
-    st.write(f"Resolved: {len(filtered_reports[filtered_reports['Status'] == 'Resolved'])}")
-
-st.divider()
-
-if st.button("Save Report View"):
-    st.success("Report view saved!")
+with col_txt:
+    if report_name and findings:
+        st.download_button(
+            label="Download .txt",
+            data=report_text,
+            file_name=f"{report_name}.txt",
+            mime="text/plain",
+            use_container_width=True
+        )
+    else:
+        st.button("Download .txt", disabled=True, use_container_width=True)
