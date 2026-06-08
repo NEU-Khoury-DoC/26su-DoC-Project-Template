@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify, current_app, redirect, url_for
+from flask import Blueprint, jsonify, current_app, request
 from backend.simple.playlist import sample_playlist_data
 from backend.ml_models import prices_model
+from backend.db_connection import get_db
 
 price_bp = Blueprint("price_bp", __name__)
 
@@ -24,3 +25,20 @@ def get_model2_prediction(crop, country):
         current_app.logger.error(f"price model prediction error: {e}")
         return jsonify({"error": "Error processing prediction request"}), 500
 
+@price_bp.route('/average', methods=['GET'])
+def get_average_prices():
+    current_app.logger.info("GET /average")
+    year_min = request.args.get('year_min', 2017, type=int)
+    year_max = request.args.get('year_max', 2024, type=int)
+
+    conn = get_db()
+    cur = conn.cursor(dictionary=True)
+    cur.execute('''
+        SELECT geo, prod_veg, ROUND(AVG(selling_price), 2) as avg_price
+        FROM CropPrices
+        WHERE year BETWEEN %s AND %s
+        GROUP BY geo, prod_veg
+    ''', (year_min, year_max))
+    rows = cur.fetchall()
+    cur.close()
+    return jsonify(rows), 200

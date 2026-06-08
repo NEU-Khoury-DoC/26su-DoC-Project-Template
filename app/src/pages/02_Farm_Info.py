@@ -9,21 +9,37 @@ st.set_page_config(layout='wide')
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"Insert Farm Information")
-st.write('Place for farmers to input their information about their farm')
-
-text_input = st.text_input("Enter some text", placeholder="Type something...")
-dropdown = st.selectbox("Choose an option", ["Option A", "Option B", "Option C"])
- 
-# Submit button
-if st.button("Submit"):
-    # --- Your backend logic goes here ---
-    result = handle_submission(text_input, dropdown)
-    st.success(f"Submitted! Text: '{text_input}', Option: '{dropdown}'")
-    st.write("Backend response:", result)
- 
- 
 def handle_submission(text: str, option: str) -> dict:
     """Replace this with your actual backend logic."""
     return {"received_text": text, "received_option": option}
- 
+
+
+st.title(f"FARM INFO")
+st.write('Enter or edit basic information about your farm. This is a UI draft / not wired yet.')
+
+col1, col2 = st.columns(2)
+with col1:
+    farm_name = st.text_input('Farm name')
+    country = st.selectbox('Country', ['Belgium', 'United States', 'India', 'Nigeria'])
+    latitude = st.number_input('Latitude', format='%.6f')
+    longitude = st.number_input('Longitude', format='%.6f')
+
+with col2:
+    main_crops = st.multiselect('Main crops', ['Wheat', 'Maize', 'Rice', 'Soybean', 'Cotton'])
+    area = st.number_input('Area (hectares)', min_value=0.0, format='%.2f')
+    irrigation = st.selectbox('Irrigation type', ['None', 'Surface', 'Sprinkler', 'Drip'])
+
+if st.button('Save Farm Info'):
+    result = handle_submission(farm_name, country)
+    st.success('Farm info saved (UI placeholder).')
+    st.json({
+        'farm_name': farm_name,
+        'country': country,
+        'lat': latitude,
+        'lon': longitude,
+        'main_crops': main_crops,
+        'area_ha': area,
+        'irrigation': irrigation,
+        'backend_response': result,
+    })
+

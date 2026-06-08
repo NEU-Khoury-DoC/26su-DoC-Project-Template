@@ -43,8 +43,11 @@ _WATERREQUIRED_AVG = 887.26
 _SOIL_PH_AVG       = 6.624
 _SOIL_AVG          = 'sandy Loamy soil'
 
-# Order has to match column order used when the scaler was fitted
+# Order has to match column order used when the scaler was fitted.
+# SOIL_PH is first (it sits before CROPDURATION in the source CSV) and is
+# always filled with the training average at predict time.
 _CONTINUOUS_COLS = [
+    'SOIL_PH',
     'CROPDURATION',
     'TEMPERATURE',
     'WATERREQUIRED',
@@ -172,30 +175,26 @@ def _knn_cos(X_train, y_train, X_test, k):
         k        (int):  number of neighbours
 
     Returns:
-        tuple[np.ndarray, list[np.ndarray]]:
-            y_pred            - predicted labels, shape (n_test,)
-            nearest_indices   - list of length n_test, each element is an
-                                array of k training-row indices
+        list[np.ndarray]:
+            neighbour_labels  - list of length n_test, each element is an array
+                                of the k neighbour labels ordered closest-first
+                                (highest cosine similarity first)
     """
     train_norms = np.linalg.norm(X_train, axis=1, keepdims=True)
     X_train_normed = X_train / np.where(train_norms == 0, 1, train_norms)
 
-    y_pred           = []
-    nearest_indices  = []
+    neighbour_labels = []
 
     for test_point in X_test:
         norm = np.linalg.norm(test_point)
         test_normed = test_point / (norm if norm != 0 else 1)
 
-        similarities     = test_normed @ X_train_normed.T          # (n_train,)
-        neighbour_idx    = np.argsort(similarities)[-k:]            # top-k indices
-        neighbour_labels = y_train[neighbour_idx]
+        similarities  = test_normed @ X_train_normed.T          # (n_train,)
+        # top-k indices, ordered closest (highest similarity) first
+        neighbour_idx = np.argsort(similarities)[-k:][::-1]
+        neighbour_labels.append(y_train[neighbour_idx])
 
-        most_common = Counter(neighbour_labels).most_common(1)[0][0]
-        y_pred.append(most_common)
-        nearest_indices.append(neighbour_idx)
-
-    return np.array(y_pred), nearest_indices
+    return neighbour_labels
 
 
 # ------------------------------------------------------------
@@ -203,9 +202,11 @@ def _knn_cos(X_train, y_train, X_test, k):
 # ------------------------------------------------------------
 
 def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
-            WATER_SOURCE, RELATIVE_HUMIDITY, k=3):
+            WATER_SOURCE, RELATIVE_HUMIDITY,
+            CROPDURATION=_CROPDURATION_AVG, WATERREQUIRED=_WATERREQUIRED_AVG,
+            k=5):
     """
-    Returns a single crop prediction given the input features.
+    Returns the crops of the k nearest neighbours given the input features.
 
     Args:
         N                  (str | float): soil nitrogen
@@ -218,25 +219,35 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
         HARVESTED          (str):         harvest month, e.g. 'Oct'
         WATER_SOURCE       (str):         e.g. 'rainfed'
         RELATIVE_HUMIDITY  (str | float): relative humidity (%)
-        k                  (int):         number of KNN neighbours (default 3)
+        CROPDURATION       (str | float): crop growth duration (days).
+                                          Defaults to the training average.
+        WATERREQUIRED      (str | float): water requirement (mm).
+                                          Defaults to the training average.
+        k                  (int):         number of KNN neighbours (default 5)
+
+    Note:
+        SOIL_PH is a model feature but is never collected from the caller; it
+        is always filled with the training average (_SOIL_PH_AVG).
 
     Returns:
-        str: predicted crop name
+        list[str]: recommended crop names, deduplicated and ranked most-likely
+                   first (by neighbour vote count, ties broken by closeness).
 
     Raises:
         ValueError: if a categorical value is not in the stored OHE columns,
                     or if required DB artefacts are missing.
     """
-    # --- load DB artefacts ---
+    # load db stuff
     means, stds  = _get_scaler_params()
     ohe_cols     = _get_ohe_cols()
     X_train, y_train = _get_training_data()
 
-    # --- build continuous feature vector (same order as _CONTINUOUS_COLS) ---
+    # -cont feat vect.
     x_cont = np.array([
-        float(_CROPDURATION_AVG),
+        float(_SOIL_PH_AVG),
+        float(CROPDURATION),
         float(TEMPERATURE),
-        float(_WATERREQUIRED_AVG),
+        float(WATERREQUIRED),
         float(RELATIVE_HUMIDITY),
         float(N),
         float(P),
@@ -269,14 +280,21 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
     # concatenate and predict
     new_X = np.concatenate([x_scaled, ohe_input]).reshape(1, -1)  # (1, n_features)
 
-    y_pred, _ = _knn_cos(X_train, y_train, new_X, k)
-    prediction = str(y_pred[0])
+    # labels of the k nearest neighbours, ordered closest-first
+    neighbour_labels = [str(label) for label in _knn_cos(X_train, y_train, new_X, k)[0]]
+
+    # deduplicate and rank: most frequent first, ties broken by closeness
+    vote_counts = Counter(neighbour_labels)
+    predictions = sorted(
+        vote_counts,
+        key=lambda crop: (-vote_counts[crop], neighbour_labels.index(crop)),
+    )
 
     current_app.logger.info(
         f'model03.predict(N={N}, P={P}, K={K}, TYPE_OF_CROP={TYPE_OF_CROP}, '
-        f'TEMP={TEMPERATURE}, SEASON={SEASON}, k={k}) -> {prediction}'
+        f'TEMP={TEMPERATURE}, SEASON={SEASON}, k={k}) -> {predictions}'
     )
-    return prediction
+    return predictions
 
 
 def get_observations_with_predictions(k=3):
@@ -306,7 +324,7 @@ def get_observations_with_predictions(k=3):
     results = []
     for row in rows:
         try:
-            pred = predict(
+            preds = predict(
                 N                 = row['N'],
                 P                 = row['P'],
                 K                 = row['K'],
@@ -322,6 +340,9 @@ def get_observations_with_predictions(k=3):
         except ValueError as exc:
             current_app.logger.warning(f'model03 skip row {row.get("row_id")}: {exc}')
             continue
+
+        # predict() returns a ranked list; the top entry is the best match
+        pred = preds[0] if preds else None
 
         results.append({
             'row_id':          row.get('row_id'),
