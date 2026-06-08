@@ -134,7 +134,6 @@ def SideBarLinks(show_home=False):
             policy_compare()
             policy_report()
             policy_predictions()
-            policy_analysis()
             policy_blog()
 
         if st.session_state["role"] == "researcher":
