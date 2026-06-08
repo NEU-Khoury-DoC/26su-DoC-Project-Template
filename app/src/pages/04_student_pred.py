@@ -13,7 +13,7 @@ response = requests.post("http://web-api:4000/housing/student/train")
 
 st.title("Housing Satisfaction Predictor")
 SideBarLinks()
-st.write("Set your ideal housing conditions to see your predicted life satisfaction score based on Eurostat data across Europe.")
+st.write("Set your comfortability levels with these housing conditions to see your predicted life satisfaction score in different countries across Europe.")
 st.divider()
 
 
@@ -123,7 +123,7 @@ def on_country_change():
 
 # ── Country select ────────────────────────────────────────────────────────────
 
-st.subheader("Start from a country (optional)")
+st.subheader("Start from a country")
 
 try:
     countries_resp = requests.get("http://web-api:4000/housing/country")
@@ -163,7 +163,7 @@ urb = st.radio(
     horizontal=True,
     label_visibility="collapsed"
 )
- 
+
 is_rural = urb == "Rural Areas"
 is_towns = urb == "Towns & Suburbs"
 
@@ -197,13 +197,13 @@ if st.button("Predict", type="primary", use_container_width=True):
         score_display = max(1.0, min(10.0, score))
 
         if score_display >= 8.0:
-            note = "These conditions are associated with high life satisfaction — comparable to top-scoring countries like the Netherlands and the Nordics."
+            note = "These conditions are associated with high life satisfaction!"
         elif score_display >= 7.0:
-            note = "A reasonable quality of life is expected. Consider lowering crime or noise to improve the score."
+            note = "A reasonable quality of life is expected."
         elif score_display >= 6.0:
-            note = "Some friction in daily life is likely. Try adjusting crime and pollution levels."
+            note = "Some friction in daily life is likely."
         else:
-            note = "These conditions are associated with lower wellbeing. Reducing crime and pollution should help."
+            note = "These conditions are associated with lower wellbeing."
 
         st.markdown(f"""
             <div style="
