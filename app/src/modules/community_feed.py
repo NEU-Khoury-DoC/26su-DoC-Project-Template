@@ -79,6 +79,69 @@ def render_feed():
                 st.write(post.get('post_text'))
                 st.caption(f"Posted by {post.get('created_by')} · {post.get('created_at', '')}")
 
+                # reactions
+                try:
+                    reactions = requests.get(f"{API_BASE}/reactions/post/{pid}").json()
+                except:
+                    reactions = []
+
+                likes = 0
+                dislikes = 0
+                my_reaction = None
+
+                for r in reactions:
+                    if r.get("pos_neg") == 1 or r.get("pos_neg") is True:
+                        likes += 1
+                    else:
+                        dislikes += 1
+
+                    if r.get("user_id") == user_id:
+                        my_reaction = r
+
+                react_col1, react_col2, react_col3 = st.columns([1, 1, 4])
+
+                with react_col1:
+                    if st.button(f"👍 {likes}", key=f"like_{pid}"):
+                        if my_reaction:
+                            requests.put(
+                                f"{API_BASE}/reactions/{my_reaction.get('reaction_id')}",
+                                json={
+                                    "pos_neg": True,
+                                    "updated_by": str(user_id)
+                                }
+                            )
+                        else:
+                            requests.post(
+                                f"{API_BASE}/reactions/post/{pid}",
+                                json={
+                                    "pos_neg": True,
+                                    "user_id": user_id,
+                                    "created_by": str(user_id)
+                                }
+                            )
+                        st.rerun()
+
+                with react_col2:
+                    if st.button(f"👎 {dislikes}", key=f"dislike_{pid}"):
+                        if my_reaction:
+                            requests.put(
+                                f"{API_BASE}/reactions/{my_reaction.get('reaction_id')}",
+                                json={
+                                    "pos_neg": False,
+                                    "updated_by": str(user_id)
+                                }
+                            )
+                        else:
+                            requests.post(
+                                f"{API_BASE}/reactions/post/{pid}",
+                                json={
+                                    "pos_neg": False,
+                                    "user_id": user_id,
+                                    "created_by": str(user_id)
+                                }
+                            )
+                        st.rerun()
+
                 # comments
                 try:
                     comments = requests.get(f"{API_BASE}/posts/{pid}/comments").json()
