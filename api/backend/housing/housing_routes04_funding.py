@@ -188,3 +188,36 @@ def get_funding_drafts():
     except Error as e:
         current_app.logger.error(f'Database error in get_funding_drafts: {e}')
         return error_response(str(e))
+    
+
+@housing_bp.route("/funding-draft/<int:draft_id>", methods = ["PUT"])
+def update_funding_draft(draft_id):
+    current_app.logger.info(f'PUT /housing/funding-draft/{draft_id}')
+    try:
+        data = request.get_json()
+        allowed = ["program", "amount", "indicators_targeted", "demographics_targeted", "description", "country_id"]
+        update_fields = [f"{f} = %s" for f in allowed if f in data]
+        params = [data[f] for f in allowed if f in data]
+
+        if not update_fields:
+            return error_response("No valid fields to update", 400)
+
+        params.append(draft_id)
+        with get_db().cursor() as cursor:
+            cursor.execute(f"UPDATE funding_draft SET {', '.join(update_fields)} WHERE draft_id = %s", params)
+        get_db().commit()
+        return jsonify({"message": "Draft updated"}), 200
+    except Error as e:
+        return error_response(str(e))
+
+
+@housing_bp.route("/funding-draft/<int:draft_id>", methods = ["DELETE"])
+def delete_funding_draft(draft_id):
+    current_app.logger.info(f'DELETE /housing/funding-draft/{draft_id}')
+    try:
+        with get_db().cursor() as cursor:
+            cursor.execute("DELETE FROM funding_draft WHERE draft_id = %s", (draft_id,))
+        get_db().commit()
+        return jsonify({"message": "Draft deleted"}), 200
+    except Error as e:
+        return error_response(str(e))
