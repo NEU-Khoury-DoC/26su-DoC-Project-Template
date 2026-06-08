@@ -16,6 +16,7 @@ from modules.ml_countries import (
     resolve_ml_country,
 )
 from modules.nav import SideBarLinks
+from modules.theme import zeus_plotly_layout
 
 st.set_page_config(layout="wide")
 
@@ -182,12 +183,13 @@ elif forecast_available:
         line=dict(color="steelblue", width=2),
         hovertemplate="<b>%{x|%B %d, %Y}</b><br>Price: €%{y:.2f}/MWh<extra></extra>"
     )
-    forecast_chart.update_layout(
+    zeus_plotly_layout(
+        forecast_chart,
         height=420,
         xaxis_title="Date",
         yaxis_title="Predicted Price (EUR/MWh)",
         hovermode="closest",
-        title_font_size=20
+        title_font_size=20,
     )
     st.plotly_chart(forecast_chart, use_container_width=True)
 
@@ -214,7 +216,7 @@ elif selected_country_code is not None:
         labels={"Date": "Time", "Predicted Price (€/kWh)": "Price (€/kWh)"},
     )
     forecast_chart.update_traces(marker=dict(size=9))
-    forecast_chart.update_layout(height=420)
+    zeus_plotly_layout(forecast_chart, height=420)
     st.plotly_chart(forecast_chart, use_container_width=True)
 
 st.divider()
@@ -244,12 +246,13 @@ if selected_country_code:
         hist_chart.update_traces(
             hovertemplate="<b>%{x}</b><br>Avg Price: €%{y:.2f}/MWh<extra></extra>"
         )
-        hist_chart.update_layout(
+        zeus_plotly_layout(
+            hist_chart,
             height=400,
             xaxis_title="Month",
             yaxis_title="EUR/MWh",
             hovermode="closest",
-            title_font_size=20
+            title_font_size=20,
         )
         st.plotly_chart(hist_chart, use_container_width=True)
 

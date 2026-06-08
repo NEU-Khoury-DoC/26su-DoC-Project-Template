@@ -6,6 +6,7 @@ import plotly.express as px
 import requests
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.theme import zeus_plotly_layout
 from modules.zeus_api import get_storage_winters, post_storage_risk
 
 st.set_page_config(layout='wide')
@@ -63,34 +64,65 @@ st.divider()
 
 st.write("#### Model inputs")
 
+_INPUT_LABELS = [
+    "Storage level entering winter (%)",
+    "Change in storage over October (points)",
+    "Storage volatility (past 90 days)",
+]
+_INPUT_HELPS = [
+    "Average % full during October, just before winter begins Nov 1.",
+    "How much the storage level rose or fell during the 30 days before "
+    "winter. +10 means it climbed from e.g. 80% to 90% full (still filling); "
+    "negative means it was already draining.",
+    "How much the storage level bounced around in the 90 days before winter "
+    "(standard deviation)",
+]
+
+label_cols = st.columns(3)
+for col, label in zip(label_cols, _INPUT_LABELS):
+    col.markdown(
+        f'<p style="min-height: 3.5rem; margin: 0; line-height: 1.35;">{label}</p>',
+        unsafe_allow_html=True,
+    )
 
 c1, c2, c3 = st.columns(3)
 
 storage_at_start = c1.slider(
-    "Storage level entering winter (%)", 0.0, 100.0,
+    "storage_at_start",
+    0.0,
+    100.0,
     value=float(latest["storage_at_start"]),
-    help="Average % full during October, just before winter begins Nov 1.",
+    label_visibility="collapsed",
+    help=_INPUT_HELPS[0],
 )
 
 storage_trend_30d = c2.slider(
-    "Change in storage over October (points)", -30.0, 30.0,
+    "storage_trend_30d",
+    -30.0,
+    30.0,
     value=float(latest["storage_trend_30d"]),
-    help="How much the storage level rose or fell during the 30 days before "
-         "winter. +10 means it climbed from e.g. 80% to 90% full (still filling); "
-         "negative means it was already draining.",
+    label_visibility="collapsed",
+    help=_INPUT_HELPS[1],
 )
 
 storage_volatility = c3.slider(
-    "Storage volatility (past 90 days)", 0.0, 30.0,
+    "storage_volatility",
+    0.0,
+    30.0,
     value=float(latest["storage_volatility"]),
-    help="How much the storage level bounced around in the 90 days before winter "
-         "(standard deviation)",
+    label_visibility="collapsed",
+    help=_INPUT_HELPS[2],
 )
 
-if storage_trend_30d >= 0:
-    c2.caption(f"Filling: +{storage_trend_30d:.1f} points in the final month")
-else:
-    c2.caption(f"Draining: {storage_trend_30d:.1f} points in the final month")
+trend_caption = (
+    f"Filling: +{storage_trend_30d:.1f} points in the final month"
+    if storage_trend_30d >= 0
+    else f"Draining: {storage_trend_30d:.1f} points in the final month"
+)
+cap1, cap2, cap3 = st.columns(3)
+cap1.caption("\u00a0")
+cap2.caption(trend_caption)
+cap3.caption("\u00a0")
 
 try:
     risk_result = post_storage_risk(
@@ -112,7 +144,7 @@ if at_risk:
     )
 else:
     st.success(
-        f"✅ **Not at risk**: the model predicts {selected_country}'s gas storage "
+        f"**Not at risk**: the model predicts {selected_country}'s gas storage "
         f"would stay above {RISK_THRESHOLD}% this winter"
     )
 
@@ -161,6 +193,7 @@ fig.add_vline(
     annotation_font_color=scenario_color,
 )
 
+zeus_plotly_layout(fig, height=450)
 st.plotly_chart(fig, use_container_width=True)
 
 st.divider()

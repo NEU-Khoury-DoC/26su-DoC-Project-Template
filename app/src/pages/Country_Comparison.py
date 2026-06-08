@@ -6,6 +6,7 @@ import plotly.express as px
 import requests
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.theme import zeus_plotly_layout
 from modules.zeus_api import compare_storage_risk
 
 st.set_page_config(layout='wide')
@@ -88,7 +89,7 @@ fig = px.bar(
 )
 fig.update_xaxes(tickformat=".0%", range=[0, 1])
 fig.add_vline(x=0.5, line_dash="dash", line_color="gray")
-fig.update_layout(height=300, showlegend=False)
+zeus_plotly_layout(fig, height=300, showlegend=False)
 
 st.plotly_chart(fig, use_container_width=True)
 st.caption(
