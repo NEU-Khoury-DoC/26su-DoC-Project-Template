@@ -15,7 +15,7 @@ st.title("Housing Satisfaction Predictor")
 SideBarLinks()
 st.write("Set your ideal housing conditions to see your predicted life satisfaction score based on Eurostat data across Europe.")
 st.divider()
- 
+
 
 # st.subheader("Start from a country (optional)")
 
@@ -63,16 +63,97 @@ st.divider()
 
 # st.divider()
 
-st.subheader("Environmental Conditions")
+# ── Raw range conversion (put this BEFORE the country select) ─────────────────
+# run this once to populate the social_indicator_stats table
+
+RAW_RANGES = {
+    'crime_rate':     (0.0,  37.3),
+    'noise_rate':     (3.2,  55.9),
+    'pollution_rate': (1.6,  43.1),
+    'hpi_weight':     (-9.1, 14.3),
+}
+
+def pct_to_raw(pct, col):
+    low, high = RAW_RANGES[col]
+    return low + (pct / 100) * (high - low)
+
+def raw_to_pct(val, col):
+    low, high = RAW_RANGES[col]
+    return int(max(0, min(100, ((val - low) / (high - low)) * 100)))
+
+# country change
+def on_country_change():
+    country = st.session_state['country_select']
+    if country == "— None —":
+        st.session_state['crime']     = 25
+        st.session_state['noise']     = 25
+        st.session_state['pollution'] = 25
+        st.session_state['hpi']       = 40
+        return
+    try:
+        stats_resp = requests.get(
+            "http://web-api:4000/housing/social-indicator-stats",
+            params={"country": country}
+        )
+        stats_resp.raise_for_status()
+        stats = stats_resp.json()
+
+        # group by indicator, take most recent year
+        latest = {}
+        for s in stats:
+            name = s.get('name', '').lower()
+            year = int(s.get('year', 0))
+            val  = float(s.get('value', 0))  # cast string to float
+            if name not in latest or year > latest[name]['year']:
+                latest[name] = {'year': year, 'value': val}
+
+        for name, data in latest.items():
+            val = data['value']
+            if 'crime' in name:
+                st.session_state['crime'] = raw_to_pct(val, 'crime_rate')
+            elif 'noise' in name:
+                st.session_state['noise'] = raw_to_pct(val, 'noise_rate')
+            elif 'pollution' in name:
+                st.session_state['pollution'] = raw_to_pct(val, 'pollution_rate')
+            elif 'hpi' in name or 'price' in name:
+                st.session_state['hpi'] = raw_to_pct(val, 'hpi_weight')
+
+    except Exception as e:
+        st.write(f"Error: {e}")
+
+# ── Country select ────────────────────────────────────────────────────────────
+
+st.subheader("Start from a country (optional)")
+
+try:
+    countries_resp = requests.get("http://web-api:4000/housing/country")
+    countries_resp.raise_for_status()
+    country_list = [c['country_name'] for c in countries_resp.json()]
+except:
+    country_list = []
+
+st.selectbox(
+    "Select a country to pre-fill with real values",
+    options=["— None —"] + sorted(country_list),
+    key="country_select",
+    on_change=on_country_change,   # this fires BEFORE next rerun
+)
+
+st.divider()
+
+# ── Sliders (key must match session_state keys set in callback) ───────────────
+
+st.subheader("Environmental conditions")
+
 col1, col2 = st.columns(2)
 
 with col1:
-    crime     = st.slider("🔒 Crime & Vandalism",  0, 100, 25, key="crime",     help="0 = safest, 100 = highest")
-    pollution = st.slider("🌫️ Pollution & Grime",  0, 100, 25, key="pollution", help="0 = cleanest, 100 = most polluted")
+    crime     = st.slider("🔒 Crime & Vandalism",  0, 100, 25, key="crime")
+    pollution = st.slider("🌫️ Pollution & Grime",  0, 100, 25, key="pollution")
 
 with col2:
-    noise = st.slider("🔊 Noise Levels",          0, 100, 25, key="noise",     help="0 = quietest, 100 = noisiest")
-    hpi   = st.slider("🏠 Housing Price Growth",  0, 100, 40, key="hpi",       help="0 = falling, 100 = fastest rising")
+    noise = st.slider("🔊 Noise Levels",          0, 100, 25, key="noise")
+    hpi   = st.slider("🏠 Housing Price Growth",  0, 100, 40, key="hpi")
 
 st.subheader("Area type")
  
@@ -147,3 +228,5 @@ if st.button("Predict", type="primary", use_container_width=True):
         st.error("Could not connect to the backend. Make sure the Flask server is running on port 4000.")
     except Exception as e:
         st.error(f"Something went wrong: {e}")
+
+        
