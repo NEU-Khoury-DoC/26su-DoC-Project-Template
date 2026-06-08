@@ -100,14 +100,18 @@ def render_feed():
 
                 react_col1, react_col2, react_col3 = st.columns([1, 1, 4])
 
+                liked = my_reaction and my_reaction.get("pos_neg") in [1, True]
+                disliked = my_reaction and my_reaction.get("pos_neg") in [0, False]
+                
                 with react_col1:
-                    if st.button(f"👍 {likes}", key=f"like_{pid}"):
-
-                        if my_reaction and my_reaction.get("pos_neg") is True:
+                    if st.button(
+                        f"👍 {likes}",
+                        key=f"like_{pid}",
+                        type="primary" if liked else "secondary"
+                    ):
+                        if liked:
                             # undo like
-                            requests.delete(
-                                f"{API_BASE}/reactions/{my_reaction['reaction_id']}"
-                            )
+                            requests.delete(f"{API_BASE}/reactions/{my_reaction['reaction_id']}")
                         
                         elif my_reaction:
                             # switch dislike -> like
@@ -132,13 +136,14 @@ def render_feed():
                         st.rerun()
 
                 with react_col2:
-                    if st.button(f"👎 {dislikes}", key=f"dislike_{pid}"):
-                        
-                        if my_reaction and my_reaction.get("pos_neg") is False:
+                    if st.button(
+                        f"👎 {dislikes}",
+                        key=f"dislike_{pid}",
+                        type="primary" if disliked else "secondary"
+                    ):
+                        if disliked:
                             # undo dislike
-                            requests.delete(
-                                f"{API_BASE}/reactions/{my_reaction['reaction_id']}"
-                            )
+                            requests.delete(f"{API_BASE}/reactions/{my_reaction['reaction_id']}")
 
                         elif my_reaction:
                             # switch like -> dislike
