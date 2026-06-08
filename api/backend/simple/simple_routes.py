@@ -61,7 +61,7 @@ def get_prediction(var_01, var_02):
     try:
         prediction = model01.predict(var_01, var_02)
         current_app.logger.info(f"prediction value returned is {prediction}")
-        return jsonify({
+        return jsonify({ #intermediary btwn streamlit and model !!!!!
             "prediction": prediction,
             "input_variables": {"var01": var_01, "var02": var_02},
         }), 200
