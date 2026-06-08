@@ -15,6 +15,7 @@ from backend.farm_location.farm_loc_routs import farms_loc_bp
 from backend.user_growing_data.user_growing_route import user_growing_bp
 from backend.prices_model_routing.prices_route import price_bp
 from backend.model_routes.cropknnmd_01 import crop_routes
+from backend.reports.reports_routes import reports_bp
 
 
 
@@ -58,5 +59,6 @@ def create_app():
     app.register_blueprint(crop_routes, url_prefix="/crop")
     app.register_blueprint(farms_loc_bp, url_prefix="/farm_loc")
     app.register_blueprint(user_growing_bp, url_prefix="/user_growing")
+    app.register_blueprint(reports_bp, url_prefix="/reports")
 
     return app
