@@ -8,100 +8,111 @@ st.set_page_config(layout='wide')
 # Initialize sidebar
 SideBarLinks()
 
-st.title("Add New NGO")
+st.header('Available listings')
 
-# Initialize session state for modal
-if "show_success_modal" not in st.session_state:
-    st.session_state.show_success_modal = False
-if "success_ngo_name" not in st.session_state:
-    st.session_state.success_ngo_name = ""
-if "reset_form" not in st.session_state:
-    st.session_state.reset_form = False
-if "form_key_counter" not in st.session_state:
-    st.session_state.form_key_counter = 0
+col1, col2, col3, col4, col5 = st.columns(5)
 
-# Define the success dialog function
-@st.dialog("Success")
-def show_success_dialog(ngo_name):
-    st.markdown(f"### {ngo_name} has been successfully added to the system!")
+with col1:
+    country_filter = st.selectbox("Country", 
+                                options=["All"] + [c['country_name'] for c in 
+                                        requests.get('http://web-api:4000/housing/country').json()])
+with col2:
+    property_filter = st.selectbox("Property Type", 
+                                options=
+                                ["All", "House", "Apartment", "Studio Apartment", "Townhouse"])
+with col3:
+    price_filter = st.number_input("Max Price (€)", 
+                                   min_value=0, max_value=3000, value=1500, step=100)
+with col4:
+    university_filter = st.selectbox("Associated Uni", 
+                                options=["All"] + [u['university_name'] for u 
+                                in requests.get('http://web-api:4000/housing/university').json()])
+with col5:
+    city_filter = st.selectbox("City", options=["All"] + [c['city_name'] for c
+                                in requests.get('http://web-api:4000/housing/listing/cities').json()])
+
+# build params based on filters
+params = {}
+if country_filter != "All":
+    params["country"] = country_filter
+if property_filter != "All":
+    params["property_type"] = property_filter
+if price_filter < 5000:
+    params["price"] = price_filter
+if city_filter != "All":
+    params["city_name"] = city_filter
+if university_filter != "All":
+    params["university"] = university_filter
+
+# You can access the session state to make a more customized/personalized app experience
+listings = requests.get('http://web-api:4000/housing/listing', params=params).json()
+
+for listing in listings:
+    listing['price'] = int(listing['price'])
+
+    with st.container(border=True):
+        col1, col2 = st.columns([3, 1])
+
+        with col1:
+            st.subheader(listing['title'])
+        
+        with col2:
+            reviews = requests.get(
+                f"http://web-api:4000/housing/reviews",
+                params={"listing_id": listing['listing_id']}
+            ).json()
+            total = 0
+            num = 0
+            avg = 0
+            for review in reviews:
+                if review['rating'] is not None:
+                    total += int(review['rating'])
+                    num +=1
+            if num > 0:
+                avg = total/num
+            avg = round(avg, 2)
+            if avg > 0:
+                st.subheader(f'{avg}/5.0')
+            
+        # with col2:
+        #     st.subheader(f"${listing['price']} / month")
+
+    if listing['university_name']:
+        with st.container(border=False):
+            col1, col2, col3= st.columns([3, 3, 2])
+
+            with col1:
+                st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
+                st.write(f"🏠 {listing['property_type']}")
+                st.write(f"🏫 Associated with {listing['university_name']}")
+
+            with col2:
+                st.subheader(f"€{listing['price']} / month")
+
+            with col3:
+                if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
+                    st.session_state['listing_id'] = listing['listing_id']
+                    st.session_state['title'] = listing['title']
+                    st.switch_page('pages/03_view_reviews.py')
     
-    # Create two buttons side by side
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        if st.button("Return to NGO Directory", use_container_width=True):
-            st.session_state.show_success_modal = False
-            st.session_state.success_ngo_name = ""
-            st.switch_page("pages/14_NGO_Directory.py")
-    
-    with col2:
-        if st.button("Add Another NGO", use_container_width=True):
-            st.session_state.show_success_modal = False
-            st.session_state.success_ngo_name = ""
-            st.session_state.reset_form = True
-            st.rerun()
+    else:
+        with st.container(border=False):
+            col1, col2, col3 = st.columns([3, 3, 2])
 
-# Handle form reset
-if st.session_state.reset_form:
-    st.session_state.form_key_counter += 1
-    st.session_state.reset_form = False
+            with col1:
+                st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
+                st.write(f"🏠 {listing['property_type']}")
 
-# API endpoint
-API_URL = "http://web-api:4000/ngo/ngos"
+            with col2:
+                st.subheader(f"€{listing['price']} / month")
+            
+            with col3:
+                if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
+                    st.session_state['listing_id'] = listing['listing_id']
+                    st.session_state['title'] = listing['title']
+                    st.switch_page('pages/03_view_reviews.py')
 
-# Create a form for NGO details with dynamic key to force reset
-with st.form(f"add_ngo_form_{st.session_state.form_key_counter}"):
-    st.subheader("NGO Information")
 
-    # Required fields
-    name = st.text_input("Organization Name *")
-    country = st.text_input("Country *")
-    current_year = datetime.date.today().year
-    founding_year = st.number_input(
-        "Founding Year *", min_value=1800, max_value=current_year, value=current_year
-    )
-    focus_area = st.text_input("Focus Area *")
-    website = st.text_input("Website URL *")
+    st.write("")
 
-    # Form submission button
-    submitted = st.form_submit_button("Add NGO")
 
-    if submitted:
-        # Validate required fields
-        if not all([name, country, founding_year, focus_area, website]):
-            st.error("Please fill in all required fields marked with *")
-        else:
-            # Prepare the data for API
-            ngo_data = {
-                "Name": name,
-                "Country": country,
-                "Founding_Year": int(founding_year),
-                "Focus_Area": focus_area,
-                "Website": website,
-            }
-
-            try:
-                # Send POST request to API
-                response = requests.post(API_URL, json=ngo_data)
-
-                if response.status_code == 201:
-                    # Store NGO name and show modal
-                    st.session_state.show_success_modal = True
-                    st.session_state.success_ngo_name = name
-                    st.rerun()
-                else:
-                    st.error(
-                        f"Failed to add NGO: {response.json().get('error', 'Unknown error')}"
-                    )
-
-            except requests.exceptions.RequestException as e:
-                st.error(f"Error connecting to the API: {str(e)}")
-                st.info("Please ensure the API server is running")
-
-# Show success modal if NGO was added successfully
-if st.session_state.show_success_modal:
-    show_success_dialog(st.session_state.success_ngo_name)
-
-# Add a button to return to the NGO Directory
-if st.button("Return to NGO Directory"):
-    st.switch_page("pages/14_NGO_Directory.py")
