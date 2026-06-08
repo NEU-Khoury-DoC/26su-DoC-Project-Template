@@ -37,7 +37,7 @@ with col1:
     with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "isabel-headshot.jpeg"
         st.image(str(img_path))
-        st.write("##### Isabel larenas")
+        st.write("##### Isabel Larenas")
         st.write('Isabel is an incoming junior at Northeastern University majoring in ' \
         'computer science with a minor in spanish. Currently taking DS 3000 and CS 4973.')
 
@@ -54,7 +54,7 @@ with col2:
         st.image(str(img_path))
         st.write("##### Laasya Gattu")
         st.write('Laasya is an incoming sophomore at Northeastern University majoring in ' \
-        'computer science and business administration with a minor in public health. Currently taking DS 3000 and CS 4973.')
+        'data science and business administration with a minor in public health. Currently taking DS 3000 and CS 4973.')
 
 
 # Add a button to return to home page
