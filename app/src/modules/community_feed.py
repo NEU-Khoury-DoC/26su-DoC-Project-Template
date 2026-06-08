@@ -15,6 +15,32 @@ def render_feed():
         rev = {v:k for k,v in map_to_state.items()}
         initial = rev.get(st.session_state.get('feed_filter'), 'All')
 
+    # style the radio to look like chip buttons
+    st.markdown(
+        """
+        <style>
+        /* scoped-ish chip-style for radio groups */
+        div[role="radiogroup"] > div { display:inline-block; margin-right:8px; }
+        div[role="radiogroup"] input[type="radio"]{ display:none; }
+        div[role="radiogroup"] label {
+            background:#f0f0f0;
+            padding:10px 18px;
+            border-radius:999px;
+            cursor:pointer;
+            color:#333;
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        div[role="radiogroup"] input[type="radio"]:checked + label {
+            background: #6f49f6;
+            color: #fff;
+            border-color: #5b35e6;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     selected = st.radio('', options, index=options.index(initial), horizontal=True, key='feed_filter_radio')
     st.session_state['feed_filter'] = map_to_state[selected]
 
