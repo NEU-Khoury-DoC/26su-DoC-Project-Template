@@ -17,19 +17,30 @@ TEAM_MEMBERS = [
     {
         "name": "Rayna Patel",
         "image": "assets/team/headshot_2.jpg",
-        "bio": "Short bio coming soon.",
+        "bio": (
+            "I'm a student on the Belgium Dialogue (Leuven, 2026) studying Business "
+            "Administration with a concentration in Finance and a minor in Data Science. "
+            "My weekly blog posts are listed below."
+        ),
         "linkedin_url": "https://www.linkedin.com/in/rayna-m-patel/",
     },
     {
         "name": "Ari Spokony",
         "image": "assets/team/headshot_3.jpg",
-        "bio": "Short bio coming soon.",
+        "bio": (
+            "I'm a student on the Belgium Dialogue (Leuven, 2026) studying Computer "
+            "Engineering and Computer Science. My weekly blog posts are listed below."
+        ),
         "linkedin_url": "https://www.linkedin.com/in/ari-spokony-6a9907348/",
     },
     {
         "name": "Bobby Bress",
         "image": "assets/team/headshot_4.jpg",
-        "bio": "Short bio coming soon.",
+        "bio": (
+            "I'm a rising sophomore studying computer science and economics at "
+            "Northeastern. I am taking the introduction to Databases class on the "
+            "Belgium Dialogue. My blog posts are listed below."
+        ),
         "linkedin_url": "https://www.linkedin.com/in/bobbybress/",
     },
 ]

@@ -6,6 +6,7 @@ import plotly.express as px
 import requests
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.theme import zeus_plotly_layout
 from modules.zeus_api import get_storage_history, get_storage_summary
 
 st.set_page_config(layout='wide')
@@ -84,7 +85,7 @@ fig.add_hline(
     y=STRESS_THRESHOLD, line_dash="dash", line_color="red",
     annotation_text="30% stress threshold",
 )
-fig.update_layout(height=400)
+zeus_plotly_layout(fig, height=400)
 st.plotly_chart(fig, use_container_width=True)
 st.caption(
     "Typical fill cycle, fill through summer and drain "

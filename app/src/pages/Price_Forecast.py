@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 import plotly.express as px
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.theme import zeus_plotly_layout
 from modules.trader_data import (
     BIDDING_ZONES, ZONE_NAMES, fetch_forecast, forecast_summary,
 )
@@ -59,7 +60,7 @@ fig.add_hline(
     y=s["avg"], line_dash="dash", line_color="gray",
     annotation_text=f"30-day avg €{s['avg']:.0f}",
 )
-fig.update_layout(height=400)
+zeus_plotly_layout(fig, height=400)
 st.plotly_chart(fig, use_container_width=True)
 st.caption(
     "The model rolls each day's prediction forward as an input to the next, "

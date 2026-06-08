@@ -5,6 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from modules.nav import SideBarLinks
+from modules.theme import zeus_plotly_layout
 from modules.trader_data import (
     BIDDING_ZONES, CODE_TO_NAME, ZONE_NAMES,
     fetch_forecast, forecast_summary,
@@ -149,7 +150,7 @@ for tab, code in zip(tabs, watchlist):
                     y=alert["threshold"], line_dash="dot", line_color="orange",
                     annotation_text=f"alert €{alert['threshold']:.0f}",
                 )
-            fig.update_layout(height=320, margin=dict(t=10, b=0))
+            zeus_plotly_layout(fig, height=320)
             st.plotly_chart(fig, use_container_width=True)
 
         with right:
