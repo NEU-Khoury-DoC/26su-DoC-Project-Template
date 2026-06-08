@@ -7,19 +7,16 @@ def render_feed():
     user_id = st.session_state.get('user_id')
     role = st.session_state.get('role')
 
-    # filter chips
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        if st.button("All", use_container_width=True): st.session_state['feed_filter'] = 'all'
-    with col2:
-        if st.button("Farmers", use_container_width=True): st.session_state['feed_filter'] = 'farmer'
-    with col3:
-        if st.button("Policymakers", use_container_width=True): st.session_state['feed_filter'] = 'politician'
-    with col4:
-        if st.button("Researchers", use_container_width=True): st.session_state['feed_filter'] = 'researcher'
+    options = ["All", "Farmers", "Policymakers", "Researchers"]
+    map_to_state = {"All": "all", "Farmers": "farmer", "Policymakers": "politician", "Researchers": "researcher"}
 
-    if 'feed_filter' not in st.session_state:
-        st.session_state['feed_filter'] = 'all'
+    initial = "All"
+    if 'feed_filter' in st.session_state:
+        rev = {v:k for k,v in map_to_state.items()}
+        initial = rev.get(st.session_state.get('feed_filter'), 'All')
+
+    selected = st.radio('', options, index=options.index(initial), horizontal=True, key='feed_filter_radio')
+    st.session_state['feed_filter'] = map_to_state[selected]
 
     # fetch posts
     try:
