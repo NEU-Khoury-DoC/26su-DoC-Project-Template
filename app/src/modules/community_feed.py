@@ -7,19 +7,30 @@ def render_feed():
     user_id = st.session_state.get('user_id')
     role = st.session_state.get('role')
 
-    # filter chips
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        if st.button("All", use_container_width=True): st.session_state['feed_filter'] = 'all'
-    with col2:
-        if st.button("Farmers", use_container_width=True): st.session_state['feed_filter'] = 'farmer'
-    with col3:
-        if st.button("Policymakers", use_container_width=True): st.session_state['feed_filter'] = 'politician'
-    with col4:
-        if st.button("Researchers", use_container_width=True): st.session_state['feed_filter'] = 'researcher'
-
     if 'feed_filter' not in st.session_state:
         st.session_state['feed_filter'] = 'all'
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        if st.button("All", use_container_width=True,
+                     type="primary" if st.session_state['feed_filter'] == 'all' else "secondary"):
+            st.session_state['feed_filter'] = 'all'
+            st.rerun()
+    with col2:
+        if st.button("Farmers", use_container_width=True,
+                     type="primary" if st.session_state['feed_filter'] == 'farmer' else "secondary"):
+            st.session_state['feed_filter'] = 'farmer'
+            st.rerun()
+    with col3:
+        if st.button("Policymakers", use_container_width=True,
+                     type="primary" if st.session_state['feed_filter'] == 'politician' else "secondary"):
+            st.session_state['feed_filter'] = 'politician'
+            st.rerun()
+    with col4:
+        if st.button("Researchers", use_container_width=True,
+                     type="primary" if st.session_state['feed_filter'] == 'researcher' else "secondary"):
+            st.session_state['feed_filter'] = 'researcher'
+            st.rerun()
 
     # fetch posts
     try:
