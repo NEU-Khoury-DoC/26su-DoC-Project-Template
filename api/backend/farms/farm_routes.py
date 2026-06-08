@@ -75,3 +75,103 @@ def get_farm(farm_id):
     except Error as e:
         current_app.logger.error(f'Database error in get_farm: {e}')
         return error_response(str(e))
+
+@farms_bp.route("/farms", methods=["POST"])
+def create_farm():
+    current_app.logger.info('POST /farms/farms')
+    data = request.get_json()
+
+    # farm fields
+    required_farm = ["farm_name", "user_id", "created_by"]
+    # location fields — required because a farm without a location
+    # won't appear on the map or join correctly
+    required_loc  = ["longitude", "latitude", "country"]
+
+    missing = [f for f in required_farm + required_loc if f not in data]
+    if missing:
+        return error_response(f"Missing required fields: {missing}", 400)
+
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+
+        # 1. Insert farm
+        cur.execute("""
+            INSERT INTO farms (farm_name, user_id, created_by)
+            VALUES (%s, %s, %s)
+        """, (data["farm_name"], data["user_id"], data["created_by"]))
+        farm_id = cur.lastrowid
+
+        # 2. Insert location using the new farm_id
+        cur.execute("""
+            INSERT INTO farms_location (farm_id, longitude, latitude, country, created_by)
+            VALUES (%s, %s, %s, %s, %s)
+        """, (
+            farm_id,
+            data["longitude"],
+            data["latitude"],
+            data["country"],
+            data["created_by"],
+        ))
+
+        conn.commit()
+        cur.close()
+        return jsonify({"message": "Farm created", "farm_id": farm_id}), 201
+    except Error as e:
+        conn.rollback()   # if location insert fails, don't leave an orphan farm row
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to create farm", 500)
+
+
+# PUT: update a farm's name
+@farms_bp.route("/farms/<int:farm_id>", methods=["PUT"])
+def update_farm(farm_id):
+    current_app.logger.info(f'PUT /farms/farms/{farm_id}')
+    data = request.get_json()
+
+    if "farm_name" not in data:
+        return error_response("Missing required field: farm_name", 400)
+    if "updated_by" not in data:
+        return error_response("Missing required field: updated_by", 400)
+
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute("""
+            UPDATE farms
+            SET farm_name = %s, updated_by = %s
+            WHERE farm_id = %s
+        """, (data["farm_name"], data["updated_by"], farm_id))
+        conn.commit()
+        cur.close()
+        if cur.rowcount == 0:
+            return error_response("Farm not found", 404)
+        return jsonify({"message": "Farm updated"}), 200
+    except Error as e:
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to update farm", 500)
+
+
+# DELETE: remove a farm and its location
+# Order matters: delete farms_location first (FK constraint)
+@farms_bp.route("/farms/<int:farm_id>", methods=["DELETE"])
+def delete_farm(farm_id):
+    current_app.logger.info(f'DELETE /farms/farms/{farm_id}')
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+
+        # 1. Delete location first — FK references farms
+        cur.execute("DELETE FROM farms_location WHERE farm_id = %s", (farm_id,))
+        # 2. Then delete the farm itself
+        cur.execute("DELETE FROM farms WHERE farm_id = %s", (farm_id,))
+
+        conn.commit()
+        cur.close()
+        if cur.rowcount == 0:
+            return error_response("Farm not found", 404)
+        return jsonify({"message": "Farm and location deleted"}), 200
+    except Error as e:
+        conn.rollback()
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to delete farm", 500)

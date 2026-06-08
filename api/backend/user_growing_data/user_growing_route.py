@@ -223,3 +223,102 @@ def get_duration_by_crop():
     except Error as e:
         current_app.logger.error(f"DB error: {e}")
         return error_response("Failed to fetch duration by crop", 500)
+    
+@user_growing_bp.route("/", methods=["POST"])
+def create_growing_record():
+    current_app.logger.info('POST /user_growing')
+    data = request.get_json()
+
+    required = ["farm_id", "n", "p", "k", "type_of_crop", "season",
+                "sown", "harvested", "water_source", "temp",
+                "relative_humidity", "created_by"]
+    missing = [f for f in required if f not in data]
+    if missing:
+        return error_response(f"Missing required fields: {missing}", 400)
+
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO user_growing_data
+                (farm_id, n, p, k, type_of_crop, season, sown, harvested,
+                 water_source, temp, relative_humidity, created_by)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """, (
+            data["farm_id"],
+            data["n"],
+            data["p"],
+            data["k"],
+            data["type_of_crop"],
+            data["season"],
+            data["sown"],
+            data["harvested"],
+            data["water_source"],
+            data["temp"],
+            data["relative_humidity"],
+            data["created_by"],
+        ))
+        conn.commit()
+        new_id = cur.lastrowid
+        cur.close()
+        return jsonify({"message": "Growing record created", "user_growing_data_id": new_id}), 201
+    except Error as e:
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to create growing record", 500)
+
+
+# PUT: update an existing growing record
+@user_growing_bp.route("/<int:user_growing_data_id>", methods=["PUT"])
+def update_growing_record(user_growing_data_id):
+    current_app.logger.info(f'PUT /user_growing/{user_growing_data_id}')
+    data = request.get_json()
+
+    updatable = ["n", "p", "k", "type_of_crop", "season", "sown",
+                 "harvested", "water_source", "temp", "relative_humidity"]
+    updates = {k: v for k, v in data.items() if k in updatable}
+    if not updates:
+        return error_response("No valid fields to update", 400)
+    if "updated_by" not in data:
+        return error_response("Missing required field: updated_by", 400)
+
+    updates["updated_by"] = data["updated_by"]
+    set_clause = ", ".join(f"{col} = %s" for col in updates)
+    params = list(updates.values()) + [user_growing_data_id]
+
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute(f"""
+            UPDATE user_growing_data
+            SET {set_clause}
+            WHERE user_growing_data_id = %s
+        """, params)
+        conn.commit()
+        cur.close()
+        if cur.rowcount == 0:
+            return error_response("Record not found", 404)
+        return jsonify({"message": "Growing record updated"}), 200
+    except Error as e:
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to update growing record", 500)
+
+
+# DELETE: remove a growing record
+@user_growing_bp.route("/<int:user_growing_data_id>", methods=["DELETE"])
+def delete_growing_record(user_growing_data_id):
+    current_app.logger.info(f'DELETE /user_growing/{user_growing_data_id}')
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute(
+            "DELETE FROM user_growing_data WHERE user_growing_data_id = %s",
+            (user_growing_data_id,)
+        )
+        conn.commit()
+        cur.close()
+        if cur.rowcount == 0:
+            return error_response("Record not found", 404)
+        return jsonify({"message": "Growing record deleted"}), 200
+    except Error as e:
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to delete growing record", 500)
