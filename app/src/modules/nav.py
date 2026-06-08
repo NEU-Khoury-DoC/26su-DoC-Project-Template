@@ -67,6 +67,11 @@ def view_listings_rea_nav():
         "pages/07_view_listings_rea.py", label="View Listings", icon="🏘️"
     )
 
+def add_listings_rea_nav():
+    st.sidebar.page_link(
+        "pages/08_add_listing.py", label="Create Listing", icon="📄"
+    )
+
 # ---- Sidebar assembly -------------------------------------------------------
 
 def SideBarLinks(show_home=False):
@@ -98,6 +103,7 @@ def SideBarLinks(show_home=False):
             real_estate_agent_home_nav()
             market_dashboard_nav()
             view_listings_rea_nav()
+            add_listings_rea_nav()
 
         if st.session_state["role"] == "Government Agency":
             government_agency_home_nav()

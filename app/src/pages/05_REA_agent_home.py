@@ -22,3 +22,7 @@ if st.button('View listings',
              use_container_width=True):
     st.switch_page('pages/07_view_listings_rea.py')
 
+if st.button('Create listing',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/08_add_listing.py')

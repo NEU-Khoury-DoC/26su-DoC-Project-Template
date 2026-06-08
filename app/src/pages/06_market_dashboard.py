@@ -21,8 +21,7 @@ st.title("Market Dashboard")
 #         for ep in ["pollution", "crime", "poverty", "overcrowding", "noise", "hpi"]:
 #             requests.post(f"http://web-api:4000/housing/social-indicator-stats/{ep}")
 #     st.success("All data synced!")
-#     st.rerun()
-number = 0
+#     st.rer
 
 if "synced" not in st.session_state:
     st.session_state.synced = False

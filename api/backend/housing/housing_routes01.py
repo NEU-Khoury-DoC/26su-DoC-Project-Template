@@ -113,7 +113,7 @@ def get_university():
         query = query = """SELECT DISTINCT university.*, country.country_name 
         FROM university 
         JOIN country ON university.country_id = country.country_id
-        JOIN listing ON listing.associated_university_id = university.university_id
+        LEFT JOIN listing ON listing.associated_university_id = university.university_id
         WHERE 1=1"""
         params = []
 
