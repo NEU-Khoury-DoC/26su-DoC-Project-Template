@@ -201,10 +201,10 @@ st.divider()
 nav_left, nav_right = st.columns(2)
 with nav_left:
     if st.button("← Back to Country Snapshot", use_container_width=True):
-        st.switch_page('pages/Country_Snapshot.py')
+        st.switch_page('pages/60_Country_Snapshot.py')
 with nav_right:
     if st.button("Country Comparison →", type='primary', use_container_width=True):
-        st.switch_page('pages/Country_Comparison.py')
+        st.switch_page('pages/61_Country_Comparison.py')
 
 st.divider()
 st.write("#### Why we Chose 30%? ")

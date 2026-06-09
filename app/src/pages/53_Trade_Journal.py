@@ -178,7 +178,7 @@ st.divider()
 nav_left, nav_right = st.columns(2)
 with nav_left:
     if st.button("← Price Forecast", use_container_width=True):
-        st.switch_page("pages/Price_Forecast.py")
+        st.switch_page("pages/51_Price_Forecast.py")
 with nav_right:
     if st.button("← My Markets", use_container_width=True):
-        st.switch_page("pages/My_Markets.py")
+        st.switch_page("pages/52_My_Markets.py")

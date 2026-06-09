@@ -72,17 +72,17 @@ def classification_nav():
 def journalist_nav():
     st.sidebar.markdown("**Journalist**")
     st.sidebar.page_link(
-        "pages/Country_Snapshot.py",
+        "pages/60_Country_Snapshot.py",
         label="Country Snapshot",
         icon="🌍",
     )
     st.sidebar.page_link(
-        "pages/Country_Comparison.py",
+        "pages/61_Country_Comparison.py",
         label="Country Comparison",
         icon="⚖️",
     )
     st.sidebar.page_link(
-        "pages/Gas_Storage_Risk.py",
+        "pages/62_Gas_Storage_Risk.py",
         label="Gas Storage Risk",
         icon="⚠️",
     )
@@ -114,17 +114,17 @@ def household_owner_nav():
 def energy_trader_nav():
     st.sidebar.markdown("**Energy Trader**")
     st.sidebar.page_link(
-        "pages/Price_Forecast.py",
+        "pages/51_Price_Forecast.py",
         label="30-Day Price Forecast",
         icon="📈",
     )
     st.sidebar.page_link(
-        "pages/My_Markets.py",
+        "pages/52_My_Markets.py",
         label="My Markets",
         icon="⭐",
     )
     st.sidebar.page_link(
-        "pages/Trade_Journal.py",
+        "pages/53_Trade_Journal.py",
         label="Trade Journal",
         icon="📓",
     )
