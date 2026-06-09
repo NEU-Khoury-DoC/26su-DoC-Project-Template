@@ -127,60 +127,58 @@ st.caption(
 st.divider()
 st.write("##### Zone detail")
 
-tabs = st.tabs([CODE_TO_NAME[c] for c in watchlist])
-for tab, code in zip(tabs, watchlist):
-    with tab:
-        s = zone_data[code]["summary"]
-        df = zone_data[code]["df"]
+import plotly.graph_objects as go
 
-        left, right = st.columns([3, 2])
+# Full width combined chart
+colors = ["#262B6F", "#B8860B", "steelblue", "red", "purple"]
+fig = go.Figure()
+for i, code in enumerate(watchlist):
+    z_df = zone_data[code]["df"]
+    fig.add_trace(go.Scatter(
+        x=z_df["date"],
+        y=z_df["predicted_price_eur_mwh"],
+        mode="lines",
+        name=CODE_TO_NAME[code],
+        line=dict(color=colors[i % len(colors)], width=2),
+        hovertemplate=f"<b>{CODE_TO_NAME[code]}</b><br>%{{x|%b %d}}: €%{{y:.1f}}/MWh<extra></extra>"
+    ))
+zeus_plotly_layout(fig, height=320)
+st.plotly_chart(fig, use_container_width=True)
 
-        with left:
-            fig = px.line(
-                df, x="date", y="predicted_price_eur_mwh",
-                labels={"date": "", "predicted_price_eur_mwh": "€/MWh"},
+# Side by side metrics + alert for each zone
+st.divider()
+metric_cols = st.columns(len(watchlist))
+for col, code in zip(metric_cols, watchlist):
+    s = zone_data[code]["summary"]
+    alert = st.session_state["trader_alerts"].get(code)
+    with col:
+        st.write(f"**{CODE_TO_NAME[code]}**")
+        st.metric("30-day trend", f"{s['trend_pct']:+.1f}%",
+                  f"€{s['day1']:.0f} → €{s['day30']:.0f}")
+        st.metric("30-day average", f"€{s['avg']:.1f}/MWh")
+        st.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
+
+        st.write("**Price alert**")
+        with st.form(f"alert_{code}"):
+            direction = st.radio(
+                "Notify when forecast goes",
+                ["above", "below"],
+                index=0 if not alert or alert["direction"] == "above" else 1,
+                horizontal=True,
             )
-            fig.add_hline(
-                y=s["avg"], line_dash="dash", line_color="gray",
-                annotation_text=f"avg €{s['avg']:.0f}",
+            threshold = st.number_input(
+                "Threshold (€/MWh)", min_value=0.0, step=5.0,
+                value=float(alert["threshold"]) if alert else round(s["avg"], 0),
             )
-            alert = st.session_state["trader_alerts"].get(code)
-            if alert:
-                fig.add_hline(
-                    y=alert["threshold"], line_dash="dot", line_color="orange",
-                    annotation_text=f"alert €{alert['threshold']:.0f}",
-                )
-            zeus_plotly_layout(fig, height=320)
-            st.plotly_chart(fig, use_container_width=True)
-
-        with right:
-            st.metric("30-day trend", f"{s['trend_pct']:+.1f}%",
-                      f"€{s['day1']:.0f} → €{s['day30']:.0f}")
-            st.metric("30-day average", f"€{s['avg']:.1f}/MWh")
-            st.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
-
-            st.write("**Price alert**")
-            alert = st.session_state["trader_alerts"].get(code)
-            with st.form(f"alert_{code}"):
-                direction = st.radio(
-                    "Notify when forecast goes",
-                    ["above", "below"],
-                    index=0 if not alert or alert["direction"] == "above" else 1,
-                    horizontal=True,
-                )
-                threshold = st.number_input(
-                    "Threshold (€/MWh)", min_value=0.0, step=5.0,
-                    value=float(alert["threshold"]) if alert else round(s["avg"], 0),
-                )
-                set_col, clear_col = st.columns(2)
-                if set_col.form_submit_button("Set alert", use_container_width=True):
-                    st.session_state["trader_alerts"][code] = {
-                        "threshold": float(threshold), "direction": direction,
-                    }
-                    st.rerun()
-                if clear_col.form_submit_button("Clear", use_container_width=True):
-                    st.session_state["trader_alerts"].pop(code, None)
-                    st.rerun()
+            set_col, clear_col = st.columns(2)
+            if set_col.form_submit_button("Set alert", use_container_width=True):
+                st.session_state["trader_alerts"][code] = {
+                    "threshold": float(threshold), "direction": direction,
+                }
+                st.rerun()
+            if clear_col.form_submit_button("Clear", use_container_width=True):
+                st.session_state["trader_alerts"].pop(code, None)
+                st.rerun()
 
 st.divider()
 
