@@ -151,7 +151,7 @@ st.divider()
 nav_left, nav_right = st.columns(2)
 with nav_left:
     if st.button("Gas Storage Risk →", type='primary', use_container_width=True):
-        st.switch_page('pages/Gas_Storage_Risk.py')
+        st.switch_page('pages/62_Gas_Storage_Risk.py')
 with nav_right:
     if st.button("Compare Countries →", use_container_width=True):
-        st.switch_page('pages/Country_Comparison.py')
+        st.switch_page('pages/61_Country_Comparison.py')
