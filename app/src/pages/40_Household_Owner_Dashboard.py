@@ -263,7 +263,7 @@ st.divider()
 
 nav_left, nav_right = st.columns(2)
 with nav_left:
-    if st.button("Persona Info →", type="primary", use_container_width=True):
+    if st.button("My Info →", type="primary", use_container_width=True):
         st.switch_page("pages/41_Household_Persona_Info.py")
 with nav_right:
     if st.button("Energy News →", use_container_width=True):

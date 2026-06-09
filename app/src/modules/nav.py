@@ -99,7 +99,7 @@ def household_owner_nav():
     )
     st.sidebar.page_link(
         "pages/41_Household_Persona_Info.py",
-        label="Persona Info",
+        label="My Info",
         icon="👤",
     )
     st.sidebar.page_link(

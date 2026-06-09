@@ -212,5 +212,5 @@ with nav_left:
     if st.button("← Dashboard", use_container_width=True):
         st.switch_page("pages/40_Household_Owner_Dashboard.py")
 with nav_right:
-    if st.button("← Persona Info", use_container_width=True):
+    if st.button("← My Info", use_container_width=True):
         st.switch_page("pages/41_Household_Persona_Info.py")

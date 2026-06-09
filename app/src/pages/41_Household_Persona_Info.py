@@ -117,7 +117,7 @@ account_language = account.get("language") or "English"
 
 st.info(
     f"Signed in as **{account_name or 'your household'}** "
-    f"({account_country or 'country not set — choose one below'})."
+    f"({account_country or 'country not set — choose one below'})"
 )
 
 st.divider()
