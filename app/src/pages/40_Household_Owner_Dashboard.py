@@ -80,8 +80,9 @@ zone_map = {
 
 if selected_country_code:
     try:
+        import os
         from entsoe import EntsoePandasClient
-        client = EntsoePandasClient(api_key="be9993ee-346c-45b9-bef1-201dd8f8bf3d")
+        client = EntsoePandasClient(api_key=os.getenv("ENTSOE_API_KEY"))
         today    = pd.Timestamp.now(tz="Europe/Berlin").normalize()
         tomorrow = today + pd.Timedelta(days=1)
         zone     = zone_map.get(selected_country_code, selected_country_code)
