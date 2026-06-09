@@ -18,9 +18,10 @@ TEAM_MEMBERS = [
         "name": "Rayna Patel",
         "image": "assets/team/headshot_2.jpg",
         "bio": (
-            "I'm a student on the Belgium Dialogue (Leuven, 2026) studying Business "
-            "Administration with a concentration in Finance and a minor in Data Science. "
-            "My weekly blog posts are listed below."
+            "Hi, I'm Rayna, a second-year student at Northeatern University on the Data and Software in International Government and Politics Dialogue program. "
+            "I'm studying Business Administration with a concentration in Finance and a minor in Data Science. "
+            "For Zeus, I built ML1, a 30-day electricty price prediction for 15 EU countries, and connected it to both the household user persona and the energy trader user persona. "
+            "My favorite parts of this program have been exploring Strasbourg, France and visiting Eurostat in Luxembourg."
         ),
         "linkedin_url": "https://www.linkedin.com/in/rayna-m-patel/",
     },
