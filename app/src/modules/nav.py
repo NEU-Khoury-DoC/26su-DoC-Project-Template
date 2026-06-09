@@ -100,6 +100,9 @@ def researcher_data_export():
 def researcher_blog():
     st.sidebar.page_link("pages/28_Researcher_Blog.py", label="Discussion Board", icon="💭")
 
+def researcher_compare():
+    st.sidebar.page_link("pages/31_Researcher_Compare.py", label="Compare", icon="⚖️")
+
 # ---- Sidebar assembly -------------------------------------------------------
 
 def SideBarLinks(show_home=False):
@@ -142,6 +145,7 @@ def SideBarLinks(show_home=False):
             researcher_map()
             researcher_conditions()
             researcher_trends()
+            researcher_compare()
             researcher_report()
             researcher_data_export()
             researcher_blog()
