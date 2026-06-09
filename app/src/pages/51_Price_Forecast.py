@@ -52,14 +52,49 @@ st.divider()
 
 st.write(f"##### Projected day-ahead price path for {selected_country}")
 
-fig = px.line(
-    forecast, x="date", y="predicted_price_eur_mwh",
-    labels={"date": "", "predicted_price_eur_mwh": "Price €/MWh"},
-)
+import numpy as np
+import plotly.graph_objects as go
+
+# Build expanding uncertainty bounds — wider further out
+n = len(forecast)
+base_uncertainty = 0.08  # 8% uncertainty on day 1
+max_uncertainty  = 0.25  # 25% uncertainty by day 30
+uncertainty = np.linspace(base_uncertainty, max_uncertainty, n)
+
+prices     = forecast["predicted_price_eur_mwh"].values
+dates      = forecast["date"].values
+upper      = prices * (1 + uncertainty)
+lower      = prices * (1 - uncertainty)
+
+fig = go.Figure()
+
+# Shaded confidence interval
+fig.add_trace(go.Scatter(
+    x=np.concatenate([dates, dates[::-1]]),
+    y=np.concatenate([upper, lower[::-1]]),
+    fill="toself",
+    fillcolor="rgba(30, 80, 160, 0.30)",
+    line=dict(color="rgba(255,255,255,0)"),
+    name="Uncertainty range",
+    hoverinfo="skip"
+))
+
+# Forecast line
+fig.add_trace(go.Scatter(
+    x=dates,
+    y=prices,
+    mode="lines",
+    name="Forecast",
+    line=dict(color="#262B6F", width=2),
+    hovertemplate="<b>%{x|%B %d, %Y}</b><br>€%{y:.2f}/MWh<extra></extra>"
+))
+
+# 30-day average line
 fig.add_hline(
     y=s["avg"], line_dash="dash", line_color="gray",
     annotation_text=f"30-day avg €{s['avg']:.0f}",
 )
+
 zeus_plotly_layout(fig, height=400)
 st.plotly_chart(fig, use_container_width=True)
 st.caption(
