@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 from modules.zeus_api import get_electricity_forecast, get_household_profile, get_user, get_electricity_history
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import requests
 import streamlit as st
 from modules.ml_countries import (
@@ -167,31 +168,58 @@ st.subheader("30-Day Electricity Price Forecast")
 if selected_country_code is None:
     pass
 elif forecast_available:
-    forecast_chart = px.line(
-        forecast_df,
-        x="date",
-        y="predicted_price_eur_mwh",
-        title=f"{selected_country_name}",
-        labels={
-            "date": "Date",
-            "predicted_price_eur_mwh": "Predicted Price (EUR/MWh)"
-        },
-    )
-    forecast_chart.update_traces(
+    # Fetch last 15 days of historical prices
+    try:
+        hist_data = get_electricity_history(selected_country_code)
+        hist_df_full = pd.DataFrame(hist_data)
+        hist_df_full["date"] = pd.to_datetime(hist_df_full["price_date"])
+        hist_df_full = hist_df_full.sort_values("date").tail(15).reset_index(drop=True)
+        has_history = True
+    except Exception:
+        has_history = False
+
+    fig_hybrid = go.Figure()
+
+    # Add historical line if available
+    if has_history:
+        fig_hybrid.add_trace(go.Scatter(
+            x=hist_df_full["date"],
+            y=hist_df_full["avg_price_eur_mwh"],
+            mode="lines+markers",
+            name="Historical",
+            line=dict(color="#B8860B", width=2),
+            marker=dict(size=5),
+            hovertemplate="<b>%{x|%B %d, %Y}</b><br>Historical: €%{y:.2f}/MWh<extra></extra>"
+        ))
+
+    # Add forecast line
+    fig_hybrid.add_trace(go.Scatter(
+        x=forecast_df["date"],
+        y=forecast_df["predicted_price_eur_mwh"],
         mode="lines+markers",
-        marker=dict(size=6),
-        line=dict(color="steelblue", width=2),
-        hovertemplate="<b>%{x|%B %d, %Y}</b><br>Price: €%{y:.2f}/MWh<extra></extra>"
-    )
-    zeus_plotly_layout(
-        forecast_chart,
+        name="30-Day Forecast",
+        line=dict(color="#262B6F", width=2),
+        marker=dict(size=5),
+        hovertemplate="<b>%{x|%B %d, %Y}</b><br>Forecast: €%{y:.2f}/MWh<extra></extra>"
+    ))
+
+    fig_hybrid.update_layout(
+        title=f"{selected_country_name}",
+        title_font_size=20,
         height=420,
         xaxis_title="Date",
-        yaxis_title="Predicted Price (EUR/MWh)",
+        yaxis_title="EUR/MWh",
         hovermode="closest",
-        title_font_size=20,
+        template="plotly_white",
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1
+        )
     )
-    st.plotly_chart(forecast_chart, use_container_width=True)
+    st.plotly_chart(fig_hybrid, use_container_width=True)
 
 elif selected_country_code is not None:
     st.warning("Could not connect to the backend. Showing placeholder data.")
