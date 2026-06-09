@@ -1,6 +1,6 @@
 import logging
 logger = logging.getLogger(__name__)
-
+ 
 import pandas as pd
 import plotly.express as px
 import requests
@@ -8,25 +8,24 @@ import streamlit as st
 from modules.nav import SideBarLinks
 from modules.theme import zeus_plotly_layout
 from modules.zeus_api import get_storage_winters, post_storage_risk
-
+ 
 st.set_page_config(layout='wide')
-
+ 
 SideBarLinks()
-
+ 
 st.title("Gas Storage Risk")
 st.write("#### Will storage fall below 30% this winter?")
 st.caption(
-    "Logistic regression trained on GIE AGSI storage data from 2015-2025\n\n"
     "Explore what-if scenarios"
 )
-
+ 
 COUNTRIES = [
     "Austria", "Belgium", "Bulgaria", "Croatia", "Czech Republic",
     "Denmark", "France", "Germany", "Hungary", "Italy",
     "Latvia", "Netherlands", "Poland", "Portugal", "Romania",
     "Slovakia", "Spain",
 ]
-
+ 
 NAME_TO_CODE = {
     "Austria": "AT", "Belgium": "BE", "Bulgaria": "BG", "Croatia": "HR",
     "Czech Republic": "CZ", "Denmark": "DK", "France": "FR", "Germany": "DE",
@@ -34,9 +33,9 @@ NAME_TO_CODE = {
     "Poland": "PL", "Portugal": "PT", "Romania": "RO", "Slovakia": "SK",
     "Spain": "ES",
 }
-
+ 
 RISK_THRESHOLD = 30  # %
-
+ 
 default_country = st.session_state.get("journalist_country", "Poland")
 selected_country = st.selectbox(
     "Country",
@@ -44,86 +43,75 @@ selected_country = st.selectbox(
     index=COUNTRIES.index(default_country) if default_country in COUNTRIES else 0,
 )
 st.session_state["journalist_country"] = selected_country
-
+ 
 code = NAME_TO_CODE[selected_country]
-
+ 
 try:
     country_winters = get_storage_winters(code)
 except requests.exceptions.RequestException as exc:
     st.error(f"Could not load winter data from the API: {exc}")
     st.info("Ensure the API and database are running (`docker compose up -d`).")
     st.stop()
-
+ 
 if not country_winters:
     st.warning("No winter records in the database for this country.")
     st.stop()
-
+ 
 latest = max(country_winters, key=lambda row: row["winter"])
-
+ 
 st.divider()
-
+ 
 st.write("#### Model inputs")
-
+ 
 _INPUT_LABELS = [
     "Storage level entering winter (%)",
     "Change in storage over October (points)",
     "Storage volatility (past 90 days)",
 ]
-_INPUT_HELPS = [
-    "Average % full during October, just before winter begins Nov 1.",
-    "How much the storage level rose or fell during the 30 days before "
-    "winter. +10 means it climbed from e.g. 80% to 90% full (still filling); "
-    "negative means it was already draining.",
-    "How much the storage level bounced around in the 90 days before winter "
-    "(standard deviation)",
-]
-
+ 
 label_cols = st.columns(3)
 for col, label in zip(label_cols, _INPUT_LABELS):
     col.markdown(
         f'<p style="min-height: 3.5rem; margin: 0; line-height: 1.35;">{label}</p>',
         unsafe_allow_html=True,
     )
-
+ 
 c1, c2, c3 = st.columns(3)
-
+ 
 storage_at_start = c1.slider(
     "storage_at_start",
     0.0,
     100.0,
     value=float(latest["storage_at_start"]),
     label_visibility="collapsed",
-    help=_INPUT_HELPS[0],
 )
-
+ 
 storage_trend_30d = c2.slider(
     "storage_trend_30d",
     -30.0,
     30.0,
     value=float(latest["storage_trend_30d"]),
     label_visibility="collapsed",
-    help=_INPUT_HELPS[1],
 )
-
+ 
 storage_volatility = c3.slider(
     "storage_volatility",
     0.0,
     30.0,
     value=float(latest["storage_volatility"]),
     label_visibility="collapsed",
-    help=_INPUT_HELPS[2],
 )
-
+ 
 trend_caption = (
     f"Filling: +{storage_trend_30d:.1f} points in the final month"
     if storage_trend_30d >= 0
     else f"Draining: {storage_trend_30d:.1f} points in the final month"
 )
 cap1, cap2, cap3 = st.columns(3)
-cap1.caption("\u00a0")
+cap1.caption(" ")
 cap2.caption(trend_caption)
-cap3.caption("\u00a0")
-
+cap3.caption(" ")
+ 
 try:
     risk_result = post_storage_risk(
         storage_at_start=storage_at_start,
@@ -133,10 +121,10 @@ try:
 except requests.exceptions.RequestException as exc:
     st.error(f"Risk prediction failed: {exc}")
     st.stop()
-
+ 
 at_risk = bool(risk_result["at_risk"])
 risk_prob = float(risk_result["risk_prob"])
-
+ 
 if at_risk:
     st.error(
         f"⚠️ **At risk**: the model predicts {selected_country}'s gas storage "
@@ -147,22 +135,22 @@ else:
         f"**Not at risk**: the model predicts {selected_country}'s gas storage "
         f"would stay above {RISK_THRESHOLD}% this winter"
     )
-
+ 
 st.metric("Risk probability", f"{risk_prob:.0%}")
-
+ 
 st.divider()
-
+ 
 st.write("#### A full tank doesn't mean a safe winter")
-
+ 
 try:
     all_winters = get_storage_winters()
 except requests.exceptions.RequestException as exc:
     st.error(f"Could not load winter history: {exc}")
     st.stop()
-
+ 
 plot_df = pd.DataFrame(all_winters)
 plot_df["outcome"] = plot_df["storage_stress"].map({0: "No stress", 1: "Stress"})
-
+ 
 fig = px.scatter(
     plot_df, x="storage_at_start", y="min_winter_full", color="outcome",
     color_discrete_map={"No stress": "steelblue", "Stress": "red"},
@@ -172,7 +160,7 @@ fig = px.scatter(
 )
 fig.add_hline(y=30, line_dash="dash", line_color="red",
               annotation_text="30% stress threshold")
-
+ 
 mask = plot_df["country"] == code
 fig.add_scatter(
     x=plot_df[mask]["storage_at_start"],
@@ -181,7 +169,7 @@ fig.add_scatter(
     marker=dict(size=14, symbol="circle-open", color="black"),
     name=selected_country,
 )
-
+ 
 scenario_color = "red" if at_risk else "green"
 fig.add_vline(
     x=storage_at_start,
@@ -192,12 +180,12 @@ fig.add_vline(
     annotation_position="top",
     annotation_font_color=scenario_color,
 )
-
+ 
 zeus_plotly_layout(fig, height=450)
 st.plotly_chart(fig, use_container_width=True)
-
+ 
 st.divider()
-
+ 
 nav_left, nav_right = st.columns(2)
 with nav_left:
     if st.button("← Back to Country Snapshot", use_container_width=True):
@@ -205,14 +193,40 @@ with nav_left:
 with nav_right:
     if st.button("Country Comparison →", type='primary', use_container_width=True):
         st.switch_page('pages/61_Country_Comparison.py')
-
+ 
 st.divider()
-st.write("#### Why we Chose 30%? ")
-st.write(
-    "We chose 30% as our stress threshold because it is both relevant "
-    "and physically meaningful. After the 2022 gas crisis, the EU set a 90% "
-    "storage mandate by November 1, and since then many EU policy analysts "
-    "have treated roughly 28–30% as the level to start worrying about. There "
-    "is also a physical reason to this because as storage empties, gas pressure drops, which "
-    "slows the rate at which gas can be withdrawn is not being able to keep up with demand."
-)
+ 
+st.write("#### How Gas Storage Works")
+ 
+why_col, source_col, store_col = st.columns(3)
+ 
+with why_col:
+    st.markdown("**Why we chose 30% as the threshold**")
+    st.write(
+        "After the "
+        "2022 gas crisis the EU set a 90%-by-Nov-1 storage mandate, and many "
+        "analysts now treat 28–30% as the level to start worrying. There is "
+        "a physical reason too: as storage empties, reservoir pressure drops, "
+        "so the rate at which gas can be withdrawn falls and can no longer "
+        "keep up with peak winter demand."
+    )
+ 
+with source_col:
+    st.markdown("**Where the gas comes from**")
+    st.write(
+        "The EU produces little of its own gas, so most arrives by pipeline "
+        "(largely Norway and North Africa) or as liquefied natural gas (LNG) "
+        "shipped from the US and Qatar. In summer, when demand is low and "
+        "prices are lower, countries buy extra and inject it into storage to "
+        "carry them through winter."
+    )
+ 
+with store_col:
+    st.markdown("**How countries store it**")
+    st.write(
+        "Gas is held deep underground, mostly in depleted gas fields, "
+        "aquifers, and salt caverns. Depleted fields hold huge volumes but "
+        "release gas slowly. Salt caverns hold less but inject and withdraw "
+        "fast for sharp cold snaps. A reservoir's withdrawal rate depends on "
+        "how full it is because the emptier it gets, the slower gas flows out."
+    )

@@ -131,21 +131,6 @@ else:
         "still fall below 30% if a cold snap hits, so the buffer matters as much as the starting level."
     )
 
-
-
-st.write("##### **Updates**")
-st.markdown(
-        "- [GIE AGSI](https://agsi.gie.eu): the live version of this page's "
-        "data, updated everyday\n"
-        "- [EC gas storage policy](https://energy.ec.europa.eu/topics/energy-security/gas-storage_en): "
-        "90% mandate and compliance tracking\n"
-        "- National TSO announcements: view supply warnings\n"
-        "- [ENTSOG](https://www.entsog.eu): how gas physically moves "
-        "between countries\n"
-        "- [Eurostat import dependency](https://ec.europa.eu/eurostat/databrowser/product/page/nrg_ind_id): "
-        "what country is most exposed to supply shocks\n"
-    )
-
 st.divider()
 
 nav_left, nav_right = st.columns(2)

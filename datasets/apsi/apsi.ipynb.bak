@@ -21961,111 +21961,938 @@
    ]
   },
   {
-   "cell_type": "markdown",
-   "id": "b640c60c",
-   "metadata": {},
-   "source": [
-    "## 4. Modeling\n",
-    "\n",
-    "**Features (4).** The three pre-winter storage indicators plus an **interaction term**\n",
-    "`vol_x_start = storage_at_start × storage_volatility`.\n",
-    "\n",
-    "*Why the interaction?* On its own, volatility enters the model as a single linear term, so\n",
-    "it can only ever push risk in one direction. The interaction lets volatility's effect depend\n",
-    "on how full storage is going into winter — a high starting level **and** low volatility should\n",
-    "mean lower risk, which a volatility-only term cannot capture. Adding it only adds one weight\n",
-    "and needs no front-end change.\n",
-    "\n",
-    "We compare Logistic Regression against a Random Forest with 5-fold stratified cross-validation,\n",
-    "then keep logistic regression for its interpretability."
-   ]
-  },
-  {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "c2438a4f",
+   "execution_count": 181,
+   "id": "8c0af32b",
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      " Logistic Regression \n",
+      "[[78 25]\n",
+      " [34 48]]\n",
+      "              precision    recall  f1-score   support\n",
+      "\n",
+      "           0       0.70      0.76      0.73       103\n",
+      "           1       0.66      0.59      0.62        82\n",
+      "\n",
+      "    accuracy                           0.68       185\n",
+      "   macro avg       0.68      0.67      0.67       185\n",
+      "weighted avg       0.68      0.68      0.68       185\n",
+      "\n",
+      "\n",
+      " Random Forest \n",
+      "[[70 33]\n",
+      " [27 55]]\n",
+      "              precision    recall  f1-score   support\n",
+      "\n",
+      "           0       0.72      0.68      0.70       103\n",
+      "           1       0.62      0.67      0.65        82\n",
+      "\n",
+      "    accuracy                           0.68       185\n",
+      "   macro avg       0.67      0.68      0.67       185\n",
+      "weighted avg       0.68      0.68      0.68       185\n",
+      "\n"
+     ]
+    }
+   ],
    "source": [
     "from sklearn.linear_model import LogisticRegression\n",
     "from sklearn.ensemble import RandomForestClassifier\n",
     "from sklearn.model_selection import cross_val_predict, StratifiedKFold\n",
     "from sklearn.metrics import classification_report, confusion_matrix\n",
     "\n",
-    "# Interaction term: volatility's effect now depends on the starting storage level\n",
     "dataset[\"vol_x_start\"] = dataset[\"storage_at_start\"] * dataset[\"storage_volatility\"]\n",
-    "\n",
     "features = [\"storage_at_start\", \"storage_trend_30d\", \"storage_volatility\", \"vol_x_start\"]\n",
     "X = dataset[features]\n",
     "y = dataset[\"storage_stress\"]\n",
     "\n",
-    "# Compare two candidate models with 5-fold stratified cross-validation\n",
     "cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)\n",
+    "\n",
     "for name, model in [\n",
     "    (\"Logistic Regression\", LogisticRegression(max_iter=1000, class_weight=\"balanced\")),\n",
     "    (\"Random Forest\", RandomForestClassifier(n_estimators=200, max_depth=4,\n",
-    "                                              class_weight=\"balanced\", random_state=42)),\n",
+    "                                             class_weight=\"balanced\", random_state=42)),\n",
     "]:\n",
     "    preds = cross_val_predict(model, X, y, cv=cv)\n",
-    "    print(f\"\\n=== {name} ===\")\n",
+    "    print(f\"\\n {name} \")\n",
     "    print(confusion_matrix(y, preds))\n",
     "    print(classification_report(y, preds))"
    ]
   },
   {
-   "cell_type": "markdown",
-   "id": "1413f475",
-   "metadata": {},
-   "source": [
-    "### Final model\n",
-    "\n",
-    "We standardize the four features, then fit logistic regression. The scaler lives **inside** a\n",
-    "`Pipeline`, so the interaction term (built *before* scaling) is standardized along with the rest.\n",
-    "The printed intercept / weights / means / stds are exactly the numbers copied into\n",
-    "`database-files/03_gas_storage_schema.sql`, where the API reads them at prediction time."
-   ]
-  },
-  {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "a5b2ace4",
+   "execution_count": 175,
+   "id": "65b439a0",
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.plotly.v1+json": {
+       "config": {
+        "plotlyServerURL": "https://plot.ly"
+       },
+       "data": [
+        {
+         "hovertemplate": "weight=%{x}<br>feature=%{y}<extra></extra>",
+         "legendgroup": "",
+         "marker": {
+          "color": "#636efa",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "",
+         "orientation": "h",
+         "showlegend": false,
+         "textposition": "auto",
+         "type": "bar",
+         "x": {
+          "bdata": "9EpWwC7G6L9R0KsL4+7Xv/t5EuH7QMC/",
+          "dtype": "f8"
+         },
+         "xaxis": "x",
+         "y": [
+          "storage_at_start",
+          "storage_trend_30d",
+          "storage_volatility"
+         ],
+         "yaxis": "y"
+        }
+       ],
+       "layout": {
+        "barmode": "relative",
+        "legend": {
+         "tracegroupgap": 0
+        },
+        "template": {
+         "data": {
+          "bar": [
+           {
+            "error_x": {
+             "color": "#2a3f5f"
+            },
+            "error_y": {
+             "color": "#2a3f5f"
+            },
+            "marker": {
+             "line": {
+              "color": "#E5ECF6",
+              "width": 0.5
+             },
+             "pattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+             }
+            },
+            "type": "bar"
+           }
+          ],
+          "barpolar": [
+           {
+            "marker": {
+             "line": {
+              "color": "#E5ECF6",
+              "width": 0.5
+             },
+             "pattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+             }
+            },
+            "type": "barpolar"
+           }
+          ],
+          "carpet": [
+           {
+            "aaxis": {
+             "endlinecolor": "#2a3f5f",
+             "gridcolor": "white",
+             "linecolor": "white",
+             "minorgridcolor": "white",
+             "startlinecolor": "#2a3f5f"
+            },
+            "baxis": {
+             "endlinecolor": "#2a3f5f",
+             "gridcolor": "white",
+             "linecolor": "white",
+             "minorgridcolor": "white",
+             "startlinecolor": "#2a3f5f"
+            },
+            "type": "carpet"
+           }
+          ],
+          "choropleth": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "type": "choropleth"
+           }
+          ],
+          "contour": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "contour"
+           }
+          ],
+          "contourcarpet": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "type": "contourcarpet"
+           }
+          ],
+          "heatmap": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "heatmap"
+           }
+          ],
+          "histogram": [
+           {
+            "marker": {
+             "pattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+             }
+            },
+            "type": "histogram"
+           }
+          ],
+          "histogram2d": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "histogram2d"
+           }
+          ],
+          "histogram2dcontour": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "histogram2dcontour"
+           }
+          ],
+          "mesh3d": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "type": "mesh3d"
+           }
+          ],
+          "parcoords": [
+           {
+            "line": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "parcoords"
+           }
+          ],
+          "pie": [
+           {
+            "automargin": true,
+            "type": "pie"
+           }
+          ],
+          "scatter": [
+           {
+            "fillpattern": {
+             "fillmode": "overlay",
+             "size": 10,
+             "solidity": 0.2
+            },
+            "type": "scatter"
+           }
+          ],
+          "scatter3d": [
+           {
+            "line": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatter3d"
+           }
+          ],
+          "scattercarpet": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattercarpet"
+           }
+          ],
+          "scattergeo": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattergeo"
+           }
+          ],
+          "scattergl": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattergl"
+           }
+          ],
+          "scattermap": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattermap"
+           }
+          ],
+          "scattermapbox": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattermapbox"
+           }
+          ],
+          "scatterpolar": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatterpolar"
+           }
+          ],
+          "scatterpolargl": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatterpolargl"
+           }
+          ],
+          "scatterternary": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatterternary"
+           }
+          ],
+          "surface": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "surface"
+           }
+          ],
+          "table": [
+           {
+            "cells": {
+             "fill": {
+              "color": "#EBF0F8"
+             },
+             "line": {
+              "color": "white"
+             }
+            },
+            "header": {
+             "fill": {
+              "color": "#C8D4E3"
+             },
+             "line": {
+              "color": "white"
+             }
+            },
+            "type": "table"
+           }
+          ]
+         },
+         "layout": {
+          "annotationdefaults": {
+           "arrowcolor": "#2a3f5f",
+           "arrowhead": 0,
+           "arrowwidth": 1
+          },
+          "autotypenumbers": "strict",
+          "coloraxis": {
+           "colorbar": {
+            "outlinewidth": 0,
+            "ticks": ""
+           }
+          },
+          "colorscale": {
+           "diverging": [
+            [
+             0,
+             "#8e0152"
+            ],
+            [
+             0.1,
+             "#c51b7d"
+            ],
+            [
+             0.2,
+             "#de77ae"
+            ],
+            [
+             0.3,
+             "#f1b6da"
+            ],
+            [
+             0.4,
+             "#fde0ef"
+            ],
+            [
+             0.5,
+             "#f7f7f7"
+            ],
+            [
+             0.6,
+             "#e6f5d0"
+            ],
+            [
+             0.7,
+             "#b8e186"
+            ],
+            [
+             0.8,
+             "#7fbc41"
+            ],
+            [
+             0.9,
+             "#4d9221"
+            ],
+            [
+             1,
+             "#276419"
+            ]
+           ],
+           "sequential": [
+            [
+             0,
+             "#0d0887"
+            ],
+            [
+             0.1111111111111111,
+             "#46039f"
+            ],
+            [
+             0.2222222222222222,
+             "#7201a8"
+            ],
+            [
+             0.3333333333333333,
+             "#9c179e"
+            ],
+            [
+             0.4444444444444444,
+             "#bd3786"
+            ],
+            [
+             0.5555555555555556,
+             "#d8576b"
+            ],
+            [
+             0.6666666666666666,
+             "#ed7953"
+            ],
+            [
+             0.7777777777777778,
+             "#fb9f3a"
+            ],
+            [
+             0.8888888888888888,
+             "#fdca26"
+            ],
+            [
+             1,
+             "#f0f921"
+            ]
+           ],
+           "sequentialminus": [
+            [
+             0,
+             "#0d0887"
+            ],
+            [
+             0.1111111111111111,
+             "#46039f"
+            ],
+            [
+             0.2222222222222222,
+             "#7201a8"
+            ],
+            [
+             0.3333333333333333,
+             "#9c179e"
+            ],
+            [
+             0.4444444444444444,
+             "#bd3786"
+            ],
+            [
+             0.5555555555555556,
+             "#d8576b"
+            ],
+            [
+             0.6666666666666666,
+             "#ed7953"
+            ],
+            [
+             0.7777777777777778,
+             "#fb9f3a"
+            ],
+            [
+             0.8888888888888888,
+             "#fdca26"
+            ],
+            [
+             1,
+             "#f0f921"
+            ]
+           ]
+          },
+          "colorway": [
+           "#636efa",
+           "#EF553B",
+           "#00cc96",
+           "#ab63fa",
+           "#FFA15A",
+           "#19d3f3",
+           "#FF6692",
+           "#B6E880",
+           "#FF97FF",
+           "#FECB52"
+          ],
+          "font": {
+           "color": "#2a3f5f"
+          },
+          "geo": {
+           "bgcolor": "white",
+           "lakecolor": "white",
+           "landcolor": "#E5ECF6",
+           "showlakes": true,
+           "showland": true,
+           "subunitcolor": "white"
+          },
+          "hoverlabel": {
+           "align": "left"
+          },
+          "hovermode": "closest",
+          "mapbox": {
+           "style": "light"
+          },
+          "paper_bgcolor": "white",
+          "plot_bgcolor": "#E5ECF6",
+          "polar": {
+           "angularaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           },
+           "bgcolor": "#E5ECF6",
+           "radialaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           }
+          },
+          "scene": {
+           "xaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "gridwidth": 2,
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white"
+           },
+           "yaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "gridwidth": 2,
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white"
+           },
+           "zaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "gridwidth": 2,
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white"
+           }
+          },
+          "shapedefaults": {
+           "line": {
+            "color": "#2a3f5f"
+           }
+          },
+          "ternary": {
+           "aaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           },
+           "baxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           },
+           "bgcolor": "#E5ECF6",
+           "caxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           }
+          },
+          "title": {
+           "x": 0.05
+          },
+          "xaxis": {
+           "automargin": true,
+           "gridcolor": "white",
+           "linecolor": "white",
+           "ticks": "",
+           "title": {
+            "standoff": 15
+           },
+           "zerolinecolor": "white",
+           "zerolinewidth": 2
+          },
+          "yaxis": {
+           "automargin": true,
+           "gridcolor": "white",
+           "linecolor": "white",
+           "ticks": "",
+           "title": {
+            "standoff": 15
+           },
+           "zerolinecolor": "white",
+           "zerolinewidth": 2
+          }
+         }
+        },
+        "title": {
+         "text": "What drives winter storage stress"
+        },
+        "xaxis": {
+         "anchor": "y",
+         "domain": [
+          0,
+          1
+         ],
+         "title": {
+          "text": "weight"
+         }
+        },
+        "yaxis": {
+         "anchor": "x",
+         "domain": [
+          0,
+          1
+         ],
+         "title": {
+          "text": "feature"
+         }
+        }
+       }
+      }
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "              feature    weight\n",
+      "0    storage_at_start -0.774192\n",
+      "1   storage_trend_30d -0.373955\n",
+      "2  storage_volatility -0.126983\n"
+     ]
+    }
+   ],
    "source": [
-    "from sklearn.preprocessing import StandardScaler\n",
-    "from sklearn.pipeline import make_pipeline\n",
-    "\n",
-    "logreg = make_pipeline(\n",
-    "    StandardScaler(),\n",
-    "    LogisticRegression(max_iter=1000, class_weight=\"balanced\"),\n",
-    ")\n",
-    "logreg.fit(X, y)\n",
-    "\n",
-    "scaler = logreg.named_steps[\"standardscaler\"]\n",
-    "clf    = logreg.named_steps[\"logisticregression\"]\n",
-    "\n",
-    "# >>> These are the values that go into 03_gas_storage_schema.sql <<<\n",
-    "print(\"intercept:\", float(clf.intercept_[0]))\n",
-    "for f, w, m, s in zip(features, clf.coef_[0], scaler.mean_, scaler.scale_):\n",
-    "    print(f\"{f:18s} weight={float(w): .6f}  mean={float(m): .6f}  std={float(s): .6f}\")"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "d603f23e",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# What drives winter storage stress (standardized logistic-regression weights)\n",
-    "imp = (pd.Series(clf.coef_[0], index=features)\n",
-    "       .sort_values()\n",
-    "       .reset_index())\n",
+    "logit = LogisticRegression(max_iter=1000, class_weight=\"balanced\")\n",
+    "logit.fit(X, y)\n",
+    "imp = (pd.Series(clf.coef_[0], index=features)   # clf = pipeline's logisticregression step\n",
+    "       .sort_values().reset_index())\n",
     "imp.columns = [\"feature\", \"weight\"]\n",
     "\n",
     "fig = px.bar(imp, x=\"weight\", y=\"feature\", orientation=\"h\",\n",
-    "             title=\"What drives winter storage stress (standardized weights)\")\n",
-    "fig.add_vline(x=0, line_color=\"black\", line_width=1)\n",
+    "             title=\"What drives winter storage stress\")\n",
     "fig.write_html(\"figures/feature_importance.html\")\n",
     "fig.show()\n",
     "print(imp)"
@@ -22073,93 +22900,187 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "caccb5f5",
+   "execution_count": 176,
+   "id": "172c432c",
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "storage_trend_30d    -0.087176\n",
+      "storage_at_start     -0.055438\n",
+      "storage_volatility    0.001832\n",
+      "dtype: float64\n",
+      "intercept: 5.115570633855667\n"
+     ]
+    }
+   ],
    "source": [
-    "import joblib\n",
+    "logit = LogisticRegression(max_iter=1000, class_weight=\"balanced\")\n",
+    "logit.fit(X, y)\n",
     "\n",
-    "# Save the full pipeline (scaler + model) so the saved artifact standardizes\n",
-    "# inputs exactly the way the API does, plus the dataset behind it.\n",
-    "joblib.dump(logreg, \"gas_model.pkl\")\n",
-    "dataset.to_csv(\"dataset.csv\", index=False)\n",
-    "print(\"Saved gas_model.pkl and dataset.csv\")"
+    "weights = pd.Series(logit.coef_[0], index=features).sort_values()\n",
+    "print(weights)\n",
+    "print(\"intercept:\", logit.intercept_[0])"
    ]
   },
   {
-   "cell_type": "markdown",
-   "id": "ea28ecb2",
+   "cell_type": "code",
+   "execution_count": 182,
+   "id": "bffed61e",
    "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "intercept: -0.004376791535522453\n",
+      "storage_at_start: weight=-0.6769298311491262  mean=88.6093914559721  std=12.702145281437597\n",
+      "storage_trend_30d: weight=-0.4022240521239136  mean=2.5504864864864865  std=4.853537053066873\n",
+      "storage_volatility: weight=0.005415253739007111  mean=8.61439122200191  std=4.154950755150775\n"
+     ]
+    }
+   ],
    "source": [
-    "## 5. Assumption checks (logistic regression)\n",
+    "import joblib\n",
     "\n",
-    "We check the assumptions that matter for logistic regression: a **binary outcome**, low\n",
-    "**multicollinearity** (VIF) supported by a **correlation matrix**, and **linearity of the\n",
-    "predictors in the log-odds** (Box-Tidwell). Independence holds by design — each row is one\n",
-    "country-winter.\n",
+    "# Train the final logistic regression on ALL the data\n",
+    "logreg = LogisticRegression(max_iter=1000, class_weight=\"balanced\")\n",
+    "logreg.fit(X, y)\n",
     "\n",
-    "Note on the interaction term: a product is mechanically correlated with the variables it is\n",
-    "built from, so it inflates VIF. We show the VIF with a mean-centered interaction as evidence\n",
-    "that this inflation is purely **structural**, not a data problem — and it does not bias the\n",
-    "model's predictions."
+    "print(\"intercept:\", float(clf.intercept_[0]))\n",
+    "for f, w, m, s in zip(features, clf.coef_[0], scaler.mean_, scaler.scale_):\n",
+    "    print(f\"{f}: weight={float(w)}  mean={float(m)}  std={float(s)}\")\n",
+    "\n",
+    "# Save two files\n",
+    "joblib.dump(logreg, \"gas_model.pkl\") \n",
+    "dataset.to_csv(\"dataset.csv\", index=False)  # the data behind it"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "f8dac7b7",
+   "id": "120ba3ef",
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "intercept: -0.004376791535522453\n",
+      "weights:   [-0.6769298311491262, -0.4022240521239136, 0.005415253739007111]\n",
+      "means:     [88.6093914559721, 2.5504864864864865, 8.61439122200191]\n",
+      "stds:      [12.702145281437597, 4.853537053066873, 4.154950755150775]\n"
+     ]
+    }
+   ],
    "source": [
+    "from sklearn.preprocessing import StandardScaler\n",
+    "from sklearn.pipeline import make_pipeline\n",
+    "from sklearn.linear_model import LogisticRegression\n",
+    "\n",
+    "logreg = make_pipeline(StandardScaler(),\n",
+    "                       LogisticRegression(max_iter=1000, class_weight=\"balanced\"))\n",
+    "logreg.fit(X, y)\n",
+    "\n",
+    "scaler = logreg.named_steps[\"standardscaler\"]\n",
+    "clf    = logreg.named_steps[\"logisticregression\"]\n",
+    "print(\"intercept:\", float(clf.intercept_[0]))\n",
+    "print(\"weights:  \", list(map(float, clf.coef_[0])))\n",
+    "print(\"means:    \", list(map(float, scaler.mean_)))\n",
+    "print(\"stds:     \", list(map(float, scaler.scale_)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 179,
+   "id": "e9d7153f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "means: [88.6093914559721, 2.5504864864864865, 8.61439122200191]\n",
+      "stds:  [12.73661520989103, 4.866708141198717, 4.1662260832220745]\n"
+     ]
+    }
+   ],
+   "source": [
+    "raw = dataset[[\"storage_at_start\", \"storage_trend_30d\", \"storage_volatility\"]]\n",
+    "print(\"means:\", list(map(float, raw.mean())))\n",
+    "print(\"stds: \", list(map(float, raw.std())))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 180,
+   "id": "fe6d4029",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1) BINARY OUTCOME\n",
+      "   classes: [0, 1] -> OK\n",
+      "   balance: {0: 103, 1: 82}\n",
+      "\n",
+      "2) MULTICOLLINEARITY (VIF)\n",
+      "           feature       VIF\n",
+      "             const 56.783882\n",
+      "  storage_at_start  1.027427\n",
+      " storage_trend_30d  1.043436\n",
+      "storage_volatility  1.016347\n",
+      "\n",
+      "3) LINEARITY OF THE LOGIT (Box-Tidwell)\n",
+      "   storage_at_start     p=0.508 -> OK\n",
+      "   storage_trend_30d    p=0.443 -> OK\n",
+      "   storage_volatility   p=0.007 -> VIOLATION\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ============================================================\n",
+    "#  ASSUMPTION CHECKS — Logistic Regression (ML2)\n",
+    "# ============================================================\n",
     "import numpy as np\n",
+    "import pandas as pd\n",
     "import statsmodels.api as sm\n",
     "from statsmodels.stats.outliers_influence import variance_inflation_factor\n",
     "\n",
-    "# 1) Binary outcome ---------------------------------------------------\n",
+    "X = dataset[features]\n",
+    "y = dataset[\"storage_stress\"]\n",
+    "\n",
+    "# --- 1) Outcome is binary -------------------------------------------\n",
     "print(\"1) BINARY OUTCOME\")\n",
-    "print(\"   classes:\", sorted(y.unique()), \"  balance:\", y.value_counts().to_dict())\n",
+    "print(\"   classes:\", sorted(y.unique()),\n",
+    "      \"-> OK\" if set(y.unique()) == {0, 1} else \"-> NOT binary\")\n",
+    "print(\"   balance:\", y.value_counts().to_dict())\n",
     "\n",
-    "# 2) Correlation matrix ----------------------------------------------\n",
-    "print(\"\\n2) CORRELATION MATRIX\")\n",
-    "corr = X.corr()\n",
-    "print(corr.round(2).to_string())\n",
-    "fig_corr = px.imshow(corr, text_auto=\".2f\", zmin=-1, zmax=1,\n",
-    "                     color_continuous_scale=\"RdBu_r\",\n",
-    "                     title=\"Feature correlation matrix\")\n",
-    "fig_corr.write_html(\"figures/correlation_matrix.html\")\n",
-    "fig_corr.show()\n",
+    "# --- 2) No multicollinearity (VIF) ----------------------------------\n",
+    "# VIF < 5 good, 5-10 moderate, >10 problematic. Ignore the const row.\n",
+    "Xc = sm.add_constant(X)\n",
+    "vif = pd.DataFrame({\n",
+    "    \"feature\": Xc.columns,\n",
+    "    \"VIF\": [variance_inflation_factor(Xc.values, i) for i in range(Xc.shape[1])]\n",
+    "})\n",
+    "print(\"\\n2) MULTICOLLINEARITY (VIF)\")\n",
+    "print(vif.to_string(index=False))\n",
     "\n",
-    "# 3) Multicollinearity (VIF). VIF < 5 good, 5-10 moderate, > 10 high.\n",
-    "def vif_table(frame):\n",
-    "    Xc = sm.add_constant(frame)\n",
-    "    return pd.DataFrame({\n",
-    "        \"feature\": Xc.columns,\n",
-    "        \"VIF\": [variance_inflation_factor(Xc.values, i) for i in range(Xc.shape[1])],\n",
-    "    })\n",
-    "\n",
-    "print(\"\\n3) MULTICOLLINEARITY (VIF) — raw interaction\")\n",
-    "print(vif_table(X).to_string(index=False))\n",
-    "\n",
-    "# Mean-centered interaction: confirms the VIF inflation is structural (all VIF ~1)\n",
-    "X_centered = X.copy()\n",
-    "X_centered[\"vol_x_start\"] = (\n",
-    "    (dataset[\"storage_at_start\"]   - dataset[\"storage_at_start\"].mean()) *\n",
-    "    (dataset[\"storage_volatility\"] - dataset[\"storage_volatility\"].mean())\n",
-    ")\n",
-    "print(\"\\n   For reference — VIF with a mean-centered interaction:\")\n",
-    "print(vif_table(X_centered).to_string(index=False))\n",
-    "\n",
-    "# 4) Linearity of the log-odds (Box-Tidwell). p < 0.05 => violation.\n",
-    "print(\"\\n4) LINEARITY OF THE LOGIT (Box-Tidwell)\")\n",
+    "# --- 3) Linearity of predictors vs. the log-odds (Box-Tidwell) ------\n",
+    "# Add x*ln(x) per predictor; a significant (p<0.05) interaction means\n",
+    "# that predictor is NOT linear in the log-odds.\n",
     "bt = X.copy()\n",
     "for col in features:\n",
-    "    pos = bt[col] - bt[col].min() + 1e-6     # shift strictly positive for log\n",
+    "    pos = bt[col] - bt[col].min() + 1e-6      # shift to strictly positive for log\n",
     "    bt[f\"{col}_x_ln\"] = bt[col] * np.log(pos)\n",
     "bt_model = sm.Logit(y, sm.add_constant(bt)).fit(disp=0)\n",
+    "print(\"\\n3) LINEARITY OF THE LOGIT (Box-Tidwell)\")\n",
     "for col in features:\n",
     "    p = bt_model.pvalues[f\"{col}_x_ln\"]\n",
-    "    print(f\"   {col:18s} p={p:.3f} -> {'VIOLATION' if p < 0.05 else 'OK'}\")"
+    "    print(f\"   {col:20s} p={p:.3f} -> {'VIOLATION' if p < 0.05 else 'OK'}\")"
    ]
   }
  ],
