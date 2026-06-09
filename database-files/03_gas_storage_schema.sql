@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS gas_storage_winters (
     INDEX idx_gas_storage_winters_country (country_code)
 );
 
--- Logistic regression weights (features: storage_at_start, storage_trend_30d, storage_volatility)
+-- Logistic regression weights (features: storage_at_start, storage_trend_30d, storage_volatility, vol_x_start)
+-- vol_x_start is the interaction term storage_at_start * storage_volatility
 -- Source: datasets/apsi/apsi.ipynb — logreg.fit(X, y) on all winter rows
 -- Inputs are standardized at prediction time: x_scaled = (x - mean) / std
 CREATE TABLE IF NOT EXISTS gas_storage_model (
@@ -44,31 +45,37 @@ CREATE TABLE IF NOT EXISTS gas_storage_model (
     weight_storage_at_start    DOUBLE NOT NULL,
     weight_storage_trend_30d   DOUBLE NOT NULL,
     weight_storage_volatility  DOUBLE NOT NULL,
+    weight_vol_x_start         DOUBLE NOT NULL,
     mean_storage_at_start      DOUBLE NOT NULL,
     mean_storage_trend_30d     DOUBLE NOT NULL,
     mean_storage_volatility    DOUBLE NOT NULL,
+    mean_vol_x_start           DOUBLE NOT NULL,
     std_storage_at_start       DOUBLE NOT NULL,
     std_storage_trend_30d      DOUBLE NOT NULL,
     std_storage_volatility     DOUBLE NOT NULL,
+    std_vol_x_start            DOUBLE NOT NULL,
     CONSTRAINT pk_gas_storage_model PRIMARY KEY (model_id)
 );
 
 INSERT INTO gas_storage_model (
     model_id, intercept,
-    weight_storage_at_start, weight_storage_trend_30d, weight_storage_volatility,
-    mean_storage_at_start, mean_storage_trend_30d, mean_storage_volatility,
-    std_storage_at_start, std_storage_trend_30d, std_storage_volatility
+    weight_storage_at_start, weight_storage_trend_30d, weight_storage_volatility, weight_vol_x_start,
+    mean_storage_at_start, mean_storage_trend_30d, mean_storage_volatility, mean_vol_x_start,
+    std_storage_at_start, std_storage_trend_30d, std_storage_volatility, std_vol_x_start
 ) VALUES (
     1,
-    -0.013625481897615465,
-    -0.7741922146400086,
-    -0.3739554990745591,
-    -0.12698315133907542,
-    87.98631048387097,
-    2.54375,
-    8.460241348076158,
-    13.337216251392613,
-    4.952027778528528,
-    3.8891526598466974
+    -0.004441541811143235,
+    -0.6820174064981015,
+    -0.40200831065688064,
+    -0.010932891829800194,
+    0.017385439403829923,
+    88.6093914559721,
+    2.5504864864864865,
+    8.61439122200191,
+    761.9049563164259,
+    12.702145281437595,
+    4.853537053066873,
+    4.154950755150775,
+    383.08865405235053
 );
 
