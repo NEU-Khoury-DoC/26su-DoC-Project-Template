@@ -25,7 +25,7 @@ st.set_page_config(layout="wide")
 
 SideBarLinks()
 
-st.title("Household Persona Info")
+st.title("My Information")
 st.write(
     "Your account details come from your saved user profile. "
     "Add billing details so Zeus can personalize bill reminders and usage forecasts."
