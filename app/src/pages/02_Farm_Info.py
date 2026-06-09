@@ -29,7 +29,13 @@ with tab1:
 
         with col1:
             farm_name  = st.text_input("Farm name *", placeholder="e.g. Sunshine Farm")
-            user_id    = st.number_input("Your user ID *", min_value=1, step=1)
+            # Use session user id when available so farmers don't have to type it
+            session_user_id = st.session_state.get('user_id')
+            if session_user_id:
+                st.write(f"Your user ID: {session_user_id}")
+                user_id = session_user_id
+            else:
+                user_id = st.number_input("Your user ID *", min_value=1, step=1)
 
         with col2:
             country   = st.text_input("Country *", placeholder="e.g. Spain")
