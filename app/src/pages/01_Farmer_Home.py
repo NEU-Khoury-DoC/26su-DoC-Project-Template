@@ -11,3 +11,23 @@ SideBarLinks()
 
 st.title(f"Welcome Farmer, {st.session_state['first_name']}.")
 st.write('### What would you like to do today?')
+
+if st.button('View Farm Information',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/02_Farm_Info.py')
+
+if st.button('View All Farms',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/03_All_Farms.py')
+
+if st.button('View Crop Type Suggestions',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/04_Crop_Predictions.py')
+
+if st.button('View Discussion Board',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/05_Farmer_Blog.py')
