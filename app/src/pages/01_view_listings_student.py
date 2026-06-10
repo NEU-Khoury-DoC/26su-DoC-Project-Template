@@ -95,6 +95,35 @@ else:
 
         if listing['university_name']:
             with st.container(border=False):
+    with st.container(border=True):
+        col1, col2 = st.columns([3, 1])
+
+        with col1:
+            st.subheader(listing['title'])
+        
+        with col2:
+            reviews = requests.get(
+                f"http://web-api:4000/housing/reviews",
+                params={"listing_id": listing['listing_id']}
+            ).json()
+            total = 0
+            num = 0
+            avg = 0
+            for review in reviews:
+                if review['rating'] is not None:
+                    total += int(review['rating'])
+                    num +=1
+            if num > 0:
+                avg = total/num
+            avg = round(avg, 2)
+            if avg > 0:
+                st.subheader(f'{avg}/5.0')
+            
+        # with col2:
+        #     st.subheader(f"${listing['price']} / month")
+
+        if listing['university_name']:
+            with st.container(border=True):
                 col1, col2, col3= st.columns([3, 3, 2])
 
                 with col1:
@@ -113,6 +142,18 @@ else:
         
         else:
             with st.container(border=False):
+
+                    if st.button("♡ Save", key=f"save_{listing['listing_id']}"):
+                        requests.post('http://web-api:4000/housing/favorites', json={
+                            "listing_id": listing['listing_id'],
+                            "user_id": st.session_state['user_id']
+                        })
+                        st.success("Saved!")
+                        
+                        
+        
+        else:
+            with st.container(border=True):
                 col1, col2, col3 = st.columns([3, 3, 2])
 
                 with col1:
@@ -127,6 +168,21 @@ else:
                         st.session_state['listing_id'] = listing['listing_id']
                         st.session_state['title'] = listing['title']
                         st.switch_page('pages/03_view_reviews.py')
+
+                    if st.button("♡ Save", key=f"save_{listing['listing_id']}"):
+                        requests.post('http://web-api:4000/housing/favorites', json={
+                            "listing_id": listing['listing_id'],
+                            "user_id": st.session_state['user_id']
+                        })
+                        st.success("Saved!")
+
+                        st.write(st.session_state.get('user_id'))  # is user_id set?
+                        res = requests.post('http://web-api:4000/housing/favorites', json={
+                            "listing_id": listing['listing_id'],
+                            "user_id": st.session_state['user_id']
+                        })
+                        st.write(res.status_code)
+                        st.write(res.text)  # see exactly what Flask returned
 
 
         st.write("")
