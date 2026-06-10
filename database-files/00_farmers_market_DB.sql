@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS posts (
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS comments (
@@ -35,8 +37,12 @@ CREATE TABLE IF NOT EXISTS comments (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (post_id) REFERENCES posts(post_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS reactions (
@@ -48,8 +54,12 @@ CREATE TABLE IF NOT EXISTS reactions (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (post_id) REFERENCES posts(post_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS farms (
@@ -61,6 +71,8 @@ CREATE TABLE IF NOT EXISTS farms (
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS farms_location (
@@ -74,6 +86,8 @@ CREATE TABLE IF NOT EXISTS farms_location (
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS user_growing_data (
@@ -94,21 +108,9 @@ CREATE TABLE IF NOT EXISTS user_growing_data (
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
-
-
--- not sure if we need this yet
--- CREATE TABLE IF NOT EXISTS ml_crop_data (
---     user_crop_data_id INT AUTO_INCREMENT PRIMARY KEY,
---     temperature FLOAT,
---     humidity FLOAT,
---     elevation FLOAT,
---     rainfall FLOAT,
---     created_by VARCHAR(100) NOT NULL,
---     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
---     updated_by VARCHAR(100) DEFAULT NULL,
---     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
--- );
 
 CREATE TABLE IF NOT EXISTS crop_price_model_coefficients (
     crops_price_coe_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -141,24 +143,20 @@ CREATE TABLE IF NOT EXISTS saved_data (
 
 CREATE TABLE IF NOT EXISTS saved_graphs (
     saved_graph_id INT AUTO_INCREMENT PRIMARY KEY,
-    saved_data_id INT,
     graph CHAR(64),
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
-    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (saved_data_id) REFERENCES saved_data(saved_data_id)
+    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS saved_reports (
     saved_report_id INT AUTO_INCREMENT PRIMARY KEY,
-    saved_data_id INT,
     title VARCHAR(255),
     texts TEXT,
     graph BLOB,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
-    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (saved_data_id) REFERENCES saved_data(saved_data_id)
+    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 );
