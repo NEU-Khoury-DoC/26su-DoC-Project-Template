@@ -27,6 +27,7 @@ def get_listing():
         university = request.args.get("university")
         price = request.args.get("price")
         property_type = request.args.get("property_type")
+        user_id = request.args.get('user_id')
 
         if country:
             query += " AND country.country_name = %s"
@@ -46,6 +47,9 @@ def get_listing():
         if property_type:
             query += " AND listing.property_type = %s"
             params.append(property_type)
+        if user_id:
+            query += " AND listing.user_id = %s"
+            params.append(user_id)
 
 
         with get_db().cursor(dictionary=True) as cursor:
