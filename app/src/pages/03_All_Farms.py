@@ -14,7 +14,7 @@ st.title("All Farms")
 st.write("Browse all farms currently registered in the database.")
 
 # API
-API_URL = "http://web-api:4000/farms/farms"
+API_URL = "http://web-api:4000/farms/country"
 
 try:
     response = requests.get(API_URL, timeout=5)

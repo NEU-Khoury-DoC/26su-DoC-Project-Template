@@ -1,7 +1,9 @@
+import os
 import streamlit as st
 import requests
 
-API_BASE = "http://web-api:4000"
+# Allow overriding API base via environment variable for local dev (fallback to docker service name)
+API_BASE = os.environ.get('API_BASE') or "http://web-api:4000"
 
 def render_feed():
     user_id = st.session_state.get('user_id')
@@ -34,9 +36,14 @@ def render_feed():
 
     # fetch posts
     try:
-        posts = requests.get(f"{API_BASE}/posts/").json()
-    except:
-        st.error("Could not load posts")
+        resp = requests.get(f"{API_BASE}/posts/")
+        if resp.status_code == 200:
+            posts = resp.json()
+        else:
+            st.error(f"Could not load posts (status {resp.status_code})")
+            return
+    except Exception:
+        st.error("Could not load posts (connection error)")
         return
 
     left, right = st.columns([2, 1])
@@ -56,17 +63,36 @@ def render_feed():
                 st.success("Posted!")
                 st.rerun()
 
+    # small cache for user lookups to avoid repeated requests
+    user_cache = {}
+
     with left:
         for post in posts:
             pid = post.get('post_id')
             post_user_id = post.get('user_id')
 
             # get the role of whoever made the post
+            post_role = 'farmer'
+            author_name = post.get('created_by') or 'unknown'
             try:
-                post_user = requests.get(f"{API_BASE}/users/id/{post_user_id}").json()
-                post_role = post_user.get('user_type', 'farmer')
-            except:
-                post_role = 'farmer'
+                if post_user_id in user_cache:
+                    post_user = user_cache[post_user_id]
+                else:
+                    resp = requests.get(f"{API_BASE}/users/id/{post_user_id}")
+                    if resp.status_code == 200:
+                        post_user = resp.json()
+                        # some endpoints return a list; normalize
+                        if isinstance(post_user, list) and post_user:
+                            post_user = post_user[0]
+                        user_cache[post_user_id] = post_user
+                    else:
+                        post_user = None
+
+                if post_user:
+                    post_role = post_user.get('user_type', post_role)
+                    author_name = post_user.get('user_name', author_name)
+            except Exception:
+                pass
 
             # apply filter
             if st.session_state['feed_filter'] != 'all' and post_role != st.session_state['feed_filter']:
@@ -77,7 +103,7 @@ def render_feed():
 
             with st.expander(f"**{post.get('title')}** — {badge}"):
                 st.write(post.get('post_text'))
-                st.caption(f"Posted by {post.get('created_by')} · {post.get('created_at', '')}")
+                st.caption(f"Posted by {author_name} · {post.get('created_at', '')}")
 
                 # reactions
                 try:
@@ -170,13 +196,37 @@ def render_feed():
 
                 # comments
                 try:
-                    comments = requests.get(f"{API_BASE}/posts/{pid}/comments").json()
+                    resp = requests.get(f"{API_BASE}/posts/{pid}/comments")
+                    if resp.status_code == 200:
+                        comments = resp.json()
+                    else:
+                        comments = []
+
                     if comments:
                         st.divider()
                         for c in comments:
-                            st.markdown(f"> {c.get('texts')}")
-                            st.caption(f"— user {c.get('user_id')}")
-                except:
+                            st.markdown(f"> {c.get('texts')}" )
+                            c_uid = c.get('user_id')
+                            c_author = None
+                            try:
+                                if c_uid in user_cache:
+                                    c_author = user_cache[c_uid].get('user_name')
+                                else:
+                                    r2 = requests.get(f"{API_BASE}/users/id/{c_uid}")
+                                    if r2.status_code == 200:
+                                        c_user = r2.json()
+                                        if isinstance(c_user, list) and c_user:
+                                            c_user = c_user[0]
+                                        user_cache[c_uid] = c_user
+                                        c_author = c_user.get('user_name')
+                            except Exception:
+                                c_author = None
+
+                            if c_author:
+                                st.caption(f"— {c_author}")
+                            else:
+                                st.caption(f"— user {c_uid}")
+                except Exception:
                     pass
 
                 # reply form

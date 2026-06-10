@@ -48,24 +48,32 @@ WATER_COLORS = {
 
 def assign_color(df: pd.DataFrame, color_by: str) -> pd.DataFrame:
     df = df.copy()
+    
+    def no_data(row):
+        return row['record_count'] == 0 or pd.isna(row['avg_temp'])
+    
     if color_by == "Crop type":
-        df["color"] = df["dominant_crop"].map(
-            lambda c: CROP_COLORS.get(c, [136, 135, 128])
+        df["color"] = df.apply(
+            lambda row: [128, 128, 128] if no_data(row) else CROP_COLORS.get(row['dominant_crop'], [136, 135, 128]),
+            axis=1
         )
     elif color_by == "Water source":
-        df["color"] = df["has_irrigated"].map(
-            lambda v: WATER_COLORS["Irrigated"] if v else WATER_COLORS["Rainfed"]
+        df["color"] = df.apply(
+            lambda row: [128, 128, 128] if no_data(row) else (WATER_COLORS["Irrigated"] if row['has_irrigated'] else WATER_COLORS["Rainfed"]),
+            axis=1
         )
     else:  # Temperature
         t_min, t_max = df["avg_temp"].min(), df["avg_temp"].max()
-        def temp_to_color(t):
-            norm = (t - t_min) / max(t_max - t_min, 1)
+        def temp_to_color(row):
+            if no_data(row):
+                return [128, 128, 128]
+            norm = (row['avg_temp'] - t_min) / max(t_max - t_min, 1)
             return [
                 int(133 + (216 - 133) * norm),
                 int(183 - (183 - 90)  * norm),
                 int(235 - (235 - 48)  * norm),
             ]
-        df["color"] = df["avg_temp"].map(temp_to_color)
+        df["color"] = df.apply(temp_to_color, axis=1)
     return df
 
 
@@ -147,56 +155,3 @@ st.pydeck_chart(
     use_container_width=True,
     height=420,
 )
-
-# ── Farm detail panel ────────────────────────────────────────────
-st.divider()
-selected_farm_id = st.selectbox(
-    "Inspect a farm",
-    options=df["farm_id"].tolist(),
-    format_func=lambda fid: (
-        f"Farm #{fid} — "
-        f"{df.loc[df['farm_id'] == fid, 'farm_name'].iloc[0]}"
-    ),
-    index=None,
-    placeholder="Select a farm to see its growing history…",
-)
-
-if selected_farm_id:
-    try:
-        history = load_farm_history(selected_farm_id)
-    except requests.HTTPError:
-        st.warning("No growing history found for this farm.")
-        history = pd.DataFrame()
-
-    farm_row = df[df["farm_id"] == selected_farm_id].iloc[0]
-    st.subheader(f"Farm #{selected_farm_id} — {farm_row['farm_name']}")
-    st.caption(
-        f"{farm_row['country']} · "
-        f"{farm_row['latitude']:.2f}°N, {farm_row['longitude']:.2f}°E"
-    )
-
-    if not history.empty:
-        st.dataframe(
-            history,
-            column_config={
-                "type_of_crop":      st.column_config.TextColumn("Crop"),
-                "season":            st.column_config.TextColumn("Season"),
-                "sown":              st.column_config.DateColumn("Sown"),
-                "harvested":         st.column_config.DateColumn("Harvested"),
-                "duration_days":     st.column_config.ProgressColumn(
-                                         "Duration",
-                                         min_value=0,
-                                         max_value=200,
-                                         format="%d days",
-                                     ),
-                "water_source":      st.column_config.TextColumn("Water"),
-                "temp":              st.column_config.NumberColumn("Temp °C",    format="%.1f"),
-                "relative_humidity": st.column_config.NumberColumn("Humidity %", format="%.1f"),
-            },
-            hide_index=True,
-            use_container_width=True,
-        )
-
-    if st.button("Open in condition explorer →"):
-        st.session_state["explorer_farm_filter"] = selected_farm_id
-        st.switch_page("pages/condition_explorer.py")
