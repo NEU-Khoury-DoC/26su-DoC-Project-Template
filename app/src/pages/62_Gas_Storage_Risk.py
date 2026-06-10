@@ -204,7 +204,7 @@ with why_col:
     st.markdown("**Why we chose 30% as the threshold**")
     st.write(
         "After the "
-        "2022 gas crisis the EU set a 90%-by-Nov-1 storage mandate, and many "
+        "2022 gas crisis the EU set a 90% by Nov 1st storage mandate, and many "
         "analysts now treat 28–30% as the level to start worrying. There is "
         "a physical reason too: as storage empties, reservoir pressure drops, "
         "so the rate at which gas can be withdrawn falls and can no longer "
