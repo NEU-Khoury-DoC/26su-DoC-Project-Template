@@ -1,11 +1,9 @@
-import datetime
 import streamlit as st
 import requests
 from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide')
 
-# Initialize sidebar
 SideBarLinks()
 
 st.header('Available listings')
@@ -18,11 +16,10 @@ with col1:
                                         requests.get('http://web-api:4000/housing/country').json()])
 with col2:
     property_filter = st.selectbox("Property Type", 
-                                options=
-                                ["All", "House", "Apartment", "Studio Apartment", "Townhouse"])
+                                options=["All", "House", "Apartment", "Studio Apartment", "Townhouse"])
 with col3:
     price_filter = st.number_input("Max Price (€)", 
-                                   min_value=0, max_value=3000, value=1500, step=100)
+                                   min_value=0, max_value=3000, value=3000, step=100)
 with col4:
     university_filter = st.selectbox("Associated Uni", 
                                 options=["All"] + [u['university_name'] for u 
@@ -31,88 +28,62 @@ with col5:
     city_filter = st.selectbox("City", options=["All"] + [c['city_name'] for c
                                 in requests.get('http://web-api:4000/housing/listing/cities').json()])
 
-# build params based on filters
 params = {}
 if country_filter != "All":
     params["country"] = country_filter
 if property_filter != "All":
     params["property_type"] = property_filter
-if price_filter < 5000:
+if price_filter < 3000:
     params["price"] = price_filter
 if city_filter != "All":
     params["city_name"] = city_filter
 if university_filter != "All":
     params["university"] = university_filter
 
-# You can access the session state to make a more customized/personalized app experience
 listings = requests.get('http://web-api:4000/housing/listing', params=params).json()
 
-for listing in listings:
-    listing['price'] = int(listing['price'])
+if not listings:
+    st.info("No listings found.")
+else:
+    for listing in listings:
+        listing['price'] = int(listing['price'])
 
-    with st.container(border=True):
-        col1, col2 = st.columns([3, 1])
-
-        with col1:
-            st.subheader(listing['title'])
-        
-        with col2:
-            reviews = requests.get(
-                f"http://web-api:4000/housing/reviews",
-                params={"listing_id": listing['listing_id']}
-            ).json()
-            total = 0
-            num = 0
-            avg = 0
-            for review in reviews:
-                if review['rating'] is not None:
-                    total += int(review['rating'])
-                    num +=1
-            if num > 0:
-                avg = total/num
-            avg = round(avg, 2)
-            if avg > 0:
-                st.subheader(f'{avg}/5.0')
-            
-        # with col2:
-        #     st.subheader(f"${listing['price']} / month")
-
-    if listing['university_name']:
-        with st.container(border=False):
-            col1, col2, col3= st.columns([3, 3, 2])
+        with st.container(border=True):
+            col1, col2 = st.columns([3, 1])
 
             with col1:
-                st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
-                st.write(f"🏠 {listing['property_type']}")
-                st.write(f"🏫 Associated with {listing['university_name']}")
+                st.subheader(listing['title'])
 
             with col2:
-                st.subheader(f"€{listing['price']} / month")
+                reviews = requests.get(
+                    f"http://web-api:4000/housing/reviews",
+                    params={"listing_id": listing['listing_id']}
+                ).json()
+                total = 0
+                num = 0
+                for review in reviews:
+                    if review['rating'] is not None:
+                        total += int(review['rating'])
+                        num += 1
+                avg = round(total / num, 2) if num > 0 else 0
+                if avg > 0:
+                    st.subheader(f'{avg}/5.0')
 
-            with col3:
-                if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
-                    st.session_state['listing_id'] = listing['listing_id']
-                    st.session_state['title'] = listing['title']
-                    st.switch_page('pages/03_view_reviews.py')
-    
-    else:
-        with st.container(border=False):
             col1, col2, col3 = st.columns([3, 3, 2])
 
             with col1:
                 st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
                 st.write(f"🏠 {listing['property_type']}")
+                if listing['university_name']:
+                    st.write(f"🏫 Associated with {listing['university_name']}")
 
             with col2:
                 st.subheader(f"€{listing['price']} / month")
-            
+
             with col3:
                 if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
                     st.session_state['listing_id'] = listing['listing_id']
                     st.session_state['title'] = listing['title']
                     st.switch_page('pages/03_view_reviews.py')
 
-
-    st.write("")
-
-
+st.write("")
