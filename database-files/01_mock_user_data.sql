@@ -76,3 +76,37 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_type`, `created_by`) VALUES
     ('73', 'Hilliard', 'politician', 'mockaroo'),
     ('74', 'Margaux', 'researcher', 'mockaroo'),
     ('75', 'Sayers', 'researcher', 'mockaroo');
+
+-- Mock discussion board posts, replies, and reactions
+
+-- Posts: two per persona (farmers, politicians, researchers)
+INSERT INTO `posts` (post_id, title, post_text, user_id, created_by) VALUES
+(1, 'Planting schedule tips for spring', 'Any tips for adjusting planting schedules with unpredictable rainfall?', 1, 'mockaroo'),
+(2, 'Best compost mixtures?', 'I''ve been mixing compost with wood chips; any recommendations?', 2, 'mockaroo'),
+(3, 'Proposed subsidy for smallholders', 'We propose targeted subsidies for water-efficient irrigation systems. Thoughts?', 51, 'mockaroo'),
+(4, 'Market regulation impact study', 'How will price caps affect small farmers in rural areas?', 58, 'mockaroo'),
+(5, 'Soil moisture sensors dataset available', 'I collected soil moisture data across 10 farms; sharing methodology and results.', 52, 'mockaroo'),
+(6, 'New crop yield model draft', 'I''m testing a simple ML model for predicting yields based on NPK and rainfall.', 62, 'mockaroo');
+
+-- Comments (replies) to the above posts
+INSERT INTO `comments` (comment_id, texts, post_id, user_id, created_by) VALUES
+(1, 'I''ve had good results starting seedlings indoors 2 weeks earlier.', 1, 3, 'mockaroo'),
+(2, 'Try adding more nitrogen in early growth stages.', 1, 4, 'mockaroo'),
+(3, 'Have you considered vermicompost? Works well.', 2, 5, 'mockaroo'),
+(4, 'We support the subsidy; it would help modernize irrigation.', 3, 59, 'mockaroo'),
+(5, 'There may be unintended consequences; needs pilot testing.', 3, 52, 'mockaroo'),
+(6, 'Price caps could discourage supply; maybe targeted vouchers instead.', 4, 51, 'mockaroo'),
+(7, 'I can share the dataset and preprocessing steps.', 5, 70, 'mockaroo'),
+(8, 'Can you publish the model code? Would like to reproduce.', 6, 74, 'mockaroo');
+
+-- Reactions: likes (pos_neg=1) and dislikes (pos_neg=0)
+INSERT INTO `reactions` (reaction_id, pos_neg, post_id, user_id, created_by) VALUES
+(1, 1, 1, 10, 'mockaroo'),
+(2, 1, 1, 2, 'mockaroo'),
+(3, 0, 1, 15, 'mockaroo'),
+(4, 1, 3, 58, 'mockaroo'),
+(5, 1, 3, 62, 'mockaroo'),
+(6, 0, 4, 16, 'mockaroo'),
+(7, 1, 5, 52, 'mockaroo'),
+(8, 1, 6, 74, 'mockaroo'),
+(9, 0, 6, 23, 'mockaroo');
