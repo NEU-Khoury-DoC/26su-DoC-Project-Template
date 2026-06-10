@@ -74,12 +74,17 @@ country_coordinates = {
 }
 
 # Sync
-if st.button("Sync Eurostat Data", type = "secondary"):
+if "synced" not in st.session_state:
+    st.session_state.synced = False
+
+if not st.session_state.synced:
     with st.spinner("Syncing..."):
         for ep in ["pollution", "crime", "poverty", "overcrowding", "noise", "hpi"]:
             requests.post(f"http://web-api:4000/housing/social-indicator-stats/{ep}")
+    st.session_state.synced = True
     st.success("All data synced!")
     st.rerun()
+
 
 # Filters
 col1, col2 = st.columns(2)
@@ -162,7 +167,7 @@ try:
         st.caption("Map boundaries: leakyMirror/map-of-europe (GitHub), MIT License.")
 
     else:
-        st.info("No data — sync indicators first.")
+        st.info("No data- try selecting a new year")
 
 except Exception as e:
     st.error(f"Error: {e}")
@@ -228,7 +233,7 @@ try:
         st.plotly_chart(fig, use_container_width = True)
 
     else:
-        st.info("No data — sync indicators first.")
+        st.info("No data— try selecting a new year")
 
 except Exception as e:
     st.error(f"Error loading rankings: {e}")

@@ -47,20 +47,20 @@ st.write('#### Select a user to log in as')
 # functionality, we put a button on the screen that the user
 # can click to MIMIC logging in as that mock user.
 
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([1, 2])
 
 #retrieve full list of students
 response_students = requests.get('http://web-api:4000/housing/user', params={'role': 'Student'})
 students = response_students.json()
 
 #dropdown menu
-with col2:
+with col1:
     student_options = {f"{s['name']}": s for s in students}
     selected_name_student = st.selectbox('Select a user', options=list(student_options.keys()), label_visibility='collapsed')
     st.write("")
 
 
-with col1:
+with col2:
     if st.button("Login as a Student",
                 type='primary',
                 use_container_width=True):
@@ -81,13 +81,13 @@ response_agents_re = requests.get('http://web-api:4000/housing/user',
 re_agents = response_agents_re.json()
 
 #dropdown menu
-with col2:
+with col1:
     agent_options_re = {f"{a['name']}": a for a in re_agents}
     selected_name_agent_re = st.selectbox('Select a user', options=list(agent_options_re.keys()), label_visibility='collapsed')
     st.write("")
 
 
-with col1:
+with col2:
     if st.button('Login as a Real Estate Agent',
                  type='primary',
                  use_container_width=True):
@@ -106,11 +106,11 @@ response_ga = requests.get('http://web-api:4000/housing/user', params={'role': '
 agents_ga = response_ga.json()
 
 #dropdown menu
-with col2:
+with col1:
     agent_options_ga = {f"{a['name']}": a for a in agents_ga}
     selected_name_ga = st.selectbox('Select a user', options=list(agent_options_ga.keys()), label_visibility='collapsed')
 
-with col1:
+with col2:
     if st.button('Login as a government agency worker',
                 type='primary',
                 use_container_width=True):

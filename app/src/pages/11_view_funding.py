@@ -77,9 +77,9 @@ with st.container(border=True):
         ["All Demographics", "Students", "Low Income", "Elderly", "Families"],
         default=["All Demographics"]
     )
-    
+
     description = st.text_area("Description")
-    
+
     if st.button("Submit Draft", type="primary"):
         if not program or not description:
             st.warning("Please fill in Program Name and Description.")

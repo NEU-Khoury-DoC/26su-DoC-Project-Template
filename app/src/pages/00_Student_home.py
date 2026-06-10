@@ -17,6 +17,11 @@ if st.button('View Listings',
              use_container_width=True):
     st.switch_page('pages/01_view_listings_student.py')
 
+if st.button('View Saved Listings',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/001_view_saved_listings.py')
+
 if st.button('View Budget Manager',
              type='primary',
              use_container_width=True):

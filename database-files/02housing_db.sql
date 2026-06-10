@@ -319,6 +319,9 @@ INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('72','7','1','H
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('73','12',NULL,'Good space with a sensible layout');
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('74','17','1','Far too expensive for this location');
 
+
+INSERT INTO favorites (user_id, listing_id) VALUES (1, 1);
+
 -- government funding
 INSERT INTO funding(funding_id,country_id,year,amount,program,agency) VALUES (1,13,2016,48000,'Urban Green Spaces Initiative','Environmental Protection Agency');
 INSERT INTO funding(funding_id,country_id,year,amount,program,agency) VALUES (2,22,2004,31000,'Tenant Support Program','Housing Assistance Agency');

@@ -73,6 +73,14 @@ CREATE TABLE reviews (
     CONSTRAINT fk_reviews_listing FOREIGN KEY (listing_id) REFERENCES listing (listing_id)
 );
 
+CREATE TABLE favorites (
+    user_id INT,
+    listing_id INT,
+    PRIMARY KEY (user_id, listing_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (listing_id) REFERENCES listing(listing_id)
+);
+
 CREATE TABLE funding (
     funding_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     country_id INTEGER NOT NULL,

@@ -7,7 +7,7 @@ from PIL import Image
 
 st.set_page_config(layout='wide')
 
-SideBarLinks()
+SideBarLinks(show_home = True)
 
 st.write("# About EuroHome")
 
@@ -55,8 +55,3 @@ with col2:
         st.write("##### Laasya Gattu")
         st.write('Laasya is an incoming sophomore at Northeastern University majoring in ' \
         'data science and business administration with a minor in public health. Currently taking DS 3000 and CS 4973.')
-
-
-# Add a button to return to home page
-if st.button("Return to Home", type="primary"):
-    st.switch_page("Home.py")

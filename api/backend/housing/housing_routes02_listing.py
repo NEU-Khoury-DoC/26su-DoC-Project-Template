@@ -27,6 +27,7 @@ def get_listing():
         university = request.args.get("university")
         price = request.args.get("price")
         property_type = request.args.get("property_type")
+        user_id = request.args.get('user_id')
 
         if country:
             query += " AND country.country_name = %s"
@@ -46,6 +47,9 @@ def get_listing():
         if property_type:
             query += " AND listing.property_type = %s"
             params.append(property_type)
+        if user_id:
+            query += " AND listing.user_id = %s"
+            params.append(user_id)
 
 
         with get_db().cursor(dictionary=True) as cursor:
@@ -144,3 +148,34 @@ def delete_listing(listing_id):
     except Error as e:
         current_app.logger.error(f'Database error in delete_listing: {e}')
         return error_response(str(e))
+
+
+# Saves (POST) a listing to favorites
+@housing_bp.route('/favorites', methods=['POST'])
+def save_favorite():
+    current_app.logger.info('POST /favorites')
+    data = request.json
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            'INSERT INTO favorites (user_id, listing_id) VALUES (%s, %s)',
+            (data['user_id'], data['listing_id'])
+        )
+    get_db().commit()
+    current_app.logger.info(f"Saved listing {data['listing_id']} for user {data['user_id']}")
+    return jsonify({'message': 'Saved'}), 201
+
+# Reads (GET) a listing from favorites
+@housing_bp.route('/favorites', methods=['GET'])
+def get_favorites():
+    current_app.logger.info('GET /favorites')
+    user_id = request.args.get('user_id')
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute('''
+            SELECT l.*, co.country_name, u.university_name
+            FROM favorites f
+            JOIN listing l ON f.listing_id = l.listing_id
+            LEFT JOIN country co ON l.country_id = co.country_id
+            LEFT JOIN university u ON u.university_id = l.associated_university_id
+            WHERE f.user_id = %s
+        ''', (user_id,))
+        return jsonify(cursor.fetchall()), 200
