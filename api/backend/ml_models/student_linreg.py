@@ -105,21 +105,6 @@ def test():
  
  
 def predict(crime, noise, pollution, hpi, is_rural, is_towns):
-    """
-    Retrieves stored model parameters from the DB and returns a predicted
-    life satisfaction score for the given housing inputs.
- 
-    Args:
-        crime (float): crime rate (raw value)
-        noise (float): noise rate (raw value)
-        pollution (float): pollution rate (raw value)
-        hpi (float): housing price index (raw value)
-        is_rural (bool): True if rural area
-        is_towns (bool): True if towns/suburbs (both False = cities)
- 
-    Returns:
-        country, predicted satisfaction score (dict)
-    """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
             '''SELECT beta_vals, scaler_mean, scaler_std
@@ -130,37 +115,47 @@ def predict(crime, noise, pollution, hpi, is_rural, is_towns):
 
     if row is None:
         raise ValueError("No model parameters found. Run train() first.")
- 
+
     def parse(s):
         return np.array(list(map(float, s[1:-1].split(','))))
- 
+
     b = parse(row['beta_vals'])
     scaler_mean = parse(row['scaler_mean'])
     scaler_std = parse(row['scaler_std'])
- 
-    input_dict = {
-        'crime_rate':                  crime,
-        'noise_rate':                  noise,
-        'pollution_rate':              pollution,
-        'hpi_weight':                  hpi,
-        'deg_urb_Rural areas':         float(is_rural),
-        'deg_urb_Towns and suburbs':   float(is_towns),
-        'crime_noise':                 crime * noise,
-        'poll_noise':                  pollution * noise,
-        'crime_hpi':                   crime * hpi,
-        'poll_crime':                  pollution * crime,
-    }
- 
-    X_input  = np.array([input_dict[col] for col in cols]).astype(float)
-    X_scaled = (X_input - scaler_mean) / scaler_std
- 
-    input_array = np.concatenate([[1.0], X_scaled])
-    prediction  = float(np.dot(b, input_array))
 
-    results.append({
-            'geo':              row_data['geo'],
-            'predicted_score':  round(prediction, 2),
+    results = []
+    for _, row_data in df.iterrows():
+        input_dict = {
+            'crime_rate':                crime,
+            'noise_rate':                noise,
+            'pollution_rate':            pollution,
+            'hpi_weight':                hpi,
+            'deg_urb_Rural areas':       float(is_rural),
+            'deg_urb_Towns and suburbs': float(is_towns),
+            'crime_noise':               crime * noise,
+            'poll_noise':                pollution * noise,
+            'crime_hpi':                 crime * hpi,
+            'poll_crime':                pollution * crime,
+        }
+
+        X_input = np.array([input_dict[col] for col in cols]).astype(float)
+        X_scaled = (X_input - scaler_mean) / scaler_std
+        input_array = np.concatenate([[1.0], X_scaled])
+        prediction = float(np.dot(b, input_array))
+
+        results.append({
+            'geo': row_data['geo'],
+            'predicted_score': round(prediction, 4),
         })
 
     results.sort(key=lambda x: x['predicted_score'], reverse=True)
-    return results
+
+    # deduplicate by country
+    seen = set()
+    unique_results = []
+    for r in results:
+        if r['geo'] not in seen:
+            seen.add(r['geo'])
+            unique_results.append(r)
+
+    return prediction, unique_results
