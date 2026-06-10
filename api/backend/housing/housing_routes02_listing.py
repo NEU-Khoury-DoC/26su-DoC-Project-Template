@@ -75,8 +75,8 @@ def create_listing():
                 return error_response(f"Missing required field: {field}", 400)
 
         query = """
-            INSERT INTO Listings (country_id, user_id, price, property_type, city_name)
-            VALUES (%s, %s, %s, %s, %s)
+        INSERT INTO listing (country_id, title, user_id, price, property_type, city_name, associated_university_id)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
         """
         with get_db().cursor(dictionary=True) as cursor:
             cursor.execute(query, (
@@ -86,6 +86,7 @@ def create_listing():
                 data["price"],
                 data["property_type"],
                 data["city_name"],
+                data.get("associated_university_id"),
             ))
             new_id = cursor.lastrowid
 
@@ -100,7 +101,7 @@ def create_listing():
 # # Update an existing NGO's information
 # # Can update any field except NGO_ID
 # # Example: PUT /ngo/ngos/1 with JSON body containing fields to update
-@housing_bp.route("/housing/listing/<int:listing_id>", methods=["PUT"])
+@housing_bp.route("/listing/<int:listing_id>", methods=["PUT"])
 def update_listing(listing_id):
     current_app.logger.info(f'PUT /housing/listing/{listing_id}')
     try:
@@ -115,7 +116,7 @@ def update_listing(listing_id):
             return error_response("No valid fields to update", 400)
 
         with get_db().cursor(dictionary=True) as cursor:
-            cursor.execute("SELECT listing_id FROM listing WHERE listing_id = %s", (listing_id))
+            cursor.execute("SELECT listing_id FROM listing WHERE listing_id = %s", (listing_id,))
             if not cursor.fetchone():
                 return error_response("Listing not found", 404)
 
@@ -123,6 +124,7 @@ def update_listing(listing_id):
             query = f"UPDATE listing SET {', '.join(update_fields)} WHERE listing_id = %s"
             cursor.execute(query, params)
 
+    
         get_db().commit()
         return jsonify({"message": "Listing updated successfully"}), 200
     except Error as e:
@@ -131,7 +133,7 @@ def update_listing(listing_id):
 
 # Delete a listing
 # Example: DELETE /housing/listing/1
-@housing_bp.route("/housing/listing/<int:listing_id>", methods=["DELETE"])
+@housing_bp.route("/listing/<int:listing_id>", methods=["DELETE"])
 def delete_listing(listing_id):
     current_app.logger.info(f'DELETE /housing/listing/{listing_id}')
     try:
@@ -139,7 +141,7 @@ def delete_listing(listing_id):
             cursor.execute("SELECT listing_id FROM listing WHERE listing_id = %s", (listing_id,))
             if not cursor.fetchone():
                 return error_response("Listing not found", 404)
-
+            
             cursor.execute("DELETE FROM listing WHERE listing_id = %s", (listing_id,))
 
         get_db().commit()
