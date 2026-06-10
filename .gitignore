@@ -5,8 +5,6 @@ secrets/
 .env
 .env.local
 
-# ENTSO-E API key (create from entsoe.env.example; never commit the real key)
-datasets/entsoe/entsoe.env
 */logs/*
 .vscode/
 
