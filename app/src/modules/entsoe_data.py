@@ -13,13 +13,12 @@ Every query goes to ENTSO-E live via ``entsoe-py`` and is wrapped in
 the API. Generation and load are fetched once per country and reused across the
 derived indicators.
 
-The API key is read from (in order): the ``ENTSOE_API_KEY`` env var, Streamlit
-secrets, or the committed ``datasets/entsoe/entsoe.env`` file (local dev).
+The API key is read from (in order): the ``ENTSOE_API_KEY`` env var (set via
+``api/.env`` in Docker) or Streamlit secrets.
 """
 
 import logging
 import os
-from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -88,7 +87,7 @@ MIX_ORDER = list(MIX_BUCKETS.keys())
 # ---- API key + client -------------------------------------------------------
 
 def _api_key():
-    """Resolve the ENTSO-E API key from env var, Streamlit secrets, or file."""
+    """Resolve the ENTSO-E API key from env var or Streamlit secrets."""
     key = os.environ.get("ENTSOE_API_KEY")
     if key:
         return key.strip()
@@ -97,16 +96,6 @@ def _api_key():
             return str(st.secrets["ENTSOE_API_KEY"]).strip()
     except Exception:
         pass
-    # Local-dev fallback: the committed env file at the repo root. In Docker
-    # the key arrives via the compose env_file, so this path simply won't exist
-    # there (and the parents lookup is guarded so it never raises).
-    parents = Path(__file__).resolve().parents
-    if len(parents) > 3:
-        env_file = parents[3] / "datasets" / "entsoe" / "entsoe.env"
-        if env_file.exists():
-            for line in env_file.read_text().splitlines():
-                if line.startswith("ENTSOE_API_KEY="):
-                    return line.split("=", 1)[1].strip()
     return None
 
 

@@ -16,6 +16,7 @@ from modules.ml_countries import (
     ml_country_select_options,
     resolve_ml_country,
 )
+from modules.entsoe_data import get_price, has_api_key
 from modules.nav import SideBarLinks
 from modules.theme import zeus_plotly_layout
 
@@ -70,27 +71,14 @@ if selected_country_code:
 else:
     forecast_available = False
 
-# Fetch today's actual price from ENTSO-E
-zone_map = {
-    "AT": "AT", "BE": "BE", "BG": "BG", "HR": "HR",
-    "CZ": "CZ", "ES": "ES", "FR": "FR", "DE": "DE_LU",
-    "HU": "HU", "LV": "LV", "NL": "NL", "PL": "PL",
-    "PT": "PT", "RO": "RO", "SK": "SK"
-}
-
-if selected_country_code:
-    try:
-        import os
-        from entsoe import EntsoePandasClient
-        client = EntsoePandasClient(api_key=os.getenv("ENTSOE_API_KEY"))
-        today    = pd.Timestamp.now(tz="Europe/Berlin").normalize()
-        tomorrow = today + pd.Timedelta(days=1)
-        zone     = zone_map.get(selected_country_code, selected_country_code)
-        prices   = client.query_day_ahead_prices(zone, start=today, end=tomorrow)
-        live_price    = float(prices.mean())
-        price_display = f"€{live_price:.2f}/MWh"
-    except Exception as e:
+# Fetch today's actual price from ENTSO-E (via api/.env ENTSOE_API_KEY)
+if selected_country_name and selected_country_name != COUNTRY_PLACEHOLDER:
+    if not has_api_key():
         price_display = "Unavailable"
+        logger.warning("ENTSOE_API_KEY is not configured in api/.env")
+    else:
+        live_price, _ = get_price(selected_country_name)
+        price_display = f"€{live_price:.2f}/MWh" if live_price is not None else "Unavailable"
 else:
     price_display = "—"
 
