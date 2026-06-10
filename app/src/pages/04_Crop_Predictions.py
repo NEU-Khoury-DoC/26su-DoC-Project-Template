@@ -16,7 +16,8 @@ st.write('Select available farming resources and environmental conditions.')
 st.write('## Recommend crop to plant')
 
 type_of_crop = st.selectbox('Crop Category', ['Root&tuber', 'bulbvegetables', 'cereals', 'colecrops', 'fibre crop', 'millets', 'oil seeds', 'pulses', 'sugar crops', 'vegetables'])
-season = st.selectbox('Season', ['Zaid', 'kharif', 'rabi'])
+season_labels = {'Zaid': 'Summer (Zaid)', 'kharif': 'Monsoon (Kharif)', 'rabi': 'Winter (Rabi)'}
+season = st.selectbox('Season', ['Zaid', 'kharif', 'rabi'], format_func=lambda s: season_labels[s])
 water_source = st.selectbox('Water Source', ['irrigated', 'rainfed'])
 sown = st.selectbox('Sowing Month', ['Apr', 'Dec', 'Jul', 'Jun', 'Mar', 'May', 'Nov', 'Oct'])
 harvested = st.selectbox('Harvest Month', ['Apr', 'Jul', 'Jun', 'Mar', 'May', 'Oct', 'Sep'])
