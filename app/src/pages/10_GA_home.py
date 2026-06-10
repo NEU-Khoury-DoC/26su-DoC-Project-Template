@@ -27,3 +27,7 @@ if st.button('View Risk Heatmap',
              use_container_width=True):
     st.switch_page('pages/12_risk_heatmap.py')
 
+if st.button('View Housing Deprivation Predictor',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/14_government_pred.py')
