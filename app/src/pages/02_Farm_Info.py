@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 import requests
 from modules.nav import SideBarLinks
+from geopy.geocoders import Nominatim
 
 st.set_page_config(layout="wide")
 SideBarLinks()

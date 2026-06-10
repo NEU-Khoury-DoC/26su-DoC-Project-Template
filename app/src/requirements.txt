@@ -10,3 +10,4 @@ requests
 plotly
 scikit-learn
 fpdf2
+geopy
