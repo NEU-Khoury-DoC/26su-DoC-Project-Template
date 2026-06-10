@@ -54,6 +54,9 @@ def funding_drafts_nav():
 def risk_heatmap_nav():
     st.sidebar.page_link("pages/12_risk_heatmap.py", label="Risk Heatmap", icon="🗺️")
 
+def housing_deprivation_pred_nav():
+    st.sidebar.page_link("pages/14_government_pred.py", label="Housing Deprivation Predictor", icon="🏚️")
+
 
 # ---- Role: real estate agent ----------------------------------------------------
 
@@ -115,6 +118,7 @@ def SideBarLinks(show_home=False):
             view_funding_nav()
             funding_drafts_nav()
             risk_heatmap_nav()
+            housing_deprivation_pred_nav()
             
     # About link appears at the bottom for all roles
     about_page_nav()
