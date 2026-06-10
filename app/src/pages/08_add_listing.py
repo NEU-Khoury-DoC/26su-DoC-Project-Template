@@ -118,7 +118,7 @@ for listing in my_listings:
             with col22:
                 if st.button("Delete", key = f"delete_{listing_id}", type = "secondary"):
                     try:
-                        res = requests.delete(f"{BASE}/funding-draft/{listing_id}")
+                        res = requests.delete(f"{BASE}/listing/{listing_id}")
                         if res.status_code == 200:
                             st.success("Draft deleted.")
                             st.rerun()
@@ -158,10 +158,10 @@ for listing in my_listings:
                         uni_keys = list(uni_options.keys())
                         if listing['university_name']:
                             uni_index = uni_keys.index(listing["university_name"]) if listing["university_name"] in uni_keys else 0
-                            selected_uni = st.selectbox("University", options=uni_keys, index=uni_index, key=f"associated_uni_{listing_id}")
+                            selected_uni = st.selectbox("University", options=uni_keys + [None], index=uni_index, key=f"associated_uni_{listing_id}")
                         else:
                             uni_index = None
-                            selected_uni = st.selectbox("University", options=uni_keys,index=uni_index, key=f"associated_uni_{listing_id}")
+                            selected_uni = st.selectbox("University", options=uni_keys + [None],index=uni_index, key=f"associated_uni_{listing_id}")
                             
 
                         price = st.slider("Price/Month (€)", min_value=0, max_value=3000, value=listing["price"], step=50, key=f"price_{listing_id}")
@@ -188,7 +188,7 @@ for listing in my_listings:
                                 "city_name": city
                             }
 
-                            res = requests.put(f"{BASE}/funding-draft/{listing_id}", json = payload)
+                            res = requests.put(f"{BASE}/listing/{listing_id}", json = payload)
                             if res.status_code == 200:
                                 st.success("Listing updated.")
                                 st.session_state[f"editing_{listing_id}"] = False
@@ -230,7 +230,7 @@ for listing in my_listings:
             with col22:
                 if st.button("Delete", key = f"delete_{listing_id}", type = "secondary"):
                     try:
-                        res = requests.delete(f"{BASE}/funding-draft/{listing_id}")
+                        res = requests.delete(f"{BASE}/listing/{listing_id}")
                         if res.status_code == 200:
                             st.success("Draft deleted.")
                             st.rerun()
@@ -300,7 +300,7 @@ for listing in my_listings:
                                 "city_name": city
                             }
 
-                            res = requests.put(f"{BASE}/funding-draft/{listing_id}", json = payload)
+                            res = requests.put(f"{BASE}/listing/{listing_id}", json = payload)
                             if res.status_code == 200:
                                 st.success("Listing updated.")
                                 st.session_state[f"editing_{listing_id}"] = False
@@ -316,5 +316,3 @@ for listing in my_listings:
 
 
             st.write("")
-
-

@@ -73,7 +73,7 @@ def view_listings_rea_nav():
 
 def add_listings_rea_nav():
     st.sidebar.page_link(
-        "pages/08_add_listing.py", label="Create Listing", icon="📄"
+        "pages/08_add_listing.py", label="Create or Edit Listing", icon="📄"
     )
 
 # ---- Sidebar assembly -------------------------------------------------------
