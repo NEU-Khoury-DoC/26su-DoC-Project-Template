@@ -39,9 +39,14 @@ with tab1:
                 user_id = st.number_input("Your user ID *", min_value=1, step=1)
 
         with col2:
-            country   = st.text_input("Country *", placeholder="e.g. Spain")
-            latitude  = st.number_input("Latitude *",  min_value=-90.0,  max_value=90.0,  value=20.5, format="%.6f")
-            longitude = st.number_input("Longitude *", min_value=-180.0, max_value=180.0, value=78.9, format="%.6f")
+            address = st.text_input("Address *", placeholder="e.g. Hauptstraße 5, Linz")
+            country = st.selectbox("Country *", ['Austria', 'Belgium', 'Bulgaria', 'Croatia',
+                                                  'Cyprus', 'Czechia', 'Denmark', 'Estonia',
+                                                  'Finland', 'Germany', 'Greece', 'Hungary',
+                                                  'Ireland', 'Italy', 'Latvia', 'Lithuania',
+                                                  'Luxembourg', 'Netherlands', 'Poland',
+                                                  'Portugal', 'Romania', 'Slovakia', 'Slovenia',
+                                                  'Spain', 'Sweden'])
 
         submitted = st.form_submit_button("Register farm", use_container_width=True, type="primary")
 
@@ -49,27 +54,41 @@ with tab1:
         missing = []
         if not farm_name:  missing.append("Farm name")
         if not country:    missing.append("Country")
+        if not farm_name: missing.append("Farm name")
 
         if missing:
             st.error(f"Please fill in: {', '.join(missing)}")
         else:
-            payload = {
-                "farm_name":  farm_name,
-                "user_id":    int(user_id),
-                "created_by": int(user_id),
-                "longitude":  longitude,
-                "latitude":   latitude,
-                "country":    country,
-            }
-            try:
-                r = requests.post(f"{API_BASE}/farms/farms", json=payload)
-                if r.status_code == 201:
-                    data = r.json()
-                    st.success(f"Farm registered! Farm ID: **{data['farm_id']}** — note this for adding growing records.")
-                else:
-                    st.error(f"Error {r.status_code}: {r.json().get('error', 'Unknown error')}")
-            except requests.ConnectionError:
-                st.error("Could not reach the API. Is the backend running?")
+            with st.spinner("Finding your location..."):
+                try:
+                    geolocator = Nominatim(user_agent="farmcast")
+                    location = geolocator.geocode(f"{address}, {country}")
+
+                    if location is None:
+                        st.error("Could not find that address. Try being more specific — include street, town and country.")
+                    else:
+                        lat = location.latitude
+                        lon = location.longitude
+
+                        st.success(f"Found: {location.address}")
+                        st.map({"lat": [lat], "lon": [lon]})
+
+                        payload = {
+                            "farm_name": farm_name,
+                            "user_id": int(user_id),
+                            "created_by": int(user_id),
+                            "longitude": lon,
+                            "latitude": lat,
+                            "country": country,
+                        }
+                        r = requests.post(f"{API_BASE}/farms/farms", json=payload)
+                        if r.status_code == 201:
+                            data = r.json()
+                            st.success(f"Farm registered! Farm ID: **{data['farm_id']}**")
+                        else:
+                            st.error(f"Error {r.status_code}: {r.json().get('error', 'Unknown error')}")
+                except Exception as e:
+                        st.error(f"Error: {e}")
 
 
 # ─────────────────────────────────────────────
@@ -86,36 +105,58 @@ with tab2:
 
         with col1:
             loc_farm_id   = st.number_input("Farm ID *", min_value=1, step=1, key="loc_farm_id")
-            loc_country   = st.text_input("Country *", placeholder="e.g. Belgium", key="loc_country")
+            loc_country   = country = st.selectbox("Country *", ['Austria', 'Belgium', 'Bulgaria', 'Croatia',
+                                                  'Cyprus', 'Czechia', 'Denmark', 'Estonia',
+                                                  'Finland', 'Germany', 'Greece', 'Hungary',
+                                                  'Ireland', 'Italy', 'Latvia', 'Lithuania',
+                                                  'Luxembourg', 'Netherlands', 'Poland',
+                                                  'Portugal', 'Romania', 'Slovakia', 'Slovenia',
+                                                  'Spain', 'Sweden'])
 
         with col2:
-            loc_latitude  = st.number_input("Latitude *",  min_value=-90.0,  max_value=90.0,  value=20.5, format="%.6f", key="loc_lat")
-            loc_longitude = st.number_input("Longitude *", min_value=-180.0, max_value=180.0, value=78.9, format="%.6f", key="loc_lon")
+            address = st.text_input("Address *", placeholder="e.g. Hauptstraße 5, Linz")
 
         loc_submitted = st.form_submit_button("Save location", use_container_width=True, type="primary")
 
     if loc_submitted:
         missing = []
-        if not loc_country:    missing.append("Country")
+        if not farm_name:  missing.append("Farm name")
+        if not country:    missing.append("Country")
+        if not farm_name: missing.append("Farm name")
 
         if missing:
             st.error(f"Please fill in: {', '.join(missing)}")
         else:
-            payload = {
-                "farm_id":    int(loc_farm_id),
-                "longitude":  loc_longitude,
-                "latitude":   loc_latitude,
-                "country":    loc_country,
-                "created_by": "mock",
-            }
-            try:
-                r = requests.post(f"{API_BASE}/farm_loc/", json=payload)
-                if r.status_code == 201:
-                    st.success(f"Location saved for Farm ID {int(loc_farm_id)}.")
-                else:
-                    st.error(f"Error {r.status_code}: {r.json().get('error', 'Unknown error')}")
-            except requests.ConnectionError:
-                st.error("Could not reach the API. Is the backend running?")
+            with st.spinner("Finding your location..."):
+                try:
+                    geolocator = Nominatim(user_agent="farmcast")
+                    location = geolocator.geocode(f"{address}, {country}")
+
+                    if location is None:
+                        st.error("Could not find that address. Try being more specific — include street, town and country.")
+                    else:
+                        lat = location.latitude
+                        lon = location.longitude
+
+                        st.success(f"Found: {location.address}")
+                        st.map({"lat": [lat], "lon": [lon]})
+
+                        payload = {
+                            "farm_name": farm_name,
+                            "user_id": int(user_id),
+                            "created_by": int(user_id),
+                            "longitude": lon,
+                            "latitude": lat,
+                            "country": country,
+                        }
+                        r = requests.post(f"{API_BASE}/farms/farms", json=payload)
+                        if r.status_code == 201:
+                            data = r.json()
+                            st.success(f"Farm registered! Farm ID: **{data['farm_id']}**")
+                        else:
+                            st.error(f"Error {r.status_code}: {r.json().get('error', 'Unknown error')}")
+                except Exception as e:
+                        st.error(f"Error: {e}")
 
 
 # ─────────────────────────────────────────────
