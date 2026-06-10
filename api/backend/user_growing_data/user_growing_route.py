@@ -51,6 +51,7 @@ def get_data_by_farm_id(farm_id):
         cur.execute(
             """
             SELECT
+                user_growing_data_id,
                 type_of_crop, season, sown, harvested,
                 DATEDIFF(harvested, sown) AS duration_days,
                 water_source, temp, relative_humidity

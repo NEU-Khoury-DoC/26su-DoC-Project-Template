@@ -128,3 +128,20 @@ def delete_farm_location(farm_id):
     except Error as e:
         current_app.logger.error(f"DB error: {e}")
         return error_response("Failed to delete farm location", 500)
+    
+@farms_loc_bp.route("/location/<int:farm_data_id>", methods=["DELETE"])
+def delete_farm_location_by_id(farm_data_id):
+    current_app.logger.info(f'DELETE /farm_loc/location/{farm_data_id}')
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute("DELETE FROM farms_location WHERE farm_data_id = %s", (farm_data_id,))
+        conn.commit()
+        cur.close()
+        if cur.rowcount == 0:
+            return error_response("Farm location not found", 404)
+        return jsonify({"message": "Farm location deleted"}), 200
+    except Error as e:
+        conn.rollback()
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to delete farm location", 500)
