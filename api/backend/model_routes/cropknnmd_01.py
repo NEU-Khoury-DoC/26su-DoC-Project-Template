@@ -42,14 +42,3 @@ def get_model3_prediction(N, P, K, type_of_crop, temperature, season, sown, harv
     except Exception as e:
         current_app.logger.error(f"model03 prediction error: {e}")
         return jsonify({"error": "Error processing prediction request"}), 500
-
-
-@crop_routes.route("/model3/observations", methods=["GET"])
-def get_model3_observations():
-    current_app.logger.info("GET /model3/observations handler")
-    try:
-        data = model03.get_observations_with_predictions()
-        return jsonify(data), 200
-    except Exception as e:
-        current_app.logger.error(f"model03 observations error: {e}")
-        return jsonify({"error": "Error fetching observations"}), 500

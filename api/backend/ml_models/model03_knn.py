@@ -60,23 +60,41 @@ _CONTINUOUS_COLS = [
 # one-hot columns, prefix
 _OHE_PREFIXES = ('TYPE_OF_CROP_', 'SOIL_', 'SOWN_', 'HARVESTED_', 'WATER_SOURCE_', 'SEASON')
 
+# One-hot columns hardcoded, (MUST BE IN SME ORDER AS TRAINING DATA!!)
 
-def train():
-    """
-    Placeholder for a training routine. Could be triggered from an
-    admin route to retrain the model and store new parameters in the DB.
-    """
-    return 'Training the model'
+_OHE_COLS = [
+    # TYPE_OF_CROP (0-9)
+    'TYPE_OF_CROP_Root&tuber', 'TYPE_OF_CROP_bulbvegetables', 'TYPE_OF_CROP_cereals',
+    'TYPE_OF_CROP_colecrops', 'TYPE_OF_CROP_fibre crop', 'TYPE_OF_CROP_millets',
+    'TYPE_OF_CROP_oil seeds', 'TYPE_OF_CROP_pulses', 'TYPE_OF_CROP_sugar crops',
+    'TYPE_OF_CROP_vegetables',
+    # SOIL (10-41)
+    'SOIL_Alluvial soil', 'SOIL_Black Soil', 'SOIL_Clay soil', 'SOIL_Laterite soil',
+    'SOIL_Loamy soil', 'SOIL_Red soil', 'SOIL_Sandy soil', 'SOIL_Sandy soil',
+    'SOIL_black cotton soil', 'SOIL_brown Loamy soil', 'SOIL_clay Loamy soil',
+    'SOIL_cotton soil', 'SOIL_deep soil', 'SOIL_friable soil', 'SOIL_heavy Black Soil',
+    'SOIL_heavy soil', 'SOIL_light Loamy soil', 'SOIL_light soi', 'SOIL_loamy soil',
+    'SOIL_medium Black Soil', 'SOIL_red Loamy soil', 'SOIL_red lateritic Loamy soil',
+    'SOIL_rich red Loamy soil', 'SOIL_salty clay Loamy soil', 'SOIL_sandy Loamy soil',
+    'SOIL_sandy clay Loamy soil', 'SOIL_sandy loamy soil', 'SOIL_shallow Black Soil',
+    'SOIL_silty Loamy soil', 'SOIL_well-drained loamy soil', 'SOIL_well-drained soil',
+    'SOIL_well-grained deep loamy moist soil',
+    # SOWN (42-49)
+    'SOWN_Apr', 'SOWN_Dec', 'SOWN_Jul', 'SOWN_Jun', 'SOWN_Mar', 'SOWN_May', 'SOWN_Nov',
+    'SOWN_Oct',
+    # HARVESTED (50-56)
+    'HARVESTED_Apr', 'HARVESTED_Jul', 'HARVESTED_Jun', 'HARVESTED_Mar', 'HARVESTED_May',
+    'HARVESTED_Oct', 'HARVESTED_Sep',
+    # WATER_SOURCE (57-58)
+    'WATER_SOURCE_irrigated', 'WATER_SOURCE_rainfed',
+    # SEASON (59-61)
+    'SEASON_Zaid', 'SEASON_kharif', 'SEASON_rabi',
+]
+#dictionary
+_OHE_INDEX = {name: i for i, name in enumerate(_OHE_COLS)}
 
 
-def test():
-    return 'Testing the model'
-
-
-# ------------------------------------------------------------
-# Internal helpers — fetch stored vals from the DB
-# ------------------------------------------------------------
-
+#scalar params from db
 def _get_scaler_params():
     """
     Fetches the most-recent StandardScaler parameters from model3_scaler.
@@ -103,33 +121,7 @@ def _get_scaler_params():
     return means, stds
 
 
-def _get_ohe_cols():
-    """
-    Fetches the list of one-hot encoded column names from model3_ohe_cols.
-    These must be stored in the exact order used during training.
-
-    Returns:
-        list[str]:( e.g. ['TYPE_OF_CROP_cereals', 'SEASON_kharif', ...])
-
-    Raises:
-        ValueError: if no OHE column list exists yet.
-    """
-    with get_db().cursor(dictionary=True) as cursor:
-        cursor.execute(
-            'SELECT col_names '
-            'FROM model3_ohe_cols '
-            'ORDER BY id DESC LIMIT 1'
-        )
-        row = cursor.fetchone()
-
-    if row is None:
-        raise ValueError('No model3 OHE column list found in the database.')
-
-    cols = json.loads(row['col_names'])
-    current_app.logger.info(f'model03 OHE cols loaded: {len(cols)} columns')
-    return cols
-
-
+# fetch training 
 def _get_training_data():
     """
     Fetches the training matrix and labels from the DB.
@@ -239,7 +231,6 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
     """
     # load db stuff
     means, stds  = _get_scaler_params()
-    ohe_cols     = _get_ohe_cols()
     X_train, y_train = _get_training_data()
 
     # -cont feat vect.
@@ -258,7 +249,7 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
     x_scaled = (x_cont - means) / stds  # shape (n_continuous,)
 
     # --- build OHE vector ---
-    ohe_input = np.zeros(len(ohe_cols), dtype=float)
+    ohe_input = np.zeros(len(_OHE_INDEX), dtype=float)
 
     categorical_inputs = {
         'TYPE_OF_CROP': TYPE_OF_CROP,
@@ -270,12 +261,12 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
 
     for prefix, value in categorical_inputs.items():
         col_name = f'{prefix}_{value}'
-        if col_name not in ohe_cols:
+        if col_name not in _OHE_INDEX:
             raise ValueError(
                 f"Unknown value '{value}' for '{prefix}'. "
-                f"Expected one of: {[c for c in ohe_cols if c.startswith(prefix)]}"
+                f"Expected one of: {[c for c in _OHE_COLS if c.startswith(prefix)]}"
             )
-        ohe_input[ohe_cols.index(col_name)] = 1.0
+        ohe_input[_OHE_INDEX[col_name]] = 1.0
 
     # concatenate and predict
     new_X = np.concatenate([x_scaled, ohe_input]).reshape(1, -1)  # (1, n_features)
@@ -295,70 +286,3 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
         f'TEMP={TEMPERATURE}, SEASON={SEASON}, k={k}) -> {predictions}'
     )
     return predictions
-
-
-def get_observations_with_predictions(k=3):
-    """
-    Fetches the full crop dataset from the DB, runs leave-one-out-style
-    KNN predictions (using all training rows), and returns the results.
-    Used by the admin accuracy / confusion-matrix page.
-
-    Args:
-        k (int): number of neighbours (default 3)
-
-    Returns:
-        list[dict]: one dict per row, with keys:
-            crop_label, predicted_label, correct (bool),
-            plus the original feature columns
-    """
-    means, stds  = _get_scaler_params()
-    ohe_cols     = _get_ohe_cols()
-    X_train, y_train = _get_training_data()
-
-    with get_db().cursor(dictionary=True) as cursor:
-        cursor.execute(
-            'SELECT * FROM model3_observations ORDER BY row_id ASC'
-        )
-        rows = cursor.fetchall()
-
-    results = []
-    for row in rows:
-        try:
-            preds = predict(
-                N                 = row['N'],
-                P                 = row['P'],
-                K                 = row['K'],
-                TYPE_OF_CROP      = row['TYPE_OF_CROP'],
-                TEMPERATURE       = row['TEMPERATURE'],
-                SEASON            = row['SEASON'],
-                SOWN              = row['SOWN'],
-                HARVESTED         = row['HARVESTED'],
-                WATER_SOURCE      = row['WATER_SOURCE'],
-                RELATIVE_HUMIDITY = row['RELATIVE_HUMIDITY'],
-                k                 = k,
-            )
-        except ValueError as exc:
-            current_app.logger.warning(f'model03 skip row {row.get("row_id")}: {exc}')
-            continue
-
-        # predict() returns a ranked list; the top entry is the best match
-        pred = preds[0] if preds else None
-
-        results.append({
-            'row_id':          row.get('row_id'),
-            'crop_label':      row['CROPS'],
-            'predicted_label': pred,
-            'correct':         row['CROPS'] == pred,
-            'N':               row['N'],
-            'P':               row['P'],
-            'K':               row['K'],
-            'TYPE_OF_CROP':    row['TYPE_OF_CROP'],
-            'TEMPERATURE':     row['TEMPERATURE'],
-            'SEASON':          row['SEASON'],
-            'SOWN':            row['SOWN'],
-            'HARVESTED':       row['HARVESTED'],
-            'WATER_SOURCE':    row['WATER_SOURCE'],
-            'RELATIVE_HUMIDITY': row['RELATIVE_HUMIDITY'],
-        })
-
-    return results
