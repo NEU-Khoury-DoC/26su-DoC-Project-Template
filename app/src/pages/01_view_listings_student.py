@@ -14,8 +14,12 @@ st.set_page_config(layout='wide')
 # Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
+
 # set the header of the page
 st.header('Available listings')
+search = st.text_input("Search listings", placeholder="Search by title")
+
+
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
@@ -23,20 +27,20 @@ with col1:
     country_filter = st.selectbox("Country", 
                                 options=["All"] + [c['country_name'] for c in 
                                         requests.get('http://web-api:4000/housing/country').json()])
-with col2:
+with col4:
     property_filter = st.selectbox("Property Type", 
                                 options=
                                 ["All", "House", "Apartment", "Studio Apartment", "Townhouse"])
+with col5:
+    price_filter = st.slider("Max Price (€)", min_value=0, max_value=3000, value=3000, step=100)
 with col3:
-    price_filter = st.number_input("Max Price (€)", 
-                                   min_value=0, max_value=3000, value=1500, step=100)
-with col4:
     university_filter = st.selectbox("Associated University", 
                                 options=["All"] + [u['university_name'] for u 
                                 in requests.get('http://web-api:4000/housing/university').json()])
-with col5:
+with col2:
     city_filter = st.selectbox("City", options=["All"] + [c['city_name'] for c
                                 in requests.get('http://web-api:4000/housing/listing/cities').json()])
+
 
 # build params based on filters
 params = {}
@@ -53,10 +57,44 @@ if university_filter != "All":
 
 # You can access the session state to make a more customized/personalized app experience
 listings = requests.get('http://web-api:4000/housing/listing', params=params).json()
+if search:
+    listings = [l for l in listings if search.lower() in l['title'].lower()]
 
-for listing in listings:
-    listing['price'] = int(listing['price'])
+if not listings:
+    st.info('No listing matches this criteria. Try adjusting your filters.')
+else:
+    for listing in listings:
+        listing['price'] = int(listing['price'])
 
+        with st.container(border=True):
+            col1, col2 = st.columns([3, 1])
+
+            with col1:
+                st.subheader(listing['title'])
+            
+            with col2:
+                reviews = requests.get(
+                    f"http://web-api:4000/housing/reviews",
+                    params={"listing_id": listing['listing_id']}
+                ).json()
+                total = 0
+                num = 0
+                avg = 0
+                for review in reviews:
+                    if review['rating'] is not None:
+                        total += int(review['rating'])
+                        num +=1
+                if num > 0:
+                    avg = total/num
+                avg = round(avg, 2)
+                if avg > 0:
+                    st.subheader(f'{avg}/5.0')
+                
+            # with col2:
+            #     st.subheader(f"${listing['price']} / month")
+
+        if listing['university_name']:
+            with st.container(border=False):
     with st.container(border=True):
         col1, col2 = st.columns([3, 1])
 
@@ -101,6 +139,9 @@ for listing in listings:
                         st.session_state['listing_id'] = listing['listing_id']
                         st.session_state['title'] = listing['title']
                         st.switch_page('pages/03_view_reviews.py')
+        
+        else:
+            with st.container(border=False):
 
                     if st.button("♡ Save", key=f"save_{listing['listing_id']}"):
                         requests.post('http://web-api:4000/housing/favorites', json={
@@ -144,6 +185,6 @@ for listing in listings:
                         st.write(res.text)  # see exactly what Flask returned
 
 
-    st.write("")
+        st.write("")
 
 

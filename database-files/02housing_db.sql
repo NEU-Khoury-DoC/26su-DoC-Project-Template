@@ -413,5 +413,3 @@ INSERT INTO funding_draft(draft_id, user_id, country_id, program, amount, indica
 INSERT INTO funding_draft(draft_id, user_id, country_id, program, amount, indicators_targeted, demographics_targeted, description) VALUES (15,42,15,'Lithuania Poverty Fund',38000,'Poverty','Low Income','Income support and housing assistance in Vilnius');
 INSERT INTO funding_draft(draft_id, user_id, country_id, program, amount, indicators_targeted, demographics_targeted, description) VALUES (16,44,3,'Czechia Student Grant',72000,'House Price Index','Students','Student housing subsidies in Prague university district');
 INSERT INTO funding_draft(draft_id, user_id, country_id, program, amount, indicators_targeted, demographics_targeted, description) VALUES (17,49,35,'Turkiye Safety Program',53000,'Crime, Violence, and Vandalism','All Demographics','Community policing improvements in Ankara');
-
-SELECT COUNT(*) FROM university;
