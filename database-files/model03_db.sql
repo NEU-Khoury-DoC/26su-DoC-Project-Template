@@ -21,6 +21,17 @@ INSERT INTO model3_ohe_cols (col_names) VALUES (
     '["TYPE_OF_CROP_Root&tuber", "TYPE_OF_CROP_bulbvegetables", "TYPE_OF_CROP_cereals", "TYPE_OF_CROP_colecrops", "TYPE_OF_CROP_fibre crop", "TYPE_OF_CROP_millets", "TYPE_OF_CROP_oil seeds", "TYPE_OF_CROP_pulses", "TYPE_OF_CROP_sugar crops", "TYPE_OF_CROP_vegetables", "SOIL_Alluvial soil", "SOIL_Black Soil", "SOIL_Clay soil", "SOIL_Laterite soil", "SOIL_Loamy soil", "SOIL_Red soil", "SOIL_Sandy soil", "SOIL_Sandy\u00a0soil", "SOIL_black cotton soil", "SOIL_brown Loamy soil", "SOIL_clay Loamy soil", "SOIL_cotton\u00a0soil", "SOIL_deep soil", "SOIL_friable soil", "SOIL_heavy Black Soil", "SOIL_heavy soil", "SOIL_light Loamy soil", "SOIL_light soi", "SOIL_loamy\u00a0soil", "SOIL_medium Black Soil", "SOIL_red Loamy soil", "SOIL_red lateritic Loamy soil", "SOIL_rich red Loamy soil", "SOIL_salty clay Loamy soil", "SOIL_sandy Loamy soil", "SOIL_sandy clay Loamy soil", "SOIL_sandy loamy\u00a0soil", "SOIL_shallow Black Soil", "SOIL_silty Loamy soil", "SOIL_well-drained loamy\u00a0soil", "SOIL_well-drained soil", "SOIL_well-grained deep loamy moist soil", "SOWN_Apr", "SOWN_Dec", "SOWN_Jul", "SOWN_Jun", "SOWN_Mar", "SOWN_May", "SOWN_Nov", "SOWN_Oct", "HARVESTED_Apr", "HARVESTED_Jul", "HARVESTED_Jun", "HARVESTED_Mar", "HARVESTED_May", "HARVESTED_Oct", "HARVESTED_Sep", "WATER_SOURCE_irrigated", "WATER_SOURCE_rainfed", "SEASON_Zaid", "SEASON_kharif", "SEASON_rabi"]'
 );
 
+CREATE TABLE IF NOT EXISTS saved_crop_preds(
+    pred_id INT AUTO_INCREMENT PRIMARY KEY,
+    farmer_id INT,
+    type_of_crop VARCHAR(100),
+    sown DATETIME,
+    harvested DATETIME,
+    water_source VARCHAR(100),
+    predicted_crop VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS model3_training_data (
     row_id        INT AUTO_INCREMENT PRIMARY KEY,
     feature_vector JSON NOT NULL,
