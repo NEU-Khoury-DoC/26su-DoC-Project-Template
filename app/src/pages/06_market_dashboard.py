@@ -27,21 +27,6 @@ if not st.session_state.synced:
     st.rerun()
 
 
-col1, col2, col3 = st.columns(3)
-with col1:
-    with st.container(border=True):
-        st.write('more info')
-
-with col2:
-    with st.container(border=True):
-        st.write('more info')
-
-with col3:
-    with st.container(border=True):
-        st.write('more info')
-
-
-
 INDICATOR_UNITS = {
     "Pollution": "% of population",
     "Crime, Violence, and Vandalism": "% of population",
@@ -56,8 +41,52 @@ hpi_data = requests.get(
     "http://web-api:4000/housing/social-indicator-stats",
     params={"social_indicator_type": "House Price Index"}
 ).json()
-
 hpi_countries = sorted(set(row["country_name"] for row in hpi_data))
+
+
+col1, col2 = st.columns(2)
+with col1:
+    with st.container(border=True):
+        years = sorted(set(row["year"] for row in hpi_data))
+        year_filter = st.selectbox("Year", options=years, index=years.index(2025) if 2025 in years else 0, label_visibility="collapsed")
+        total = 0
+        num = 0
+        for item in hpi_data:
+            if item['year'] == year_filter:
+                total += float(item['value'])
+                num += 1
+
+        st.write(f'Average European HPI in {year_filter}')
+        st.write(f'{round(total/num, 2)}')
+
+
+#more sorting
+listing_data = requests.get(
+    "http://web-api:4000/housing/listing",
+    params={}
+).json()
+listing_countries = ['All'] + sorted(set(row["country_name"] for row in listing_data))
+
+with col2:
+    with st.container(border=True):
+        country = st.selectbox("Country", options=listing_countries,index=0, label_visibility="collapsed")
+        total1 = 0
+        num1 = 0
+        for row in listing_data:
+            if country == 'All':
+                total1 += float(row['price'])
+                num1 += 1
+            elif row['country_name'] == country:
+                total1 += float(row['price'])
+                num1 += 1
+        if country == 'All':
+            st.write(f'Average rent in all European countries based on {num1} active listings on EuroHome:')
+            st.write(f'{round(total1/num1, 2)}')
+        else:
+            st.write(f'Average rent in {country} based on {num1} listings:')
+            st.write(f'{round(total1/num1, 2)}')
+
+
 
 col1, col2 = st.columns([3, 1])
 
