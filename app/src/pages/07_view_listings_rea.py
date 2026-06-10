@@ -49,10 +49,14 @@ else:
         listing['price'] = int(listing['price'])
 
         with st.container(border=True):
-            col1, col2 = st.columns([3, 1])
+            col1, col2 = st.columns([5, 1])
 
             with col1:
                 st.subheader(listing['title'])
+                st.caption(f"📍 {listing['city_name']}, {listing['country_name']}  •  🏠 {listing['property_type']}")
+                if listing.get('university_name'):
+                    st.caption(f"🏫 Associated with {listing['university_name']}")
+                st.write(f"€{listing['price']} / month")
 
             with col2:
                 reviews = requests.get(
@@ -67,23 +71,10 @@ else:
                         num += 1
                 avg = round(total / num, 2) if num > 0 else 0
                 if avg > 0:
+                    st.write("Rating")
                     st.subheader(f'{avg}/5.0')
 
-            col1, col2, col3 = st.columns([3, 3, 2])
-
-            with col1:
-                st.write(f"📍 {listing['city_name']}, {listing['country_name']}")
-                st.write(f"🏠 {listing['property_type']}")
-                if listing['university_name']:
-                    st.write(f"🏫 Associated with {listing['university_name']}")
-
-            with col2:
-                st.subheader(f"€{listing['price']} / month")
-
-            with col3:
-                if st.button("View reviews", key=f"listing_{listing['listing_id']}"):
+                if st.button("View reviews", key=f"listing_{listing['listing_id']}", use_container_width=True):
                     st.session_state['listing_id'] = listing['listing_id']
                     st.session_state['title'] = listing['title']
                     st.switch_page('pages/03_view_reviews.py')
-
-st.write("")
