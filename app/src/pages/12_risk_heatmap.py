@@ -73,7 +73,7 @@ country_coordinates = {
     'Kosovo': [42.6026, 20.9030],
 }
 
-# Sync
+# Sync data on first page load
 if "synced" not in st.session_state:
     st.session_state.synced = False
 
@@ -82,9 +82,7 @@ if not st.session_state.synced:
         for ep in ["pollution", "crime", "poverty", "overcrowding", "noise", "hpi"]:
             requests.post(f"http://web-api:4000/housing/social-indicator-stats/{ep}")
     st.session_state.synced = True
-    st.success("All data synced!")
     st.rerun()
-
 
 # Filters
 col1, col2 = st.columns(2)
@@ -102,138 +100,148 @@ with col2:
         list(INDICATOR_UNITS.keys())
     )
 
-# Map
-st.subheader(f"{indicator_type} Risk Map ({selected_year})")
-
-try:
-    response = requests.get(
-        "http://web-api:4000/housing/social-indicator-stats",
-        params = {"social_indicator_type": indicator_type, "year": selected_year}
-    )
-
-    if response.status_code == 200 and response.json():
-        data = response.json()
-        df = pd.DataFrame(data)[["country_name", "value"]]
-        df["value"] = pd.to_numeric(df["value"], errors = "coerce")
-        df = df.dropna()
-
-        if indicator_type == "House Price Index":
-            cmap = plt.get_cmap('YlOrRd')
-            norm = mcolors.Normalize(vmin = 80, vmax = 200)
-        else:
-            cmap = plt.get_cmap('RdYlGn_r')
-            norm = mcolors.Normalize(vmin = df["value"].min(), vmax = df["value"].max())
-
-        def get_color(value):
-            return mcolors.to_hex(cmap(norm(value)))
-
-        color_map = {row["country_name"]: get_color(row["value"]) for _, row in df.iterrows()}
-
-        geo_data = requests.get(GEOJSON_URL).json()
-        m = folium.Map(location = [54.5260, 15.2551], zoom_start = 4)
-
-        def style_function(feature):
-            name = feature['properties'].get('NAME', '')
-            return {
-                'fillColor': color_map.get(name, '#cccccc'),
-                'color': 'black',
-                'weight': 1,
-                'fillOpacity': 0.7,
-            }
-
-        folium.GeoJson(
-            geo_data,
-            style_function = style_function,
-            tooltip = folium.GeoJsonTooltip(fields = ['NAME'], aliases = ['Country']),
-        ).add_to(m)
-
-        for _, row in df.iterrows():
-            coords = country_coordinates.get(row["country_name"])
-            if coords:
-                folium.CircleMarker(
-                    location = coords,
-                    radius = 5,
-                    color = 'black',
-                    fill = True,
-                    fill_color = get_color(row["value"]),
-                    fill_opacity = 1,
-                    popup = folium.Popup(
-                        f"<b>{row['country_name']}</b><br>{indicator_type}: {row['value']}",
-                        max_width = 200
-                    )
-                ).add_to(m)
-
-        st_folium(m, width = 1250, height = 500, returned_objects = [])
-        st.caption("Map boundaries: leakyMirror/map-of-europe (GitHub), MIT License.")
-
-    else:
-        st.info("No data- try selecting a new year")
-
-except Exception as e:
-    st.error(f"Error: {e}")
-
 st.divider()
 
-# Rankings
-st.subheader(f"{indicator_type} Rankings ({selected_year})")
+# Map and Rankings 
+map_col, chart_col = st.columns([1, 1])
 
-if indicator_type == "House Price Index":
-    st.caption("% change in house prices relative to the 2015 baseline. Positive = prices risen, negative = prices fallen.")
-else:
-    st.caption("Countries ranked highest to lowest.")
+with map_col:
+    st.subheader(f"{indicator_type} Risk Map ({selected_year})")
 
-try:
-    r = requests.get(
-        "http://web-api:4000/housing/social-indicator-stats",
-        params = {"social_indicator_type": indicator_type, "year": selected_year}
-    )
-
-    if r.status_code == 200 and r.json():
-        unit = INDICATOR_UNITS.get(indicator_type, "value")
-        df_rank = pd.DataFrame(r.json())[["country_name", "value"]]
-        df_rank["value"] = pd.to_numeric(df_rank["value"], errors = "coerce")
-        df_rank = df_rank.dropna().sort_values("value", ascending = False).reset_index(drop = True)
-        df_rank.columns = ["Country", f"Value ({unit})"]
-
-        if indicator_type == "House Price Index":
-            unit = "% change from 2015 baseline"
-            df_rank["Value (Index (2015=100))"] = df_rank["Value (Index (2015=100))"] - 100
-            df_rank.columns = ["Country", f"Value ({unit})"]
-
-        x_label = "% Change from 2015 Baseline" if indicator_type == "House Price Index" else "% of Population Impacted"
-        color_scale = "ylorrd" if indicator_type == "House Price Index" else "RdYlGn_r"
-        range_color = [-50, 150] if indicator_type == "House Price Index" else None
-
-        fig = px.bar(
-            df_rank,
-            x = f"Value ({unit})",
-            y = "Country",
-            orientation = 'h',
-            color = f"Value ({unit})",
-            color_continuous_scale = color_scale,
-            range_color = range_color,
-            title = f"{indicator_type} by Country ({selected_year})",
-            labels = {f"Value ({unit})": x_label}
+    try:
+        response = requests.get(
+            "http://web-api:4000/housing/social-indicator-stats",
+            params = {"social_indicator_type": indicator_type, "year": selected_year}
         )
 
-        if indicator_type == "House Price Index":
-            fig.update_layout(
-                xaxis = dict(range = [-50, 150]),
-                yaxis = dict(autorange = "reversed"),
-                height = 600,
-                showlegend = False
-            )
+        if response.status_code == 200 and response.json():
+            data = response.json()
+            df = pd.DataFrame(data)[["country_name", "value"]]
+            df["value"] = pd.to_numeric(df["value"], errors = "coerce")
+            df = df.dropna()
+
+            if indicator_type == "House Price Index":
+                cmap = plt.get_cmap('YlOrRd')
+                norm = mcolors.Normalize(vmin = 80, vmax = 200)
+            else:
+                cmap = plt.get_cmap('RdYlGn_r')
+                norm = mcolors.Normalize(vmin = df["value"].min(), vmax = df["value"].max())
+
+            def get_color(value):
+                return mcolors.to_hex(cmap(norm(value)))
+
+            color_map = {row["country_name"]: get_color(row["value"]) for _, row in df.iterrows()}
+
+            geo_data = requests.get(GEOJSON_URL).json()
+            m = folium.Map(location = [54.5260, 15.2551], zoom_start = 3)
+            
+
+            NAME_MAP = {"Czech Republic": "Czechia",
+                        "Turkey": "Turkiye",
+                        "The former Yugoslav Republic of Macedonia": "North Macedonia",
+                        }
+
+            def style_function(feature):
+                raw_name = feature['properties'].get('NAME', '')
+                name = NAME_MAP.get(raw_name, raw_name)
+                return {
+                    'fillColor': color_map.get(name, '#cccccc'),
+                    'color': 'black',
+                    'weight': 1,
+                    'fillOpacity': 0.7,
+                }
+
+            folium.GeoJson(
+                geo_data,
+                style_function = style_function,
+                tooltip = folium.GeoJsonTooltip(fields = ['NAME'], aliases = ['Country']),
+            ).add_to(m)
+
+            for _, row in df.iterrows():
+                coords = country_coordinates.get(row["country_name"])
+                if coords:
+                    folium.CircleMarker(
+                        location = coords,
+                        radius = 4,
+                        color = 'black',
+                        fill = True,
+                        fill_color = get_color(row["value"]),
+                        fill_opacity = 1,
+                        popup = folium.Popup(
+                            f"<b>{row['country_name']}</b><br>{indicator_type}: {row['value']}",
+                            max_width = 200
+                        )
+                    ).add_to(m)
+
+            st_folium(m, use_container_width = True, height = 600, returned_objects = [])
+            st.caption("Map boundaries: leakyMirror/map-of-europe (GitHub), MIT License.")
+
         else:
-            fig.update_layout(
-                yaxis = dict(autorange = "reversed"),
-                height = 600,
-                showlegend = False
+            st.info("No data — try selecting a different year.")
+
+    except Exception as e:
+        st.error(f"Error: {e}")
+
+with chart_col:
+    st.subheader(f"{indicator_type} Rankings ({selected_year})")
+
+    if indicator_type == "House Price Index":
+        st.caption("% change in house prices relative to the 2015 baseline. Positive = prices risen, negative = prices fallen.")
+    else:
+        st.caption("Countries ranked highest to lowest.")
+
+    try:
+        r = requests.get(
+            "http://web-api:4000/housing/social-indicator-stats",
+            params = {"social_indicator_type": indicator_type, "year": selected_year}
+        )
+
+        if r.status_code == 200 and r.json():
+            unit = INDICATOR_UNITS.get(indicator_type, "value")
+            df_rank = pd.DataFrame(r.json())[["country_name", "value"]]
+            df_rank["value"] = pd.to_numeric(df_rank["value"], errors = "coerce")
+            df_rank = df_rank.dropna().sort_values("value", ascending = False).reset_index(drop = True)
+            df_rank.columns = ["Country", f"Value ({unit})"]
+
+            if indicator_type == "House Price Index":
+                unit = "% change from 2015 baseline"
+                df_rank["Value (Index (2015=100))"] = df_rank["Value (Index (2015=100))"] - 100
+                df_rank.columns = ["Country", f"Value ({unit})"]
+
+            x_label = "% Change from 2015 Baseline" if indicator_type == "House Price Index" else "% of Population Impacted"
+            color_scale = "ylorrd" if indicator_type == "House Price Index" else "RdYlGn_r"
+            range_color = [-50, 150] if indicator_type == "House Price Index" else None
+
+            fig = px.bar(
+                df_rank,
+                x = f"Value ({unit})",
+                y = "Country",
+                orientation = 'h',
+                color = f"Value ({unit})",
+                color_continuous_scale = color_scale,
+                range_color = range_color,
+                title = f"{indicator_type} by Country ({selected_year})",
+                labels = {f"Value ({unit})": x_label}
             )
 
-        st.plotly_chart(fig, use_container_width = True)
+            if indicator_type == "House Price Index":
+                fig.update_layout(
+                    xaxis = dict(range = [-50, 150]),
+                    yaxis = dict(autorange = "reversed"),
+                    height = 600,
+                    showlegend = False
+                )
+            else:
+                fig.update_layout(
+                    yaxis = dict(autorange = "reversed"),
+                    height = 600,
+                    showlegend = False
+                )
 
-    else:
-        st.info("No data— try selecting a new year")
+            st.plotly_chart(fig, use_container_width = True)
 
-except Exception as e:
-    st.error(f"Error loading rankings: {e}")
+        else:
+            st.info("No data — try selecting a different year.")
+
+    except Exception as e:
+        st.error(f"Error loading rankings: {e}")
