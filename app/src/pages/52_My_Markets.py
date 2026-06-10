@@ -153,10 +153,22 @@ for col, code in zip(metric_cols, watchlist):
     alert = st.session_state["trader_alerts"].get(code)
     with col:
         st.write(f"**{CODE_TO_NAME[code]}**")
-        st.metric("30-day trend", f"{s['trend_pct']:+.1f}%",
-                  f"€{s['day1']:.0f} → €{s['day30']:.0f}")
-        st.metric("30-day average", f"€{s['avg']:.1f}/MWh")
-        st.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
+        st.metric(
+            "30-day trend",
+            f"{s['trend_pct']:+.1f}%",
+            f"€{s['day1']:.0f} → €{s['day30']:.0f}",
+            help="Percentage change from the forecast's first day to its last day — shows expected price direction.",
+        )
+        st.metric(
+            "30-day average",
+            f"€{s['avg']:.1f}/MWh",
+            help="Mean predicted day-ahead price across all 30 forecast days for this zone.",
+        )
+        st.metric(
+            "Expected range",
+            f"€{s['min']:.0f} – €{s['max']:.0f}",
+            help="Lowest and highest predicted prices in this zone's 30-day forecast.",
+        )
 
         st.write("**Price alert**")
         with st.form(f"alert_{code}"):

@@ -64,13 +64,28 @@ hit_rate = (correct / len(annotated) * 100) if annotated else None
 
 st.divider()
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("Trades logged", len(notes))
-c2.metric("Annotated", len(annotated))
-c3.metric("Awaiting outcome", len(notes) - len(annotated))
-c4.metric("Forecast hit rate",
-          f"{hit_rate:.0f}%" if hit_rate is not None else "—",
-          f"{correct}/{len(annotated)} correct" if annotated else None,
-          delta_color="off")
+c1.metric(
+    "Trades logged",
+    len(notes),
+    help="Total trade notes you have saved against forecasts in this session.",
+)
+c2.metric(
+    "Annotated",
+    len(annotated),
+    help="Trades where you recorded whether the forecast call was correct or wrong.",
+)
+c3.metric(
+    "Awaiting outcome",
+    len(notes) - len(annotated),
+    help="Trades still marked Pending — not yet annotated with a result.",
+)
+c4.metric(
+    "Forecast hit rate",
+    f"{hit_rate:.0f}%" if hit_rate is not None else "—",
+    f"{correct}/{len(annotated)} correct" if annotated else None,
+    delta_color="off",
+    help="Share of annotated trades where the forecast direction matched what actually happened.",
+)
 
 # ---- Log a new trade note ---------------------------------------------------
 st.divider()

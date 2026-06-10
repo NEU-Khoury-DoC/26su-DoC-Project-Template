@@ -59,16 +59,23 @@ m1.metric(
     f"{summary['latest_full']:.0f}%",
     f"{summary['delta_30d']:+.0f} points past 30 days"
     if summary.get("delta_30d") is not None else None,
+    help="Latest reported gas storage fill level as a percentage of total capacity.",
 )
 m2.metric(
     "Stressed winters",
     f"{summary['stressed_winters']} of {summary['total_winters']}",
+    help="Number of winters on record when storage fell below the 30% stress threshold.",
 )
 m3.metric(
     "Lowest winter level on record",
     f"{summary['worst_winter_min']:.0f}%" if summary.get("worst_winter_min") is not None else "—",
+    help="Minimum storage level reached during the worst winter in the historical data.",
 )
-m4.metric("Stress threshold", f"{STRESS_THRESHOLD}%")
+m4.metric(
+    "Stress threshold",
+    f"{STRESS_THRESHOLD}%",
+    help="Level EU analysts treat as critical — below 30%, withdrawal pressure and supply risk rise sharply.",
+)
 st.caption(
     f"Latest reported value: {summary['latest_date']}"
 )

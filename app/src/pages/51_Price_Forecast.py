@@ -40,13 +40,22 @@ st.divider()
 st.subheader(f"{selected_country} — next 30 days")
 
 m1, m2, m3 = st.columns(3)
-m1.metric("Forecast start (day 1)", f"€{s['day1']:.1f}/MWh")
+m1.metric(
+    "Forecast start (day 1)",
+    f"€{s['day1']:.1f}/MWh",
+    help="Model-predicted day-ahead electricity price for the first day of the 30-day forecast, in EUR/MWh.",
+)
 m2.metric(
     "Forecast end (day 30)",
     f"€{s['day30']:.1f}/MWh",
     f"{s['trend_pct']:+.1f}% over the month",
+    help="Model-predicted price on the last day of the forecast window; delta shows change over the full month.",
 )
-m3.metric("Expected range", f"€{s['min']:.0f} – €{s['max']:.0f}")
+m3.metric(
+    "Expected range",
+    f"€{s['min']:.0f} – €{s['max']:.0f}",
+    help="Lowest and highest predicted prices across the full 30-day forecast path.",
+)
 
 st.divider()
 

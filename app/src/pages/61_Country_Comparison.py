@@ -59,6 +59,7 @@ k1.metric(
     f"{a['risk_prob']:.0%}",
     f"{(a['risk_prob'] - b['risk_prob']):+.0%} vs {b_name}",
     delta_color="inverse",   # higher risk = bad = red
+    help="ML model's estimated probability that storage drops under 30% during winter, based on start level, October trend, and volatility.",
 )
 k1.caption(f"{b_name}: {b['risk_prob']:.0%}")
 
@@ -66,6 +67,7 @@ k2.metric(
     "Storage entering winter",
     f"{a['storage_at_start']:.0f}%",
     f"{(a['storage_at_start'] - b['storage_at_start']):+.0f} pts vs {b_name}",
+    help="Gas storage fill level at the start of the most recent winter season, as a percentage of capacity.",
 )
 k2.caption(f"{b_name}: {b['storage_at_start']:.0f}%")
 
@@ -73,6 +75,7 @@ k3.metric(
     "Change over final month",
     f"{a['storage_trend_30d']:+.0f} pts",
     f"{(a['storage_trend_30d'] - b['storage_trend_30d']):+.0f} vs {b_name}",
+    help="Point change in storage during October — positive means filling, negative means draining before winter.",
 )
 k3.caption(f"{b_name}: {b['storage_trend_30d']:+.0f} pts")
 
