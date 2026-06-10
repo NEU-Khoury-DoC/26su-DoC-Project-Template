@@ -15,14 +15,6 @@ SideBarLinks()
 
 st.title("Market Dashboard")
 
-#sync button
-# if st.button("Sync Eurostat Data", type = "secondary"):
-#     with st.spinner("Syncing..."):
-#         for ep in ["pollution", "crime", "poverty", "overcrowding", "noise", "hpi"]:
-#             requests.post(f"http://web-api:4000/housing/social-indicator-stats/{ep}")
-#     st.success("All data synced!")
-#     st.rer
-
 if "synced" not in st.session_state:
     st.session_state.synced = False
 
