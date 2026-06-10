@@ -62,44 +62,31 @@ latest = max(country_winters, key=lambda row: row["winter"])
 st.divider()
  
 st.write("#### Model inputs")
- 
-_INPUT_LABELS = [
-    "Storage level entering winter (%)",
-    "Change in storage over October (points)",
-    "Storage volatility (past 90 days)",
-]
- 
-label_cols = st.columns(3)
-for col, label in zip(label_cols, _INPUT_LABELS):
-    col.markdown(
-        f'<p style="min-height: 3.5rem; margin: 0; line-height: 1.35;">{label}</p>',
-        unsafe_allow_html=True,
-    )
- 
+
 c1, c2, c3 = st.columns(3)
- 
+
 storage_at_start = c1.slider(
-    "storage_at_start",
+    "Storage level entering winter (%)",
     0.0,
     100.0,
     value=float(latest["storage_at_start"]),
-    label_visibility="collapsed",
+    help="Gas storage fill level at the start of winter, as a percentage of total capacity.",
 )
- 
+
 storage_trend_30d = c2.slider(
-    "storage_trend_30d",
+    "Change in storage over October (points)",
     -30.0,
     30.0,
     value=float(latest["storage_trend_30d"]),
-    label_visibility="collapsed",
+    help="Point change in storage during the final month before winter — positive means filling, negative means draining.",
 )
- 
+
 storage_volatility = c3.slider(
-    "storage_volatility",
+    "Storage volatility (past 90 days)",
     0.0,
     30.0,
     value=float(latest["storage_volatility"]),
-    label_visibility="collapsed",
+    help="How much storage levels fluctuated in the 90 days before winter — higher volatility signals less predictable supply.",
 )
  
 trend_caption = (
@@ -136,7 +123,11 @@ else:
         f"would stay above {RISK_THRESHOLD}% this winter"
     )
  
-st.metric("Risk probability", f"{risk_prob:.0%}")
+st.metric(
+    "Risk probability",
+    f"{risk_prob:.0%}",
+    help="Model-estimated chance that gas storage falls below 30% this winter given the scenario inputs above.",
+)
  
 st.divider()
  
