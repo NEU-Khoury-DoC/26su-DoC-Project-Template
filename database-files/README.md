@@ -12,8 +12,9 @@ When the `db` container is **first created**, every `.sql` file here runs in **a
 | `04_zeus_persona_features.sql` | `saved_articles`, `snapshots`, `notes` (future UI) |
 | `05_price_prediction.sql` | Price forecast tables + ENTSO-E daily prices and model weights |
 | `06_gas_storage_data.sql` | AGSI daily storage + winter feature rows for journalist gas pages |
+| `07_energy_trader_schema.sql` | `trader_watchlist`, `trader_price_alerts`, `trader_trade_notes` + demo seed for Niels Becker |
 
-**Personas in schema:** `household_owner`, `journalist` only.
+**Personas in schema:** `household_owner`, `journalist`, `energy_trader`.
 
 ## Regenerate gas storage data SQL
 
