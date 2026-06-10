@@ -487,13 +487,13 @@ def predict_satisfaction():
     current_app.logger.info('POST /student/predict')
     try:
         data = request.get_json()
- 
+
         required = ["crime", "noise", "pollution", "hpi", "is_rural", "is_towns"]
         missing = [f for f in required if f not in data]
         if missing:
             return error_response(f"Missing required fields: {missing}", 400)
- 
-        score = predict(
+
+        score, all_countries = predict(
             crime      = float(data["crime"]),
             noise      = float(data["noise"]),
             pollution  = float(data["pollution"]),
@@ -501,9 +501,9 @@ def predict_satisfaction():
             is_rural   = bool(data["is_rural"]),
             is_towns   = bool(data["is_towns"]),
         )
- 
-        return jsonify({"prediction": round(score, 2)}), 200
- 
+
+        return jsonify({"prediction": round(score, 2), "all_countries": all_countries}), 200
+
     except ValueError as e:
         current_app.logger.error(f'No model parameters found: {e}')
         return error_response(str(e), 404)
