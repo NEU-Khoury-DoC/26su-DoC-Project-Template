@@ -533,3 +533,91 @@ def get_model_params():
     except Error as e:
         current_app.logger.error(f'Database error in get_model_params: {e}')
         return error_response(str(e))
+    
+# ML model routes for government agency
+# train model
+@housing_bp.route("/government/train", methods=["POST"])
+def government_train_model():
+    current_app.logger.info('POST /government/train')
+    try:
+        results = train()
+        return jsonify({
+            "message": "Model trained successfully",
+            "mse": results["mse"],
+            "r2":  results["r2"]
+        }), 201
+    except Exception as e:
+        current_app.logger.error(f'Error training government model: {e}')
+        return error_response(str(e))
+ 
+ 
+# test model
+@housing_bp.route("/government/test", methods=["GET"])
+def government_test_model():
+    current_app.logger.info('GET /government/test')
+    try:
+        results = test()
+        return jsonify({
+            "mse": results["mse"],
+            "r2":  results["r2"]
+        }), 200
+    except ValueError as e:
+        current_app.logger.error(f'No model parameters found: {e}')
+        return error_response(str(e), 404)
+    except Exception as e:
+        current_app.logger.error(f'Error testing government model: {e}')
+        return error_response(str(e))
+ 
+ 
+# predict
+@housing_bp.route("/government/predict", methods=["POST"])
+def predict_housing_deprivation():
+    current_app.logger.info('POST /government/predict')
+    try:
+        data = request.get_json()
+ 
+        required = ["immigration_count", "overburden_rate", "gdp_per_capita", "population_density", "unemployment_rate"]
+        missing = [f for f in required if f not in data]
+        if missing:
+            return error_response(f"Missing required fields: {missing}", 400)
+ 
+        score = predict(
+            immigration_count = float(data["immigration_count"]),
+            overburden_rate = float(data["overburden_rate"]),
+            gdp_per_capita = float(data["gdp_per_capita"]),
+            population_density = float(data["population_density"]),
+            unemployment_rate = float(data["unemployment_rate"]),
+        )
+ 
+        return jsonify({"prediction": round(score, 2)}), 200
+ 
+    except ValueError as e:
+        current_app.logger.error(f'No model parameters found: {e}')
+        return error_response(str(e), 404)
+    except Exception as e:
+        current_app.logger.error(f'Error in predict_housing_deprivation: {e}')
+        return error_response(str(e))
+ 
+ 
+# stored model params
+@housing_bp.route("/government/params", methods=["GET"])
+def government_get_model_params():
+    current_app.logger.info('GET /government/params')
+    try:
+        with get_db().cursor(dictionary=True) as cursor:
+            cursor.execute(
+                '''SELECT id, ga_beta_vals, ga_scaler_mean, ga_scaler_std
+                   FROM gov_model_params
+                   ORDER BY id DESC LIMIT 1'''
+            )
+            row = cursor.fetchone()
+ 
+        if row is None:
+            return error_response("No model parameters found. Run train first.", 404)
+ 
+        return jsonify(row), 200
+ 
+    except Error as e:
+        current_app.logger.error(f'Database error in government_get_model_params: {e}')
+        return error_response(str(e))
+
