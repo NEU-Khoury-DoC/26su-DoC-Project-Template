@@ -36,24 +36,20 @@ try:
     response.raise_for_status()
     stats = response.json()
     total_count = stats.get('total_observations', '—')
-    avg_growth = stats.get('avg_duration_days', '—')
     distinct = stats.get('crop_types', '—')
     total_farms = stats.get('total_farms', '—')
 except:
     total_count = avg_growth = distinct = total_farms = '—'
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown(f"<div class='stat-card'><h3>Total Observations</h3><p>{total_count}</p></div>", unsafe_allow_html=True)
 
 with col2:
-    st.markdown(f"<div class='stat-card'><h3>Avg Growing Duration</h3><p>{avg_growth} days</p></div>", unsafe_allow_html=True)
-
-with col3:
     st.markdown(f"<div class='stat-card'><h3>Distinct Crops</h3><p>{distinct}</p></div>", unsafe_allow_html=True)
 
-with col4:
+with col3:
     st.markdown(f"<div class='stat-card'><h3>Total Farms</h3><p>{total_farms}</p></div>", unsafe_allow_html=True)
 
 st.divider()

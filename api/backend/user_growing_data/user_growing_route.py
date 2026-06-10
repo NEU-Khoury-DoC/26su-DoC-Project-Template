@@ -143,10 +143,10 @@ def get_map_data():
                 AS has_irrigated,
             AVG(ugd.temp)               AS avg_temp,
             AVG(ugd.relative_humidity)  AS avg_humidity,
-            COUNT(*)                    AS record_count
+            COUNT(ugd.user_growing_data_id) AS record_count
         FROM farms f
         JOIN farms_location fl      ON f.farm_id = fl.farm_id
-        JOIN user_growing_data ugd  ON f.farm_id = ugd.farm_id
+        LEFT JOIN user_growing_data ugd  ON f.farm_id = ugd.farm_id
         {where_sql}
         GROUP BY f.farm_id, f.farm_name, fl.latitude, fl.longitude, fl.country
     """
@@ -177,9 +177,8 @@ def get_stats():
         cur.execute(f"""
             SELECT
                 COUNT(*)                                    AS total_observations,
-                COUNT(DISTINCT farm_id)                     AS total_farms,
+                (SELECT COUNT(*) FROM farms)                AS total_farms,
                 COUNT(DISTINCT type_of_crop)                AS crop_types,
-                ROUND(AVG(DATEDIFF(harvested, sown)), 1)    AS avg_duration_days,
                 COUNT(DISTINCT water_source)                AS water_sources,
                 ROUND(
                     100.0 * SUM(water_source = 'rainfed') / COUNT(*), 1
