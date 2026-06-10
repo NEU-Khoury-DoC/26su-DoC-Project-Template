@@ -6,7 +6,7 @@ from flask import current_app
 from backend.db_connection import get_db
 from sklearn.linear_model import LinearRegression
 
-FEATURE_COLS = [
+cols = [
     'crime_rate', 'noise_rate', 'pollution_rate', 'hpi_weight',
     'deg_urb_Rural areas', 'deg_urb_Towns and suburbs', 'crime_noise', 'poll_noise', 'crime_hpi', 'poll_crime'
 ]
@@ -91,14 +91,9 @@ def test():
     scaler_std = parse(row['scaler_std'])
  
     df = pd.read_csv("merged2.csv")
-    df_model = (
-        df.groupby(['geo', 'year'], as_index=False)
-        [FEATURE_COLS + ['happy_rate']]
-        .mean()
-    )
  
-    X = np.array(df_model[FEATURE_COLS]).astype(float)
-    y = np.array(df_model['happy_rate'])
+    X = np.array(df[cols]).astype(float)
+    y = np.array(df['happy_rate'])
  
     _, Xtest, _, ytest = train_test_split(X, y, test_size=0.3, random_state=42)
  
@@ -123,7 +118,7 @@ def predict(crime, noise, pollution, hpi, is_rural, is_towns):
         is_towns (bool): True if towns/suburbs (both False = cities)
  
     Returns:
-        predicted satisfaction score (float)
+        country, predicted satisfaction score (dict)
     """
     with get_db().cursor(dictionary=True) as cursor:
         cursor.execute(
@@ -156,11 +151,16 @@ def predict(crime, noise, pollution, hpi, is_rural, is_towns):
         'poll_crime':                  pollution * crime,
     }
  
-    X_input  = np.array([input_dict[col] for col in FEATURE_COLS]).astype(float)
+    X_input  = np.array([input_dict[col] for col in cols]).astype(float)
     X_scaled = (X_input - scaler_mean) / scaler_std
  
     input_array = np.concatenate([[1.0], X_scaled])
     prediction  = float(np.dot(b, input_array))
- 
-    current_app.logger.info(f'student_linreg predict={prediction:.4f}')
-    return prediction
+
+    results.append({
+            'geo':              row_data['geo'],
+            'predicted_score':  round(prediction, 2),
+        })
+
+    results.sort(key=lambda x: x['predicted_score'], reverse=True)
+    return results
