@@ -1,182 +1,170 @@
 import logging
 logger = logging.getLogger(__name__)
+
 import pandas as pd
 import streamlit as st
-import world_bank_data as wb
-import matplotlib.pyplot as plt
-import numpy as np
-import plotly.express as px
-from modules.nav import SideBarLinks
 import requests
+import folium
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+from streamlit_folium import st_folium
 
-response = requests.post("http://web-api:4000/housing/government/train")
+from modules.nav import SideBarLinks
 
-st.title("Housing Deprivation Rate Predictor")
+API_BASE = "http://web-api:4000/housing"
+
+st.set_page_config(layout="wide")
 SideBarLinks()
-st.write("Set your comfortability levels with these housing conditions to see your predicted life satisfaction score in different countries across Europe.")
-st.divider()
-'''
-RAW_RANGES = {
-    'crime_rate':     (0.0,  37.3),
-    'noise_rate':     (3.2,  55.9),
-    'pollution_rate': (1.6,  43.1),
-    'hpi_weight':     (-9.1, 14.3),
-}
 
-def pct_to_raw(pct, col):
-    low, high = RAW_RANGES[col]
-    return low + (pct / 100) * (high - low)
+st.title("🏚️ Housing Deprivation Predictor")
+st.write(
+    """
+This model predicts each European country's **housing deprivation rate** which is the percent of people living in overcrowded housing or poor living conditions based on socioeconomic indicators:
 
-def raw_to_pct(val, col):
-    low, high = RAW_RANGES[col]
-    return int(max(0, min(100, ((val - low) / (high - low)) * 100)))
+- immigration
+- housing-cost overburden
+- GDP per capita
+- population density
+- unemployment
+"""
+)
 
-# country change
-def on_country_change():
-    country = st.session_state['country_select']
-    if country == "— None —":
-        st.session_state['crime']     = 25
-        st.session_state['noise']     = 25
-        st.session_state['pollution'] = 25
-        st.session_state['hpi']       = 40
-        return
-    try:
-        stats_resp = requests.get(
-            "http://web-api:4000/housing/social-indicator-stats",
-            params={"country": country}
-        )
-        stats_resp.raise_for_status()
-        stats = stats_resp.json()
+# Ensure the model is trained so prediction endpoints have parameters to use.
+# Cached so we only hit the train endpoint once per session.
+@st.cache_data(show_spinner="Training the deprivation model…")
+def ensure_model_trained():
+    resp = requests.post(f"{API_BASE}/government/train")
+    resp.raise_for_status()
+    return resp.json()
 
-        # group by indicator, take most recent year
-        latest = {}
-        for s in stats:
-            name = s.get('name', '').lower()
-            year = int(s.get('year', 0))
-            val  = float(s.get('value', 0))  # cast string to float
-            if name not in latest or year > latest[name]['year']:
-                latest[name] = {'year': year, 'value': val}
 
-        for name, data in latest.items():
-            val = data['value']
-            if 'crime' in name:
-                st.session_state['crime'] = raw_to_pct(val, 'crime_rate')
-            elif 'noise' in name:
-                st.session_state['noise'] = raw_to_pct(val, 'noise_rate')
-            elif 'pollution' in name:
-                st.session_state['pollution'] = raw_to_pct(val, 'pollution_rate')
-            elif 'hpi' in name or 'price' in name:
-                st.session_state['hpi'] = raw_to_pct(val, 'hpi_weight')
+@st.cache_data(show_spinner="Predicting deprivation across Europe…")
+def fetch_deprivation_map():
+    resp = requests.get(f"{API_BASE}/government/deprivation-map")
+    resp.raise_for_status()
+    return resp.json()
 
-    except Exception as e:
-        st.write(f"Error: {e}")
-
-# ── Country select ────────────────────────────────────────────────────────────
-
-st.subheader("Start from a country")
 
 try:
-    countries_resp = requests.get("http://web-api:4000/housing/country")
-    countries_resp.raise_for_status()
-    country_list = [c['country_name'] for c in countries_resp.json()]
-except:
-    country_list = []
+    metrics = ensure_model_trained()
+    rows = fetch_deprivation_map()
+except requests.exceptions.ConnectionError:
+    st.error("Could not connect to the backend. Make sure the Flask API is running on port 4000.")
+    st.stop()
+except Exception as e:
+    st.error(f"Could not load the deprivation model: {e}")
+    st.stop()
 
-st.selectbox(
-    "Select a country to pre-fill with real values",
-    options=["— None —"] + sorted(country_list),
-    key="country_select",
-    on_change=on_country_change,   # this fires BEFORE next rerun
-)
+df = pd.DataFrame(rows)
+
+GEOJSON_URL = "https://raw.githubusercontent.com/leakyMirror/map-of-europe/master/GeoJSON/europe.geojson"
+
+country_coordinates = {
+    'Austria': [47.5162, 14.5501],
+    'Belgium': [50.8503, 4.3517],
+    'Bulgaria': [42.7339, 25.4858],
+    'Croatia': [45.1, 15.2],
+    'Cyprus': [35.1264, 33.4299],
+    'Czechia': [49.8175, 15.4730],
+    'Denmark': [56.2639, 9.5018],
+    'Estonia': [58.5953, 25.0136],
+    'Finland': [61.9241, 25.7482],
+    'France': [46.6034, 1.8883],
+    'Germany': [51.1657, 10.4515],
+    'Greece': [39.0742, 21.8243],
+    'Hungary': [47.1625, 19.5033],
+    'Ireland': [53.1424, -7.6921],
+    'Italy': [41.8719, 12.5674],
+    'Latvia': [56.8796, 24.6032],
+    'Lithuania': [55.1694, 23.8813],
+    'Luxembourg': [49.8153, 6.1296],
+    'Malta': [35.9375, 14.3754],
+    'Netherlands': [52.1326, 5.2913],
+    'Poland': [51.9194, 19.1451],
+    'Portugal': [39.3999, -8.2245],
+    'Romania': [45.9432, 24.9668],
+    'Slovakia': [48.6690, 19.6990],
+    'Slovenia': [46.1512, 14.9955],
+    'Spain': [40.4637, -3.7492],
+    'Sweden': [60.1282, 18.6435],
+}
 
 st.divider()
 
-# ── Sliders (key must match session_state keys set in callback) ───────────────
+# ── Europe heatmap ────────────────────────────────────────────────────────────
+st.subheader("Predicted Housing Deprivation Across Europe")
+st.caption(
+    '''
+    Darker countries on the map have higher predicted deprivation and the strongest case for housing funding.
 
-st.subheader("Environmental conditions")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    crime     = st.slider("🔒 Crime Levels",  0, 100, 25, key="crime")
-    pollution = st.slider("🌫️ Pollution Levels",  0, 100, 25, key="pollution")
-
-with col2:
-    noise = st.slider("🔊 Noise Levels",          0, 100, 25, key="noise")
-    hpi   = st.slider("🏠 Housing Price Growth",  0, 100, 40, key="hpi")
-
-st.subheader("Area type")
- 
-urb = st.radio(
-    "",
-    options=["Cities", "Towns & Suburbs", "Rural Areas"],
-    horizontal=True,
-    label_visibility="collapsed"
+    *Predictions use each country's most recent year of data.*
+    '''
 )
 
-is_rural = urb == "Rural Areas"
-is_towns = urb == "Towns & Suburbs"
+# Higher predicted deprivation = greater need: shade red (high) to green (low).
+cmap = plt.get_cmap('RdYlGn_r')
+norm = mcolors.Normalize(vmin=df["predicted_deprivation"].min(), vmax=df["predicted_deprivation"].max())
 
+def get_color(value):
+    return mcolors.to_hex(cmap(norm(value)))
 
-RAW_RANGES = {
-    'crime_rate':     (0.0,  37.3),
-    'noise_rate':     (3.2,  55.9),
-    'pollution_rate': (1.6,  43.1),
-    'hpi_weight':     (-9.1, 14.3),
-}
+color_map = {row["geo"]: get_color(row["predicted_deprivation"]) for _, row in df.iterrows()}
 
-def pct_to_raw(pct, col):
-    low, high = RAW_RANGES[col]
-    return low + (pct / 100) * (high - low)
+try:
+    geo_data = requests.get(GEOJSON_URL).json()
+    m = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
 
+    def style_function(feature):
+        name = feature['properties'].get('NAME', '')
+        return {
+            'fillColor': color_map.get(name, '#cccccc'),
+            'color': 'black',
+            'weight': 1,
+            'fillOpacity': 0.7,
+        }
 
-if st.button("Predict", type="primary", use_container_width=True):
-    payload = {
-        "crime":     pct_to_raw(crime,     'crime_rate'),
-        "noise":     pct_to_raw(noise,     'noise_rate'),
-        "pollution": pct_to_raw(pollution, 'pollution_rate'),
-        "hpi":       pct_to_raw(hpi,       'hpi_weight'),
-        "is_rural":  is_rural,
-        "is_towns":  is_towns,
-    }
+    folium.GeoJson(
+        geo_data,
+        style_function=style_function,
+        tooltip=folium.GeoJsonTooltip(fields=['NAME'], aliases=['Country']),
+    ).add_to(m)
 
-    try:
-        response = requests.post("http://web-api:4000/housing/government/predict", json=payload)
-        response.raise_for_status()
-        score = round(response.json().get("prediction", 0), 1)
-        score_display = max(1.0, min(10.0, score))
+    for _, row in df.iterrows():
+        coords = country_coordinates.get(row["geo"])
+        if coords:
+            folium.CircleMarker(
+                location=coords,
+                radius=5,
+                color='black',
+                fill=True,
+                fill_color=get_color(row["predicted_deprivation"]),
+                fill_opacity=1,
+                popup=folium.Popup(
+                    f"<b>{row['geo']}</b><br>"
+                    f"Predicted deprivation: {row['predicted_deprivation']}%<br>"
+                    f"Latest measured ({row['year']}): {row['deprivation_rate']}%",
+                    max_width=220
+                )
+            ).add_to(m)
 
-        if score_display >= 8.0:
-            note = "These conditions are associated with high life satisfaction!"
-        elif score_display >= 7.0:
-            note = "A reasonable quality of life is expected."
-        elif score_display >= 6.0:
-            note = "Some friction in daily life is likely."
-        else:
-            note = "These conditions are associated with lower wellbeing."
+    st_folium(m, width=1250, height=500, returned_objects=[])
+    st.caption("Map boundaries: leakyMirror/map-of-europe (GitHub), MIT License.")
 
-        st.markdown(f"""
-            <div style="
-                border-radius: 12px;
-                padding: 28px 32px;
-                text-align: center;
-                margin-top: 12px;
-            ">
-                <p style="font-size: 0.85rem; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">
-                    Predicted Life Satisfaction Score
-                </p>
-                <p style="font-size: 3.5rem; font-weight: 600; color: #1a1a2e; margin: 0; line-height: 1.1;">
-                    {score_display} <span style="font-size: 1.5rem; color: #999;">/ 10</span>
-                </p>
-                <p style="font-size: 0.9rem; color: #444; margin-top: 16px;">
-                    {note}
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
+except Exception as e:
+    st.error(f"Error rendering map: {e}")
 
-    except requests.exceptions.ConnectionError:
-        st.error("Could not connect to the backend. Make sure the Flask server is running on port 4000.")
-    except Exception as e:
-        st.error(f"Something went wrong: {e}")
-'''
-        
+# ── Where funding is most needed ───────────────────────────────────────────────
+st.subheader("Countries Most In Need of Housing Funding")
+
+ranked = df.sort_values("predicted_deprivation", ascending=False).reset_index(drop=True)
+ranked.index += 1
+
+st.dataframe(
+    ranked.rename(columns={
+        "geo": "Country",
+        "predicted_deprivation": "Predicted deprivation (%)",
+        "deprivation_rate": "Latest measured rate (%)",
+        "year": "Data year",
+    }),
+    use_container_width=True,
+)

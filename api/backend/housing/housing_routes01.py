@@ -4,6 +4,12 @@ from backend.utils import error_response
 from mysql.connector import Error
 import requests
 from backend.ml_models.student_linreg import train, test, predict
+from backend.ml_models.government_linreg import (
+    train as gov_train,
+    test as gov_test,
+    predict as gov_predict,
+    predict_all_countries as gov_predict_all,
+)
 
 # Variable name includes the domain (ngo_bp) so it stays readable when
 # imported alongside other blueprints (e.g. `from ... import ngo_bp, donor_bp`).
@@ -540,7 +546,7 @@ def get_model_params():
 def government_train_model():
     current_app.logger.info('POST /government/train')
     try:
-        results = train()
+        results = gov_train()
         return jsonify({
             "message": "Model trained successfully",
             "mse": results["mse"],
@@ -556,7 +562,7 @@ def government_train_model():
 def government_test_model():
     current_app.logger.info('GET /government/test')
     try:
-        results = test()
+        results = gov_test()
         return jsonify({
             "mse": results["mse"],
             "r2":  results["r2"]
@@ -581,14 +587,14 @@ def predict_housing_deprivation():
         if missing:
             return error_response(f"Missing required fields: {missing}", 400)
  
-        score = predict(
+        score = gov_predict(
             immigration_count = float(data["immigration_count"]),
             overburden_rate = float(data["overburden_rate"]),
             gdp_per_capita = float(data["gdp_per_capita"]),
             population_density = float(data["population_density"]),
             unemployment_rate = float(data["unemployment_rate"]),
         )
- 
+
         return jsonify({"prediction": round(score, 2)}), 200
  
     except ValueError as e:
@@ -599,6 +605,20 @@ def predict_housing_deprivation():
         return error_response(str(e))
  
  
+# per-country predicted deprivation, for the Europe heatmap
+@housing_bp.route("/government/deprivation-map", methods=["GET"])
+def government_deprivation_map():
+    current_app.logger.info('GET /government/deprivation-map')
+    try:
+        return jsonify(gov_predict_all()), 200
+    except ValueError as e:
+        current_app.logger.error(f'No model parameters found: {e}')
+        return error_response(str(e), 404)
+    except Exception as e:
+        current_app.logger.error(f'Error in government_deprivation_map: {e}')
+        return error_response(str(e))
+
+
 # stored model params
 @housing_bp.route("/government/params", methods=["GET"])
 def government_get_model_params():

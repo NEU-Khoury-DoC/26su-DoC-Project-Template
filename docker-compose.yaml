@@ -15,7 +15,9 @@ services:
     build: ./api
     container_name: web-api
     hostname: web-api
-    volumes: ["./api:/apicode"]
+    volumes:
+      - "./api:/apicode"
+      - "./ml-src:/ml-src"
     env_file:
       - ./api/.env
     environment:

@@ -112,3 +112,11 @@ CREATE TABLE student_model_params (
     scaler_std TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE gov_model_params (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ga_beta_vals TEXT NOT NULL,
+    ga_scaler_mean TEXT NOT NULL,
+    ga_scaler_std TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
