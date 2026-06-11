@@ -8,6 +8,8 @@ import requests
 # Variable name includes the domain (ngo_bp) so it stays readable when
 # imported alongside other blueprints (e.g. `from ... import ngo_bp, donor_bp`).
 
+
+
 # --- listing -------------------------------
 @housing_bp.route("/listing", methods=["GET"])
 def get_listing():

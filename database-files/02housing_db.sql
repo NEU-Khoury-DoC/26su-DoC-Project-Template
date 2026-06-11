@@ -212,6 +212,36 @@ INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id
 INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (48,'Spacious Family House in Munich',5,NULL,29,2150,'House','Munich');
 INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (49,'Elegant House in Central Milan',12,NULL,10,2100,'House','Milan');
 INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (50,'Modern Studio Apartment in Warsaw',20,NULL,34,2750,'Studio Apartment','Warsaw');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (71,'Modern Apartment in Central Nicosia',13,NULL,9,1200,'Apartment','Nicosia');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (72,'Cosy Studio in Central Ljubljana',23,NULL,14,950,'Studio Apartment','Ljubljana');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (73,'Bright Apartment in Central Valletta',28,NULL,15,1100,'Apartment','Valletta');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (74,'Spacious House in Central Dublin',7,NULL,21,1800,'House','Dublin');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (75,'Modern Studio in Central Bratislava',24,NULL,23,850,'Studio Apartment','Bratislava');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (76,'Charming Apartment in Central Helsinki',11,NULL,25,1600,'Apartment','Helsinki');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (77,'Affordable House in Central Zagreb',33,NULL,27,900,'House','Zagreb');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (78,'Spacious Studio in Central Brussels',1,NULL,29,1700,'Studio Apartment','Brussels');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (79,'Modern Townhouse in Central Berlin',5,NULL,31,2000,'Townhouse','Berlin');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (80,'Bright House in Central Madrid',9,NULL,33,1500,'House','Madrid');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (81,'Cosy Apartment in Central Stockholm',26,NULL,35,2000,'Apartment','Stockholm');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (82,'Modern Studio in Central Copenhagen',4,NULL,37,1600,'Studio Apartment','Copenhagen');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (83,'Spacious Apartment in Central Vienna',19,NULL,39,1800,'Apartment','Vienna');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (84,'Charming House in Central Lisbon',21,NULL,41,1500,'House','Lisbon');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (85,'Bright Townhouse in Central Bucharest',22,NULL,43,700,'Townhouse','Bucharest');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (86,'Modern Apartment in Central Luxembourg',16,NULL,45,2100,'Apartment','Luxembourg City');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (87,'Cosy Studio in Central Amsterdam',18,NULL,47,1700,'Studio Apartment','Amsterdam');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (88,'Spacious House in Central Warsaw',20,NULL,49,1000,'House','Warsaw');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (89,'Modern Apartment in Central Tallinn',6,NULL,50,1050,'Apartment','Tallinn');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (90,'Bright Studio in Central Vilnius',15,NULL,9,900,'Studio Apartment','Vilnius');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (91,'Charming Townhouse in Central Riga',14,NULL,14,1000,'Townhouse','Riga');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (92,'Spacious Apartment in Central Athens',8,NULL,15,1100,'Apartment','Athens');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (93,'Modern House in Central Sofia',2,NULL,21,800,'House','Sofia');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (94,'Affordable Studio in Central Budapest',17,NULL,23,750,'Studio Apartment','Budapest');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (95,'Bright Apartment in Central Milan',12,NULL,25,1900,'Apartment','Milan');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (96,'Cosy House in Central Paris',10,NULL,27,2400,'House','Paris');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (97,'Modern Studio in Central Prague',3,NULL,29,1300,'Studio Apartment','Prague');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (98,'Spacious Townhouse in Central Bratislava',24,NULL,31,900,'Townhouse','Bratislava');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (99,'Charming Apartment in Central Ljubljana',23,NULL,33,950,'Apartment','Ljubljana');
+INSERT INTO listing(listing_id,title,country_id,associated_university_id,user_id,price,property_type,city_name) VALUES (100,'Modern House in Central Nicosia',13,NULL,35,1200,'House','Nicosia');
 
 
 INSERT INTO reviews(review_id,listing_id,rating,comment) VALUES ('1','3','5','Breathtaking view from every window');
