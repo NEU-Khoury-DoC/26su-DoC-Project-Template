@@ -2,7 +2,7 @@ import streamlit as st
 from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide', page_title="About FarmCast")
-SideBarLinks()
+SideBarLinks(show_home=True)
 
 st.title("About FarmCast")
 st.divider()
