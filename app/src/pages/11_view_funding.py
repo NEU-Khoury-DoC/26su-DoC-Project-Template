@@ -43,7 +43,21 @@ try:
             if selected_agency != "All":
                 df = df[df["Agency"] == selected_agency]
 
-            st.dataframe(df, use_container_width=True, hide_index=True)
+            st.dataframe(
+                df,
+                column_config = {
+                    "Amount (€)": st.column_config.NumberColumn(
+                        "Amount (€)",
+                        format = "€ %,.2f",
+                    ),
+                    "Year": st.column_config.NumberColumn(
+                        "Year",
+                        format = "%d",
+                    ),
+                },
+                use_container_width = True,
+                hide_index = True
+            )
         else:
             st.info("No funding data.")
     else:

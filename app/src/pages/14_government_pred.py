@@ -15,7 +15,7 @@ st.title("Housing Deprivation Rate Predictor")
 SideBarLinks()
 st.write("Set your comfortability levels with these housing conditions to see your predicted life satisfaction score in different countries across Europe.")
 st.divider()
-'''
+
 RAW_RANGES = {
     'crime_rate':     (0.0,  37.3),
     'noise_rate':     (3.2,  55.9),
@@ -178,5 +178,5 @@ if st.button("Predict", type="primary", use_container_width=True):
         st.error("Could not connect to the backend. Make sure the Flask server is running on port 4000.")
     except Exception as e:
         st.error(f"Something went wrong: {e}")
-'''
+
         
