@@ -19,6 +19,12 @@ css = """
 }
 .stat-card h3 { margin: 6px 0 8px 0; font-weight: 600; }
 .stat-card p { font-size: 20px; margin: 0; }
+
+.scrollable-panel {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
 </style>
 """
 
@@ -64,10 +70,27 @@ with crop_distrib:
         crop_counts = response.json()
 
         if crop_counts:
-            chart_data = pd.DataFrame(crop_counts)
-            chart_data = chart_data.rename(columns={"type_of_crop": "Crop", "count": "Count"})
-            st.bar_chart(chart_data.set_index("Crop")["Count"], use_container_width=True)
+            chart_data_crop = pd.DataFrame(crop_counts)
+            chart_data_crop = chart_data_crop.rename(columns={"type_of_crop": "Crop", "count": "Count"})
+            st.bar_chart(chart_data_crop.set_index("Crop")["Count"], use_container_width=True)
         else:
             st.info("No crop observations found yet.")
     except:
         st.error("Failed to load crop distribution")
+        
+with side_panel:
+    st.markdown("<div class='scrollable-panel'>", unsafe_allow_html=True)
+    try:
+        response = requests.get(f"{API_BASE}/user_growing/count-by-farm", timeout=5)
+        response.raise_for_status()
+        farm_counts = response.json()
+        
+        if farm_counts:
+            chart_data_farm = pd.DataFrame(farm_counts)
+            chart_data_farm = chart_data_farm.rename(columns={"farm_id": "Farm", "count": "Count"})
+            st.bar_chart(chart_data_farm.set_index("Farm")["Count"], use_container_width=True, horizontal=True)
+        else:
+            st.info("No crop observations found yet.")
+    except:
+        st.error("Failed to load crop distribution")
+    st.markdown("</div>", unsafe_allow_html=True)
