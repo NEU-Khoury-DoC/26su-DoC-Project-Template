@@ -24,12 +24,7 @@ def farmer_home():
     
 def farmer_info():
     st.sidebar.page_link(
-        "pages/02_Farm_Info.py", label="Farm Information", icon="🏡"
-    )
-    
-def all_farms():
-    st.sidebar.page_link(
-        "pages/03_All_Farms.py", label="All Farms", icon="🚜"
+        "pages/02_Farm_Info.py", label="Farm Management", icon="🏡"
     )
     
 def crop_prediction():
@@ -51,12 +46,12 @@ def policy_home():
     
 def policy_map():
     st.sidebar.page_link(
-        "pages/12_Policy_Map.py", label="Crop Map", icon="🗺️"
+        "pages/12_Policy_Map.py", label="Crop Price Map", icon="🗺️"
     )
     
 def policy_compare():
     st.sidebar.page_link(
-        "pages/13_Policy_Compare.py", label="Compare Farms", icon="🚜"
+        "pages/13_Policy_Compare.py", label="Compare Farm Prices", icon="🚜"
     )
     
 def policy_report():
@@ -108,6 +103,25 @@ def SideBarLinks(show_home=False):
     The role is stored in st.session_state when the user logs in on Home.py.
     """
 
+    # App-wide button polish: rounded corners + subtle hover lift.
+    # Purely cosmetic — injected here because SideBarLinks() runs on every page.
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.15s ease-in-out;
+        }
+        div.stButton > button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     # Logo appears at the top of the sidebar on every page
     st.sidebar.image("assets/logo.png", width=150)
 
@@ -124,7 +138,6 @@ def SideBarLinks(show_home=False):
         if st.session_state["role"] == "farmer":
             farmer_home()
             farmer_info()
-            all_farms()
             crop_prediction()
             farmer_blog()
 

@@ -1,22 +1,67 @@
 import streamlit as st
 from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide')
-
+st.set_page_config(layout='wide', page_title="About FarmCast")
 SideBarLinks()
 
-st.write("# About this App")
+st.title("About FarmCast")
+st.divider()
 
-st.markdown(
-    """
-    This is a demo app for Data and Software in International Government and Politics Dialogue 2025 Project Course.  
+# What is FarmCast
+st.markdown("## What is FarmCast?")
+st.write("""
+YOUR DESCRIPTION HERE
+""")
 
-    The goal of this demo is to provide information on the tech stack 
-    being used as well as demo some of the features of the various platforms. 
+st.divider()
 
-    Stay tuned for more information and features to come!
-    """
-)
+# Team
+st.markdown("## Meet the Team")
+
+r1, r2= st.columns(2)
+
+with r1:
+    st.image("assets/headshots/headshot.jpg", width=300)
+    st.markdown("**NICOLE STEKOL**")
+    st.write("Short bio or description here.")
+
+with r2:
+  #  st.image("assets/team2.png", width=150)
+    st.markdown("**LAURYN GONG**")
+    st.write("Short bio or description here.")
+
+
+r3, r4= st.columns(2)
+
+with r3:
+   # st.image("assets/team3.png", width=150)
+    st.markdown("**ELISE WIZEMANN**")
+    st.write("Short bio or description here.")
+
+with r4:
+ #   st.image("assets/team4.png", width=150)
+    st.markdown("**MINJU SUNG**")
+    st.write("Short bio or description here.")
+
+st.divider()
+
+# Data sources
+st.markdown("## Data Sources")
+
+ds1, ds2 = st.columns(2)
+
+with ds1:
+    st.markdown("#### 📊 Eurostat")
+    st.write("YOUR EUROSTAT DESCRIPTION HERE")
+    st.markdown("[eurostat.ec.europa.eu](https://ec.europa.eu/eurostat)")
+
+with ds2:
+    st.markdown("#### 🌤 Open-Meteo")
+    st.write("YOUR OPEN-METEO DESCRIPTION HERE")
+    st.markdown("[open-meteo.com](https://open-meteo.com)")
+
+st.divider()
+st.caption("FarmCast — Built as part of a data systems course.")
 
 # Add a button to return to home page
 if st.button("Return to Home", type="primary"):

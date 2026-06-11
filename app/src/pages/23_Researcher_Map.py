@@ -105,11 +105,11 @@ with col1:
         default="Crop type",
     )
 with col2:
-    season = st.selectbox(
-    "Season",
-    ("All", "Kharif (Spring)", "Zaid (Summer)", "Rabi (Winter)"),
-    index=0,
-)
+    season = st.pills(
+        "Season",
+        ["All", "Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)"],
+        default="All",
+    )
 
 # Load data — handle empty result gracefully
 try:

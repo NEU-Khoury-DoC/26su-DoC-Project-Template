@@ -129,7 +129,7 @@ def get_user_growing_count_by_farm():
 @user_growing_bp.route("/map-data", methods=["GET"])
 def get_map_data():
     current_app.logger.info('GET /user_growing/map-data')
-    season = request.args.get("season")   # e.g. ?season=Kharif
+    season = request.args.get("season")   # e.g. ?season=Monsoon (Kharif)
     crop   = request.args.get("crop")     # e.g. ?crop=Cereals
 
     where_clauses = []
