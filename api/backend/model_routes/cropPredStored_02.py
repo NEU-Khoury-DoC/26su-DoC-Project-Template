@@ -25,6 +25,8 @@ def get_preds():
                     sp.predicted_crop,
                     sp.created_at
                 FROM saved_crop_preds sp
+                LEFT JOIN users u
+                    ON u.user_id=sp.farmer_id
                 ORDER BY sp.created_at DESC
         """
         with get_db().cursor(dictionary=True) as cursor:
@@ -44,31 +46,46 @@ def save_pred():
     data = request.get_json()
 
     required = ["farmer_id", "type_of_crop", "sown",
-                "harvested", "water_source", "predicted_crop"]
+                "harvested", "water_source"]
     missing = [f for f in required if f not in data]
     if missing:
         return error_response(f"Missing required fields: {missing}", 400)
 
+    # accept either a single crop ("predicted_crop") or a list ("predicted_crops")
+    crops = data.get("predicted_crops")
+    if crops is None:
+        single = data.get("predicted_crop")
+        crops = [single] if single is not None else []
+    if not isinstance(crops, list):
+        crops = [crops]
+    if not crops:
+        return error_response("Missing required fields: ['predicted_crop(s)']", 400)
+
     try:
         conn = get_db()
         cur = conn.cursor()
-        cur.execute("""
+        # one row per recommended crop
+        rows = [
+            (
+                data["farmer_id"],
+                data["type_of_crop"],
+                data["sown"],
+                data["harvested"],
+                data["water_source"],
+                crop,
+            )
+            for crop in crops
+        ]
+        cur.executemany("""
             INSERT INTO saved_crop_preds
                 (farmer_id, type_of_crop, sown, harvested,
                  water_source, predicted_crop)
             VALUES (%s, %s, %s, %s, %s, %s)
-        """, (
-            data["farmer_id"],
-            data["type_of_crop"],
-            data["sown"],
-            data["harvested"],
-            data["water_source"],
-            data["predicted_crop"],
-        ))
+        """, rows)
         conn.commit()
-        new_id = cur.lastrowid
+        saved = cur.rowcount
         cur.close()
-        return jsonify({"message": "Prediction saved", "pred_id": new_id}), 201
+        return jsonify({"message": "Prediction saved", "saved": saved}), 201
     except Error as e:
         current_app.logger.error(f"DB error: {e}")
         return error_response("Failed to save prediction", 500)

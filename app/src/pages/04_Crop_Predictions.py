@@ -1,9 +1,21 @@
 import logging
 logger = logging.getLogger(__name__)
 
+import glob
+import os
+
 import requests
 import streamlit as st
 from modules.nav import SideBarLinks
+
+# crop images live in app/src/assets/crops/ with mixed extensions (.jpeg/.jpg/.webp)
+CROP_IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets", "crops")
+
+
+def crop_image_path(crop: str) -> str | None:
+    """Return the on-disk path of a crop's image regardless of extension, or None."""
+    matches = glob.glob(os.path.join(CROP_IMG_DIR, f"{crop}_img.*"))
+    return matches[0] if matches else None
 
 st.set_page_config(layout='wide')
 
@@ -51,12 +63,12 @@ with tab1:
             preds = result['predictions']
 
             st.session_state['last_pred']={
-                "farmer_id": user_id,          
+                "farmer_id": user_id,
                 "type_of_crop": type_of_crop,
                 "sown": sown.isoformat(),
                 "harvested": harvested.isoformat(),
                 "water_source": water_source,
-                "predicted_crop": preds[0],        
+                "predicted_crops": preds, 
             } #save pred
 
             st.success('Prediction complete!')
@@ -69,6 +81,11 @@ with tab1:
             st.write('### Recommended crops (most likely first)')
             for rank, crop in enumerate(preds, start=1):
                 st.write(f'{rank}. {crop}')
+                img_path = crop_image_path(crop)
+                if img_path:
+                    st.image(img_path, caption=f'image of {crop}', width=200)
+                else:
+                    st.caption(f'(no image available for {crop})')
 
 
         except Exception as e:
@@ -79,7 +96,8 @@ with tab1:
         if st.button("Save Prediction"):
             r=requests.post('http://web-api:4000/pred/pred',json=st.session_state['last_pred'])
             if r.status_code==201:
-                st.success("Saved!")
+                saved = r.json().get("saved", 1)
+                st.success(f"Saved {saved} prediction record(s)!")
             else:
                 st.error(f"Save failed: {r.text}")
 
@@ -100,9 +118,37 @@ with tab2:
         if user_id is not None:
             rows = [row for row in rows if row.get('farmer_id') == user_id]
 
-        if rows:
-            st.dataframe(rows, use_container_width=True)
-        else:
+        if not rows:
             st.info("No saved predictions yet. Make a prediction in the first tab and click Save.")
+        else:
+            # filter controls (built from this farmer's saved rows; empty = show all)
+            def sorted_unique(field):
+                return sorted({row[field] for row in rows if row.get(field) is not None})
+
+            f1, f2, f3 = st.columns(3)
+            with f1:
+                crop_filter = st.multiselect("Predicted crop", sorted_unique("predicted_crop"))
+            with f2:
+                type_filter = st.multiselect("Crop category", sorted_unique("type_of_crop"))
+            with f3:
+                water_filter = st.multiselect("Water source", sorted_unique("water_source"))
+
+            filtered = [
+                row for row in rows
+                if (not crop_filter or row.get("predicted_crop") in crop_filter)
+                and (not type_filter or row.get("type_of_crop") in type_filter)
+                and (not water_filter or row.get("water_source") in water_filter)
+            ]
+
+            # farmer_id is only used for filtering above; pred_id is internal too.
+            # don't show either in the table
+            for row in filtered:
+                row.pop('farmer_id', None)
+                row.pop('pred_id', None)
+
+            if filtered:
+                st.dataframe(filtered, use_container_width=True)
+            else:
+                st.info("No saved predictions match the selected filters.")
     except Exception as e:
         st.error(f"Could not load saved predictions: {e}")
