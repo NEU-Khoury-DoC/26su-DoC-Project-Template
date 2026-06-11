@@ -18,7 +18,7 @@ API_BASE = "http://web-api:4000"
 def load_map_data(season: str) -> pd.DataFrame:
     params = {}
     if season != "All":
-        params["season"] = season.split(' ')[0]
+        params["season"] = season
     r = requests.get(f"{API_BASE}/user_growing/map-data", params=params)
     r.raise_for_status()
     return pd.DataFrame(r.json())
@@ -106,10 +106,10 @@ with col1:
     )
 with col2:
     season = st.pills(
-        "Season",
-        ["All", "Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)"],
-        default="All",
-    )
+            "Season",
+            ["All", "Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)"],
+            default="All",
+        )
 
 # Load data — handle empty result gracefully
 try:
