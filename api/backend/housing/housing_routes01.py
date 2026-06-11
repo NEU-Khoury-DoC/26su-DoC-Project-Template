@@ -3,7 +3,7 @@ from backend.db_connection import get_db
 from backend.utils import error_response
 from mysql.connector import Error
 import requests
-from backend.ml_models.student_linreg import train, test, predict
+from student_linreg import train, test, predict
 
 # Variable name includes the domain (ngo_bp) so it stays readable when
 # imported alongside other blueprints (e.g. `from ... import ngo_bp, donor_bp`).
