@@ -52,12 +52,41 @@ def load_growing_data(farm_id):
 
 @st.dialog("Add a new farm")
 def dialog_add_farm(user_id):
-    st.write("Fill in the details for your new farm and its first location.")
+    st.write("Fill in the details for your new farm and its location.")
     farm_name = st.text_input("Farm name")
-    st.markdown("**First location**")
-    country   = st.text_input("Country")
-    lat       = st.number_input("Latitude",  value=0.0, format="%.6f")
-    lon       = st.number_input("Longitude", value=0.0, format="%.6f")
+    st.markdown("**Location**")
+    address = st.text_input("Address *", placeholder="e.g. Hauptstraße 5, Linz")
+    missing = []
+    if not address.strip():  missing.append("Address")
+    country = st.selectbox(
+    "Country *",
+    ['Austria', 'Belgium', 'Bulgaria', 'Croatia',
+     'Cyprus', 'Czechia', 'Denmark', 'Estonia',
+     'Finland', 'Germany', 'Greece', 'Hungary',
+     'Ireland', 'Italy', 'Latvia', 'Lithuania',
+     'Luxembourg', 'Netherlands', 'Poland',
+     'Portugal', 'Romania', 'Slovakia', 'Slovenia',
+     'Spain', 'Sweden'],
+    index=0
+)
+    if missing:
+        st.error(f"Please fill in: {', '.join(missing)}")
+    else:
+        with st.spinner("Finding your location..."):
+            try:
+                geolocator = Nominatim(user_agent="farmcast")
+                location = geolocator.geocode(f"{address}, {country}")
+
+                if location is None:
+                    st.error("Could not find that address. Try being more specific — include street, town and country.")
+                else:
+                    lat = location.latitude
+                    lon = location.longitude
+
+                    st.success(f"Found: {location.address}")
+                    st.map({"lat": [lat], "lon": [lon]})
+            except Exception as e:
+                    st.error(f"Error: {e}")
 
     col1, col2 = st.columns(2)
     with col1:
