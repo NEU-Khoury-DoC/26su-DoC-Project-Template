@@ -24,7 +24,7 @@ with st.container(border=True):
     uni_res2 = requests.get("http://web-api:4000/housing/university", params={"limit":1000})
     uni_list = uni_res2.json() if uni_res2.status_code == 200 else []
     uni_options = {c["university_name"]: c["university_id"] for c in uni_list}
-    selected_uni = st.selectbox("University", list(uni_options.keys()), key="associated_uni")
+    selected_uni = st.selectbox("University", ["None"] + list(uni_options.keys()), key="associated_uni")
 
     price = st.slider("Price/Month (€)", min_value=0, max_value=3000, value=1500, step=50)
 
@@ -40,7 +40,7 @@ with st.container(border=True):
                     "title": title,
                     "country_id": country_options[selected_country],
                     "price": price,
-                    "associated_university_id": uni_options[selected_uni],
+                    "associated_university_id": uni_options.get(selected_uni) if selected_uni != "None" else None,
                     "property_type": property_type,
                     "city_name": city
                 }
@@ -118,7 +118,7 @@ for listing in my_listings:
             with col22:
                 if st.button("Delete", key = f"delete_{listing_id}", type = "secondary"):
                     try:
-                        res = requests.delete(f"{BASE}/funding-draft/{listing_id}")
+                        res = requests.delete(f"{BASE}/listing/{listing_id}")
                         if res.status_code == 200:
                             st.success("Draft deleted.")
                             st.rerun()
@@ -154,14 +154,10 @@ for listing in my_listings:
                         uni_res2 = requests.get("http://web-api:4000/housing/university", params={"limit":1000})
                         uni_list = uni_res2.json() if uni_res2.status_code == 200 else []
                         uni_options = {c["university_name"]: c["university_id"] for c in uni_list}
-
-                        uni_keys = list(uni_options.keys())
-                        if listing['university_name']:
-                            uni_index = uni_keys.index(listing["university_name"]) if listing["university_name"] in uni_keys else 0
-                            selected_uni = st.selectbox("University", options=uni_keys, index=uni_index, key=f"associated_uni_{listing_id}")
-                        else:
-                            uni_index = None
-                            selected_uni = st.selectbox("University", options=uni_keys,index=uni_index, key=f"associated_uni_{listing_id}")
+                        uni_keys = ["None"] + list(uni_options.keys())
+                        current_uni = listing.get("university_name")
+                        uni_index = uni_keys.index(current_uni) if current_uni and current_uni in uni_keys else 0
+                        selected_uni = st.selectbox("University", uni_keys, index=uni_index, key=f"associated_uni_{listing_id}")
                             
 
                         price = st.slider("Price/Month (€)", min_value=0, max_value=3000, value=listing["price"], step=50, key=f"price_{listing_id}")
@@ -188,7 +184,7 @@ for listing in my_listings:
                                 "city_name": city
                             }
 
-                            res = requests.put(f"{BASE}/funding-draft/{listing_id}", json = payload)
+                            res = requests.put(f"{BASE}/listing/{listing_id}", json = payload)
                             if res.status_code == 200:
                                 st.success("Listing updated.")
                                 st.session_state[f"editing_{listing_id}"] = False
@@ -230,7 +226,7 @@ for listing in my_listings:
             with col22:
                 if st.button("Delete", key = f"delete_{listing_id}", type = "secondary"):
                     try:
-                        res = requests.delete(f"{BASE}/funding-draft/{listing_id}")
+                        res = requests.delete(f"{BASE}/listing/{listing_id}")
                         if res.status_code == 200:
                             st.success("Draft deleted.")
                             st.rerun()
@@ -250,8 +246,6 @@ for listing in my_listings:
                     with st.form(key = f"form_{listing_id}"):
                         title = st.text_input("Listing Title", value=listing["title"])
                         city = st.text_input('City', value=listing["city_name"])
-
-
                         
                         countries_res2 = requests.get("http://web-api:4000/housing/country")
                         country_list = countries_res2.json() if countries_res2.status_code == 200 else []
@@ -266,18 +260,12 @@ for listing in my_listings:
                         uni_res2 = requests.get("http://web-api:4000/housing/university", params={"limit":1000})
                         uni_list = uni_res2.json() if uni_res2.status_code == 200 else []
                         uni_options = {c["university_name"]: c["university_id"] for c in uni_list}
-
-                        uni_keys = list(uni_options.keys())
-                        if listing['university_name']:
-                            uni_index = uni_keys.index(listing["university_name"]) if listing["university_name"] in uni_keys else 0
-                            selected_uni = st.selectbox("University", options=uni_keys, index=uni_index, key=f"associated_uni_{listing_id}")
-                        else:
-                            uni_index = None
-                            selected_uni = st.selectbox("University", options=uni_keys,index=uni_index, key=f"associated_uni_{listing_id}")
-                            
+                        uni_keys = ["None"] + list(uni_options.keys())
+                        current_uni = listing.get("university_name")
+                        uni_index = uni_keys.index(current_uni) if current_uni and current_uni in uni_keys else 0
+                        selected_uni = st.selectbox("University", uni_keys, index=uni_index, key=f"associated_uni_{listing_id}")
 
                         price = st.slider("Price/Month (€)", min_value=0, max_value=3000, value=listing["price"], step=50, key=f"price_{listing_id}")
-
 
                         property_options = ['Townhouse', 'Studio Apartment', 'Apartment', 'House']
                         property_index = property_options.index(listing["property_type"]) if listing["property_type"] in property_options else 0
@@ -295,12 +283,12 @@ for listing in my_listings:
                                 "title": title,
                                 "country_id": country_options[selected_country],
                                 "price": price,
-                                "associated_university_id": uni_options[selected_uni],
+                                "associated_university_id": uni_options.get(selected_uni) if selected_uni != "None" else None,
                                 "property_type": property_type,
                                 "city_name": city
                             }
 
-                            res = requests.put(f"{BASE}/funding-draft/{listing_id}", json = payload)
+                            res = requests.put(f"{BASE}/listing/{listing_id}", json = payload)
                             if res.status_code == 200:
                                 st.success("Listing updated.")
                                 st.session_state[f"editing_{listing_id}"] = False
