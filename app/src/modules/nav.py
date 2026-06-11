@@ -24,7 +24,7 @@ def farmer_home():
     
 def farmer_info():
     st.sidebar.page_link(
-        "pages/02_Farm_Info.py", label="Farm Information", icon="🏡"
+        "pages/02_Farm_Info.py", label="Farm Management", icon="🏡"
     )
     
 def crop_prediction():
@@ -85,9 +85,6 @@ def researcher_conditions():
     
 def researcher_trends():
     st.sidebar.page_link("pages/25_Researcher_Trends.py", label="Explore Trends", icon="📈")
-
-def researcher_report():
-    st.sidebar.page_link("pages/26_Researcher_Report.py", label="Generate Reports", icon="📝")
 
 def researcher_data_export():
     st.sidebar.page_link("pages/27_Researcher_Data_Export.py", label="Data Export", icon="🖥️")
@@ -159,7 +156,6 @@ def SideBarLinks(show_home=False):
             researcher_conditions()
             researcher_trends()
             researcher_compare()
-            researcher_report()
             researcher_data_export()
             researcher_blog()
 
