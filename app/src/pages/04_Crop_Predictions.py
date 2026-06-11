@@ -33,21 +33,60 @@ tab1, tab2 = st.tabs(["Predict", "Saved Predictions"])
 with tab1:
     st.subheader("Recommend crop to plant")
     st.write("Select available farming resources and environmental conditions.")
+    st.caption("Note on N, P, K for soil: If a fertilizer bag says 10-15-10, it means it contains 10% Nitrogen, 15% Phosphorus, and 10% Potassium. " \
+    "Plants need different ratios depending on what they do.")
 
     user_id = st.session_state.get('user_id')
-    type_of_crop = st.selectbox('Crop Category', ['Root&tuber', 'bulbvegetables', 'cereals', 'colecrops', 'fibre crop', 'millets', 'oil seeds', 'pulses', 'sugar crops', 'vegetables'])
+    type_of_crop = st.selectbox(
+        'Crop Category',
+        ['Root&tuber', 'bulbvegetables', 'cereals', 'colecrops', 'fibre crop', 'millets', 'oil seeds', 'pulses', 'sugar crops', 'vegetables'],
+        help='The broad category of crop you intend to grow. The model uses this to narrow recommendations to crops within the chosen group.'
+    )
     season_labels = {'Zaid': 'Summer (Zaid)', 'kharif': 'Monsoon (Kharif)', 'rabi': 'Winter (Rabi)'}
-    season = st.selectbox('Season', ['Zaid', 'kharif', 'rabi'], format_func=lambda s: season_labels[s])
-    water_source = st.selectbox('Water Source', ['irrigated', 'rainfed'])
-    sown = st.date_input('Sowing Date')
-    harvested = st.date_input('Harvest Date')
-    crop_duration = st.slider('Crop Duration (days)', min_value=0, max_value=150, value=100, step=1)
-    temperature = st.slider('Average Temperature (°C)', min_value=0.0, max_value=40.0, value=25.0, step=0.5)
-    water_required = st.slider('Water Required (mm)', min_value=0, max_value=2500, value=800, step=10)
-    relative_humidity = st.slider('Relative Humidity (%)', min_value=0.0, max_value=80.0, value=60.0, step=1.0)
-    N = st.slider('Soil Nitrogen (N)', min_value=0.0, max_value=100.0, value=50.0, step=1.0)
-    P = st.slider('Soil Phosphorus (P)', min_value=0.0, max_value=60.0, value=30.0, step=1.0)
-    K = st.slider('Soil Potassium (K)', min_value=0.0, max_value=60.0, value=30.0, step=1.0)
+    season = st.selectbox(
+        'Season', ['Zaid', 'kharif', 'rabi'], format_func=lambda s: season_labels[s],
+        help='The growing season: Zaid (summer), Kharif (monsoon/rainy), or Rabi (winter). Different crops thrive in different seasons.'
+    )
+    water_source = st.selectbox(
+        'Water Source', ['irrigated', 'rainfed'],
+        help='How the field gets its water: "irrigated" (supplied via canals/wells/pumps) or "rainfed" (relies on natural rainfall).'
+    )
+    sown = st.date_input(
+        'Sowing Date',
+        help='The date you plan to plant the seeds. Only the month is sent to the model.'
+    )
+    harvested = st.date_input(
+        'Harvest Date',
+        help='The date you expect to harvest the crop. Only the month is sent to the model.'
+    )
+    crop_duration = st.slider(
+        'Crop Duration (days)', min_value=0, max_value=150, value=100, step=1,
+        help='Number of days from sowing to harvest. Helps match crops with a similar growing cycle.'
+    )
+    temperature = st.slider(
+        'Average Temperature (°C)', min_value=0.0, max_value=40.0, value=25.0, step=0.5,
+        help='The average air temperature expected during the growing period, in degrees Celsius.'
+    )
+    water_required = st.slider(
+        'Water Required (mm)', min_value=0, max_value=2500, value=800, step=10,
+        help='Total water the crop needs over its full growth cycle, measured in millimetres.'
+    )
+    relative_humidity = st.slider(
+        'Relative Humidity (%)', min_value=0.0, max_value=80.0, value=60.0, step=1.0,
+        help='Average air moisture during the growing period, as a percentage. Higher values mean more humid conditions.'
+    )
+    N = st.slider(
+        'Soil Nitrogen (N)', min_value=0.0, max_value=100.0, value=50.0, step=1.0,
+        help='Nitrogen content of the soil. Nitrogen drives leaf and stem growth.'
+    )
+    P = st.slider(
+        'Soil Phosphorus (P)', min_value=0.0, max_value=60.0, value=30.0, step=1.0,
+        help='Phosphorus content of the soil. Phosphorus supports root development and flowering.'
+    )
+    K = st.slider(
+        'Soil Potassium (K)', min_value=0.0, max_value=60.0, value=30.0, step=1.0,
+        help='Potassium content of the soil. Potassium supports overall plant health and disease resistance.'
+    )
 
     if st.button('Predict'):
         logger.info(f'Prediction request- crop category: {type_of_crop}, season: {season}')
