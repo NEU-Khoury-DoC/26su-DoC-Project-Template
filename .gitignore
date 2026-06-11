@@ -4,6 +4,7 @@ __pycache__
 secrets/
 .env
 .env.local
+
 */logs/*
 .vscode/
 
@@ -24,4 +25,4 @@ conda-env/
 *.egg-info/
 dist/
 build/
-.Python
+.Python.claude/

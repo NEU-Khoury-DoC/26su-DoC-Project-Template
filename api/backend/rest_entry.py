@@ -4,9 +4,12 @@ import os
 import logging
 
 from backend.db_connection import init_app as init_db
-from backend.simple.simple_routes import simple_routes
-from backend.ngos.ngo_routes import ngo_bp
-
+from backend.routes.news_routes import news_bp
+from backend.routes.user_routes import user_bp
+from backend.routes.household_routes import household_bp
+from backend.routes.saved_articles_routes import saved_articles_bp
+from backend.routes.storage_routes import storage_bp
+from backend.routes.electricty_price_routes import electricty_price_bp
 
 def create_app():
     app = Flask(__name__)
@@ -35,9 +38,12 @@ def create_app():
 
     # Register the routes from each Blueprint with the app object
     # and give a url prefix to each.
-    # simple_routes has no prefix intentionally — it serves root-level demo routes (/, /playlist, etc.)
     app.logger.info("create_app(): registering blueprints")
-    app.register_blueprint(simple_routes)
-    app.register_blueprint(ngo_bp, url_prefix="/ngo")
+    app.register_blueprint(news_bp, url_prefix="/news")
+    app.register_blueprint(user_bp)
+    app.register_blueprint(household_bp)
+    app.register_blueprint(saved_articles_bp)
+    app.register_blueprint(storage_bp)
+    app.register_blueprint(electricty_price_bp, url_prefix="/ml1")
 
     return app
