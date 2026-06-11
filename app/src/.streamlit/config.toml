@@ -15,9 +15,11 @@ showSidebarNavigation = false
 [theme]
 # Setting some basic config options related to the theme of the app
 base="light"
-primaryColor="#63b064"
-secondaryBackgroundColor = "#F1F8E9"
-font="monospace"
+primaryColor="#2e7d32"            # buttons, sliders, links, focus highlights (farm green)
+backgroundColor="#FBF3DA"         # main page background
+secondaryBackgroundColor="#DBEDD4" # sidebar + widget backgrounds (soft green tint)
+textColor="#1b2e1b"               # body text (dark green-gray)
+font="sans serif"
 
 [server]
 runOnSave = true
