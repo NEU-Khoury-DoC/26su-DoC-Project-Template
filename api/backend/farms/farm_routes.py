@@ -17,19 +17,18 @@ def get_all_farms():
                    f.farm_name,
                    f.user_id,
                    u.user_name AS owner_name,
-                   fl.country,
-                   fl.latitude,
-                   fl.longitude,
+                   f.country,
+                   f.latitude,
+                   f.longitude,
                    f.created_at
             FROM farms f
             LEFT JOIN users u ON f.user_id = u.user_id
-            LEFT JOIN farms_location fl ON f.farm_id = fl.farm_id
             WHERE 1=1
         """
         params = []
 
         if country:
-            query += " AND fl.country = %s"
+            query += " AND f.country = %s"
             params.append(country)
 
         query += " ORDER BY f.farm_name"
@@ -55,13 +54,12 @@ def get_farm(farm_id):
                 f.farm_name,
                 f.user_id,
                 u.user_name AS owner_name,
-                fl.country,
-                fl.latitude,
-                fl.longitude,
+                f.country,
+                f.latitude,
+                f.longitude,
                 f.created_at
             FROM farms f
             LEFT JOIN users u ON f.user_id = u.user_id
-            LEFT JOIN farms_location fl ON f.farm_id = fl.farm_id
             WHERE f.farm_id = %s
         """
         with get_db().cursor(dictionary=True, buffered=True) as cursor:
@@ -77,7 +75,7 @@ def get_farm(farm_id):
         return error_response(str(e))
 
 
-# GET: all farms for a user, with locations grouped as a list
+# GET: all farms for a user, 
 @farms_bp.route("/user/<int:user_id>", methods=["GET"])
 def get_farm_by_user(user_id):
     current_app.logger.info(f'GET /farms/user/{user_id}')
@@ -88,43 +86,19 @@ def get_farm_by_user(user_id):
                 f.user_id,
                 u.user_name AS owner_name,
                 f.created_at,
-                fl.farm_data_id,
-                fl.country,
-                fl.latitude,
-                fl.longitude
+                f.country,
+                f.latitude,
+                f.longitude
             FROM farms f
             LEFT JOIN users u ON f.user_id = u.user_id
-            LEFT JOIN farms_location fl ON f.farm_id = fl.farm_id
             WHERE f.user_id = %s
         """
         with get_db().cursor(dictionary=True, buffered=True) as cursor:
             cursor.execute(query, (user_id,))
             rows = cursor.fetchall()
-
             if not rows:
                 return error_response("You do not own any farms!", 404)
-
-            farms_dict = {}
-            for row in rows:
-                fid = row["farm_id"]
-                if fid not in farms_dict:
-                    farms_dict[fid] = {
-                        "farm_id":    row["farm_id"],
-                        "farm_name":  row["farm_name"],
-                        "user_id":    row["user_id"],
-                        "owner_name": row["owner_name"],
-                        "created_at": str(row["created_at"]),
-                        "locations":  []
-                    }
-                if row["farm_data_id"] is not None:
-                    farms_dict[fid]["locations"].append({
-                        "location_id": row["farm_data_id"],
-                        "country":     row["country"],
-                        "latitude":    row["latitude"],
-                        "longitude":   row["longitude"],
-                    })
-
-        return jsonify(list(farms_dict.values())), 200
+        return jsonify(rows), 200
     except Error as e:
         current_app.logger.error(f'Database error in get_farm_by_user: {e}')
         return error_response(str(e))
@@ -148,22 +122,11 @@ def create_farm():
         cur = conn.cursor()
 
         cur.execute("""
-            INSERT INTO farms (farm_name, user_id, created_by)
-            VALUES (%s, %s, %s)
-        """, (data["farm_name"], data["user_id"], data["created_by"]))
+            INSERT INTO farms (farm_name, longitude, latitude, country, user_id, created_by)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """, (data["farm_name"], data["longitude"], data["latitude"],
+            data["country"], data["user_id"], data["created_by"]))
         farm_id = cur.lastrowid
-
-        cur.execute("""
-            INSERT INTO farms_location (farm_id, longitude, latitude, country, created_by)
-            VALUES (%s, %s, %s, %s, %s)
-        """, (
-            farm_id,
-            data["longitude"],
-            data["latitude"],
-            data["country"],
-            data["created_by"],
-        ))
-
         conn.commit()
         cur.close()
         return jsonify({"message": "Farm created", "farm_id": farm_id}), 201
@@ -189,9 +152,10 @@ def update_farm(farm_id):
         cur = conn.cursor()
         cur.execute("""
             UPDATE farms
-            SET farm_name = %s, updated_by = %s
+            SET farm_name = %s, longitude =s%, latitude = s%, 
+            country = s%, updated_by = %s
             WHERE farm_id = %s
-        """, (data["farm_name"], data["updated_by"], farm_id))
+        """, (data["farm_name"], data["longitude"], data["latitude"], data["country"], ["updated_by"], farm_id))
         conn.commit()
         if cur.rowcount == 0:
             cur.close()

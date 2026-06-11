@@ -65,27 +65,15 @@ CREATE TABLE IF NOT EXISTS reactions (
 CREATE TABLE IF NOT EXISTS farms (
     farm_id INT AUTO_INCREMENT PRIMARY KEY,
     farm_name VARCHAR(255),
+    longitude FLOAT,
+    latitude FLOAT,
+    country VARCHAR(50),
     user_id INT,
     created_by VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_by VARCHAR(100) DEFAULT NULL,
     updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS farms_location (
-    farm_data_id INT AUTO_INCREMENT PRIMARY KEY,
-    farm_id INT,
-    longitude FLOAT,
-    latitude FLOAT,
-    country VARCHAR(50),
-    created_by VARCHAR(100) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_by VARCHAR(100) DEFAULT NULL,
-    updated_at DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (farm_id) REFERENCES farms(farm_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
