@@ -28,11 +28,7 @@ def view_listings_nav():
 
 def view_saved_listings_nav():
     st.sidebar.page_link(
-        "pages/001_view_saved_listings.py", label="View Saved Listings", icon="❤️")
-
-def budget_manager_nav():
-    st.sidebar.page_link("pages/02_budget_manager.py", label="Budget Manager", icon="💶")
-
+        "pages/02_view_saved_listings.py", label="View Saved Listings", icon="❤️")
 
 def housing_satisfaction_pred_nav():
     st.sidebar.page_link("pages/04_student_pred.py", label="Housing Satisfaction Predictor", icon="😌")
@@ -104,7 +100,6 @@ def SideBarLinks(show_home=False):
             student_home_nav()
             view_listings_nav()
             view_saved_listings_nav()
-            budget_manager_nav()
             housing_satisfaction_pred_nav()
 
         if st.session_state["role"] == "Real Estate Agent":

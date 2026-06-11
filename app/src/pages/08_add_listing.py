@@ -12,27 +12,32 @@ SideBarLinks()
 
 BASE = "http://web-api:4000/housing"
 
+st.subheader('Add listing')
 with st.container(border=True):
-    title = st.text_input("Listing Title")
-    city = st.text_input('City')
+    title = st.text_input("Listing Title*")
+    city = st.text_input('City*')
 
     countries_res2 = requests.get("http://web-api:4000/housing/country")
     country_list = countries_res2.json() if countries_res2.status_code == 200 else []
     country_options = {c["country_name"]: c["country_id"] for c in country_list}
-    selected_country = st.selectbox("Country", list(country_options.keys()), key="plan_country")
+    selected_country = st.selectbox("Country*", list(country_options.keys()),index=None,
+                                placeholder="Select a country",
+                                key="listing_country")
 
     uni_res2 = requests.get("http://web-api:4000/housing/university", params={"limit":1000})
     uni_list = uni_res2.json() if uni_res2.status_code == 200 else []
     uni_options = {c["university_name"]: c["university_id"] for c in uni_list}
-    selected_uni = st.selectbox("University", ["None"] + list(uni_options.keys()), key="associated_uni")
+    selected_uni = st.selectbox("University (optional)", ["None"] + list(uni_options.keys()),index = 0, key="associated_uni")
 
     price = st.slider("Price/Month (€)", min_value=0, max_value=3000, value=1500, step=50)
 
-    property_type = st.selectbox('Property type', ['Townhouse', 'Studio Apartment', 'Apartment', 'House'])
+    property_type = st.selectbox('Property type*', ['Townhouse', 'Studio Apartment', 'Apartment', 'House'],
+                                index=None,
+                                placeholder="Select property type")
 
     if st.button("Submit Listing", type="primary"):
         if not(title and price and property_type and city):
-            st.warning("Please fill in Program Name and Description.")
+            st.warning("Please fill in all required fields.")
         else:
             try:
                 payload = {
@@ -54,6 +59,7 @@ with st.container(border=True):
 
 
 #Get listings for the current user
+st.subheader('My listings')
 try:
     user_id = st.session_state.get("user_id")
     r = requests.get(f"{BASE}/listing", params = {"user_id": user_id})
@@ -65,7 +71,7 @@ except Exception as e:
 if not my_listings:
     st.info("No listings found.")
 
-for listing in my_listings:
+for listing in reversed(my_listings):
     listing['price'] = int(listing['price'])
     listing_id = listing.get("listing_id")
 
