@@ -46,7 +46,7 @@ def test_model():
         current_app.logger.error(f'Error testing student model: {e}')
         return error_response(str(e))
  
- 
+
 # predict
 @prediction_bp.route("/student/prediction", methods=["POST"])
 def predict_satisfaction():
