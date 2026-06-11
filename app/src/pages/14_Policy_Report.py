@@ -63,17 +63,12 @@ with col3:
 with col4:
     st.write("")
 
-select_all_countries = st.checkbox("Select all countries")
-if select_all_countries:
-    countries = COUNTRIES
-else:
-    countries = st.multiselect("Countries", COUNTRIES, placeholder="Select one or more countries")
 
-select_all_crops = st.checkbox("All crops (optional)")
-if select_all_crops:
-    crops = CROPS
-else:
-    crops = st.multiselect("Crops (optional)", CROPS, placeholder="Select crops if relevant")
+
+countries = st.multiselect("Countries", COUNTRIES, placeholder="Select one or more countries")
+
+
+crops = st.multiselect("Crops (optional)", CROPS, placeholder="Select crops if relevant")
 
 st.divider()
 
@@ -87,6 +82,7 @@ st.divider()
 
 crops_text = ", ".join(crops) if crops else "All crops"
 countries_text = ", ".join(countries) if countries else "None selected"
+
 report_text = build_report_text(
     report_name, policymaker_name, report_date,
     countries_text, crops_text, findings, recommendations
