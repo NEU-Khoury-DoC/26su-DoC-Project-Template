@@ -160,10 +160,9 @@ ranked = df.sort_values("predicted_deprivation", ascending=False).reset_index(dr
 ranked.index += 1
 
 st.dataframe(
-    ranked.rename(columns={
+    ranked.drop(columns=["deprivation_rate"]).rename(columns={
         "geo": "Country",
         "predicted_deprivation": "Predicted deprivation (%)",
-        "deprivation_rate": "Latest measured rate (%)",
         "year": "Data year",
     }),
     use_container_width=True,
