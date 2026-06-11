@@ -104,6 +104,25 @@ def get_user_growing_count_by_crop():
     except Error as e:
         current_app.logger.error(f"DB error: {e}")
         return error_response("Failed to fetch user_growing_data", 500)
+    
+@user_growing_bp.route("/count-by-farm", methods=["GET"])
+def get_user_growing_count_by_farm():
+    current_app.logger.info('GET /user_growing/count-by-crop')
+    try:
+        conn = get_db()
+        cur = conn.cursor(dictionary=True)
+        cur.execute(
+            "SELECT farm_id, COUNT(*) AS count "
+            "FROM user_growing_data "
+            "GROUP BY farm_id "
+            "ORDER BY count DESC, farm_id ASC"
+        )
+        rows = cur.fetchall()
+        cur.close()
+        return jsonify(rows), 200
+    except Error as e:
+        current_app.logger.error(f"DB error: {e}")
+        return error_response("Failed to fetch user_growing_data", 500)
 
 
 # NEW: map join — accepts optional ?season= and ?crop= query params
@@ -129,9 +148,9 @@ def get_map_data():
         SELECT
             f.farm_id,
             f.farm_name,
-            fl.latitude,
-            fl.longitude,
-            fl.country,
+            f.latitude,
+            f.longitude,
+            f.country,
             (
                 SELECT ugd2.type_of_crop
                 FROM user_growing_data ugd2
@@ -146,10 +165,9 @@ def get_map_data():
             AVG(ugd.relative_humidity)  AS avg_humidity,
             COUNT(ugd.user_growing_data_id) AS record_count
         FROM farms f
-        JOIN farms_location fl      ON f.farm_id = fl.farm_id
         LEFT JOIN user_growing_data ugd  ON f.farm_id = ugd.farm_id
         {where_sql}
-        GROUP BY f.farm_id, f.farm_name, fl.latitude, fl.longitude, fl.country
+        GROUP BY f.farm_id, f.farm_name, f.latitude, f.longitude, f.country
     """
 
     try:

@@ -12,8 +12,8 @@ SideBarLinks()
 
 API_BASE = "http://web-api:4000"
 
-st.title("Compare")
-st.write("Compare growing conditions across seasons, crops, water sources, or countries.")
+st.title("Compare Crops")
+st.write("Compare crop growing conditions across seasons, crop types, water sources, or countries.")
 
 CROPS = ['vegetables', 'bulbvegetables', 'colecrops', 'Root&tuber',
          'fibre crop', 'oil seeds', 'pulses', 'millets', 'cereals', 'sugar crops']

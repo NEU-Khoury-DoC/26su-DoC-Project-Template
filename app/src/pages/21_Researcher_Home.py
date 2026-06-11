@@ -17,27 +17,27 @@ if st.button('View Dashboard',
              use_container_width=True):
     st.switch_page('pages/22_Researcher_Dashboard.py')
 
-if st.button('View Map',
+if st.button('View Crop Map',
              type='primary',
              use_container_width=True):
     st.switch_page('pages/23_Researcher_Map.py')
 
-if st.button('View Explore Crop Conditions',
+if st.button('Explore Crop Observation Data',
              type='primary',
              use_container_width=True):
     st.switch_page('pages/24_Researcher_Conditions.py')
 
-if st.button('View Explore Trends',
+if st.button('Explore Crop Trends',
              type='primary',
              use_container_width=True):
     st.switch_page('pages/25_Researcher_Trends.py')
 
-if st.button('View Compare',
+if st.button('Compare Overall Crops',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/31_Researcher_Compare.py')
+    st.switch_page('pages/29_Researcher_Compare.py')
 
-if st.button('View Data Export',
+if st.button('Export Data',
              type='primary',
              use_container_width=True):
     st.switch_page('pages/27_Researcher_Data_Export.py')
