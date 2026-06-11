@@ -5,7 +5,15 @@ import logging
 
 from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
+from backend.prediction.terra_model_routes import terra_model_bp
 from backend.ngos.ngo_routes import ngo_bp
+from backend.countries.country_routes import country_bp
+from backend.climate.climate_routes import climate_bp
+from backend.risk.risk_routes import risk_bp
+from backend.prediction.prediction_routes import prediction_bp
+from backend.views.view_routes import view_bp
+from backend.policy.policy_routes import policy_bp
+from backend.users.user_routes import user_bp
 
 
 def create_app():
@@ -39,5 +47,13 @@ def create_app():
     app.logger.info("create_app(): registering blueprints")
     app.register_blueprint(simple_routes)
     app.register_blueprint(ngo_bp, url_prefix="/ngo")
+    app.register_blueprint(country_bp, url_prefix="/countries")
+    app.register_blueprint(climate_bp)
+    app.register_blueprint(risk_bp)
+    app.register_blueprint(prediction_bp)
+    app.register_blueprint(view_bp)
+    app.register_blueprint(terra_model_bp)
+    app.register_blueprint(policy_bp)
+    app.register_blueprint(user_bp)
 
     return app

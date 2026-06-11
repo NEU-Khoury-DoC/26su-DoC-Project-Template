@@ -3,6 +3,7 @@
 # This file has functions to add links to the left sidebar based on the user's role.
 
 import streamlit as st
+from pathlib import Path
 
 
 # ---- General ----------------------------------------------------------------
@@ -12,58 +13,113 @@ def home_nav():
 
 
 def about_page_nav():
-    st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
+    st.sidebar.page_link("pages/30_About.py", label="About TERRA", icon="🧠")
 
 
-# ---- Role: pol_strat_advisor ------------------------------------------------
+# ---- Role: pol_analyst ------------------------------------------------
 
-def pol_strat_home_nav():
+def policy_analyst_home_nav():
+    name = st.session_state.get('display_name', st.session_state.get('first_name', 'Home'))
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Policy_Analyst_Home.py", label=f"{name} — Home", icon="🏠"
     )
 
 
-def world_bank_viz_nav():
+def compare_countries_nav():
     st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
+        "pages/03_Compare_Countries.py", label="Compare Countries", icon="📊"
     )
-
-
-def map_demo_nav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
-
-
-# ---- Role: usaid_worker -----------------------------------------------------
-
-def usaid_worker_home_nav():
-    st.sidebar.page_link(
-        "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
-    )
-
-
-def ngo_directory_nav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="📁")
-
-
-def add_ngo_nav():
-    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
-
-
-def prediction_nav():
-    st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
-    )
-
-
-def api_test_nav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
 
 
 def classification_nav():
     st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
+        "pages/13_Classification.py", label="Risk Classification", icon="🗺️"
     )
 
+
+def prediction_nav():
+    st.sidebar.page_link(
+        "pages/11_Prediction.py", label="Prediction Model", icon="📈"
+    )
+
+
+def export_reports_nav():
+    st.sidebar.page_link(
+        "pages/04_Export_Reports.py", label="Export / Reports", icon="⬇"
+    )
+
+def saved_views_nav():
+    st.sidebar.page_link(
+        "pages/10_Saved_Views.py", label="Saved Views", icon="💾"
+    )
+
+
+
+# ---- Role: humanitarian_coordinator -----------------------------------------------------
+
+def humanitarian_coordinator_home_nav():
+    name = st.session_state.get('display_name', st.session_state.get('first_name', 'Home'))
+    st.sidebar.page_link(
+        "pages/01_Humanitarian_Coordinator_Home.py", label=f"{name} — Home", icon="🏠"
+    )
+
+
+def risk_map_nav():
+    st.sidebar.page_link("pages/02_Map_Demo.py", label="Risk Map", icon="🗺️")
+
+
+def priority_countries_nav():
+    st.sidebar.page_link(
+        "pages/05_Priority_Countries.py", label="Priority Countries", icon="🚨"
+    )
+
+
+def ngo_directory_nav():
+    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="🏢")
+
+
+def add_ngo_nav():
+    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add NGO", icon="➕")
+
+
+def ngo_profile_nav():
+    st.sidebar.page_link("pages/16_NGO_Profile.py", label="NGO Profile", icon="👥")
+
+
+def export_country_summary_nav():
+    st.sidebar.page_link(
+        "pages/06_Export_Country_Summary.py", label="Export Country Summary", icon="⬇"
+    )
+
+# ---- Role: student_user ------------------------------------------------------
+
+def student_home_nav():
+    name = st.session_state.get('display_name', st.session_state.get('first_name', 'Home'))
+    st.sidebar.page_link(
+        "pages/20_Mohammed_Home.py", label=f"{name} — Home", icon="🏠"
+    )
+
+
+def explore_risk_map_nav():
+    st.sidebar.page_link("pages/02_Map_Demo.py", label="Explore Risk Map", icon="🗺️")
+
+
+def climate_events_nav():
+    st.sidebar.page_link(
+        "pages/07_Climate_Events.py", label="Climate Events", icon="🌡️"
+    )
+
+
+def displacement_timeline_nav():
+    st.sidebar.page_link(
+        "pages/08_Displacement_Timeline.py", label="Displacement Timeline", icon="📈"
+    )
+
+
+def similar_countries_nav():
+    st.sidebar.page_link(
+        "pages/09_Similar_Countries.py", label="Similar Countries", icon="🔍"
+    )
 
 # ---- Role: administrator ----------------------------------------------------
 
@@ -89,8 +145,34 @@ def SideBarLinks(show_home=False):
     The role is stored in st.session_state when the user logs in on Home.py.
     """
 
-    # Logo appears at the top of the sidebar on every page
-    st.sidebar.image("assets/logo.png", width=150)
+    st.markdown("""
+    <style>
+        [data-testid="stSidebar"] {
+            background-color: #112233 !important;
+            border-right: 2px solid #3dba7e !important;
+            box-shadow: 4px 0 18px rgba(61,186,126,0.25) !important;
+        }
+        [data-testid="stSidebarContent"] {
+            background-color: #112233 !important;
+        }
+        [data-testid="stSidebar"] img {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    logo_path = Path(__file__).parent.parent / "assets" / "TERRALogo.png"
+    st.sidebar.image(str(logo_path), use_container_width=True)
+
+    # Decorative gradient divider below logo
+    st.sidebar.markdown("""
+    <div style="margin: 4px 0 12px 0;">
+        <div style="height: 2px; background: linear-gradient(90deg, transparent, #3dba7e, transparent); border-radius: 2px;"></div>
+        <div style="text-align: center; font-size: 16px; margin: 8px 0 2px 0; letter-spacing: 8px; opacity: 0.5;">🌍 🌿 🌊</div>
+        <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(61,186,126,0.4), transparent); border-radius: 1px;"></div>
+    </div>
+    """, unsafe_allow_html=True)
 
     # If no one is logged in, send them to the Home (login) page
     if "authenticated" not in st.session_state:
@@ -102,24 +184,44 @@ def SideBarLinks(show_home=False):
 
     if st.session_state["authenticated"]:
 
-        if st.session_state["role"] == "pol_strat_advisor":
-            pol_strat_home_nav()
-            world_bank_viz_nav()
-            map_demo_nav()
+        if st.session_state["role"] == "policy_analyst":
+            policy_analyst_home_nav()
+            compare_countries_nav()
+            classification_nav()
+            prediction_nav()
+            saved_views_nav()
+            export_reports_nav()
 
-        if st.session_state["role"] == "usaid_worker":
-            usaid_worker_home_nav()
+        if st.session_state["role"] == "humanitarian_coordinator":
+            humanitarian_coordinator_home_nav()
+            risk_map_nav()
+            priority_countries_nav()
             ngo_directory_nav()
             add_ngo_nav()
-            prediction_nav()
-            api_test_nav()
-            classification_nav()
+            ngo_profile_nav()
+            export_country_summary_nav()
+
+        if st.session_state["role"] == "student_user":
+            student_home_nav()
+            explore_risk_map_nav()
+            climate_events_nav()
+            displacement_timeline_nav()
+            similar_countries_nav()
 
         if st.session_state["role"] == "administrator":
             admin_home_nav()
             ml_model_mgmt_nav()
             new_ml_model_nav()
             
+    # Decorative footer divider
+    st.sidebar.markdown("""
+    <div style="margin: 12px 0 4px 0;">
+        <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(61,186,126,0.4), transparent);"></div>
+        <div style="text-align: center; font-size: 10px; color: rgba(61,186,126,0.45); letter-spacing: 3px; text-transform: uppercase; margin: 8px 0 4px 0;">Track · Protect · Act</div>
+        <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(61,186,126,0.4), transparent);"></div>
+    </div>
+    """, unsafe_allow_html=True)
+
     # About link appears at the bottom for all roles
     about_page_nav()
 

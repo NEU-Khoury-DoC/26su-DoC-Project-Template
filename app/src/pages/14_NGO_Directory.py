@@ -10,7 +10,7 @@ SideBarLinks()
 st.title("NGO Directory")
 
 # API endpoint
-API_URL = "http://web-api:4000/ngo/ngos"
+API_URL = f"http://web-api:4000/ngo/ngos"
 
 # Create filter columns
 col1, col2, col3 = st.columns(3)
@@ -71,14 +71,25 @@ try:
                         st.write("**Contact Information**")
                         st.write(f"**Website:** [{ngo['Website']}]({ngo['Website']})")
 
-                    # Add a button to view full profile
-                    if st.button("View Full Profile", key=f"view_{ngo['NGO_ID']}"):
-                        st.session_state["selected_ngo_id"] = ngo["NGO_ID"]
-                        st.switch_page("pages/16_NGO_Profile.py")
+                    btn_col1, btn_col2 = st.columns(2)
+
+                    with btn_col1:
+                        if st.button("View Full Profile", key=f"view_{ngo['NGO_ID']}", use_container_width=True):
+                            st.session_state["selected_ngo_id"] = ngo["NGO_ID"]
+                            st.switch_page("pages/16_NGO_Profile.py")
+
+                    with btn_col2:
+                        if st.button("🗑 Remove NGO", key=f"delete_{ngo['NGO_ID']}", use_container_width=True, type="primary"):
+                            delete_response = requests.delete(f"http://web-api:4000/ngo/ngos/{ngo['NGO_ID']}")
+                            if delete_response.status_code == 200:
+                                st.success(f"{ngo['Name']} has been removed.")
+                                st.rerun()
+                            else:
+                                st.error("Failed to remove NGO.")
 
     else:
         st.error("Failed to fetch NGO data from the API")
 
 except requests.exceptions.RequestException as e:
     st.error(f"Error connecting to the API: {str(e)}")
-    st.info("Please ensure the API server is running on http://web-api:4000")
+    st.info(f"Please ensure the API server is running on http://web-api:4000")
