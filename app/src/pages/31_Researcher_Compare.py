@@ -17,7 +17,7 @@ st.write("Compare growing conditions across seasons, crops, water sources, or co
 
 CROPS = ['vegetables', 'bulbvegetables', 'colecrops', 'Root&tuber',
          'fibre crop', 'oil seeds', 'pulses', 'millets', 'cereals', 'sugar crops']
-SEASONS = ['kharif', 'rabi', 'Zaid']
+SEASONS = ['Monsoon (Kharif)', 'Winter (Rabi)', 'Summer (Zaid)']
 WATER = ['rainfed', 'irrigated']
 COUNTRIES = ['France', 'Romania', 'Portugal', 'Italy', 'Switzerland',
              'Spain', 'Czech Republic', 'Netherlands', 'Germany', 'Belgium',
