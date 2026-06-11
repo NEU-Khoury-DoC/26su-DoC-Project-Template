@@ -39,16 +39,17 @@ with r3:
     st.write("Short bio or description here.")
 
 with r4:
- #   st.image("assets/team4.png", width=150)
+    st.image("assets/headshots/minjuPhoto.jpg", width=150)
     st.markdown("**MINJU SUNG**")
-    st.write("Short bio or description here.")
+    st.write("Hello, I'm a 3rd year Computer Science student with minor in Mathematics at Northeastern University. " \
+    "When I'm not working on technical projects or exploring new data models, I enjoy hiking, reading, or competing as a member of Northeastern's Debate Society.")
 
 st.divider()
 
 # Data sources
 st.markdown("## Data Sources")
 
-ds1, ds2 = st.columns(2)
+ds1, ds2, ds3 = st.columns(3)
 
 with ds1:
     st.markdown("#### 📊 Eurostat")
@@ -60,9 +61,13 @@ with ds2:
     st.write("YOUR OPEN-METEO DESCRIPTION HERE")
     st.markdown("[open-meteo.com](https://open-meteo.com)")
 
+with ds3:
+    st.markdown("#### 🔬 Mendeley Data")
+    st.write("The raw dataset is collected by integrating multiple data " \
+    "sources such as soil properties, climate factors, nutrient levels, " \
+    "crop characteristics, and agricultural factors. The environemental features are then used to predict the best crop type for the input values.")
+    st.markdown("[mendeley.com](https://data.mendeley.com/datasets/vynxnppr7j/1)")
+    
 st.divider()
 st.caption("FarmCast — Built as part of a data systems course.")
 
-# Add a button to return to home page
-if st.button("Return to Home", type="primary"):
-    st.switch_page("Home.py")
