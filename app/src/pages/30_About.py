@@ -1,16 +1,18 @@
 import streamlit as st
 from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide', page_title="About FarmCast")
+st.set_page_config(layout='wide', page_title="About Farmers Market")
 SideBarLinks(show_home=True)
 
-st.title("About FarmCast")
+st.title("About Farmers Market")
 st.divider()
 
 # What is FarmCast
-st.markdown("## What is FarmCast?")
+st.markdown("## What is Farmers Market?")
 st.write("""
-YOUR DESCRIPTION HERE
+Farmers Market is a data-driven platform that helps farmers, researchers, and policymakers make smarter agricultural decisions. By combining environmental, agricultural, and economic data into a single application, Farmers Market allows users to analyze farming conditions, predict future outcomes, monitor environmental risks, and support sustainable land-use planning.
+
+The platform combines machine learning models, interactive visualizations, community discussion tools, and reporting features to transform complex agricultural data into actionable insights.
 """)
 
 st.divider()
