@@ -63,7 +63,7 @@ with ds2:
     st.markdown("[open-meteo.com](https://open-meteo.com)")
 
 st.divider()
-st.caption("FarmCast — Built as part of a data systems course.")
+st.caption("Farmers Market — Built as part of a data systems course.")
 
 # Add a button to return to home page
 if st.button("Return to Home", type="primary"):
