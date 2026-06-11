@@ -111,6 +111,25 @@ def SideBarLinks(show_home=False):
     The role is stored in st.session_state when the user logs in on Home.py.
     """
 
+    # App-wide button polish: rounded corners + subtle hover lift.
+    # Purely cosmetic — injected here because SideBarLinks() runs on every page.
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.15s ease-in-out;
+        }
+        div.stButton > button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     # Logo appears at the top of the sidebar on every page
     st.sidebar.image("assets/logo.png", width=150)
 
