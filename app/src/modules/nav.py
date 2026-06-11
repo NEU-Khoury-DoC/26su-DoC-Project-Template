@@ -27,11 +27,6 @@ def farmer_info():
         "pages/02_Farm_Info.py", label="Farm Information", icon="🏡"
     )
     
-def all_farms():
-    st.sidebar.page_link(
-        "pages/03_All_Farms.py", label="All Farms", icon="🚜"
-    )
-    
 def crop_prediction():
     st.sidebar.page_link(
         "pages/04_Crop_Predictions.py", label="Crop Type Suggestion", icon="🌾"
@@ -127,7 +122,6 @@ def SideBarLinks(show_home=False):
         if st.session_state["role"] == "farmer":
             farmer_home()
             farmer_info()
-            all_farms()
             crop_prediction()
             farmer_blog()
 
