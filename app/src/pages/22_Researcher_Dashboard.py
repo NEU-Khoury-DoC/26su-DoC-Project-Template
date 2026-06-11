@@ -26,7 +26,7 @@ st.markdown(css, unsafe_allow_html=True)
 SideBarLinks()
 
 st.title("Researcher Dashboard")
-st.write('Overview of collected soil/crop observations and quick actions.')
+st.write('General overview of collected crop information')
 
 API_BASE = "http://web-api:4000"
 

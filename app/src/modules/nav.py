@@ -12,7 +12,7 @@ def home_nav():
 
 
 def about_page_nav():
-    st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
+    st.sidebar.page_link("pages/30_About.py", label="About our Project", icon="🧠")
 
 
 # ---- Role: farmer ------------------------------------------------
@@ -86,10 +86,10 @@ def researcher_map():
     st.sidebar.page_link("pages/23_Researcher_Map.py", label="Map", icon="🗺️")
 
 def researcher_conditions():
-    st.sidebar.page_link("pages/24_Researcher_Conditions.py", label="Explore Crop Conditions", icon="🌱")
+    st.sidebar.page_link("pages/24_Researcher_Conditions.py", label="Explore Crop Observations", icon="🌱")
     
 def researcher_trends():
-    st.sidebar.page_link("pages/25_Researcher_Trends.py", label="Explore Trends", icon="📈")
+    st.sidebar.page_link("pages/25_Researcher_Trends.py", label="Explore Crop Trends", icon="📈")
 
 def researcher_report():
     st.sidebar.page_link("pages/26_Researcher_Report.py", label="Generate Reports", icon="📝")
@@ -101,7 +101,7 @@ def researcher_blog():
     st.sidebar.page_link("pages/28_Researcher_Blog.py", label="Discussion Board", icon="💭")
 
 def researcher_compare():
-    st.sidebar.page_link("pages/31_Researcher_Compare.py", label="Compare", icon="⚖️")
+    st.sidebar.page_link("pages/29_Researcher_Compare.py", label="Compare Crops", icon="⚖️")
 
 # ---- Sidebar assembly -------------------------------------------------------
 
@@ -149,9 +149,9 @@ def SideBarLinks(show_home=False):
             researcher_report()
             researcher_data_export()
             researcher_blog()
-
-    # About link appears at the bottom for all roles
-    about_page_nav()
+    else:
+        # Only show about for when not logged in
+        about_page_nav()
 
     if st.session_state["authenticated"]:
         if st.sidebar.button("Logout"):
