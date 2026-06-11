@@ -37,11 +37,6 @@ if st.button('View Compare',
              use_container_width=True):
     st.switch_page('pages/31_Researcher_Compare.py')
 
-if st.button('View Generate Reports',
-             type='primary',
-             use_container_width=True):
-    st.switch_page('pages/26_Researcher_Report.py')
-
 if st.button('View Data Export',
              type='primary',
              use_container_width=True):
