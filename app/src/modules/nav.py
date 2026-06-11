@@ -51,12 +51,12 @@ def policy_home():
     
 def policy_map():
     st.sidebar.page_link(
-        "pages/12_Policy_Map.py", label="Crop Map", icon="🗺️"
+        "pages/12_Policy_Map.py", label="Crop Price Map", icon="🗺️"
     )
     
 def policy_compare():
     st.sidebar.page_link(
-        "pages/13_Policy_Compare.py", label="Compare Farms", icon="🚜"
+        "pages/13_Policy_Compare.py", label="Compare Farm Prices", icon="🚜"
     )
     
 def policy_report():
