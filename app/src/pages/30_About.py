@@ -17,8 +17,8 @@ st.markdown(
     and government agencies navigate EU housing markets. Students can 
     research listings and plan their budget, real estate agents can find 
     properties and post listings, and government agencies/project managers
-    can explore funding projects with Eurostat data on indicators 
-    (crime, pollution, poverty, etc.) to help propose funding plan drafts. 
+    can explore funding projects with Eurostat data to help propose 
+    funding plan drafts. 
     """
 )
 
