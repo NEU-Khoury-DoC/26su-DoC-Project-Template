@@ -45,6 +45,7 @@ col_a, col_b, col_c = st.columns(3)
 
 with col_a:
     compare_by = st.selectbox("Compare by", list(OPTIONS_MAP.keys()))
+    st.caption("\* France and Malta are excluded as crop price data is not available.")
 with col_b:
     option_a = st.selectbox("Option A", OPTIONS_MAP[compare_by], key="opt_a")
 with col_c:
