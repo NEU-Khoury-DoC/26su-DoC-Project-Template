@@ -52,12 +52,26 @@ st.write("Select your profile and role to get started.")
 # login cards
 farmer_card, policy_card, researcher_card = st.columns(3)
 
-with farmer_card:
-    st.markdown("#### 👨‍🌾 Farmer")
-    st.selectbox("Select farmer", farmer_names, key='selected_farmer_name',
-                 label_visibility='collapsed')
-    if st.button("Sign in as Farmer", type='primary',
-                 use_container_width=True, key='login_farmer_button'):
+farmer_variable_col, farmer_col = st.columns([3, 2])
+
+with farmer_variable_col:
+    st.selectbox(
+        'Choose a Farmer',
+        farmer_names,
+        key='selected_farmer_name',
+        label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
+    )
+
+with farmer_col:
+    if st.button("Log In as Farmer",
+                type='primary',
+                use_container_width=True,
+                key='login_farmer_button'):
+        if not st.session_state['selected_farmer_name']:
+            st.warning('Please choose a farmer first.')
+            st.stop()
         selected_farmer_id, selected_farmer_name = parse_selected_user(
             st.session_state['selected_farmer_name'])
         st.session_state['authenticated'] = True
@@ -69,12 +83,26 @@ with farmer_card:
         logger.info("Logging in as Farmer Persona")
         st.switch_page('pages/01_Farmer_Home.py')
 
-with policy_card:
-    st.markdown("#### 🏛 Policymaker")
-    st.selectbox("Select policymaker", policy_maker_names,
-                 key='selected_policy_maker_name', label_visibility='collapsed')
-    if st.button("Sign in as Policymaker", type='primary',
-                 use_container_width=True, key='login_policy_button'):
+policy_variable_col, policy_col = st.columns([3, 2])
+
+with policy_variable_col:
+    st.selectbox(
+        'Choose a Policy Maker',
+        policy_maker_names,
+        key='selected_policy_maker_name',
+        label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
+    )
+
+with policy_col:
+    if st.button('Log in as Policy Maker',
+                 type='primary',
+                 use_container_width=True,
+                 key='login_policy_button'):
+        if not st.session_state['selected_policy_maker_name']:
+            st.warning('Please choose a policy maker first.')
+            st.stop()
         selected_policy_id, selected_policy_name = parse_selected_user(
             st.session_state['selected_policy_maker_name'])
         st.session_state['authenticated'] = True
@@ -85,12 +113,27 @@ with policy_card:
         st.session_state['selected_policy_maker_display'] = selected_policy_name
         st.switch_page('pages/11_Policy_Home.py')
 
-with researcher_card:
-    st.markdown("#### 🔬 Researcher")
-    st.selectbox("Select researcher", researcher_names,
-                 key='selected_researcher_name', label_visibility='collapsed')
-    if st.button("Sign in as Researcher", type='primary',
-                 use_container_width=True, key='login_researcher_button'):
+
+reseacher_variable_col, researcher_col = st.columns([3, 2])
+
+with reseacher_variable_col:
+    st.selectbox(
+        'Choose a Researcher',
+        researcher_names,
+        key='selected_researcher_name',
+        label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
+    )
+
+with researcher_col:
+    if st.button('Log in as Researcher',
+                type='primary',
+                use_container_width=True,
+                key='login_researcher_button'):
+        if not st.session_state['selected_researcher_name']:
+            st.warning('Please choose a researcher first.')
+            st.stop()
         selected_researcher_id, selected_researcher_name = parse_selected_user(
             st.session_state['selected_researcher_name'])
         st.session_state['authenticated'] = True

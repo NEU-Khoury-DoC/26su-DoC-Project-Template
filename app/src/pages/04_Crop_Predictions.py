@@ -95,7 +95,7 @@ with tab1:
         harvested_month = harvested.strftime('%B')[:3]
         try:
             response = requests.get(
-                f'http://web-api:4000/crop/model3/prediction/{N}/{P}/{K}/{type_of_crop}/{temperature}/{season}/{sown_month}/{harvested_month}/{water_source}/{relative_humidity}/{crop_duration}/{water_required}'
+                f'http://web-api:4000/crop/model3/prediction/{N}/{P}/{K}/{type_of_crop}/{temperature}/{season_labels[season]}/{sown_month}/{harvested_month}/{water_source}/{relative_humidity}/{crop_duration}/{water_required}'
             )
             response.raise_for_status()
             result = response.json()
