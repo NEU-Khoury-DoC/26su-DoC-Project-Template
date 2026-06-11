@@ -207,7 +207,7 @@ def dialog_add_growing(farm):
     st.write(f"Logging a new growing record for **{farm.get('farm_name')}**.")
     col1, col2 = st.columns(2)
     with col1:
-        crop         = st.text_input("Crop type")
+        crop         = st.selectbox("Crop type", ['Root&tuber', 'bulbvegetables', 'cereals', 'colecrops', 'fibre crop', 'millets', 'oil seeds', 'pulses', 'sugar crops', 'vegetables'])
         season       = st.selectbox("Season", ["Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)", "Summer", "Winter", "Whole Year"])
         sown         = st.date_input("Date sown")
         harvested    = st.date_input("Date harvested")
