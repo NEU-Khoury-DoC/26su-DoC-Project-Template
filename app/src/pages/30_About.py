@@ -26,9 +26,9 @@ with r1:
     st.write("Short bio or description here.")
 
 with r2:
-  #  st.image("assets/team2.png", width=150)
+    st.image("assets/headshots/IMG_2392.JPG", width=200)
     st.markdown("**LAURYN GONG**")
-    st.write("Short bio or description here.")
+    st.write("Hi, I’m Lauryn Gong! I’m a rising second year student at Northeastern studying computer science and business!")
 
 
 r3, r4= st.columns(2)
