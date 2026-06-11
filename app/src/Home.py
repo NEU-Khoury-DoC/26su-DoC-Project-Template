@@ -65,7 +65,7 @@ with farmer_variable_col:
     )
 
 with farmer_col:
-    if st.button("Log In as Farmer",
+    if st.button("Log in as Farmer",
                 type='primary',
                 use_container_width=True,
                 key='login_farmer_button'):
