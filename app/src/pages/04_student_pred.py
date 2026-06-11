@@ -18,7 +18,7 @@ try:
 except:
     st.warning("Backend not ready yet — try refreshing in a moment.")
 
-st.header("Housing Satisfaction Predictor")
+st.title("Housing Satisfaction Predictor")
 SideBarLinks()
 st.write("Set your comfortability levels with these housing conditions to see your predicted life satisfaction score in different countries across Europe.")
 st.divider()

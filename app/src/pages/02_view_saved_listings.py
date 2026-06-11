@@ -7,7 +7,7 @@ from modules.nav import SideBarLinks
 st.set_page_config(page_title="View Saved Listings", layout='wide')
 SideBarLinks()
 
-st.header('My Saved Listings')
+st.title('My Saved Listings')
 
 user_id = st.session_state.get('user_id')
 if not user_id:
