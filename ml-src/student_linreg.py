@@ -12,8 +12,13 @@ cols = [
 ]
 
 import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-df = pd.read_csv(os.path.join(BASE_DIR, "raw_project_models/merged2.csv"))
+import backend.ml_models
+# This module lives in ml-src/ (placed on PYTHONPATH so the backend can import
+# it as a top-level module), but its training data lives with the backend
+# package. Resolve the data dir from the backend.ml_models package location so
+# the CSV is found without moving the data or this module.
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(backend.ml_models.__file__)), "raw_project_models")
+df = pd.read_csv(os.path.join(DATA_DIR, "merged2.csv"))
 
 def line_of_best_fit(X, y):
     model = LinearRegression(fit_intercept = True)
@@ -90,7 +95,7 @@ def test():
     scaler_mean = parse(row['scaler_mean'])
     scaler_std = parse(row['scaler_std'])
  
-    df = pd.read_csv("merged2.csv")
+    df = pd.read_csv(os.path.join(DATA_DIR, "merged2.csv"))
  
     X = np.array(df[cols]).astype(float)
     y = np.array(df['happy_rate'])
