@@ -99,7 +99,7 @@ def render_feed():
                 continue
 
             # role badge
-            badge = {'farmer': '🌾 Farmer', 'politician': '🏛 Policymaker', 'researcher': '🔬 Researcher'}.get(post_role, '')
+            badge = {'farmer': '👨‍🌾 Farmer', 'politician': '🏛 Policymaker', 'researcher': '🔬 Researcher'}.get(post_role, '')
 
             with st.expander(f"**{post.get('title')}** — {badge}"):
                 st.write(post.get('post_text'))
