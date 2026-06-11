@@ -7,7 +7,7 @@ Predicts what type of crop to plant from:
   - K:               soil potassium content
   - TYPE_OF_CROP:    categorical crop category (e.g. 'cereals')
   - TEMPERATURE:     average temperature
-  - SEASON:          growing season (e.g. 'kharif', 'rabi')
+  - SEASON:          growing season (e.g. 'Monsoon (Kharif)', 'Winter (Rabi)')
   - SOWN:            sowing month (e.g. 'Jun')
   - HARVESTED:       harvest month (e.g. 'Oct')
   - WATER_SOURCE:    irrigation source (e.g. 'rainfed')
@@ -88,7 +88,7 @@ _OHE_COLS = [
     # WATER_SOURCE (57-58)
     'WATER_SOURCE_irrigated', 'WATER_SOURCE_rainfed',
     # SEASON (59-61)
-    'SEASON_Zaid', 'SEASON_kharif', 'SEASON_rabi',
+    'SEASON_Summer (Zaid)', 'SEASON_Monsoon (Kharif)', 'SEASON_Winter (Rabi)',
 ]
 #dictionary
 _OHE_INDEX = {name: i for i, name in enumerate(_OHE_COLS)}
@@ -206,7 +206,7 @@ def predict(N, P, K, TYPE_OF_CROP, TEMPERATURE, SEASON, SOWN, HARVESTED,
         K                  (str | float): soil potassium
         TYPE_OF_CROP       (str):         e.g. 'cereals'
         TEMPERATURE        (str | float): average temperature (°C)
-        SEASON             (str):         e.g. 'kharif'
+        SEASON             (str):         e.g. 'Monsoon (Kharif)'
         SOWN               (str):         sowing month, e.g. 'Jun'
         HARVESTED          (str):         harvest month, e.g. 'Oct'
         WATER_SOURCE       (str):         e.g. 'rainfed'
