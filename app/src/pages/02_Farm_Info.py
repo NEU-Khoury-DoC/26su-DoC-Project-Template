@@ -208,7 +208,7 @@ def dialog_add_growing(farm):
     col1, col2 = st.columns(2)
     with col1:
         crop         = st.text_input("Crop type")
-        season       = st.selectbox("Season", ["Kharif", "Rabi", "Zaid", "Summer", "Winter", "Whole Year"])
+        season       = st.selectbox("Season", ["Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)", "Summer", "Winter", "Whole Year"])
         sown         = st.date_input("Date sown")
         harvested    = st.date_input("Date harvested")
         water_source = st.selectbox("Water source", ["rainfed", "irrigated", "mixed"])
@@ -257,8 +257,8 @@ def dialog_edit_growing(record, record_id, user_id):
     col1, col2 = st.columns(2)
     with col1:
         crop         = st.text_input("Crop type",         value=record.get("type_of_crop", ""))
-        season       = st.selectbox("Season", ["Kharif", "Rabi", "Zaid", "Summer", "Winter", "Whole Year"],
-                                    index=["Kharif", "Rabi", "Zaid", "Summer", "Winter", "Whole Year"].index(record.get("season", "Kharif")) if record.get("season") in ["Kharif", "Rabi", "Zaid", "Summer", "Winter", "Whole Year"] else 0)
+        season       = st.selectbox("Season", ["Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)", "Summer", "Winter", "Whole Year"],
+                                    index=["Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)", "Summer", "Winter", "Whole Year"].index(record.get("season", "Monsoon (Kharif)")) if record.get("season") in ["Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)", "Summer", "Winter", "Whole Year"] else 0)
         water_source = st.selectbox("Water source", ["rainfed", "irrigated", "mixed"],
                                     index=["rainfed", "irrigated", "mixed"].index(record.get("water_source", "rainfed")) if record.get("water_source") in ["rainfed", "irrigated", "mixed"] else 0)
     with col2:

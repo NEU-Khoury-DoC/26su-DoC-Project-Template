@@ -6,44 +6,6 @@ from mysql.connector import Error
 farms_bp = Blueprint("farms", __name__)
 
 
-# GET: all farms filtered by country
-@farms_bp.route("/country", methods=["GET"])
-def get_all_farms():
-    current_app.logger.info('GET /farms/country')
-    try:
-        country = request.args.get("country")
-        query = """
-            SELECT f.farm_id,
-                   f.farm_name,
-                   f.user_id,
-                   u.user_name AS owner_name,
-                   f.country,
-                   f.latitude,
-                   f.longitude,
-                   f.created_at
-            FROM farms f
-            LEFT JOIN users u ON f.user_id = u.user_id
-            WHERE 1=1
-        """
-        params = []
-
-        if country:
-            query += " AND f.country = %s"
-            params.append(country)
-
-        query += " ORDER BY f.farm_name"
-
-        with get_db().cursor(dictionary=True, buffered=True) as cursor:
-            cursor.execute(query, params)
-            farm_list = cursor.fetchall()
-
-        current_app.logger.info(f'Retrieved {len(farm_list)} farms')
-        return jsonify(farm_list), 200
-    except Error as e:
-        current_app.logger.error(f'Database error in get_all_farms: {e}')
-        return error_response(str(e))
-
-
 # GET: single farm by farm_id with location details
 @farms_bp.route("/farm_id/<int:farm_id>", methods=["GET"])
 def get_farm(farm_id):
