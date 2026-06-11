@@ -91,7 +91,7 @@ with col1:
 with col2:
     season = st.pills(
         "Season",
-        ["All", "Kharif", "Rabi", "Zaid"],
+        ["All", "Monsoon (Kharif)", "Winter (Rabi)", "Summer (Zaid)"],
         default="All",
     )
 

@@ -16,7 +16,7 @@ st.write("Query and filter crop observations across farms.")
 
 CROPS = ['vegetables', 'bulbvegetables', 'colecrops', 'Root&tuber',
          'fibre crop', 'oil seeds', 'pulses', 'millets', 'cereals', 'sugar crops']
-SEASONS = ['kharif', 'rabi', 'Zaid']
+SEASONS = ['Monsoon (Kharif)', 'Winter (Rabi)', 'Summer (Zaid)']
 WATER = ['rainfed', 'irrigated']
 
 try:

@@ -36,8 +36,8 @@ with tab1:
 
     user_id = st.session_state.get('user_id')
     type_of_crop = st.selectbox('Crop Category', ['Root&tuber', 'bulbvegetables', 'cereals', 'colecrops', 'fibre crop', 'millets', 'oil seeds', 'pulses', 'sugar crops', 'vegetables'])
-    season_labels = {'Zaid': 'Summer (Zaid)', 'kharif': 'Monsoon (Kharif)', 'rabi': 'Winter (Rabi)'}
-    season = st.selectbox('Season', ['Zaid', 'kharif', 'rabi'], format_func=lambda s: season_labels[s])
+    season_labels = {'Summer (Zaid)': 'Summer (Summer (Zaid))', 'Monsoon (Kharif)': 'Monsoon (Monsoon (Kharif))', 'Winter (Rabi)': 'Winter (Winter (Rabi))'}
+    season = st.selectbox('Season', ['Summer (Zaid)', 'Monsoon (Kharif)', 'Winter (Rabi)'], format_func=lambda s: season_labels[s])
     water_source = st.selectbox('Water Source', ['irrigated', 'rainfed'])
     sown = st.date_input('Sowing Date')
     harvested = st.date_input('Harvest Date')
