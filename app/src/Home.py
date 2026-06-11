@@ -6,7 +6,7 @@ import streamlit as st
 from modules.nav import SideBarLinks
 import requests
 
-st.set_page_config(layout='wide', page_title="FarmCast")
+st.set_page_config(layout='wide', page_title="Farmers Market")
 
 st.session_state['authenticated'] = False
 SideBarLinks(show_home=True)
@@ -14,7 +14,7 @@ SideBarLinks(show_home=True)
 # hero section
 st.markdown("""
 <div style='padding: 2rem 0 1rem 0;'>
-    <h1 style='font-size: 3rem; margin-bottom: 0.5rem;'>🌾 FarmCast</h1>
+    <h1 style='font-size: 3rem; margin-bottom: 0.5rem;'>🌾 Farmers Market</h1>
     <p style='font-size: 1.2rem; color: gray;'>
         Data-driven agricultural insights for farmers, policymakers, and researchers across Europe.
     </p>
@@ -158,4 +158,4 @@ with col3:
     st.write("Analyse crop observation data, visualise trends, and export datasets for research.")
 st.divider()
 
-st.caption("FarmCast — Built using Eurostat price data and Open-Meteo weather records across 25 EU countries.")
+st.caption("Farmers Market — Built using Eurostat price data and Open-Meteo weather records across 25 EU countries.")
