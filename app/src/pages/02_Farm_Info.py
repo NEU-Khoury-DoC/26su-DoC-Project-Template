@@ -85,23 +85,68 @@ def dialog_add_farm(user_id):
             st.rerun()
 
 
-@st.dialog("Edit farm name")
+@st.dialog("Edit farm information")
 def dialog_edit_farm(farm):
     new_name = st.text_input("Farm name", value=farm.get("farm_name", ""))
+    address = st.text_input("Address *", placeholder="e.g. Hauptstraße 5, Linz")
+    country = st.selectbox("Country *", ['Austria', 'Belgium', 'Bulgaria', 'Croatia',
+                                'Cyprus', 'Czechia', 'Denmark', 'Estonia',
+                                'Finland', 'Germany', 'Greece', 'Hungary',
+                                'Ireland', 'Italy', 'Latvia', 'Lithuania',
+                                'Luxembourg', 'Netherlands', 'Poland',
+                                'Portugal', 'Romania', 'Slovakia', 'Slovenia',
+                                'Spain', 'Sweden'], index=['Austria', 'Belgium', 'Bulgaria', 'Croatia',
+                                'Cyprus', 'Czechia', 'Denmark', 'Estonia',
+                                'Finland', 'Germany', 'Greece', 'Hungary',
+                                'Ireland', 'Italy', 'Latvia', 'Lithuania',
+                                'Luxembourg', 'Netherlands', 'Poland',
+                                'Portugal', 'Romania', 'Slovakia', 'Slovenia',
+                                'Spain', 'Sweden'].index(farm.get('country', 'Austria')) if farm.get('country') else 0)
+
     col1, col2 = st.columns(2)
     with col1:
         if st.button("Save", type="primary", use_container_width=True):
             if not new_name.strip():
                 st.warning("Farm name cannot be empty.")
-                return
-            payload = {"farm_name": new_name.strip(), "updated_by": str(farm["user_id"])}
-            r = requests.put(f"{API_BASE}/farms/farm_id/{farm['farm_id']}", json=payload, timeout=10)
-            if r.status_code == 200:
-                st.success("Farm name updated.")
-                st.session_state["farms_dirty"] = True
-                st.rerun()
+                st.stop()
+            missing = []
+            if not address.strip():  missing.append("Address")
+            if not country:          missing.append("Country")
+
+            if missing:
+                st.error(f"Please fill in: {', '.join(missing)}")
             else:
-                st.error(f"Update failed: {r.text}")
+                with st.spinner("Finding your location..."):
+                    try:
+                        geolocator = Nominatim(user_agent="farmcast")
+                        location = geolocator.geocode(f"{address}, {country}")
+
+                        if location is None:
+                            st.error("Could not find that address. Try being more specific — include street, town and country.")
+                        else:
+                            lat = location.latitude
+                            lon = location.longitude
+
+                            st.success(f"Found: {location.address}")
+                            st.map({"lat": [lat], "lon": [lon]})
+
+                            payload = {
+                                "farm_name": new_name.strip(),
+                                "user_id": int(user_id),
+                                "created_by": int(user_id),
+                                "longitude": lon,
+                                "latitude": lat,
+                                "country": country,
+                            }
+                            r = requests.put(f"{API_BASE}/farms/farm_id/{farm['farm_id']}", json=payload, timeout=10)
+                            if r.status_code == 200:
+                                st.success("Farm updated.")
+                                st.session_state["farms_dirty"] = True
+                                st.rerun()
+                            else:
+                                st.error(f"Update failed: {r.text}")
+                    except Exception as e:
+                        st.error(f"Error: {e}")
     with col2:
         if st.button("Cancel", use_container_width=True):
             st.rerun()
@@ -111,7 +156,7 @@ def dialog_edit_farm(farm):
 def dialog_delete_farm(farm):
     st.warning(
         f"Are you sure you want to delete **{farm.get('farm_name', 'this farm')}**? "
-        "This will also remove all its locations and growing records."
+        "This action cannot be undone."
     )
     col1, col2 = st.columns(2)
     with col1:
@@ -123,52 +168,6 @@ def dialog_delete_farm(farm):
                 st.rerun()
             else:
                 st.error(f"Delete failed: {r.text}")
-    with col2:
-        if st.button("Cancel", use_container_width=True):
-            st.rerun()
-
-
-@st.dialog("Add location")
-def dialog_add_location(farm):
-    st.write(f"Adding a new location for **{farm.get('farm_name')}**.")
-    country = st.text_input("Country")
-    lat     = st.number_input("Latitude",  value=0.0, format="%.6f")
-    lon     = st.number_input("Longitude", value=0.0, format="%.6f")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Add location", type="primary", use_container_width=True):
-            payload = {
-                "farm_id":    farm["farm_id"],
-                "country":    country.strip(),
-                "latitude":   lat,
-                "longitude":  lon,
-                "created_by": str(farm["user_id"]),
-            }
-            r = requests.post(f"{API_BASE}/farm_loc/", json=payload, timeout=10)
-            if r.status_code == 201:
-                st.success("Location added.")
-                st.session_state["farms_dirty"] = True
-                st.rerun()
-            else:
-                st.error(f"Failed to add location: {r.text}")
-    with col2:
-        if st.button("Cancel", use_container_width=True):
-            st.rerun()
-
-
-@st.dialog("Delete location")
-def dialog_delete_location(farm_id, location_id):
-    st.warning("Remove this location from the farm?")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Yes, remove", type="primary", use_container_width=True):
-            r = requests.delete(f"{API_BASE}/farm_loc/location/{location_id}", timeout=10)
-            if r.status_code == 200:
-                st.success("Location removed.")
-                st.session_state["farms_dirty"] = True
-                st.rerun()
-            else:
-                st.error(f"Failed: {r.text}")
     with col2:
         if st.button("Cancel", use_container_width=True):
             st.rerun()
@@ -321,36 +320,12 @@ else:
                 st.write(f"**Owner:** {farm.get('owner_name', 'N/A')}")
                 st.write(f"**Farm ID:** {farm_id}")
                 st.write(f"**Created:** {farm.get('created_at', 'N/A')}")
+                st.write(f"**Location:** {farm.get('country', 'Unknown')} — lat {farm.get('latitude')}, lng {farm.get('longitude')}")
             with btn_col:
-                if st.button("✏️ Rename farm", key=f"edit_farm_{farm_id}", use_container_width=True):
+                if st.button("✏️ Edit farm", key=f"edit_farm_{farm_id}", use_container_width=True):
                     dialog_edit_farm(farm)
                 if st.button("🗑️ Delete farm", key=f"del_farm_{farm_id}", use_container_width=True):
                     dialog_delete_farm(farm)
-
-            st.divider()
-
-            # ── locations ─────────────────────────────────────────────────
-            loc_hdr, loc_btn = st.columns([4, 2])
-            with loc_hdr:
-                st.markdown("**Locations**")
-            with loc_btn:
-                if st.button("＋ Add location", key=f"add_loc_{farm_id}", use_container_width=True):
-                    dialog_add_location(farm)
-
-            locations = farm.get("locations", [])
-            if locations:
-                for loc in locations:
-                    loc_col, del_col = st.columns([5, 1])
-                    with loc_col:
-                        st.write(
-                            f"{loc.get('country', 'Unknown')} — "
-                            f"lat {loc.get('latitude')}, lng {loc.get('longitude')}"
-                        )
-                    with del_col:
-                        if st.button("✕", key=f"del_loc_{loc.get('location_id')}", use_container_width=True):
-                            dialog_delete_location(farm_id, loc.get("location_id"))
-            else:
-                st.caption("_No locations registered for this farm._")
 
             st.divider()
 
