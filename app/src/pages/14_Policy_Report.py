@@ -16,8 +16,8 @@ st.title("Policy Report Builder")
 st.write("Create and save a policy report based on your findings.")
 
 COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia',
-             'Denmark', 'Estonia', 'Finland', 'Germany', 'Greece', 'Hungary',
-             'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg',
+             'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary',
+             'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 
              'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia',
              'Slovenia', 'Spain', 'Sweden']
 

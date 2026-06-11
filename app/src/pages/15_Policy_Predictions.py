@@ -23,6 +23,7 @@ COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia',
 
 crop = st.selectbox('Crop', CROPS, index=CROPS.index('Durum wheat'))
 region = st.selectbox('Country / Region', COUNTRIES)
+st.caption("\* France and Malta are excluded as crop price data is not available.")
 
 if st.button('Predict'):
     logger.info(f'Prediction — crop: {crop}, region: {region}')

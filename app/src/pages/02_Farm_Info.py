@@ -62,9 +62,9 @@ def dialog_add_farm(user_id):
     "Country *",
     ['Austria', 'Belgium', 'Bulgaria', 'Croatia',
      'Cyprus', 'Czechia', 'Denmark', 'Estonia',
-     'Finland', 'Germany', 'Greece', 'Hungary',
+     'Finland', 'France', 'Germany', 'Greece', 'Hungary',
      'Ireland', 'Italy', 'Latvia', 'Lithuania',
-     'Luxembourg', 'Netherlands', 'Poland',
+     'Luxembourg', 'Malta', 'Netherlands', 'Poland',
      'Portugal', 'Romania', 'Slovakia', 'Slovenia',
      'Spain', 'Sweden'],
     index=0
@@ -120,15 +120,15 @@ def dialog_edit_farm(farm):
     address = st.text_input("Address *", placeholder="e.g. Hauptstraße 5, Linz")
     country = st.selectbox("Country *", ['Austria', 'Belgium', 'Bulgaria', 'Croatia',
                                 'Cyprus', 'Czechia', 'Denmark', 'Estonia',
-                                'Finland', 'Germany', 'Greece', 'Hungary',
+                                'Finland', 'France', 'Germany', 'Greece', 'Hungary',
                                 'Ireland', 'Italy', 'Latvia', 'Lithuania',
-                                'Luxembourg', 'Netherlands', 'Poland',
+                                'Luxembourg', 'Matla', 'Netherlands', 'Poland',
                                 'Portugal', 'Romania', 'Slovakia', 'Slovenia',
                                 'Spain', 'Sweden'], index=['Austria', 'Belgium', 'Bulgaria', 'Croatia',
                                 'Cyprus', 'Czechia', 'Denmark', 'Estonia',
-                                'Finland', 'Germany', 'Greece', 'Hungary',
+                                'Finland', 'France', 'Germany', 'Greece', 'Hungary',
                                 'Ireland', 'Italy', 'Latvia', 'Lithuania',
-                                'Luxembourg', 'Netherlands', 'Poland',
+                                'Luxembourg', 'Malta', 'Netherlands', 'Poland',
                                 'Portugal', 'Romania', 'Slovakia', 'Slovenia',
                                 'Spain', 'Sweden'].index(farm.get('country', 'Austria')) if farm.get('country') else 0)
 

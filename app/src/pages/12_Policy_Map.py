@@ -82,6 +82,8 @@ with tab1:
         fig.update_layout(margin=dict(l=0, r=0, t=40, b=0))
         st.plotly_chart(fig, use_container_width=True)
 
+        st.caption("\* France and Malta are excluded as crop price data is not available.")
+
         with st.expander("View data table"):
             st.dataframe(df_map.sort_values('avg_price', ascending=False), use_container_width=True)
 
@@ -110,6 +112,8 @@ with tab2:
         )
         fig2.update_layout(margin=dict(l=0, r=0, t=40, b=0))
         st.plotly_chart(fig2, use_container_width=True)
+
+        st.caption("\* France and Malta are excluded as crop price data is not available.")
 
         with st.expander("View data table"):
             st.dataframe(df_pred.sort_values('predicted_price', ascending=False), use_container_width=True)
