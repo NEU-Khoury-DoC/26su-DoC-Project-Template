@@ -56,8 +56,8 @@ with col1:
                 total += float(item['value'])
                 num += 1
 
-        st.write(f'Average European HPI in {year_filter}')
-        st.write(f'{round(total/num, 2)}')
+        st.write(f'Average European house price index in {year_filter}, based on 2015 baseline')
+        st.write(f'{round(total/num, 2)} %')
 
 
 #more sorting
@@ -81,10 +81,10 @@ with col2:
                 num1 += 1
         if country == 'All':
             st.write(f'Average rent in all European countries based on {num1} active listings on EuroHome:')
-            st.write(f'{round(total1/num1, 2)}')
+            st.write(f'{round(total1/num1, 2)} €')
         else:
             st.write(f'Average rent in {country} based on {num1} listings:')
-            st.write(f'{round(total1/num1, 2)}')
+            st.write(f'{round(total1/num1, 2)} €')
 
 
 
@@ -162,7 +162,7 @@ with col11:
 with col22:
     indicator_type = st.selectbox(
         "View",
-        list(INDICATOR_UNITS.keys())
+        list(INDICATOR_UNITS.keys()), index = 2,
     )
 
 #Stats bar chart (vertical)
