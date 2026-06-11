@@ -179,5 +179,20 @@ def get_favorites():
             LEFT JOIN country co ON l.country_id = co.country_id
             LEFT JOIN university u ON u.university_id = l.associated_university_id
             WHERE f.user_id = %s
+            ORDER BY f.saved_at DESC
         ''', (user_id,))
         return jsonify(cursor.fetchall()), 200
+
+# Deletes (DELETE) a listing from favorites
+@listing_bp.route('/favorites', methods=['DELETE'])
+def delete_favorite():
+    current_app.logger.info('DELETE /favorites')
+    data = request.json
+    with get_db().cursor(dictionary=True) as cursor:
+        cursor.execute(
+            'DELETE FROM favorites WHERE user_id = %s AND listing_id = %s',
+            (data['user_id'], data['listing_id'])
+        )
+    get_db().commit()
+    current_app.logger.info(f"Removed listing {data['listing_id']} for user {data['user_id']}")
+    return jsonify({'message': 'Deleted'}), 200
