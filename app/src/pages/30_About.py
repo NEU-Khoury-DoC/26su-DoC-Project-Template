@@ -27,19 +27,19 @@ col1, col2 = st.columns(2)
 
 with col1:
     with st.container(border=True, height = 850):
-        img_path = Path(__file__).parent.parent / "assets" / "geo-headshot.JPG"
+        img_path = Path(__file__).parent.parent / "assets" / "geo-headshot.jpg"
         st.image(str(img_path))
         st.write("##### Geo Thatch")
 
         st.write('Geo is an incoming sophomore at Northeastern University studying ' \
-        'computer science and math. Currently taking CS 3200 and CS 4973.')
+        'Computer Science and Mathematics. Currently taking CS 3200 and CS 4973.')
     
     with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "isabel-headshot.jpeg"
         st.image(str(img_path))
         st.write("##### Isabel Larenas")
         st.write('Isabel is an incoming junior at Northeastern University majoring in ' \
-        'computer science with a minor in spanish. Currently taking DS 3000 and CS 4973.')
+        'Computer Science with a minor in Spanish. Currently taking DS 3000 and CS 4973.')
 
 with col2:
     with st.container(border=True, height = 850):
@@ -47,11 +47,11 @@ with col2:
         st.image(str(img_path))
         st.write("##### Maira Padani")
         st.write('Maira is an incoming senior at Northeastern University majoring in ' \
-        'business administration with a minor in data science. Currently taking CS 3200 and CS 4973.')
+        'Business Administration with a minor in Data Science. Currently taking CS 3200 and CS 4973.')
 
     with st.container(border=True, height = 850):
         img_path = Path(__file__).parent.parent / "assets" / "laasya-headshot.jpeg"
         st.image(str(img_path))
         st.write("##### Laasya Gattu")
         st.write('Laasya is an incoming sophomore at Northeastern University majoring in ' \
-        'data science and business administration with a minor in public health. Currently taking DS 3000 and CS 4973.')
+        'Data Science and Business Administration with a minor in Public Health. Currently taking DS 3000 and CS 4973.')
