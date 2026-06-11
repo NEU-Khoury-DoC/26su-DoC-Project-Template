@@ -77,6 +77,8 @@ with farmer_variable_col:
         farmer_names,
         key='selected_farmer_name',
         label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
     )
 
 with farmer_col:
@@ -84,6 +86,9 @@ with farmer_col:
                 type='primary',
                 use_container_width=True,
                 key='login_farmer_button'):
+        if not st.session_state['selected_farmer_name']:
+            st.warning('Please choose a farmer first.')
+            st.stop()
         selected_farmer_id, selected_farmer_name = parse_selected_user(
             st.session_state['selected_farmer_name']
         )
@@ -110,6 +115,8 @@ with policy_variable_col:
         policy_maker_names,
         key='selected_policy_maker_name',
         label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
     )
 
 with policy_col:
@@ -117,6 +124,9 @@ with policy_col:
                  type='primary',
                  use_container_width=True,
                  key='login_policy_button'):
+        if not st.session_state['selected_policy_maker_name']:
+            st.warning('Please choose a policy maker first.')
+            st.stop()
         selected_policy_id, selected_policy_name = parse_selected_user(
             st.session_state['selected_policy_maker_name']
         )
@@ -137,6 +147,8 @@ with reseacher_variable_col:
         researcher_names,
         key='selected_researcher_name',
         label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
     )
 
 with researcher_col:
@@ -144,6 +156,9 @@ with researcher_col:
                 type='primary',
                 use_container_width=True,
                 key='login_researcher_button'):
+        if not st.session_state['selected_researcher_name']:
+            st.warning('Please choose a researcher first.')
+            st.stop()
         selected_researcher_id, selected_researcher_name = parse_selected_user(
             st.session_state['selected_researcher_name']
         )
