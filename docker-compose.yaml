@@ -9,7 +9,7 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     ports:
-      - 8501:8501
+      - 8501:8501 #port number for streamllit app from browser
 
   api:
     build: ./api

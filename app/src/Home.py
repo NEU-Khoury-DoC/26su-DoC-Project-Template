@@ -1,72 +1,161 @@
-##################################################
-# This is the main/entry-point file for the
-# sample application for your project
-##################################################
-
-# Set up basic logging infrastructure
 import logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# import the main streamlit library as well
-# as SideBarLinks function from src/modules folder
 import streamlit as st
 from modules.nav import SideBarLinks
+import requests
 
-# streamlit supports regular and wide layout (how the controls
-# are organized/displayed on the screen).
-st.set_page_config(layout='wide')
+st.set_page_config(layout='wide', page_title="Farmers Market")
 
-# If a user is at this page, we assume they are not
-# authenticated.  So we change the 'authenticated' value
-# in the streamlit session_state to false.
 st.session_state['authenticated'] = False
-
-# Use the SideBarLinks function from src/modules/nav.py to control
-# the links displayed on the left-side panel.
-# IMPORTANT: ensure src/.streamlit/config.toml sets
-# showSidebarNavigation = false in the [client] section
 SideBarLinks(show_home=True)
 
-# ***************************************************
-#    The major content of this page
-# ***************************************************
+# hero section
+st.markdown("""
+<div style='padding: 2rem 0 1rem 0;'>
+    <h1 style='font-size: 3rem; margin-bottom: 0.5rem;'>🌾 Farmers Market</h1>
+    <p style='font-size: 1.2rem; color: gray;'>
+        Data-driven agricultural insights for farmers, policymakers, and researchers across Europe.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
-logger.info("Loading the Home page of the app")
-st.title('Summer 2026 Belgium DoC Project Template')
-st.write('#### Hi! As which user would you like to log in?')
+st.divider()
 
-# For each of the user personas for which we are implementing
-# functionality, we put a button on the screen that the user
-# can click to MIMIC logging in as that mock user.
+# fetch users
+def fetch_users_by_role(role):
+    try:
+        r = requests.get(f"http://web-api:4000/users/{role}", timeout=5)
+        r.raise_for_status()
+        return r.json()
+    except requests.RequestException as e:
+        st.error(f"API error: {e}")
+        return []
 
-if st.button("Act as John, a Political Strategy Advisor",
-             type='primary',
-             use_container_width=True):
-    # when user clicks the button, they are now considered authenticated
-    st.session_state['authenticated'] = True
-    # we set the role of the current user
-    st.session_state['role'] = 'pol_strat_advisor'
-    # we add the first name of the user (so it can be displayed on
-    # subsequent pages).
-    st.session_state['first_name'] = 'John'
-    # finally, we ask streamlit to switch to another page, in this case, the
-    # landing page for this particular user type
-    logger.info("Logging in as Political Strategy Advisor Persona")
-    st.switch_page('pages/00_Pol_Strat_Home.py')
+def parse_selected_user(selection):
+    user_id_text, user_name = selection.split(': ', 1)
+    return int(user_id_text), user_name
 
-if st.button('Act as Mohammad, a USAID Worker',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'usaid_worker'
-    st.session_state['first_name'] = 'Mohammad'
-    st.switch_page('pages/10_USAID_Worker_Home.py')
+farmer_data = fetch_users_by_role('farmer')
+farmer_names = [f"{u['user_id']}: {u['user_name']}" for u in farmer_data]
 
-if st.button('Act as System Administrator',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
-    st.switch_page('pages/20_Admin_Home.py')
+policy_data = fetch_users_by_role('politician')
+policy_maker_names = [f"{u['user_id']}: {u['user_name']}" for u in policy_data]
+
+researcher_data = fetch_users_by_role('researcher')
+researcher_names = [f"{u['user_id']}: {u['user_name']}" for u in researcher_data]
+
+st.subheader("Sign in")
+st.write("Select your profile and role to get started.")
+
+# login cards
+farmer_card, policy_card, researcher_card = st.columns(3)
+
+farmer_variable_col, farmer_col = st.columns([3, 2])
+
+with farmer_variable_col:
+    st.selectbox(
+        'Choose a Farmer',
+        farmer_names,
+        key='selected_farmer_name',
+        label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
+    )
+
+with farmer_col:
+    if st.button("Log in as Farmer",
+                type='primary',
+                use_container_width=True,
+                key='login_farmer_button'):
+        if not st.session_state['selected_farmer_name']:
+            st.warning('Please choose a farmer first.')
+            st.stop()
+        selected_farmer_id, selected_farmer_name = parse_selected_user(
+            st.session_state['selected_farmer_name'])
+        st.session_state['authenticated'] = True
+        st.session_state['role'] = 'farmer'
+        st.session_state['first_name'] = selected_farmer_name
+        st.session_state['user_id'] = selected_farmer_id
+        st.session_state['selected_farmer_id'] = selected_farmer_id
+        st.session_state['selected_farmer_display'] = selected_farmer_name
+        logger.info("Logging in as Farmer Persona")
+        st.switch_page('pages/01_Farmer_Home.py')
+
+policy_variable_col, policy_col = st.columns([3, 2])
+
+with policy_variable_col:
+    st.selectbox(
+        'Choose a Policy Maker',
+        policy_maker_names,
+        key='selected_policy_maker_name',
+        label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
+    )
+
+with policy_col:
+    if st.button('Log in as Policy Maker',
+                 type='primary',
+                 use_container_width=True,
+                 key='login_policy_button'):
+        if not st.session_state['selected_policy_maker_name']:
+            st.warning('Please choose a policy maker first.')
+            st.stop()
+        selected_policy_id, selected_policy_name = parse_selected_user(
+            st.session_state['selected_policy_maker_name'])
+        st.session_state['authenticated'] = True
+        st.session_state['role'] = 'policy_maker'
+        st.session_state['first_name'] = selected_policy_name
+        st.session_state['user_id'] = selected_policy_id
+        st.session_state['selected_policy_maker_id'] = selected_policy_id
+        st.session_state['selected_policy_maker_display'] = selected_policy_name
+        st.switch_page('pages/11_Policy_Home.py')
+
+
+reseacher_variable_col, researcher_col = st.columns([3, 2])
+
+with reseacher_variable_col:
+    st.selectbox(
+        'Choose a Researcher',
+        researcher_names,
+        key='selected_researcher_name',
+        label_visibility='collapsed',
+        index=None,
+        placeholder='Type a name or ID to search…',
+    )
+
+with researcher_col:
+    if st.button('Log in as Researcher',
+                type='primary',
+                use_container_width=True,
+                key='login_researcher_button'):
+        if not st.session_state['selected_researcher_name']:
+            st.warning('Please choose a researcher first.')
+            st.stop()
+        selected_researcher_id, selected_researcher_name = parse_selected_user(
+            st.session_state['selected_researcher_name'])
+        st.session_state['authenticated'] = True
+        st.session_state['role'] = 'researcher'
+        st.session_state['first_name'] = selected_researcher_name
+        st.session_state['user_id'] = selected_researcher_id
+        st.session_state['selected_researcher_id'] = selected_researcher_id
+        st.session_state['selected_researcher_display'] = selected_researcher_name
+        st.switch_page('pages/21_Researcher_Home.py')
+
+st.divider()
+# feature highlights
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.markdown("### 👨‍🌾 For Farmers")
+    st.write("Predict crop selling prices, log growing conditions, and connect with the agricultural community.")
+with col2:
+    st.markdown("### 🏛 For Policymakers")
+    st.write("Explore regional price maps, compare countries and crops, and generate policy reports.")
+with col3:
+    st.markdown("### 🔬 For Researchers")
+    st.write("Analyse crop observation data, visualise trends, and export datasets for research.")
+st.divider()
+
+st.caption("Farmers Market — Built using Eurostat price data and Open-Meteo weather records across 25 EU countries.")

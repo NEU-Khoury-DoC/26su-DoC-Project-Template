@@ -12,74 +12,85 @@ def home_nav():
 
 
 def about_page_nav():
-    st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
+    st.sidebar.page_link("pages/30_About.py", label="About our Project", icon="🧠")
 
 
-# ---- Role: pol_strat_advisor ------------------------------------------------
+# ---- Role: farmer ------------------------------------------------
 
-def pol_strat_home_nav():
+def farmer_home():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/01_Farmer_Home.py", label="Farmer Home", icon="👨‍🌾"
+    )
+    
+def farmer_info():
+    st.sidebar.page_link(
+        "pages/02_Farm_Info.py", label="Youe Farm Management", icon="🏡"
+    )
+    
+def crop_prediction():
+    st.sidebar.page_link(
+        "pages/04_Crop_Predictions.py", label="Crop Type Suggestion", icon="🌾"
+    )
+    
+def farmer_blog():
+    st.sidebar.page_link(
+        "pages/05_Farmer_Blog.py", label="Discussion Board", icon="💭"
     )
 
+# ---- Role: policy-maker -----------------------------------------------------
 
-def world_bank_viz_nav():
+def policy_home():
     st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
+        "pages/11_Policy_Home.py", label="Policy Maker Home", icon="🧑‍💼"
+    )
+    
+def policy_map():
+    st.sidebar.page_link(
+        "pages/12_Policy_Map.py", label="Crop Price Map", icon="🗺️"
+    )
+    
+def policy_compare():
+    st.sidebar.page_link(
+        "pages/13_Policy_Compare.py", label="Compare Farm Prices", icon="🚜"
+    )
+    
+def policy_report():
+    st.sidebar.page_link(
+        "pages/14_Policy_Report.py", label="Report Maker", icon="📝"
+    )
+    
+def policy_predictions():
+    st.sidebar.page_link(
+        "pages/15_Policy_Predictions.py", label="Crop Price Predictions", icon="🌾"
+    )
+    
+def policy_blog():
+    st.sidebar.page_link(
+        "pages/17_Policy_Blog.py", label="Discussion Board", icon="💭"
     )
 
+# ---- Role: researcher ----------------------------------------------------
 
-def map_demo_nav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
+def researcher_home():
+    st.sidebar.page_link("pages/21_Researcher_Home.py", label="Home", icon="👨‍🔬")
 
+def researcher_map():
+    st.sidebar.page_link("pages/23_Researcher_Map.py", label="Map", icon="🗺️")
 
-# ---- Role: usaid_worker -----------------------------------------------------
+def researcher_conditions():
+    st.sidebar.page_link("pages/24_Researcher_Conditions.py", label="Explore Crop Observations", icon="🌱")
+    
+def researcher_trends():
+    st.sidebar.page_link("pages/25_Researcher_Trends.py", label="Explore Crop Trends", icon="📈")
 
-def usaid_worker_home_nav():
-    st.sidebar.page_link(
-        "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
-    )
+def researcher_data_export():
+    st.sidebar.page_link("pages/27_Researcher_Data_Export.py", label="Data Export", icon="🖥️")
 
+def researcher_blog():
+    st.sidebar.page_link("pages/28_Researcher_Blog.py", label="Discussion Board", icon="💭")
 
-def ngo_directory_nav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="📁")
-
-
-def add_ngo_nav():
-    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
-
-
-def prediction_nav():
-    st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
-    )
-
-
-def api_test_nav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
-
-
-def classification_nav():
-    st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
-    )
-
-
-# ---- Role: administrator ----------------------------------------------------
-
-def admin_home_nav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
-
-
-def ml_model_mgmt_nav():
-    st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
-    )
-
-def new_ml_model_nav():
-    st.sidebar.page_link(
-        "pages/22_Prettier_ML.py", label="New ML Model", icon="📈"
-    )
+def researcher_compare():
+    st.sidebar.page_link("pages/29_Researcher_Compare.py", label="Compare Crops", icon="⚖️")
 
 # ---- Sidebar assembly -------------------------------------------------------
 
@@ -88,6 +99,25 @@ def SideBarLinks(show_home=False):
     Renders sidebar navigation links based on the logged-in user's role.
     The role is stored in st.session_state when the user logs in on Home.py.
     """
+
+    # App-wide button polish: rounded corners + subtle hover lift.
+    # Purely cosmetic — injected here because SideBarLinks() runs on every page.
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.15s ease-in-out;
+        }
+        div.stButton > button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # Logo appears at the top of the sidebar on every page
     st.sidebar.image("assets/logo.png", width=150)
@@ -102,26 +132,31 @@ def SideBarLinks(show_home=False):
 
     if st.session_state["authenticated"]:
 
-        if st.session_state["role"] == "pol_strat_advisor":
-            pol_strat_home_nav()
-            world_bank_viz_nav()
-            map_demo_nav()
+        if st.session_state["role"] == "farmer":
+            farmer_home()
+            farmer_info()
+            crop_prediction()
+            farmer_blog()
 
-        if st.session_state["role"] == "usaid_worker":
-            usaid_worker_home_nav()
-            ngo_directory_nav()
-            add_ngo_nav()
-            prediction_nav()
-            api_test_nav()
-            classification_nav()
+        if st.session_state["role"] == "policy_maker":
+            policy_home()
+            policy_map()
+            policy_compare()
+            policy_report()
+            policy_predictions()
+            policy_blog()
 
-        if st.session_state["role"] == "administrator":
-            admin_home_nav()
-            ml_model_mgmt_nav()
-            new_ml_model_nav()
-            
-    # About link appears at the bottom for all roles
-    about_page_nav()
+        if st.session_state["role"] == "researcher":
+            researcher_home()
+            researcher_map()
+            researcher_conditions()
+            researcher_trends()
+            researcher_compare()
+            researcher_data_export()
+            researcher_blog()
+    else:
+        # Only show about for when not logged in
+        about_page_nav()
 
     if st.session_state["authenticated"]:
         if st.sidebar.button("Logout"):
