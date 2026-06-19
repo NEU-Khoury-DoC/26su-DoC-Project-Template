@@ -9,3 +9,7 @@ pydeck
 requests
 plotly
 scikit-learn
+joblib
+scikit-learn
+plotly
+entsoe-py
